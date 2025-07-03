@@ -1,8 +1,68 @@
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: sans-serif; line-height:1.6; padding:20px; }
-header nav ul { list-style:none; display:flex; gap:15px; }
-header nav a { text-decoration:none; color:#333; padding:5px; }
-header nav .submenu { display:none; position:absolute; list-style:none; margin-top:5px; background:#f9f9f9; padding:10px; }
-.has-submenu:hover .submenu { display:block; }
-main img { max-width:100%; height:auto; margin:15px 0; }
-footer { margin-top:30px; border-top:1px solid #ddd; padding-top:10px; font-size:0.9em; color:#555; }
+/* Basis-Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+/* Hero-Bereich */
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../images/InselmitLeuchtturm-desktop.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+/* Halbtransparenter Overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Textcontainer */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  padding: 1em 2em;
+  margin-top: 1em;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    background-image: url('../images/InselmitLeuchtturm-tablet.JPG');
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    background-image: url('../images/InselmitLeuchtturm-mobile.JPG');
+  }
+}
