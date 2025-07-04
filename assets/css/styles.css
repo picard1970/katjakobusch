@@ -96,13 +96,13 @@ body, html {
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
   .hero-content h1 {
-    font-size: 4em;
+    font-size: 3.8em;
   }
   .hero-content h2 {
-    font-size: 2.8em;
+    font-size: 2.6em;
   }
   .hero-content p {
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
 }
 
