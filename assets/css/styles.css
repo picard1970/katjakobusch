@@ -56,13 +56,13 @@ body, html {
 /* Tablet */
 @media (max-width: 1024px) {
   .hero {
-    background-image: url('katjakobusch/assets/images/InselmitLeuchtturm-tablet.JPG');
+    background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-tablet.JPG');
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .hero {
-    background-image: url('katjakobusch/assets/images/InselmitLeuchtturm-mobile.JPG');
+    background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-mobile.JPG');
   }
 }
