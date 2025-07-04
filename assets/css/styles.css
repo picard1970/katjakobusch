@@ -193,3 +193,19 @@ body::before {
 .site-footer a:hover {
   text-decoration: underline;
 }
+
+/* Buttons als Link-Container */
+.button-container {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  border-radius: 8px;
+  padding: 0.5em;
+  display: inline-block;
+}
+
+/* Hover-Effekt */
+.button-container:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.1);
+}
