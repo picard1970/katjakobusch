@@ -39,7 +39,7 @@ body, html {
 
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
-  font-size: 2.8em;
+  font-size: 2.6em;
   font-weight: normal;
   line-height: 1.2;
 }
@@ -97,10 +97,10 @@ body, html {
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
   .hero-content h1 {
-    font-size: 3.8em;
+    font-size: 3.6em;
   }
   .hero-content h2 {
-    font-size: 2.6em;
+    font-size: 2.5em;
   }
   .hero-content p {
     font-size: 1.6em;
