@@ -97,7 +97,7 @@ body, html {
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
   .hero-content h1 {
-    font-size: 3.6em;
+    font-size: 3.4em;
   }
   .hero-content h2 {
     font-size: 2.5em;
