@@ -36,6 +36,32 @@ body, html {
   z-index: 1;
 }
 
+/* Grundgrößen je nach Element (Standardgröße) */
+.hero-content h1 {
+  font-size: 2.8em;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.hero-content h2 {
+  font-size: 2em;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+.hero-content p {
+  font-size: 1.3em;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+/* Großbuchstaben, fett und größer innerhalb der Elemente */
+.hero-content .bigcaps {
+  font-size: 1.2em; /* skaliert relativ zum umgebenden Element */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 /* Button */
 .button {
   display: inline-block;
@@ -53,16 +79,42 @@ body, html {
   background: rgba(255,255,255,0.4);
 }
 
-/* Tablet */
+/* Tablet Hintergrund */
 @media (max-width: 1024px) {
   .hero {
     background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-tablet.JPG');
   }
 }
 
-/* Mobile */
+/* Mobile Hintergrund */
 @media (max-width: 768px) {
   .hero {
     background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-mobile.JPG');
+  }
+}
+
+/* Große Bildschirme (Desktop und große Tablets) */
+@media (min-width: 1024px) {
+  .hero-content h1 {
+    font-size: 3.4em;
+  }
+  .hero-content h2 {
+    font-size: 2.4em;
+  }
+  .hero-content p {
+    font-size: 1.5em;
+  }
+}
+
+/* Mobile kleinere Schrift */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2em;
+  }
+  .hero-content h2 {
+    font-size: 1.5em;
+  }
+  .hero-content p {
+    font-size: 1.1em;
   }
 }
