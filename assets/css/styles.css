@@ -96,25 +96,25 @@ body, html {
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
   .hero-content h1 {
-    font-size: 3.4em;
+    font-size: 4em;
   }
   .hero-content h2 {
-    font-size: 2.4em;
+    font-size: 2.8em;
   }
   .hero-content p {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
 }
 
 /* Mobile kleinere Schrift */
 @media (max-width: 768px) {
   .hero-content h1 {
-    font-size: 2em;
+    font-size: 1.6em;
   }
   .hero-content h2 {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   .hero-content p {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 }
