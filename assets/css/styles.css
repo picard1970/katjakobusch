@@ -39,7 +39,7 @@ body, html {
 
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
-  font-size: 2.6em;
+  font-size: 2.4em;
   font-weight: normal;
   line-height: 1.2;
 }
