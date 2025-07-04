@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bücher – Katja Kobusch</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #fffbe6; /* dezentes Gelb */
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 1em;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
+    }
+    h2 {
+      font-size: 1.4em;
+      margin-top: 1.5em;
+    }
+    p {
+      margin: 0.5em 0;
+    }
+    .book {
+      border: 1px solid #ddd;
+      padding: 1em;
+      margin-top: 1em;
+      background: #fff;
+    }
+    .book img {
+      max-width: 150px;
+      float: left;
+      margin-right: 1em;
+    }
+    .book:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    a {
+      color: #333;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Meine Bücher</h1>
+    <p>
+      Hier findest du eine Auswahl meiner veröffentlichten Romane und Geschichten.
+    </p>
 
+    <!-- Beispiel-Buch -->
+    <div class="book">
+      <img src="assets/images/beispiel-cover.jpg" alt="Buchtitel Cover">
+      <h2>Buchtitel (Beispiel)</h2>
+      <p>
+        Eine kurze Beschreibung des Buches. Hier kannst du den Klappentext oder eine Einleitung schreiben, die Lust aufs Lesen macht.
+      </p>
+      <p>
+        <a href="#">Mehr erfahren</a>
+      </p>
+    </div>
+
+    <!-- Weitere Bücher kannst du hier ergänzen -->
+    <!--
+    <div class="book">
+      <img src="assets/images/anderes-cover.jpg" alt="Anderes Buch Cover">
+      <h2>Anderes Buch</h2>
+      <p>Beschreibung ...</p>
+      <p><a href="#">Mehr erfahren</a></p>
+    </div>
+    -->
+
+  </div>
+</body>
+</html>
