@@ -176,3 +176,20 @@ body::before {
     content: "MOBILE";
   }
 }
+
+.site-footer {
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.site-footer a {
+  color: #ccc;
+  text-decoration: none;
+  margin: 0 0.5em;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
