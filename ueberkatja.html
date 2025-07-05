@@ -15,28 +15,37 @@
       line-height: 1.6;
     }
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
       padding: 2em;
       display: flex;
       flex-wrap: wrap;
       gap: 2em;
     }
-    .text-content {
-      flex: 1 1 500px;
-      min-width: 300px;
-    }
     .sidebar {
-      flex: 0 0 280px;
+      flex: 1 1 300px;
+      max-width: 300px;
+    }
+    .portrait {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+    .steckbrief {
       background: #fff9eb;
       padding: 1em;
       border-radius: 6px;
-      text-align: center;
+      margin-top: 1em;
     }
-    .sidebar img {
-      width: 100%;
-      border-radius: 6px;
-      margin-bottom: 1em;
+    .steckbrief dt {
+      font-weight: bold;
+    }
+    .steckbrief dd {
+      margin: 0 0 0.5em 0;
+    }
+    .text-content {
+      flex: 2 1 500px;
+      min-width: 300px;
     }
     h1 {
       font-size: 2.5em;
@@ -45,16 +54,6 @@
     h2 {
       font-size: 1.5em;
       margin-top: 1.5em;
-    }
-    .steckbrief {
-      text-align: left;
-      margin: 1em 0 0 0;
-    }
-    .steckbrief dt {
-      font-weight: bold;
-    }
-    .steckbrief dd {
-      margin: 0 0 1em 0;
     }
     footer {
       text-align: center;
@@ -74,20 +73,95 @@
 </head>
 <body>
   <div class="container">
+    <div class="sidebar">
+      <img src="/katjakobusch/assets/images/katja-portrait-oelbild.JPG" alt="Katja Kobusch" class="portrait">
+      <dl class="steckbrief">
+        <dt>Name:</dt><dd>Katja Kobusch (Pseudonym)</dd>
+        <dt>Alter:</dt><dd>Jahrgang 1979</dd>
+        <dt>Wohnort:</dt><dd>Hamburg</dd>
+        <dt>Beruf:</dt><dd>Journalistin, Schreibcoach, Autorin</dd>
+        <dt>Hobbies:</dt><dd>Lesen, Basteln, Puzzeln</dd>
+        <dt>Lieblingsorte:</dt><dd>Buchladen, Irland, Fanø, Kino</dd>
+      </dl>
+    </div>
     <div class="text-content">
       <h1>Über Katja</h1>
       <h2>✨ Gleiches Unrecht für alle</h2>
       <p><strong>12 Fragen, die sonst meine Figuren beantworten müssen – dieses Mal an mich.</strong></p>
-      
-      <!-- Alle Fragen/Antworten hier unverändert -->
+
       <p><strong>📚 Was magst du an deiner Arbeit?</strong><br>
       Ich liebe es, neue Figuren und ihre Geschichten kennenzulernen – und dabei Zeit in Leben zu verbringen, die nicht meine eigenen sind.<br>
       <em>Jake:</em> Du steckst deine Nase also gerne in unsere Angelegenheiten?<br>
       <em>Katja:</em> (lächelt milde) Oder ich bin das Sprachrohr, das eure Geschichten für andere zugänglich macht.<br>
       <em>Olivia:</em> Okay, da hat sie einen Punkt, Jake.<br>
       <em>Jake:</em> (grummelt, grinst dann)</p>
-      
-      <!-- ... (Rest der Fragen unverändert) ... -->
+
+      <p><strong>👶 Hast du Kinder – und warum?</strong><br>
+      Ja, ich habe zwei Mädchen.<br>
+      Warum? Gute Frage. Seit der Pubertät frag ich mich das auch manchmal. (Katja lacht.)<br>
+      Jetzt mal ehrlich: Zu sehen, wie sie wachsen, sich verwirklichen und ihren Weg gehen, ist einfach nur wow.
+      Und dass sie meine Bücher lesen, ist natürlich auch praktisch.<br>
+      <em>Jake:</em> Außerdem haben sie mich erfunden. Ganz wichtiger Punkt!<br>
+      <em>Katja:</em> Stimmt!</p>
+
+      <p><strong>🎯 Worin bist du richtig schlecht?</strong><br>
+      In Mathe.<br>
+      <em>Jake:</em> Endlich sagt sie’s mal öffentlich.<br>
+      <em>Nova:</em> Wenn sie Formulare ausfüllt, bete ich immer.<br>
+      <em>Katja:</em> Ich auch.</p>
+
+      <p><strong>🎪 Hast du ein sinnloses Talent?</strong><br>
+      Oh, mehrere. Ich weiß immer noch, wer in den 90ern mit wem zusammen war.
+      Ich hab einen internen Jukebox-Modus, der bei fast jedem englischen Wort sofort Liedzeilen ausspuckt.
+      Und ich kann jedes Gericht zuverlässig versalzen.<br>
+      <em>Olivia:</em> Bitte koch nie, wenn ich zu Besuch komme.<br>
+      <em>Katja:</em> Keine Sorge. Ich bestell einfach Pizza.</p>
+
+      <p><strong>📚 Mit/Ohne was wäre die Welt ein schlechterer Ort?</strong><br>
+      Ohne Bücher. Ohne Kino. Ohne Geschichten.<br>
+      <em>Jake:</em> Hey, vergiss bitte nicht die Musik!<br>
+      <em>Anouk:</em> Oder die Bookboyfriends.<br>
+      <em>Katja:</em> Okay, okay. Überzeugt.<br>
+      <em>Olivia:</em> Und was ist mit Kaffee? Eiscreme?<br>
+      <em>Katja:</em> (seufzt) Wollen wir dann langsam mal zur nächsten Frage …?</p>
+
+      <p><strong>😱 Hast du Angst vor dem Tod?</strong><br>
+      Weniger vor dem Tod als vor dem Sterben. Und vor der Vorstellung, was man alles verpasst, wenn man tot ist.<br>
+      <em>Olivia:</em> Keine Sorge, meine Geschichte beweist doch, dass man auch als Geist noch mitmischen kann.<br>
+      <em>Mel:</em> Absolut!<br>
+      <em>Katja:</em> ...</p>
+
+      <p><strong>🔮 Bist du abergläubisch?</strong><br>
+      Ein klitzekleines bisschen. Aber nicht so, dass es meinen Alltag bestimmt.
+      Ich hab zum Beispiel zwei schwarze Katzen. 🐈‍⬛🐈‍⬛<br>
+      <em>Mel:</em> Ich nenne das "spirituell selektiv".<br>
+      <em>Jake:</em> Ich "mysteriös mit Katzentick".<br>
+      <em>Katja:</em> Ich nenne euch Quälgeister.</p>
+
+      <p><strong>👗 Wie viel Aufmerksamkeit schenkst du deinem Aussehen?</strong><br>
+      Ich gehöre zu den Leuten, die morgens lieber länger schlafen, als Zeit im Bad zu verbringen.<br>
+      <em>Anouk:</em> Sehe ich auch so.<br>
+      <em>Nova:</em> Obwohl Lippenstift manchmal Wunder wirken kann.<br>
+      <em>Katja:</em> Echt? Der trocknet die Lippen so aus.</p>
+
+      <p><strong>🚪 Hattest du schon mal eine Nahtoderfahrung?</strong><br>
+      Tatsächlich sogar zwei. Aber erinnern kann ich mich nicht – was vielleicht auch besser ist.<br>
+      <em>Olivia:</em> Faszinierend.<br>
+      <em>Jake:</em> Gruselig.<br>
+      <em>Katja:</em> Willkommen in meinem Kopf.</p>
+
+      <p><strong>❗ Für was hast du kein Verständnis?</strong><br>
+      Für Menschen, die andere wegen Herkunft, Religion, Identität oder Orientierung hassen.
+      Für Gewalt – gegen Frauen, Kinder, Tiere.<br>
+      <em>Jake:</em> Amen.</p>
+
+      <p><strong>❤️ Was willst du mehr als alles andere?</strong><br>
+      Dass meine Geschichten Leser*innen berühren, trösten, mitnehmen, glücklich machen.
+      Und dass sich vielleicht irgendwo jemand denkt: „Die Charaktere fühlen sich an wie echte Freunde.“<br>
+      <em>Jake:</em> Und Jake wäre ein toller Boyfriend.<br>
+      <em>Anouk:</em> (boxt ihn gegen den Oberarm)<br>
+      <em>Jake:</em> Aua. Was soll das?<br>
+      <em>Anouk:</em> Wollte nur dein Ego mal wieder in Check bringen.</p>
 
       <p><strong>👻 Glaubst du an Übernatürliches?</strong><br>
       Unbedingt. Nicht an Poltergeister in Nachthemden – aber daran, dass Erinnerungen, Orte und Menschen Spuren hinterlassen.
@@ -101,27 +175,11 @@
       <p>Du hast noch weitere Fragen? An mich oder eine meiner Figuren?
       <a href="/katjakobusch/schreibmir.html">Dann schreib mir gerne hier!</a></p>
 
-      <p>
-      <em>Jake:</em> Liebesbriefe?<br>
+      <p><em>Jake:</em> Liebesbriefe?<br>
       <em>Chris:</em> Eher Fanpost für mich.<br>
-      <em>Nova und Anouk:</em> (stöhnen gleichzeitig auf)
-      </p>
-    </div>
-
-    <div class="sidebar">
-      <img src="/katjakobusch/assets/images/katja-portrait-oelbild.JPG" alt="Katja Kobusch">
-      <h2>Steckbrief</h2>
-      <dl class="steckbrief">
-        <dt>Name:</dt><dd>Katja Kobusch (Pseudonym)</dd>
-        <dt>Alter:</dt><dd>Jahrgang 1979</dd>
-        <dt>Wohnort:</dt><dd>Hamburg</dd>
-        <dt>Beruf:</dt><dd>Journalistin, Schreibcoach, Autorin</dd>
-        <dt>Hobbies:</dt><dd>Lesen, Basteln, Puzzeln</dd>
-        <dt>Lieblingsorte:</dt><dd>Buchladen, Irland, Fanø, Kino</dd>
-      </dl>
+      <em>Nova und Anouk:</em> (stöhnen gleichzeitig auf)</p>
     </div>
   </div>
-
   <footer>
     <p>
       <a href="/katjakobusch/index.html">Startseite</a> |
