@@ -31,7 +31,6 @@ $a = rand(1, 9);
 $b = rand(1, 9);
 $_SESSION["captcha_result"] = $a + $b;
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -43,7 +42,7 @@ $_SESSION["captcha_result"] = $a + $b;
       margin: 0;
       padding: 0;
       font-family: serif;
-      background-color: #fffbe6; /* warmes Gelb */
+      background-color: #fffbe6;
       color: #333;
       line-height: 1.6;
     }
@@ -59,6 +58,10 @@ $_SESSION["captcha_result"] = $a + $b;
       font-size: 2em;
       margin-bottom: 0.5em;
       text-align: center;
+    }
+    p.intro {
+      margin-bottom: 2em;
+      font-size: 1em;
     }
     form {
       display: flex;
@@ -118,6 +121,19 @@ $_SESSION["captcha_result"] = $a + $b;
 <body>
   <div class="container">
     <h1>Schreib mir!</h1>
+    <p class="intro">
+      Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br><br>
+      Vielleicht möchtest du mir erzählen, wie dir <em>Echo & Ember</em> gefallen hat – ob du mit Jake mitgelitten hast, Anouks Sprüche feierst oder ob Eike dir auf die Nerven gegangen ist.<br><br>
+      Ich freue mich über Post – ganz gleich, ob:
+      <ul>
+        <li>Lob</li>
+        <li>Leseeindruck</li>
+        <li>literarischer Seufzer</li>
+        <li>Fragen</li>
+        <li>oder auch Kritik (bitte konstruktiv 😉)</li>
+      </ul>
+      Und natürlich leite ich auch Fan- und Liebesbriefe an Jake & Co weiter. (Ob sie antworten, kann ich allerdings nicht versprechen.)
+    </p>
     <?php if ($success): ?>
       <p class="message success"><?php echo $success; ?></p>
     <?php elseif ($error): ?>
