@@ -106,9 +106,17 @@ body, html {
   transform: scale(1.1);
 }
 
+/*
 .button-icon {
   width: 60px;
   height: 60px;
+  color: #FFD75F;
+}
+*/
+
+.button-icon {
+  width: 40px;
+  height: 40px;
   color: #FFD75F;
 }
 
