@@ -1,9 +1,17 @@
+/* Fonts */
+@font-face {
+  font-family: 'Cutive Mono';
+  src: url('/katjakobusch/assets/fonts/CutiveMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Basis-Styles */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: sans-serif;
+  font-family: 'Cutive Mono', monospace;
 }
 
 /* Hero-Bereich */
