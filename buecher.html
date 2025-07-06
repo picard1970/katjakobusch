@@ -19,20 +19,19 @@
       padding: 1em;
     }
     h1 {
-      font-size: 1.8em;
+      font-size: 2em;
       margin-bottom: 0.5em;
+      text-align: center;
     }
-    h2 {
-      font-size: 1.4em;
-      margin-top: 1.5em;
-    }
-    p {
-      margin: 0.5em 0;
+    p.intro {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 2em;
     }
     .book {
       border: 1px solid #ddd;
       padding: 1em;
-      margin-top: 1em;
+      margin-top: 1.5em;
       background: #fff;
     }
     .book img {
@@ -45,8 +44,38 @@
       display: table;
       clear: both;
     }
-    a {
+    .book h2 {
+      margin-top: 0;
+      font-size: 1.4em;
+    }
+    .book p {
+      margin: 0.5em 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: #FFD75F;
       color: #333;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 0.5em;
+      font-weight: bold;
+    }
+    .button:hover {
+      background: #f0c84b;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #666;
+    }
+    footer a {
+      color: #666;
+      text-decoration: none;
+      margin: 0 0.5em;
+    }
+    footer a:hover {
       text-decoration: underline;
     }
   </style>
@@ -54,31 +83,36 @@
 <body>
   <div class="container">
     <h1>Meine Bücher</h1>
-    <p>
-      Hier findest du eine Auswahl meiner veröffentlichten Romane und Geschichten.
+    <p class="intro">
+      Hier findest du meine aktuellen und kommenden Bücher – Geschichten voller Musik, Magie, Geheimnisse und unerwarteter Begegnungen.
     </p>
 
-    <!-- Beispiel-Buch -->
+    <!-- Buch 1 -->
     <div class="book">
-      <img src="assets/images/beispiel-cover.jpg" alt="Buchtitel Cover">
-      <h2>Buchtitel (Beispiel)</h2>
-      <p>
-        Eine kurze Beschreibung des Buches. Hier kannst du den Klappentext oder eine Einleitung schreiben, die Lust aufs Lesen macht.
-      </p>
-      <p>
-        <a href="#">Mehr erfahren</a>
-      </p>
+      <img src="/katjakobusch/assets/images/echo-ember-cover.jpg" alt="Echo & Ember Cover">
+      <h2>Echo & Ember</h2>
+      <p>Eine türkisfarbene Gitarre, ein Sommer auf einer Nordseeinsel – und ein Geheimnis, das alles verändert. <em>Echo & Ember</em> erzählt von Herkunft, Musik und der Frage, wie weit man gehen darf, um seinen eigenen Weg zu finden.</p>
+      <p><strong>Veröffentlichung:</strong> Herbst/Winter 2025</p>
+      <a href="#" class="button">Mehr erfahren</a>
     </div>
 
-    <!-- Weitere Bücher kannst du hier ergänzen -->
-    <!--
+    <!-- Buch 2 -->
     <div class="book">
-      <img src="assets/images/anderes-cover.jpg" alt="Anderes Buch Cover">
-      <h2>Anderes Buch</h2>
-      <p>Beschreibung ...</p>
-      <p><a href="#">Mehr erfahren</a></p>
+      <img src="/katjakobusch/assets/images/elodies-geheimnis-comingsoon.jpg" alt="Elodies Geheimnis Cover">
+      <h2>Elodies Geheimnis</h2>
+      <p>Ein verwinkeltes Hotel, eine magische Schreibmaschine und ein verborgenes Gemälde. <em>Elodies Geheimnis</em> ist ein atmosphärischer Jugendroman über Wahrheit, Kunst und das eigene Schreiben.</p>
+      <p><strong>Geplant für:</strong> 2026</p>
+      <a href="#" class="button">Mehr erfahren</a>
     </div>
-    -->
+
+    <!-- Buch 3 -->
+    <div class="book">
+      <img src="/katjakobusch/assets/images/grossstadtheldinnen-cover.jpg" alt="Die Großstadtheldinnen Cover">
+      <h2>Die Großstadtheldinnen</h2>
+      <p>Begleitet Nova, Izzy und Mel durch die Großstadt – und Abenteuer des Herzens. Drei junge Frauen, drei Geschichten. Und mehr als ein Happy End.</p>
+      <p><strong>Erscheinungstermin:</strong> wird noch bekannt gegeben</p>
+      <a href="#" class="button">Mehr erfahren</a>
+    </div>
 
   </div>
   <footer>
@@ -86,6 +120,7 @@
       <a href="/katjakobusch/index.html">Startseite</a> |
       <a href="/katjakobusch/buecher.html">Bücher</a> |
       <a href="/katjakobusch/jakemosphere.html">Jakemosphere</a> |
+      <a href="/katjakobusch/ueberkatja.html">Über Katja</a> |
       <a href="/katjakobusch/schreibmir.html">Schreib mir</a> |
       <a href="/katjakobusch/impressum.html">Impressum</a> |
       <a href="/katjakobusch/datenschutz.html">Datenschutz</a>
