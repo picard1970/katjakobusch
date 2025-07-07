@@ -109,13 +109,15 @@ body, html {
 .button-icon {
   width: 60px;
   height: 60px;
-  color: #FFD75F;
+/*  color: #FFD75F; */ /* Gelb der Textseite */
+  color: #556B2F; /* Moosgrün */
 }
 
 .button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
-  color: #FFD75F;
+  /* color: #FFD75F; */ /* Gelb der Textseite */
+  color: #556B2F; /* Moosgrün */
   text-transform: uppercase;
 }
 
