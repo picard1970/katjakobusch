@@ -1,7 +1,7 @@
 /* Fonts */
 @font-face {
   font-family: 'Cutive Mono';
-  src: url('/katjakobusch/assets/fonts/CutiveMono-Regular.ttf') format('truetype');
+  src: url('../fonts/CutiveMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -18,7 +18,7 @@ body, html {
 .hero {
   width: 100%;
   height: 100vh;
-  background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-Taghell.jpeg');
+  background-image: url('../images/InselmitLeuchtturm-Taghell.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -110,14 +110,14 @@ body, html {
   width: 60px;
   height: 60px;
 /*  color: #FFD75F; */ /* Gelb der Textseite */
-  color: #2e7d32; /* Schwarzgrün */
+  color: #99CC99; /* Mintgrün */
 }
 
 .button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
   /* color: #FFD75F; */ /* Gelb der Textseite */
-  color: #2e7d32; /* Schwarzgrün */
+  color: #99CC99; /* Mintgrün */
   text-transform: uppercase;
 }
 
