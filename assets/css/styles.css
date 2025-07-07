@@ -119,6 +119,7 @@ body, html {
   /* color: #FFD75F; */ /* Gelb der Textseite */
   color: #99CC99; /* Mintgrün */
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 /* Tablet Hintergrund */
