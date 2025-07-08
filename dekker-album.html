@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Under the Surface – Jake Dekker</title>
   <style>
@@ -36,7 +36,8 @@
       margin-bottom: 20px;
     }
     .platforms a {
-      display: block;
+      display: flex;
+      align-items: center;
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 6px;
@@ -46,6 +47,7 @@
       color: #000;
       font-weight: bold;
       transition: background-color 0.2s ease;
+      gap: 10px;
     }
     .platforms a:hover {
       background-color: #eaeaea;
@@ -86,7 +88,7 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple Music" style="height: 32px;">
           Apple Music
         </a>
-        <a href="https://amazon.de/music/player/albums/B0DRWB62W8">
+        <a href="https://amazon.de/music/player/albums/B0DRWB62W8" target="_blank" rel="noopener noreferrer">
           <img src="assets/images/amazon-logo.svg" alt="Amazon" style="height: 32px;">
           Amazon
         </a>
@@ -98,7 +100,8 @@
           <img src="assets/images/youtube.PNG" alt="YouTube" style="height: 32px;">
           YouTube
         </a>
-    </div>
+      </div>
+    </div> <!-- ← HIER fehlte der Schluss der linken Spalte -->
 
     <div class="right">
       <div class="track">
