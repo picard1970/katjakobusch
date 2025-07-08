@@ -220,3 +220,23 @@ body::before {
   transform: scale(1.08);
   background: rgba(255, 255, 255, 0.1);
 }
+
+.track {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+
+.track-header {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.track-subline {
+  font-size: 0.9em;
+  color: #555;
+}
+
