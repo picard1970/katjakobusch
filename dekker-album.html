@@ -5,190 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Under the Surface – Jake Dekker</title>
   <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Cutive Mono', monospace;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      gap: 2rem;
-    }
-
-    .left {
-      flex: 0 0 250px;
-    }
-
-    .right {
-      flex: 1;
-    }
-
-    .album-title {
-      font-size: 2em;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .artist {
-      font-size: 1.2em;
-      color: #555;
-      margin-bottom: 20px;
-    }
-
-    .platforms a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 10px 16px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      transition: background-color 0.2s ease;
-    }
-
-    .platforms a:hover {
-      background-color: #eaeaea;
-    }
-
-    .platforms img {
-      height: 20px;
-      width: auto;
-    }
-
-    .track {
-      padding: 8px 0;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .track-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .track-title {
-      font-weight: bold;
-    }
-
-    .track-time {
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    .lyrics-links {
-      margin-top: 4px;
-    }
-
-    .lyrics-links a {
-      margin-right: 1em;
-      font-size: 0.85em;
-      color: #444;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    /* Responsives Verhalten */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .left, .right {
-        flex: 1 1 100%;
-      }
-    }
-  </style>
 </head>
 <body>
-
   <div class="container">
     <div class="left">
       <div class="album-title">Under the Surface</div>
       <div class="artist">by Jake Dekker</div>
       <div class="platforms">
-        <a href="https://open.spotify.com/artist/4GilnkCdsoPcZHzYTDwnS9?si=NRH04FsYS920Glc6qbIuNw" target="_blank">
-          <img src="assets/images/spotify.png" alt="Spotify"> Spotify
+        <a href="https://open.spotify.com/artist/4GilnkCdsoPcZHzYTDwnS9?si=NRH04FsYS920Glc6qbIuNw" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify">
+          Spotify
         </a>
-        <a href="https://www.youtube.com/watch?v=IfyQT70iyyU&list=OLAK5uy_kc8x0rc1eqRPVs4byqxM-wBEZZ5xlT_HI" target="_blank">
-          <img src="assets/images/youtube.png" alt="YouTube"> YouTube
+        <a href="https://music.apple.com/de/album/under-the-surface/1787015637" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple Music">
+          Apple Music
         </a>
-        <a href="https://music.apple.com/de/album/under-the-surface/1787015637" target="_blank">
-          <img src="assets/images/applemusic.png" alt="Apple Music"> Apple Music
+        <a href="https://amazon.de/music/player/albums/B0DRWB62W8">
+          <img src="assets/images/amazon-logo.svg" alt="Amazon">
+          Amazon
         </a>
-        <a href="https://amazon.de/music/player/albums/B0DRWB62W8?marketplaceId=A1PA6795UKMFR9&musicTerritory=DE&ref=dm_sh_4BuFzd3ZDi2ZUL7lDhkCfvkGH" target="_blank">
-          <img src="assets/images/amazon.png" alt="Amazon Music"> Amazon Music
+        <a href="https://link.deezer.com/s/30q41QPXd18LJqBAg5mJ6" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/deezer-logo.svg" alt="Deezer">
+          Deezer
         </a>
-      </div>
+        <a href="https://www.youtube.com/watch?v=IfyQT70iyyU&list=OLAK5uy_kc8x0rc1eqRPVs4byqxM-wBEZZ5xlT_HI" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/youtube.PNG" alt="YouTube">
+          YouTube
+        </a>
     </div>
 
     <div class="right">
       <div class="track">
-        <div class="track-header">
-          <div class="track-title">Prison of Whispers <em>(clip)</em></div>
-          <div class="track-time">3:18</div>
-        </div>
-        <div class="lyrics-links">
-          <a href="#">Original Lyrics</a>
-          <a href="#">Deutsche Übersetzung</a>
-        </div>
+        <div class="track-title">Prison of Whispers <em>(clip)</em></div>
+        <div class="track-time">3:18</div>
       </div>
-
       <div class="track">
-        <div class="track-header">
-          <div class="track-title">Screaming Silence <em>(clip)</em></div>
-          <div class="track-time">3:14</div>
-        </div>
-        <div class="lyrics-links">
-          <a href="#">Original Lyrics</a>
-          <a href="#">Deutsche Übersetzung</a>
-        </div>
+        <div class="track-title">Screaming Silence <em>(clip)</em></div>
+        <div class="track-time">3:14</div>
       </div>
-
       <div class="track">
-        <div class="track-header">
-          <div class="track-title">Borrowed Sand <em>(clip)</em></div>
-          <div class="track-time">3:06</div>
-        </div>
-        <div class="lyrics-links">
-          <a href="#">Original Lyrics</a>
-          <a href="#">Deutsche Übersetzung</a>
-        </div>
+        <div class="track-title">Borrowed Sand <em>(clip)</em></div>
+        <div class="track-time">3:06</div>
       </div>
-
       <div class="track">
-        <div class="track-header">
-          <div class="track-title">New Kid in Town <em>(clip)</em></div>
-          <div class="track-time">4:24</div>
-        </div>
-        <div class="lyrics-links">
-          <a href="#">Original Lyrics</a>
-          <a href="#">Deutsche Übersetzung</a>
-        </div>
+        <div class="track-title">New Kid in Town <em>(clip)</em></div>
+        <div class="track-time">4:24</div>
       </div>
-
       <div class="track">
-        <div class="track-header">
-          <div class="track-title">Echoes of Elsewhere <em>(clip)</em></div>
-          <div class="track-time">3:35</div>
-        </div>
-        <div class="lyrics-links">
-          <a href="#">Original Lyrics</a>
-          <a href="#">Deutsche Übersetzung</a>
-        </div>
+        <div class="track-title">Echoes of Elsewhere <em>(clip)</em></div>
+        <div class="track-time">3:35</div>
       </div>
     </div>
   </div>
-
 </body>
 </html>
