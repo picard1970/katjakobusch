@@ -19,8 +19,11 @@
       padding: 40px 20px;
       gap: 40px;
     }
-    .left, .right {
-      flex: 1;
+    .left {
+      flex: 0 0 30%;
+    }
+    .right {
+      flex: 0 0 70%;
     }
     .album-title {
       font-size: 2em;
@@ -62,6 +65,9 @@
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
+      }
+      .left, .right {
+        flex: 1 0 100%;
       }
     }
   </style>
@@ -109,3 +115,4 @@
 
 </body>
 </html>
+
