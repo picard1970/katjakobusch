@@ -240,3 +240,16 @@ body::before {
   color: #555;
 }
 
+.lyrics {
+  display: none;
+  margin-top: 8px;
+  font-style: italic;
+  color: #444;
+  white-space: pre-wrap;
+}
+.lyrics-toggle {
+  cursor: pointer;
+  color: #007BFF;
+  text-decoration: underline;
+  font-size: 0.9em;
+}
