@@ -241,12 +241,15 @@ body::before {
 }
 
 .lyrics {
-  display: none;
-  margin-top: 8px;
-  font-style: italic;
-  color: #444;
+  font-family: 'Courier New', monospace;
+  background-color: #f0f0f0;
+  padding: 14px;
+  border-radius: 4px;
+  margin: 16px 0;
   white-space: pre-wrap;
+  display: none;
 }
+
 .lyrics-toggle {
   cursor: pointer;
   color: #007BFF;
