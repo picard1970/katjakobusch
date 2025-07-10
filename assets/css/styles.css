@@ -221,18 +221,27 @@ body::before {
   background: rgba(255, 255, 255, 0.1);
 }
 
+
+/* Korrigierte Track-Darstellung */
 .track {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   padding: 8px 0;
   border-bottom: 1px solid #ddd;
-  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .track-header {
   display: flex;
   flex-direction: column;
-  max-width: 80%;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.track-title {
+  font-weight: bold;
 }
 
 .track-subline {
@@ -240,34 +249,27 @@ body::before {
   color: #555;
 }
 
-/*.lyrics {
-  font-family: 'Courier New', monospace;
-  background-color: #f0f0f0;
-  padding: 14px;
-  border-radius: 4px;
-  margin: 16px 0;
-  white-space: pre-wrap;
-  display: none;
+.track-time {
+  color: #666;
+  white-space: nowrap;
+  padding-left: 10px;
+  text-align: right;
 }
-*/
 
+/* Lyrics korrigieren */
 .lyrics {
   background-color: #f9f9f9;
-  border-left: 2px solid #8fbc8f; /* dezentes Grün */
-  padding: 0px 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  text-align: left;
+  border-left: 2px solid #8fbc8f;
+  padding: 10px 0 10px 10px;
+  margin: 10px 0 20px 0;
   font-style: italic;
   font-size: 0.95em;
-  line-height: 1;
+  line-height: 1.4;
   white-space: pre-wrap;
   display: none;
-  border-radius: 2px;
+  border-radius: 4px;
+  width: 100%;
   box-sizing: border-box;
-}
-
-.lyrics p {
   text-align: left;
 }
 
