@@ -266,6 +266,10 @@ body::before {
   border-radius: 2px;
 }
 
+.lyrics p {
+  text-align: left;
+}
+
 .lyrics-toggle {
   display: inline-block;
   width: 20px;
