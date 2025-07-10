@@ -276,5 +276,5 @@ body::before {
 }
 
 .lyrics-toggle:hover {
-  transform: scale(1.2);
+  transform: scale(1.2) rotate(5deg);
 }
