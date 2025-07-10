@@ -264,6 +264,7 @@ body::before {
   white-space: pre-wrap;
   display: none;
   border-radius: 2px;
+  box-sizing: border-box;
 }
 
 .lyrics p {
