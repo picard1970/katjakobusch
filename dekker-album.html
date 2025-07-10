@@ -215,65 +215,67 @@
         </p>
       </div>
       
-  
       <div class="track">
         <div class="track-header">
+        <button class="play-button" onclick="togglePlay(this, 'audio-prison')">▶️</button>
           <div class="track-title"><strong>Screaming Silence</strong></div>
           <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <span onclick="toggleLyrics('lyrics-en-2')" style="cursor:pointer; color:#007BFF;">En</span> / 
-            <span onclick="toggleLyrics('lyrics-de-2')" style="cursor:pointer; color:#007BFF;">De</span>)
+            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-2')">
+            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-2')">
           </div>
         </div>
         <div class="track-time">3:14</div>
-        <!-- Lyrics Container -->
-        <div id="lyrics-en-2" class="lyrics" style="display:none; margin-top:8px;">
-          <p><strong>Screaming Silence</strong> (Original Version)</p>
-          <p>
-            An empire of silence, endless and still,<br>
-            where waves pull me deeper, bending my will.<br>
-            The dark sea’s a king, his eyes on my soul,<br>
-            each tide a reminder to pay my toll.
-          </p>
-          <p>
-            Refrain:<br>
-            They seek solace in whispers, calm in the roars,<br>
-            but for me, the silence screams on these shores.<br>
-            The gulls may laugh, but I feel their scorn,<br>
-            their cries like a warning, I’m lost and torn.
-          </p>
-          <p>
-            Rain-kissed horizons promising infinity,<br>
-            am I the only one who sees the audacity?<br>
-            The vastness a cage beneath gray, heavy skies,<br>
-            as if telling me »Here’s where hope dies«.
-          </p>
-          <p>
-            Refrain
-          </p>
-          <p>
-            The setting sun colors the flood,<br>
-            turning waves to an ocean of blood.<br>
-            Thousands of lost souls in vain try to flee,<br>
-            the dark sea’s king in his ruthless spree.
-          </p>
-          <p>
-            Oh, mighty sea king, unknown are thee,<br>
-            do you mock the hearts that long to roam free?<br>
-            You reign with an ironclad hand,<br>
-            leaving me desperate and damned.
-          </p>
-          <p>
-            So here I stand, in your silent embrace,<br>
-            not free, but captive to this rigid place.<br>
-            They see beauty in waves that collide,<br>
-            but all I see is nowhere to hide.<br>
-            Nowhere to hide.
-         </p>
-        </div>
+        <!-- Verstecktes Audio -->
+        <audio id="audio-prison" src="assets/audio/screaming-silence.mp3" preload="none"></audio>
+      </div>
+      <!-- Lyrics Container -->
+      <div id="lyrics-en-2" class="lyrics" style="display:none; margin-top:8px;">
+        <p><strong>Screaming Silence</strong> <img src="assets/images/flagge-us-icon.PNG" alt="En">/p>
+        <p>
+          An empire of silence, endless and still,<br>
+          where waves pull me deeper, bending my will.<br>
+          The dark sea’s a king, his eyes on my soul,<br>
+          each tide a reminder to pay my toll.
+        </p>
+        <p>
+          Refrain:<br>
+          They seek solace in whispers, calm in the roars,<br>
+          but for me, the silence screams on these shores.<br>
+          The gulls may laugh, but I feel their scorn,<br>
+          their cries like a warning, I’m lost and torn.
+        </p>
+        <p>
+          Rain-kissed horizons promising infinity,<br>
+          am I the only one who sees the audacity?<br>
+          The vastness a cage beneath gray, heavy skies,<br>
+          as if telling me »Here’s where hope dies«.
+        </p>
+        <p>
+          Refrain
+        </p>
+        <p>
+          The setting sun colors the flood,<br>
+          turning waves to an ocean of blood.<br>
+          Thousands of lost souls in vain try to flee,<br>
+          the dark sea’s king in his ruthless spree.
+        </p>
+        <p>
+          Oh, mighty sea king, unknown are thee,<br>
+          do you mock the hearts that long to roam free?<br>
+          You reign with an ironclad hand,<br>
+          leaving me desperate and damned.
+        </p>
+        <p>
+          So here I stand, in your silent embrace,<br>
+          not free, but captive to this rigid place.<br>
+          They see beauty in waves that collide,<br>
+          but all I see is nowhere to hide.<br>
+          Nowhere to hide.
+       </p>
       </div>
       <!-- Lyrics Container -->
       <div id="lyrics-de-2" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Schreiende Stille</strong> (Deutsche Übersetzung)</p>
+        <p><strong>Schreiende Stille</strong> <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
         <p>
           Ein Imperium des Schweigens, endlos und still,<br>
           wo Wellen mich tiefer ziehen und meinen Willen brechen.<br>
