@@ -205,6 +205,13 @@ body::before {
   text-decoration: underline;
 }
 
+footer {
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+  color: #666;
+}
+
 /* Buttons als Link-Container */
 .button-container {
   text-align: center;
