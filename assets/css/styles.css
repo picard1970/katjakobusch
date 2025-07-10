@@ -254,9 +254,10 @@ body::before {
 .lyrics {
   background-color: #f9f9f9;
   border-left: 2px solid #8fbc8f; /* dezentes Grün */
-  padding: 2px 2px;
+  padding: 0px 0px;
   margin-top: 0px;
   margin-bottom: 0px;
+  width: 50%;
   text-align: left;
   font-style: italic;
   font-size: 0.95em;
