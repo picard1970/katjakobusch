@@ -313,7 +313,7 @@ body::before {
 }
 
 .album-header {
-  height: 180px;
+  height: 100px;
   overflow: hidden;
 }
 
