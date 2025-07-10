@@ -105,7 +105,8 @@
     </div>
     <div class="right">
       <div class="track">
-        <div class="track-header">
+        <button class="play-button" onclick="togglePlay(this, 'audio-prison')">▶️</button>
+         <div class="track-header">
           <div class="track-title"><strong>Prison of Whispers</strong></div>
           <div class="track-subline">
             <em>Jake Dekker</em> (Lyrics: 
@@ -115,6 +116,8 @@
           </div>
         </div>
         <div class="track-time">3:18</div>
+        <!-- Verstecktes Audio -->
+        <audio id="audio-prison" src="assets/audio/prison-of-whispers.mp3" preload="none"></audio>
       </div>
       <!-- Lyrics Container -->
       <div id="lyrics-en-1" class="lyrics" style="display:none; margin-top:1px;">
@@ -1268,6 +1271,33 @@
       const el = document.getElementById(id);
       el.style.display = (el.style.display === "block") ? "none" : "block";
     }
+    
+    function togglePlay(button, audioId) {
+      const audio = document.getElementById(audioId);
+    
+      // Stoppe alle anderen Audios
+      document.querySelectorAll('audio').forEach(a => {
+        if (a !== audio) a.pause();
+      });
+    
+      // Setze andere Buttons zurück
+      document.querySelectorAll('.play-button').forEach(btn => {
+        if (btn !== button) btn.textContent = '▶️';
+      });
+    
+      if (audio.paused) {
+        audio.play();
+        button.textContent = '⏸️';
+      } else {
+        audio.pause();
+        button.textContent = '▶️';
+      }
+    
+      // Wenn Song zu Ende → zurück auf Play
+      audio.onended = () => {
+        button.textContent = '▶️';
+      };
+    }
   </script>
-</body>
+  </body>
 </html>
