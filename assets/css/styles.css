@@ -257,6 +257,7 @@ body::before {
   padding: 2px 2px;
   margin-top: 0px;
   margin-bottom: 0px;
+  text-align: left;
   font-style: italic;
   font-size: 0.95em;
   line-height: 1;
