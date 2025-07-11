@@ -165,6 +165,8 @@ body.index-font {
     font-size: 1em;
   }
 }
+
+/* DELETE FROM HERE FOR PRODUCTION */
 body::before {
   content: "DESKTOP";
   position: fixed;
@@ -188,6 +190,8 @@ body::before {
     content: "MOBILE";
   }
 }
+/* DELETE TO HERE FOR PRODUCTION */
+
 .index-footer {
   text-align: center;
   padding: 1em;
@@ -289,14 +293,6 @@ body::before {
 .play-button:hover {
   transform: scale(1.2);
 }
-.track {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid #ddd;
-}
 .album-header {
   height: 100px;
   overflow: hidden;
@@ -308,7 +304,7 @@ body::before {
 }
 
 /* === Bücherseite === */
-body.book {
+body.buecher {
   margin: 0;
   padding: 0;
   background-color: #fffbe6; /* dezentes Gelb */
