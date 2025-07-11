@@ -36,7 +36,7 @@ ul {
   font-size: 1.2em;
   margin: 1em auto;
   padding-left: 1.2em;
-  list-style-position: inside;
+  list-style-position: outside;
 }
 li {
   font-size: 1.2em;
