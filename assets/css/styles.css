@@ -11,7 +11,14 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Cutive Mono', monospace;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+body.index-font {
+  font-family: 'Cutive Mono', sans-serif;
 }
 
 /* Hero-Bereich */
