@@ -39,7 +39,6 @@ ul {
   list-style-position: outside;
 }
 li {
-  font-size: 1em;
   line-height: 1.6;
 }
 footer {
@@ -131,18 +130,6 @@ body.index-font {
 .index-button:hover {
   background: rgba(255, 255, 255, 0.4);
 }
-/* .index-button {
-  display: inline-block;
-  padding: 1em 2em;
-  margin-top: 1em;
-  background: rgba(255,255,255,0.2);
-  color: white;
-  text-decoration: none;
-  border: 1px solid white;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-*/
 .index-button-row {
   display: flex;
   justify-content: center;
