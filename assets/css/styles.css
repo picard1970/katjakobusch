@@ -337,3 +337,56 @@ footer {
   object-fit: cover;
 }
 
+/* === Bücherseite === */
+body.buecher {
+  background-color: #fffbe6;
+  color: #333;
+  line-height: 1.6;
+  font-family: sans-serif;
+}
+
+.book-container {
+  max-width: 900px;
+  margin: 2em auto;
+  padding: 1em;
+}
+
+h1.page-title {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+p.intro {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 2em;
+}
+
+.book {
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin-top: 1.5em;
+  background: #fff;
+}
+
+.book img {
+  max-width: 150px;
+  float: left;
+  margin-right: 1em;
+}
+
+.book:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.book h2 {
+  margin-top: 0;
+  font-size: 1.4em;
+}
+
+.book p {
+  margin: 0.5em 0;
+}
