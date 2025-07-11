@@ -39,6 +39,15 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+}
 
 /* =============== */
 /* === PAGE: INDEX */
@@ -97,6 +106,15 @@ body.index-font {
 }
 /* Button */
 .index-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 1em 2em;
+}
+.index-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+/* .index-button {
   display: inline-block;
   padding: 1em 2em;
   margin-top: 1em;
@@ -107,9 +125,7 @@ body.index-font {
   border-radius: 4px;
   transition: background 0.3s;
 }
-.index-button:hover {
-  background: rgba(255,255,255,0.4);
-}
+*/
 .index-button-row {
   display: flex;
   justify-content: center;
@@ -297,7 +313,7 @@ p.intro {
 .book p {
   margin: 0.5em 0;
 }
-.book-button {
+/*.book-button {
   display: inline-block;
   padding: 0.5em 1em;
   background: #FFD75F;
@@ -306,6 +322,11 @@ p.intro {
   border-radius: 4px;
   margin-top: 0.5em;
   font-weight: bold;
+}*/
+.book-button {
+  background: #FFD75F;
+  color: #333;
+  border: none;
 }
 .book-button:hover {
   background: #f0c84b;
