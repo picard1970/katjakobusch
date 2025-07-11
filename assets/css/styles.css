@@ -25,6 +25,23 @@ h2 {
   font-size: 1.5em;
   margin-top: 1.5em;
 }
+p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 1em 0;
+  color: #333;
+}
+ul {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 1em auto;
+  padding-left: 1.2em;
+  list-style-position: inside;
+}
+li {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
 footer {
   text-align: center;
   margin-top: 3em;
