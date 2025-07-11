@@ -308,7 +308,7 @@ body::before {
 }
 
 /* === Bücherseite === */
-body.buecher {
+body.book {
   margin: 0;
   padding: 0;
   background-color: #fffbe6; /* dezentes Gelb */
