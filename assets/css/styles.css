@@ -188,22 +188,22 @@ body::before {
     content: "MOBILE";
   }
 }
-.site-footer {
+.index-footer {
   text-align: center;
   padding: 1em;
   font-size: 0.9em;
   color: #ccc;
 }
-.site-footer a {
+.index-footer a {
   color: #ccc;
   text-decoration: none;
   margin: 0 0.5em;
 }
-.site-footer a:hover {
+.index-footer a:hover {
   text-decoration: underline;
 }
 /* Buttons als Link-Container */
-.button-container {
+.index-button-container {
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
@@ -212,7 +212,7 @@ body::before {
   display: inline-block;
 }
 /* Hover-Effekt */
-.button-container:hover {
+.index-button-container:hover {
   transform: scale(1.08);
   background: rgba(255, 255, 255, 0.1);
 }
