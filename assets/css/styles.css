@@ -151,14 +151,14 @@ body.index-font {
   height: 60px;
   /* color: #FFD75F; */ /* Gelb der Textseite */
   /* color: #99CC99; */ /* Mintgrün */
-  color: #C69C6D;
+  color: #E8B04B;
 }
 .index-button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
   /* color: #FFD75F; */ /* Gelb der Textseite */
   /* color: #99CC99; */ /* Mintgrün */
-  color: #C69C6D;
+  color: #E8B04B;
   text-transform: uppercase;
   font-weight: bold;
 }
