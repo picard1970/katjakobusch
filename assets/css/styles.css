@@ -149,14 +149,16 @@ body.index-font {
 .index-button-icon {
   width: 60px;
   height: 60px;
-/*  color: #FFD75F; */ /* Gelb der Textseite */
-  color: #99CC99; /* Mintgrün */
+  /*  color: #FFD75F; */ /* Gelb der Textseite */
+  /* color: #99CC99; */ /* Mintgrün */
+  color: #C69C6D;
 }
 .index-button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
   /* color: #FFD75F; */ /* Gelb der Textseite */
-  color: #99CC99; /* Mintgrün */
+  /* color: #99CC99; */ /* Mintgrün */
+  color: #C69C6D;
   text-transform: uppercase;
   font-weight: bold;
 }
