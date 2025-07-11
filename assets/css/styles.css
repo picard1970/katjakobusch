@@ -406,7 +406,6 @@ p.intro {
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-family: serif;
 }
 .kontakt-container input:focus,
 .kontakt-container textarea:focus {
@@ -429,7 +428,7 @@ p.intro {
 .kontakt-container .message {
   margin-bottom: 1em;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
 }
 .kontakt-container .success {
   color: green;
