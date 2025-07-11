@@ -420,7 +420,6 @@ p.intro {
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  font-family: serif;
 }
 .kontakt-container button:hover {
   background: #f0c84b;
