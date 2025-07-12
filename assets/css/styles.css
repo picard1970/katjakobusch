@@ -429,7 +429,6 @@ body.buecher {
 
 /* ================================================= */
 /* === MEDIA QUERIES =============================== */
-
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
   .hero-content h1 {
