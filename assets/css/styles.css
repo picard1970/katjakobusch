@@ -306,6 +306,7 @@ body.buecher {
 .book-text {
   flex: 1;
   min-width: 200px;
+  margin-top: 0;
 }
 .book-text h2: {
   margin-top: 0;
