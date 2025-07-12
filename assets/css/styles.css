@@ -442,7 +442,7 @@ body.buecher {
 /* Tablet */
 @media (max-width: 1024px) {
   .hero {
-    background-image: url('/katjakobusch/assets/images/index-background-tablet.jpg');
+    background-image: url('../assets/images/index-background-tablet.jpg');
   }
   .hero-content h1 {
     font-size: 2.4em;
@@ -458,7 +458,7 @@ body.buecher {
 /* Mobile */
 @media (max-width: 768px) {
   .hero {
-    background-image: url('/katjakobusch/assets/images/index-background-mobile.jpg');
+    background-image: url('../assets/images/index-background-mobile.jpg');
   }
   .hero-content h1 {
     font-size: 1.6em;
