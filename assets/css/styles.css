@@ -148,14 +148,6 @@ body.index-font {
   gap: 2em;
   margin-top: 2em;
 }
-.index-button-container {
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-.index-button-container:hover {
-  transform: scale(1.1);
-}
 .index-button-icon {
   width: 60px;
   height: 60px;
@@ -291,11 +283,6 @@ body.buecher {
   padding: 0;
   color: #333;
   line-height: 1.6;
-}
-.book-container {
-  max-width: 900px;
-  margin: 2em auto;
-  padding: 1em;
 }
 h1.page-title {
   font-size: 2em;
@@ -436,18 +423,6 @@ p.intro {
 /* ================================================= */
 /* === MEDIA QUERIES =============================== */
 
-/* Tablet Hintergrund */
-@media (max-width: 1024px) {
-  .hero {
-    background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-tablet.JPG');
-  }
-}
-/* Mobile Hintergrund */
-@media (max-width: 768px) {
-  .hero {
-    background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-mobile.JPG');
-  }
-}
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
   .hero-content h1 {
@@ -460,8 +435,27 @@ p.intro {
     font-size: 1.6em;
   }
 }
-/* Mobile kleinere Schrift */
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-tablet.JPG');
+  }
+  .hero-content h1 {
+    font-size: 2.4em;
+  }
+  .hero-content h2 {
+    font-size: 2.1em;
+  }
+  .hero-content p {
+    font-size: 1.2em;
+  }
+
+}
+/* Mobile */
 @media (max-width: 768px) {
+  .hero {
+    background-image: url('/katjakobusch/assets/images/InselmitLeuchtturm-mobile.JPG');
+  }
   .hero-content h1 {
     font-size: 1.6em;
   }
