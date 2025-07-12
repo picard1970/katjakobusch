@@ -316,6 +316,9 @@ body.buecher {
 .book-text h2 {
   margin-top: 0;
 }
+.book-text p:first-of-type {
+  margin-bottom: 0;
+}
 .book img {
   max-width: 150px;
   height: auto;
