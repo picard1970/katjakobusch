@@ -293,7 +293,7 @@ body.buecher {
   line-height: 1.6;
 }
 .book {
-  border: 1px solid (--grau);
+  border: 1px solid var(--grau);
   padding: 1em;
   margin-top: 1.5em;
   background: var(--weissgrau);
