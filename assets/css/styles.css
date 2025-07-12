@@ -301,7 +301,7 @@ body.buecher {
   border-radius: 4px;
   align-items: flex-start;
   flex-wrap: wrap;
-  /* background: var(--weissgrau); */
+  background: var(--weissgrau);
 }
 .book h2 {
   margin-top: 0;
