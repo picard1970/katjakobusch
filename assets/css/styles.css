@@ -293,23 +293,27 @@ body.buecher {
   line-height: 1.6;
 }
 .book {
+  display: flex;
+  gap: 1em;
   border: 1px solid var(--grau);
   padding: 1em;
   margin-top: 1.5em;
-  background: var(--weissgrau);
+  border-radius: 4px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  /* background: var(--weissgrau); */
 }
-.book h2:first-child {
+.book-text {
+  flex: 1;
+  min-width: 200px;
+}
+.book-text h2: {
   margin-top: 0;
 }
 .book img {
   max-width: 150px;
-  float: left;
-  margin-right: 1em;
-}
-.book:after {
-  content: "";
-  display: table;
-  clear: both;
+  height: auto;
+  border-radius: 4px;
 }
 .book-button {
   display: inline-block;
