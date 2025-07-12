@@ -284,16 +284,6 @@ body.buecher {
   color: #333;
   line-height: 1.6;
 }
-h1.page-title {
-  font-size: 2em;
-  margin-bottom: 0.5em;
-  text-align: center;
-}
-p.intro {
-  text-align: center;
-  font-size: 1.2em;
-  margin-bottom: 2em;
-}
 .book {
   border: 1px solid #ddd;
   padding: 1em;
