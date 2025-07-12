@@ -193,6 +193,10 @@ body.index-font {
   padding: 0.5em;
   display: inline-block;
 }
+.index-button-container a {
+  text-decoration: none;
+  color: inherit;
+}
 /* Hover-Effekt */
 .index-button-container:hover {
   transform: scale(1.08);
