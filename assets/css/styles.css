@@ -408,7 +408,7 @@ body.buecher {
   border-radius: 4px;
 }
 .kontakt-container button:hover {
-  background: var(gruen-hover);
+  background: var(--gruen-hover);
 }
 .kontakt-container .message {
   margin-bottom: 1em;
