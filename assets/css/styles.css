@@ -303,6 +303,9 @@ body.buecher {
   flex-wrap: wrap;
   /* background: var(--weissgrau); */
 }
+.book h2 {
+  margin-top: 0;
+}
 .book-text {
   flex: 1;
   min-width: 200px;
