@@ -21,6 +21,7 @@
   --weiss-transparent: rgba(255,255,255,0.3);
   --ocker: #dbc49a;
   --himmelblau: #8fb3cc;
+  --himmelblau2: #a9c7dd;
 }
 /* Basis-Styles */ 
 body, html {
@@ -306,7 +307,7 @@ body.buecher {
   border-radius: 4px;
   align-items: flex-start;
   flex-wrap: wrap;
-  background: var(--himmelblau);
+  background: var(--himmelblau2);
 }
 .book h2 {
   margin-top: 0;
