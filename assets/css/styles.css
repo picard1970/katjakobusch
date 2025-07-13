@@ -203,15 +203,19 @@ body.index-font {
   border-radius: 8px;
   padding: 0.5em;
   display: inline-block;
-}
-.index-button-container a {
   text-decoration: none;
-  color: inherit;
 }
 /* Hover-Effekt */
 .index-button-container:hover {
   transform: scale(1.08);
   background: rgba(255, 255, 255, 0.1);
+}
+.index-button-container a,
+.index-button-container a:visited,
+.index-button-container a:hover,
+.index-button-container a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ================================================= */
