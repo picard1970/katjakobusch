@@ -179,6 +179,7 @@ body.index-font {
   color: var(--gruen);
   text-transform: uppercase;
   font-weight: bold;
+  text-decoration: none;
 }
 .index-footer {
   text-align: center;
