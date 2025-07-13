@@ -227,7 +227,7 @@ body.album-page {
   color: var(--grau);
   display: flex;
   flex-direction: column;
-  /*min-height: 100vh;*/
+  min-height: 100vh;
 }
 .container.album-layout {
   flex: 1;
