@@ -252,11 +252,13 @@ body.album-page {
 .album-header {
   height: 100px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .album-header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: bloc;
+  max-width: 100%;
+  height: auto;
+  /* object-fit: cover; */
 }
 .artist {
   font-size: 1.2em;
@@ -280,14 +282,6 @@ body.album-page {
 .platforms a:hover {
   background-color: var(--hellgrau3);
 }
-/*footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px 0;
-  font-size: 0.9em;
-  background-color: var(--hellgrau);
-  color: #666;
-}*/
 /* Track-Darstellung */
 .track {
   display: flex;
