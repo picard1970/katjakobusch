@@ -33,6 +33,8 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: Arial, sans-serif;
+}
+body:not(.album-page) {
   background-color: var(--himmelblau);
 }
 .container {
@@ -215,7 +217,6 @@ body.index-font {
 /* === PAGE: ALBUM ================================= */
 body.album-page {
   margin: 0;
-  font-family: Arial, sans-serif;
   background-color: var(--weissgrau);
   color: var(--grau);
   display: flex;
@@ -274,14 +275,14 @@ body.album-page {
 .platforms a:hover {
   background-color: var(--hellgrau3);
 }
-footer {
+/*footer {
   text-align: center;
   margin-top: 40px;
   padding: 20px 0;
   font-size: 0.9em;
   background-color: var(--hellgrau);
   color: #666;
-}
+}*/
 /* Track-Darstellung */
 .track {
   display: flex;
