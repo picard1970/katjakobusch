@@ -16,12 +16,16 @@
   --dunkelgrau: #333;
   --dunkelgrau2: #2b2b2b;
   --grau: #666;
-  --hellgrau: #ccc; /* #f4f4f4 */
+  --hellgrau: #f4f4f4; /* #ccc */
+  --hellgrau2: #ddd;
+  --hellgrau3: #eaeaea;
   --weissgrau: #f9f9f9;
+  --weiss: #fff;
   --weiss-transparent: rgba(255,255,255,0.3);
   --ocker: #dbc49a;
   --himmelblau: #8fb3cc;
   --himmelblau2: #a9c7dd;
+  --schwarz: #000;
 }
 /* Basis-Styles */ 
 body, html {
@@ -209,6 +213,71 @@ body.index-font {
 
 /* ================================================= */
 /* === PAGE: ALBUM ================================= */
+body.album-page {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--hellgrau);
+  color: var(--grau);
+}
+.container.album-layout {
+  display: flex;
+  flex-direction: row;
+  max-width: 7200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  gap: 40px;
+}
+.left {
+  flex: 0 0 25%;
+  min-width: 200px;
+}
+.right {
+  flex: 1 1 75%;
+}
+.album-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.album-header {
+  height: 100px;
+  overflow: hidden;
+}
+.album-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.artist {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+.platforms a {
+  display: flex;
+  align-items: center;
+  background-color: var(--weiss);
+  border: 1px solid var(--hellgrau2);
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: var(--schwarz);
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  gap: 10px;
+}
+.platforms a:hover {
+  background-color: var(--hellgrau3);
+}
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  font-size: 0.9em;
+  background-color: var(--hellgrau);
+  color: #666;
+}
 /* Track-Darstellung */
 .track {
   display: flex;
@@ -279,15 +348,6 @@ body.index-font {
 }
 .play-button:hover {
   transform: scale(1.2);
-}
-.album-header {
-  height: 100px;
-  overflow: hidden;
-}
-.album-header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* ================ */
@@ -475,4 +535,13 @@ body.buecher {
   .hero-content p {
     font-size: 1em;
   }
+  .container.album-layout {
+    flex-direction: column;
+  }
+  .left,
+  .right {
+    flex: 1 0 100%;
+  }
 }
+
+
