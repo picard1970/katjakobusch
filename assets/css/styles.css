@@ -555,8 +555,8 @@ body.buecher {
   .album-header img {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
   }
   body.album-page {
     min-height: 100vh;
