@@ -386,7 +386,7 @@ body.buecher {
   max-width: 700px;
   margin: 2em auto;
   padding: 2em;
-  background: var(--himmelblau);
+  background: var(--himmelblau2);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
