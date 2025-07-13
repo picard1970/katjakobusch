@@ -568,7 +568,13 @@ body.buecher {
   .left,
   .right {
     flex: 1 0 100%;
+    margin: 0;
+  }
+  .album-title,
+  .track,
+  .lyrics {
+    margin-top: 0;
+    margin-bottom: 10px; /* oder passend zur Ästhetik */
   }
 }
-
 
