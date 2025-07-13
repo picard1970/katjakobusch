@@ -20,6 +20,7 @@
   --hellgrau2: #ddd;
   --hellgrau3: #eaeaea;
   --weissgrau: #f9f9f9;
+  --weissgraublau: #f2f6fa;
   --weiss: #fff;
   --weiss-transparent: rgba(255,255,255,0.3);
   --ocker: #dbc49a;
@@ -222,7 +223,7 @@ body.index-font {
 /* === PAGE: ALBUM ================================= */
 body.album-page {
   margin: 0;
-  background-color: var(--weissgrau);
+  background-color: var(--weissgraublau);
   color: var(--grau);
   display: flex;
   flex-direction: column;
@@ -313,7 +314,7 @@ body.album-page {
 }
 /* Lyrics  */
 .lyrics {
-  background-color: var(--weissgrau);
+  background-color: var(--weissgraublau);
   border-left: 2px solid var(--gruen);
   padding: 10px 0 10px 10px;
   margin: 10px 0 20px 0;
