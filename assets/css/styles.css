@@ -14,6 +14,7 @@
   --gruen-hover: #5a7d62;
   --hellgelb: #fffbe6;
   --dunkelgrau: #333;
+  --dunkelgrau2: #2b2b2b;
   --grau: #666;
   --hellgrau: #ccc; /* #f4f4f4 */
   --weissgrau: #f9f9f9;
@@ -50,7 +51,7 @@ p {
   font-size: 1em;
   line-height: 1.6;
   margin: 1em 0;
-  color: var(--ocker);
+  color: var(--dunkelgrau2);
 }
 ul {
   text-align: left;
@@ -293,13 +294,13 @@ body.index-font {
 body.buecher {
   margin: 0;
   padding: 0;
-  color: var(--dunkelgrau);
+  color: var(--dunkelgrau2);
   line-height: 1.6;
 }
 .book {
   display: flex;
   gap: 1em;
-  border: 1px solid var(--ocker);
+  border: 1px solid var(--dunkelgrau2);
   padding: 1em;
   margin-top: 1.5em;
   border-radius: 4px;
@@ -397,7 +398,7 @@ body.buecher {
 .kontakt-container textarea {
   padding: 0.8em;
   font-size: 1em;
-  border: 1px solid var(--hellgrau);
+  border: 1px solid var(--dunkelgrau2);
   border-radius: 4px;
 }
 .kontakt-container input:focus,
