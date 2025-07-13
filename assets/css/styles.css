@@ -18,6 +18,8 @@
   --hellgrau: #ccc; /* #f4f4f4 */
   --weissgrau: #f9f9f9;
   --weiss-transparent: rgba(255,255,255,0.3);
+  --ocker: #dbc49a;
+  --himmelblau: #8fb3cc;
 }
 /* Basis-Styles */ 
 body, html {
@@ -25,7 +27,7 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: Arial, sans-serif;
-  background-color: var(--hellgelb);
+  background-color: var(--himmelblau);
 }
 .container {
   max-width: 900px;
@@ -48,7 +50,7 @@ p {
   font-size: 1em;
   line-height: 1.6;
   margin: 1em 0;
-  color: var(--dunkelgrau);
+  color: var(--ocker);
 }
 ul {
   text-align: left;
@@ -297,13 +299,13 @@ body.buecher {
 .book {
   display: flex;
   gap: 1em;
-  border: 1px solid var(--grau);
+  border: 1px solid var(--ocker);
   padding: 1em;
   margin-top: 1.5em;
   border-radius: 4px;
   align-items: flex-start;
   flex-wrap: wrap;
-  background: var(--weissgrau);
+  background: var(--himmelblau);
 }
 .book h2 {
   margin-top: 0;
@@ -328,7 +330,7 @@ body.buecher {
   display: inline-block;
   padding: 0.6em 1.2em;
   background: var(--gruen);
-  color: var(--weissgrau);
+  color: var(--ocker);
   text-decoration: none;
   border-radius: 4px;
   margin-top: 0.5em;
@@ -382,7 +384,7 @@ body.buecher {
   max-width: 700px;
   margin: 2em auto;
   padding: 2em;
-  background: var(--weissgrau);
+  background: var(--himmelblau);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
