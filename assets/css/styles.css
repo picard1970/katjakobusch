@@ -515,9 +515,9 @@ body.buecher {
 }
 /* Tablet */
 @media (max-width: 1024px) {
-  body, html {
+  /* body, html {
     height: 100%;
-  }
+  } */
   .hero {
     background-image: url('../images/index-background-tablet.jpg');
   }
