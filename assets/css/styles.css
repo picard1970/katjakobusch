@@ -32,7 +32,6 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
   font-family: Arial, sans-serif;
 }
 body:not(.album-page) {
@@ -501,6 +500,9 @@ body.buecher {
 /* === MEDIA QUERIES =============================== */
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
+  body, html {
+    height: 100%;
+  }
   .hero-content h1 {
     font-size: 2.8em;
   }
@@ -513,6 +515,9 @@ body.buecher {
 }
 /* Tablet */
 @media (max-width: 1024px) {
+  body, html {
+    height: 100%;
+  }
   .hero {
     background-image: url('../images/index-background-tablet.jpg');
   }
@@ -549,7 +554,7 @@ body.buecher {
   }
   .album-header {
     height: auto;
-    min-height: 150px;
+    /* min-height: 150px; */
     overflow: hidden;
   }
   .album-header img {
