@@ -497,6 +497,16 @@ body.buecher {
 }
 
 /* ================================================= */
+/* === PAGE: IDEENMEER ============================= */
+body.page,
+body.single,
+body.blog,
+body.home,
+body.archive {
+  background-color: #f8f1e3;
+}
+
+/* ================================================= */
 /* === MEDIA QUERIES =============================== */
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
