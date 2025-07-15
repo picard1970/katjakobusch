@@ -498,12 +498,8 @@ body.buecher {
 
 /* ================================================= */
 /* === PAGE: IDEENMEER ============================= */
-body.page,
-body.single,
-body.blog,
-body.home,
-body.archive {
-  background-color: #f8f1e3;
+.page-id-33 {
+  background-color: #f8f1e3 !important; /* heller Sandton */
 }
 
 /* ================================================= */
