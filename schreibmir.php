@@ -46,6 +46,10 @@ $_SESSION["captcha_result"] = $a + $b;
       Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?
     </h2>
     <p>
+      Auch wenn mein erstes Buch erst Herbst/Winter 2025 erscheint, freue ich mich natürlich auch jetzt schon über Post.
+    </p>
+    <!--
+    <p>
       Vielleicht möchtest du mir erzählen, wie dir <em>Echo & Ember</em> gefallen hat – ob du mit Jake mitgelitten hast, Anouks Sprüche feierst oder ob Eike dir auf die Nerven gegangen ist.<br><br>
       Ich freue mich über Post – ganz gleich, ob:
     </p>
@@ -62,6 +66,7 @@ $_SESSION["captcha_result"] = $a + $b;
     <p>
       (Ob sie antworten, kann ich allerdings nicht versprechen.)
     </p>
+    -->
     <?php if ($success): ?>
       <p class="message success"><?php echo $success; ?></p>
     <?php elseif ($error): ?>
