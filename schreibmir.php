@@ -46,7 +46,7 @@ $_SESSION["captcha_result"] = $a + $b;
       Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?
     </h2>
     <p>
-      Auch wenn mein erstes Buch erst Herbst/Winter 2025 erscheint, freue ich mich natürlich auch jetzt schon über Post.
+      Auch wenn mein erstes Buch erst im Herbst/Winter 2025 erscheint, freue ich mich natürlich auch jetzt schon über Post. 📧
     </p>
     <!--
     <p>
