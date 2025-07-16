@@ -27,6 +27,7 @@
   --himmelblau: #8fb3cc;
   --himmelblau2: #a9c7dd;
   --schwarz: #000;
+  --graubraun: #4d4a3d;
 }
 /* Basis-Styles */ 
 body, html {
@@ -127,7 +128,7 @@ body.index-font {
 .hero-content {
   position: relative;
   z-index: 1;
-  color: var(--gelb);
+  color: var(--graubraun);
 }
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
@@ -144,7 +145,7 @@ body.index-font {
   font-size: 1.3em;
   font-weight: normal;
   line-height: 1.4;
-  color: var(--gelb) !important;
+  color: var(--graubraun) !important;
 }
 /* Großbuchstaben, fett und größer innerhalb der Elemente */
 .hero-content .bigcaps {
@@ -172,12 +173,12 @@ body.index-font {
 .index-button-icon {
   width: 60px;
   height: 60px;
-  color: var(--gruen);
+  color: var(--graubraun);
 }
 .index-button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
-  color: var(--gruen);
+  color: var(--graubraun);
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
