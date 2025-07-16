@@ -128,7 +128,7 @@ body.index-font {
 .hero-content {
   position: relative;
   z-index: 1;
-  color: var(--graubraun);
+  color: var(--schwarz);
 }
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
@@ -173,12 +173,12 @@ body.index-font {
 .index-button-icon {
   width: 60px;
   height: 60px;
-  color: var(--graubraun);
+  color: var(--schwarz);
 }
 .index-button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
-  color: var(--graubraun);
+  color: var(--schwarz);
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
