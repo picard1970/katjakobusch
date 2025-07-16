@@ -130,6 +130,9 @@ body.index-font {
   z-index: 1;
   color: var(--schwarz);
 }
+.hero-text {
+  text-shadow: 0 2px 5px rgba(255,255,255,0.2);
+}
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
   font-size: 2.4em;
