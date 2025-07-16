@@ -145,7 +145,7 @@ body.index-font {
   font-size: 1.3em;
   font-weight: normal;
   line-height: 1.4;
-  color: var(--graubraun) !important;
+  color: var(--schwarz) !important;
 }
 /* Großbuchstaben, fett und größer innerhalb der Elemente */
 .hero-content .bigcaps {
