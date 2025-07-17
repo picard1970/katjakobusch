@@ -521,10 +521,9 @@ body.buecher {
     height: 100%;
   } */
   .hero {
-    /*background-image: url('../images/index-background-tablet.jpg');*/
     background-image: url('../images/duene-leuchtturm-tablet.jpg');
   }
-  .hero-content h1 {
+  /*.hero-content h1 {
     font-size: 2.4em;
   }
   .hero-content h2 {
@@ -532,7 +531,7 @@ body.buecher {
   }
   .hero-content h3 {
     font-size: 1.0em;
-  }
+  }*/
   .index-button-icon {
     width: 40px;
     height: 40px;
@@ -600,5 +599,7 @@ body.buecher {
     margin-top: 0.3em;
     font-size: 0.6em;
   }
+  .index-button-row {
+    gap: 0.5em; /* bisher 2em → verringert Abstand zwischen den Buttons */
+  }
 }
-
