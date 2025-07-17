@@ -517,6 +517,11 @@ body.buecher {
   body, html {
     height: 100%;
   }
+  .hero-content h1,
+  .hero-content h2,
+  .hero-content h3 {
+    transform: translateX(-20px); /* rückt den Text leicht nach links */
+  }
 }
 /* Tablet */
 @media (max-width: 1024px) {
@@ -536,7 +541,6 @@ body.buecher {
   .hero-content h3 {
     font-size: 1.0em;
   }
-
 }
 /* Mobile */
 @media (max-width: 768px) {
