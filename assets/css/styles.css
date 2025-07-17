@@ -138,11 +138,15 @@ footer a:hover {
   font-size: 2.4em;
   font-weight: normal;
   line-height: 1.2;
+  margin: 0;
+  padding: 0;
 }
 .hero-content h2 {
   font-size: 2em;
   font-weight: normal;
   line-height: 1.3;
+  margin: 0;
+  padding: 0;
 }
 .hero-content h3 {
   font-size: 1.3em;
