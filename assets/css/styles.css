@@ -417,27 +417,26 @@ body.buecher {
   transform: scale(1.05);
 }
 .book-hero {
+  background-image: url('../images/buch-am-strand-panorama.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
   position: relative;
-  width: 100%;
-  max-height: 300px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--schwarz);
 }
-.book-hero img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  max-height: 300px;
+.book-hero-content {
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+  padding: 20px;
+  border-radius: 5px;
 }
-.book-hero-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  color: white;
-  font-size: 2.5rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+.book-hero h1,
+.book-hero h2,
+.book-hero p {
+  margin: 5px 0;
 }
 
 /* ================================================= */
