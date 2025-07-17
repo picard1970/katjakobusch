@@ -98,9 +98,9 @@ footer a:hover {
 
 /* ================================================= */
 /* === PAGE: INDEX ================================= */
-body.index-font {
+/*body.index-font {
   font-family: 'Cutive Mono', sans-serif;
-}
+}*/
 /* Hero-Bereich */
 .hero {
   width: 100%;
@@ -108,13 +108,13 @@ body.index-font {
   /*background-image: url('../images/index-background-desktop.jpg');*/
   background-image: url('../images/duene-leuchtturm-desktop.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top right;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  /*color: white;*/
   position: relative;
 }
 /* Halbtransparenter Overlay */
@@ -122,7 +122,7 @@ body.index-font {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.0);
+  /*background: rgba(0,0,0,0.0);*/
 }
 /* Textcontainer */
 .hero-content {
