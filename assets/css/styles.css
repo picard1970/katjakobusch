@@ -531,10 +531,10 @@ body.buecher {
     font-size: 2.4em;
   }
   .hero-content h2 {
-    font-size: 2.1em;
+    font-size: 2.0em;
   }
   .hero-content p {
-    font-size: 1.2em;
+    font-size: 1.0em;
   }
 
 }
@@ -545,13 +545,13 @@ body.buecher {
     background-image: url('../images/duene-leuchtturm-mobile.jpg');
   }
   .hero-content h1 {
-    font-size: 1.6em;
+    font-size: 2.0em;
   }
   .hero-content h2 {
-    font-size: 1.3em;
+    font-size: 1.5em;
   }
   .hero-content p {
-    font-size: 1em;
+    font-size: 1.0em;
   }
   .container.album-layout {
     flex-direction: column;
