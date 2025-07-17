@@ -416,6 +416,13 @@ body.buecher {
   background: var(--gruen-hover);
   transform: scale(1.05);
 }
+.book-header-image img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 20px;
+}
 
 /* ================================================= */
 /* === PAGE: KATJA ================================= */
