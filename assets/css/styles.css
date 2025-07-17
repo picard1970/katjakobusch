@@ -520,7 +520,7 @@ body.buecher {
   .hero-content h1,
   .hero-content h2,
   .hero-content h3 {
-    transform: translateX(-20px); /* rückt den Text leicht nach links */
+    transform: translateX(-100px); /* rückt den Text leicht nach links */
   }
 }
 /* Tablet */
