@@ -533,6 +533,14 @@ body.buecher {
   .hero-content h3 {
     font-size: 1.0em;
   }
+  .index-button-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .index-button-label {
+    margin-top: 0.4em;
+    font-size: 0.7em;
+  }
 }
 /* Mobile */
 @media (max-width: 768px) {
@@ -583,6 +591,14 @@ body.buecher {
   .lyrics {
     margin-top: 0;
     margin-bottom: 10px; /* oder passend zur Ästhetik */
+  }
+  .index-button-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .index-button-label {
+    margin-top: 0.3em;
+    font-size: 0.6em;
   }
 }
 
