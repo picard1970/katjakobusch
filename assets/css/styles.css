@@ -567,6 +567,25 @@ body.buecher {
   margin: 0 20px 20px 0;
   border-radius: 4px;
 }
+.interview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.interview-image {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+.interview-text {
+  flex: 2 1 400px;
+}
+.interview-text p {
+  margin-bottom: 1em;
+}
 
 /* ================================================= */
 /* === MEDIA QUERIES =============================== */
