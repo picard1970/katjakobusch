@@ -429,7 +429,7 @@ body.buecher {
   transform: scale(1.05);
 }
 .book-hero {
-  background-image: url('../images/buch-am-strand-panorama.jpeg');
+  background-image: url('../images/buecherregal-panorama.jpg');
   background-size: cover;
   background-position: center;
   height: 300px;
@@ -538,7 +538,7 @@ body.buecher {
   color: red;
 }
 .kontakt-hero {
-  background-image: url('../images/flaschenpost-brandung-panorama.jpeg');
+  background-image: url('../images/flaschenpost-am-strand-panorama.jpg');
   background-size: cover;
   background-position: center;
   height: 380px;
