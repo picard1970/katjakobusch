@@ -95,6 +95,18 @@ footer a:hover {
   transition: background 0.3s, transform 0.2s;
   cursor: pointer;
 }
+.home-link {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: var(--black);
+  text-decoration: underline:
+  cursor: pointer;
+}
+.home-link:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
 
 /* ================================================= */
 /* === PAGE: INDEX ================================= */
@@ -438,20 +450,6 @@ body.buecher {
 .book-hero p {
   margin: 5px 0;
 }
-.home-link {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  color: var(--black);
-  /*text-decoration: none;
-  font-weight: bold;
-  padding: 6px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;*/
-}
-/*.home-link:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}*/
 
 /* ================================================= */
 /* === PAGE: KATJA ================================= */
