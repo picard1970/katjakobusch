@@ -40,14 +40,23 @@ $_SESSION["captcha_result"] = $a + $b;
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+  <div class="kontakt-hero">
+    <a href="index.html" class="home-link">Home</a>
+    <div class="kontakt-hero-content">
+      <h1>Schreib mir!</h1>
+      <h2>Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?</h2>
+      <p>Auch wenn mein erstes Buch erst im Herbst/Winter 2025 erscheint, freue ich mich natürlich auch jetzt schon über Post.</p>
+    </div>
+  </div>
+  
   <div class="kontakt-container">
-    <h1>Schreib mir!</h1>
+    <!--<h1>Schreib mir!</h1>
     <h2>
       Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?
     </h2>
     <p>
       Auch wenn mein erstes Buch erst im Herbst/Winter 2025 erscheint, freue ich mich natürlich auch jetzt schon über Post. 📧
-    </p>
+    </p>-->
     <!--
     <p>
       Vielleicht möchtest du mir erzählen, wie dir <em>Echo & Ember</em> gefallen hat – ob du mit Jake mitgelitten hast, Anouks Sprüche feierst oder ob Eike dir auf die Nerven gegangen ist.<br><br>
