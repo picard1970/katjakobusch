@@ -443,16 +443,15 @@ body.buecher {
   top: 15px;
   right: 20px;
   color: var(--black);
-  text-decoration: none;
+  /*text-decoration: none;
   font-weight: bold;
-  /*background-color: rgba(0, 0, 0, 0.4);*/
   padding: 6px 12px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;*/
 }
-.home-link:hover {
+/*.home-link:hover {
   background-color: rgba(0, 0, 0, 0.7);
-}
+}*/
 
 /* ================================================= */
 /* === PAGE: KATJA ================================= */
@@ -539,6 +538,27 @@ body.buecher {
 }
 .kontakt-container .error {
   color: red;
+}
+.kontakt-hero {
+  background-image: url('../images/flaschenpost-brandung-panorama.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--schwarz);
+}
+.kontakt-hero-content {
+  padding: 20px;
+  border-radius: 5px;
+}
+.kontakt-hero h1,
+.kontakt-hero h2,
+.kontakt-hero p {
+  margin: 5px 0;
 }
 
 /* ================================================= */
