@@ -133,8 +133,8 @@ footer a:hover {
 .hero-content {
   position: relative;
   z-index: 1;
-  color: var(--hellgrau);
-  text-shadow: 1px 1px 2px var(--dunkelgrau);
+  color: var(--dunkgelgrau2);
+  text-shadow: 1px 1px 2px var(--hellgrau);
 }
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
@@ -203,14 +203,14 @@ footer a:hover {
 .index-button-icon {
   width: 60px;
   height: 60px;
-  color: var(--hellgrau);
-  text-shadow: 1px 1px 2px var(--dunkelgrau);
+  color: var(--dunkelgrau2);
+  text-shadow: 1px 1px 2px var(--hellgrau);
 }
 .index-button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
-  color: var(--hellgrau);
-  text-shadow: 1px 1px 2px var(--dunkelgrau);
+  color: var(--dunkelgrau2);
+  text-shadow: 1px 1px 2px var(--hellgrau);
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
@@ -372,8 +372,7 @@ body.album-page {
 body.buecher {
   margin: 0;
   padding: 0;
-  color: var(--hellgrau);
-  text-shadow: 1px 1px 2px var(--dunkelgrau);
+  color: var(--dunkelgrau2);
   line-height: 1.6;
 }
 .book {
@@ -431,7 +430,8 @@ body.buecher {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--schwarz);
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau2);
 }
 .book-hero-content {
   /*background-color: rgba(0, 0, 0, 0.4);*/
