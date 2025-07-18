@@ -133,8 +133,8 @@ footer a:hover {
 .hero-content {
   position: relative;
   z-index: 1;
-  color: var(--dunkgelgrau2);
-  text-shadow: 1px 1px 2px var(--hellgrau);
+  color: var(--dunkgelgrau);
+  text-shadow: 1px 1px 2px var(--weiss-transparent);
 }
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
@@ -203,14 +203,14 @@ footer a:hover {
 .index-button-icon {
   width: 60px;
   height: 60px;
-  color: var(--dunkelgrau2);
-  text-shadow: 1px 1px 2px var(--hellgrau);
+  color: var(--dunkelgrau);
+  text-shadow: 1px 1px 2px var(--weiss-transparent);
 }
 .index-button-label {
   margin-top: 0.5em;
   font-size: 0.9em;
-  color: var(--dunkelgrau2);
-  text-shadow: 1px 1px 2px var(--hellgrau);
+  color: var(--dunkelgrau);
+  text-shadow: 1px 1px 2px var(--weiss-transparent);
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
