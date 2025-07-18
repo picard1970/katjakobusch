@@ -133,10 +133,8 @@ footer a:hover {
 .hero-content {
   position: relative;
   z-index: 1;
-  color: var(--schwarz);
-}
-.hero-text {
-  text-shadow: 0 2px 5px rgba(255,255,255,0.2);
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau);
 }
 /* Grundgrößen je nach Element (Standardgröße) */
 .hero-content h1 {
@@ -158,62 +156,10 @@ footer a:hover {
   font-weight: 600;
   line-height: 1.4;
 }
-/*.hero-content p {
+.hero-content p {
   font-size: 1.3em;
   font-weight: normal;
-  line-height: 1.4;
-  color: var(--schwarz) !important;
-}
-*/
-/* Großbuchstaben, fett und größer innerhalb der Elemente */
-/*.hero-content .bigcaps {
-  font-size: 1.2em;
-  font-weight: bold;
-  text-transform: uppercase;
-}*/
-/* Button */
-.index-button {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid white;
-  padding: 1em 2em;
-}
-.index-button:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-.index-button-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2em;
-  margin-top: 2em;
-}
-.index-button-icon {
-  width: 60px;
-  height: 60px;
-  color: var(--schwarz);
-}
-.index-button-label {
-  margin-top: 0.5em;
-  font-size: 0.9em;
-  color: var(--schwarz);
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-}
-.index-footer {
-  text-align: center;
-  padding: 1em;
-  font-size: 0.9em;
-  color: var(--hellgrau);
-}
-.index-footer a {
-  color: var(--hellgrau);
-  text-decoration: none;
-  margin: 0 0.5em;
-}
-.index-footer a:hover {
-  text-decoration: underline;
+  line-height: 1.2;
 }
 /* Buttons als Link-Container */
 .index-button-container {
@@ -236,6 +182,52 @@ footer a:hover {
 .index-button-container a:active {
   text-decoration: none;
   color: inherit;
+}
+/* Button */
+.index-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 1em 2em;
+}
+.index-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.index-button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 2em;
+}
+.index-button-icon {
+  width: 60px;
+  height: 60px;
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau);
+}
+.index-button-label {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}
+.index-footer {
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+  color: var(--hellgrau);
+}
+.index-footer a {
+  color: var(--hellgrau);
+  text-decoration: none;
+  margin: 0 0.5em;
+}
+.index-footer a:hover {
+  text-decoration: underline;
 }
 
 /* ================================================= */
@@ -380,7 +372,8 @@ body.album-page {
 body.buecher {
   margin: 0;
   padding: 0;
-  color: var(--dunkelgrau2);
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau);
   line-height: 1.6;
 }
 .book {
@@ -537,7 +530,6 @@ body.buecher {
 .kontakt-container .error {
   color: red;
 }
-
 .kontakt-hero {
   background-image: url('../images/flaschenpost-am-strand-panorama.jpg');
   background-size: cover;
@@ -548,7 +540,8 @@ body.buecher {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--schwarz);
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau);
 }
 .kontakt-hero-content {
   padding: 20px;
