@@ -562,6 +562,15 @@ body.buecher {
 }
 
 /* ================================================= */
+/* === PAGE: Jake Interview  ======================= */
+.float-image {
+  float: left;
+  width: 300px;
+  margin: 0 20px 20px 0;
+  border-radius: 4px;
+}
+
+/* ================================================= */
 /* === MEDIA QUERIES =============================== */
 /* Große Bildschirme (Desktop und große Tablets) */
 @media (min-width: 1024px) {
@@ -659,4 +668,9 @@ body.buecher {
   .index-button-row {
     gap: 0.5em; /* bisher 2em → verringert Abstand zwischen den Buttons */
   }
+  .float-image {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto;
+  } 
 }
