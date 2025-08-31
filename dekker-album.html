@@ -1788,27 +1788,97 @@
         button.textContent = '▶️';
       };
     }
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const songId = params.get('song');
-      if (songId) {
-        const audio = document.getElementById(songId);
-        if (audio) {
-          audio.scrollIntoView({ behavior: 'smooth' });
-  
-          audio.play().catch(() => {
-            console.log("Autoplay blockiert – Nutzerinteraktion erforderlich.");
-  
-            const button = document.querySelector(`.play-button[onclick*="${songId}"]`);
-            if (button) {
-              button.classList.add("highlight-play");
-              button.style.display = "inline-block";
-            }
-          });
-        }
-      }
+    
+    // Hilfsfunktionen für Autoplay + Scroll
+  function findTrackContainerByAudioId(audioId) {
+    const audio = document.getElementById(audioId);
+    if (!audio) return null;
+    let prev = audio.previousElementSibling;
+    while (prev && !prev.classList.contains('track')) {
+      prev = prev.previousElementSibling;
+    }
+    return prev || null;
+  }
+
+  function markAndScrollToTrack(track, audioId) {
+    document.querySelectorAll('.track.active-track')
+      .forEach(t => t.classList.remove('active-track'));
+    track.classList.add('active-track');
+
+    const btn = track.querySelector(`.play-button[onclick*="${audioId}"]`)
+             || document.querySelector(`.play-button[onclick*="${audioId}"]`);
+    if (btn) btn.classList.add('highlight-play');
+
+    setTimeout(() => {
+      track.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      track.setAttribute('tabindex', '-1');
+      track.focus({ preventScroll: true });
+    }, 50);
+  }
+
+  function syncButtonsFor(audioId, isPlaying) {
+    document.querySelectorAll('.play-button').forEach(btn => btn.textContent = '▶️');
+    if (!isPlaying) return;
+    const btn = document.querySelector(`.play-button[onclick*="${audioId}"]`);
+    if (btn) btn.textContent = '⏸️';
+  }
+
+  function tryAutoplay(audioId) {
+    const audio = document.getElementById(audioId);
+    if (!audio) return;
+
+    // Alle anderen Audios stoppen
+    document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
+
+    audio.play().then(() => {
+      syncButtonsFor(audioId, true);
+      audio.onended = () => syncButtonsFor(audioId, false);
+    }).catch(() => {
+      console.log("Autoplay blockiert – warte auf Nutzerinteraktion.");
+      const startOnFirstInteraction = () => {
+        audio.play().then(() => {
+          syncButtonsFor(audioId, true);
+          audio.onended = () => syncButtonsFor(audioId, false);
+        }).catch(() => console.log("Playback weiterhin blockiert."));
+        window.removeEventListener('pointerdown', startOnFirstInteraction);
+        window.removeEventListener('keydown', startOnFirstInteraction);
+      };
+      window.addEventListener('pointerdown', startOnFirstInteraction, { once: true });
+      window.addEventListener('keydown', startOnFirstInteraction, { once: true });
     });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const params  = new URLSearchParams(window.location.search);
+    const audioId = params.get('song');
+    if (!audioId) return;
+
+    const track = findTrackContainerByAudioId(audioId);
+    if (track) markAndScrollToTrack(track, audioId);
+
+    tryAutoplay(audioId);
+  });
+    
+  //  document.addEventListener('DOMContentLoaded', () => {
+  //    const params = new URLSearchParams(window.location.search);
+  //    const songId = params.get('song');
+  //    if (songId) {
+  //      const audio = document.getElementById(songId);
+  //      if (audio) {
+  //        audio.scrollIntoView({ behavior: 'smooth' });
+  // 
+  //        audio.play().catch(() => {
+  //          console.log("Autoplay blockiert – Nutzerinteraktion erforderlich.");
+  //
+  //          const button = document.querySelector(`.play-button[onclick*="${songId}"]`);
+  //          if (button) {
+  //            button.classList.add("highlight-play");
+  //            button.style.display = "inline-block";
+  //          }
+  //        });
+  //      }
+  //    }
+  //  });
   </script>
 </body>
 </html>
