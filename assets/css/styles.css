@@ -325,6 +325,12 @@ body.album-page {
   padding-left: 10px;
   text-align: right;
 }
+.track.active-track {
+  outline: 3px solid currentColor;
+  border-radius: 8px;
+}
+.highlight-play { outline: 2px solid currentColor; }
+
 /* Lyrics  */
 .lyrics {
   background-color: var(--weissgraublau);
