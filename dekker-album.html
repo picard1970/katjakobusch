@@ -1788,97 +1788,113 @@
         button.textContent = '▶️';
       };
     }
-    
-    // Hilfsfunktionen für Autoplay + Scroll
-  function findTrackContainerByAudioId(audioId) {
-    const audio = document.getElementById(audioId);
-    if (!audio) return null;
-    let prev = audio.previousElementSibling;
-    while (prev && !prev.classList.contains('track')) {
-      prev = prev.previousElementSibling;
+
+    // --- Helfer ---
+    function findTrackContainerByAudioId(audioId) {
+      const audio = document.getElementById(audioId);
+      if (!audio) return null;
+      // In deinem Markup liegt <audio> direkt NACH dem .track-Block
+      let prev = audio.previousElementSibling;
+      while (prev && !prev.classList.contains('track')) prev = prev.previousElementSibling;
+      return prev || null;
     }
-    return prev || null;
-  }
-
-  function markAndScrollToTrack(track, audioId) {
-    document.querySelectorAll('.track.active-track')
-      .forEach(t => t.classList.remove('active-track'));
-    track.classList.add('active-track');
-
-    const btn = track.querySelector(`.play-button[onclick*="${audioId}"]`)
-             || document.querySelector(`.play-button[onclick*="${audioId}"]`);
-    if (btn) btn.classList.add('highlight-play');
-
-    setTimeout(() => {
-      track.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      track.setAttribute('tabindex', '-1');
-      track.focus({ preventScroll: true });
-    }, 50);
-  }
-
-  function syncButtonsFor(audioId, isPlaying) {
-    document.querySelectorAll('.play-button').forEach(btn => btn.textContent = '▶️');
-    if (!isPlaying) return;
-    const btn = document.querySelector(`.play-button[onclick*="${audioId}"]`);
-    if (btn) btn.textContent = '⏸️';
-  }
-
-  function tryAutoplay(audioId) {
-    const audio = document.getElementById(audioId);
-    if (!audio) return;
-
-    // Alle anderen Audios stoppen
-    document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
-
-    audio.play().then(() => {
-      syncButtonsFor(audioId, true);
-      audio.onended = () => syncButtonsFor(audioId, false);
-    }).catch(() => {
-      console.log("Autoplay blockiert – warte auf Nutzerinteraktion.");
-      const startOnFirstInteraction = () => {
-        audio.play().then(() => {
-          syncButtonsFor(audioId, true);
-          audio.onended = () => syncButtonsFor(audioId, false);
-        }).catch(() => console.log("Playback weiterhin blockiert."));
-        window.removeEventListener('pointerdown', startOnFirstInteraction);
-        window.removeEventListener('keydown', startOnFirstInteraction);
+  
+    function isInViewport(el) {
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      // als "sichtbar" werten, wenn mindestens die obere Hälfte im Viewport ist
+      return rect.top >= 0 && rect.top < vh * 0.6;
+    }
+  
+    function markTrack(track, audioId) {
+      document.querySelectorAll('.track.active-track')
+        .forEach(t => t.classList.remove('active-track'));
+      track.classList.add('active-track');
+  
+      const btn = track.querySelector(`.play-button[onclick*="${audioId}"]`)
+               || document.querySelector(`.play-button[onclick*="${audioId}"]`);
+      if (btn) btn.classList.add('highlight-play');
+    }
+  
+    function scrollTrackIntoView(track) {
+      // Nutze block:'center' – bei iOS ggf. zweimal scrollen
+      track.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    }
+  
+    function scheduleResilientScroll(track) {
+      // 1) sofort
+      scrollTrackIntoView(track);
+  
+      // 2) nach kurzer Verzögerung (Layout stabilisiert sich oft erst)
+      setTimeout(() => { if (!isInViewport(track)) scrollTrackIntoView(track); }, 120);
+  
+      // 3) wenn alles geladen ist (Bilder/Fonts)
+      if (document.readyState !== 'complete') {
+        window.addEventListener('load', () => {
+          setTimeout(() => { if (!isInViewport(track)) scrollTrackIntoView(track); }, 50);
+        }, { once: true });
+      } else {
+        // Seite ist schon "complete" – trotzdem noch ein sanfter Versuch
+        setTimeout(() => { if (!isInViewport(track)) scrollTrackIntoView(track); }, 300);
+      }
+  
+      // 4) Fallback: beim ersten User-Tap sicherstellen, dass der Track im Bild ist
+      const ensureOnFirstInteraction = () => {
+        if (!isInViewport(track)) scrollTrackIntoView(track);
+        window.removeEventListener('pointerdown', ensureOnFirstInteraction);
+        window.removeEventListener('keydown', ensureOnFirstInteraction);
       };
-      window.addEventListener('pointerdown', startOnFirstInteraction, { once: true });
-      window.addEventListener('keydown', startOnFirstInteraction, { once: true });
+      window.addEventListener('pointerdown', ensureOnFirstInteraction, { once: true });
+      window.addEventListener('keydown', ensureOnFirstInteraction, { once: true });
+    }
+  
+    function syncButtonsFor(audioId, isPlaying) {
+      document.querySelectorAll('.play-button').forEach(btn => btn.textContent = '▶️');
+      if (!isPlaying) return;
+      const btn = document.querySelector(`.play-button[onclick*="${audioId}"]`);
+      if (btn) btn.textContent = '⏸️';
+    }
+  
+    function tryAutoplay(audioId) {
+      const audio = document.getElementById(audioId);
+      if (!audio) return;
+  
+      // Alle anderen Audios stoppen
+      document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
+  
+      audio.play().then(() => {
+        syncButtonsFor(audioId, true);
+        audio.onended = () => syncButtonsFor(audioId, false);
+      }).catch(() => {
+        // Autoplay blockiert → beim 1. User-Gesture starten
+        const startOnFirstInteraction = () => {
+          audio.play().then(() => {
+            syncButtonsFor(audioId, true);
+            audio.onended = () => syncButtonsFor(audioId, false);
+          }).catch(() => console.log("Playback weiterhin blockiert."));
+          window.removeEventListener('pointerdown', startOnFirstInteraction);
+          window.removeEventListener('keydown', startOnFirstInteraction);
+        };
+        window.addEventListener('pointerdown', startOnFirstInteraction, { once: true });
+        window.addEventListener('keydown', startOnFirstInteraction, { once: true });
+      });
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      const params  = new URLSearchParams(window.location.search);
+      const audioId = params.get('song');
+      if (!audioId) return;
+  
+      const track = findTrackContainerByAudioId(audioId);
+      if (track) {
+        markTrack(track, audioId);
+        scheduleResilientScroll(track); // <- das ist der iPhone-Fix
+      }
+  
+      // Autoplay (wo erlaubt) + Tap-Fallback
+      tryAutoplay(audioId);
     });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const params  = new URLSearchParams(window.location.search);
-    const audioId = params.get('song');
-    if (!audioId) return;
-
-    const track = findTrackContainerByAudioId(audioId);
-    if (track) markAndScrollToTrack(track, audioId);
-
-    tryAutoplay(audioId);
-  });
-    
-  //  document.addEventListener('DOMContentLoaded', () => {
-  //    const params = new URLSearchParams(window.location.search);
-  //    const songId = params.get('song');
-  //    if (songId) {
-  //      const audio = document.getElementById(songId);
-  //      if (audio) {
-  //        audio.scrollIntoView({ behavior: 'smooth' });
-  // 
-  //        audio.play().catch(() => {
-  //          console.log("Autoplay blockiert – Nutzerinteraktion erforderlich.");
-  //
-  //          const button = document.querySelector(`.play-button[onclick*="${songId}"]`);
-  //          if (button) {
-  //            button.classList.add("highlight-play");
-  //            button.style.display = "inline-block";
-  //          }
-  //        });
-  //      }
-  //    }
-  //  });
   </script>
 </body>
 </html>
