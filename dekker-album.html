@@ -1788,12 +1788,19 @@
         button.textContent = '▶️';
       };
     }
-
+    
     // --- Helfer ---
     function findTrackContainerByAudioId(audioId) {
       const audio = document.getElementById(audioId);
       if (!audio) return null;
-      // In deinem Markup liegt <audio> direkt NACH dem .track-Block
+  
+      // 1) KORREKT: Audio liegt in .track → nimm den Vorfahren
+      if (audio.closest) {
+        const t = audio.closest('.track');
+        if (t) return t;
+      }
+  
+      // 2) Fallback (falls sich dein Markup ändert)
       let prev = audio.previousElementSibling;
       while (prev && !prev.classList.contains('track')) prev = prev.previousElementSibling;
       return prev || null;
@@ -1803,13 +1810,12 @@
       if (!el) return false;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      // als "sichtbar" werten, wenn mindestens die obere Hälfte im Viewport ist
+      // als "sichtbar" werten, wenn der obere Rand im oberen 60%-Fenster liegt
       return rect.top >= 0 && rect.top < vh * 0.6;
     }
   
     function markTrack(track, audioId) {
-      document.querySelectorAll('.track.active-track')
-        .forEach(t => t.classList.remove('active-track'));
+      // Optionales Markieren (funktioniert auch ohne CSS, ist nur optisch)
       track.classList.add('active-track');
   
       const btn = track.querySelector(`.play-button[onclick*="${audioId}"]`)
@@ -1817,36 +1823,56 @@
       if (btn) btn.classList.add('highlight-play');
     }
   
-    function scrollTrackIntoView(track) {
-      // Nutze block:'center' – bei iOS ggf. zweimal scrollen
+    function softScrollTo(track) {
       track.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     }
   
+    function hardScrollTo(track) {
+      // „harte“ Variante über absoluten Y-Wert (hilft Safari, wenn smooth ignoriert wird)
+      const y = track.getBoundingClientRect().top + window.pageYOffset - 16;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  
     function scheduleResilientScroll(track) {
-      // 1) sofort
-      scrollTrackIntoView(track);
+      // Mehrere Versuche, da iOS/Safari oft erst nach Bild-/Font-Ladezeiten korrekt scrollt
+      const attempts = [0, 120, 320, 650];
+      attempts.forEach(delay => {
+        setTimeout(() => {
+          if (!isInViewport(track)) {
+            // Kombi aus soft + hard, erhöht die Trefferquote auf iOS
+            softScrollTo(track);
+            setTimeout(() => { if (!isInViewport(track)) hardScrollTo(track); }, 60);
+          }
+        }, delay);
+      });
   
-      // 2) nach kurzer Verzögerung (Layout stabilisiert sich oft erst)
-      setTimeout(() => { if (!isInViewport(track)) scrollTrackIntoView(track); }, 120);
-  
-      // 3) wenn alles geladen ist (Bilder/Fonts)
+      // Nach vollständigem Laden (Bilder/Fonts)
       if (document.readyState !== 'complete') {
         window.addEventListener('load', () => {
-          setTimeout(() => { if (!isInViewport(track)) scrollTrackIntoView(track); }, 50);
+          setTimeout(() => { if (!isInViewport(track)) softScrollTo(track); }, 50);
+          setTimeout(() => { if (!isInViewport(track)) hardScrollTo(track); }, 140);
         }, { once: true });
-      } else {
-        // Seite ist schon "complete" – trotzdem noch ein sanfter Versuch
-        setTimeout(() => { if (!isInViewport(track)) scrollTrackIntoView(track); }, 300);
       }
   
-      // 4) Fallback: beim ersten User-Tap sicherstellen, dass der Track im Bild ist
+      // Fallback: beim ersten User-Gesture nochmal sicherstellen
       const ensureOnFirstInteraction = () => {
-        if (!isInViewport(track)) scrollTrackIntoView(track);
+        if (!isInViewport(track)) hardScrollTo(track);
         window.removeEventListener('pointerdown', ensureOnFirstInteraction);
         window.removeEventListener('keydown', ensureOnFirstInteraction);
       };
       window.addEventListener('pointerdown', ensureOnFirstInteraction, { once: true });
       window.addEventListener('keydown', ensureOnFirstInteraction, { once: true });
+  
+      // Zusätzlich: ein paar Frames abwarten (Layout settle) und dann scrollen
+      let rafCount = 0;
+      const rafTry = () => {
+        if (rafCount++ > 16) return; // ~16 Frames ≈ 250ms bei 60fps
+        if (!isInViewport(track)) {
+          track.scrollIntoView({ behavior: 'auto', block: 'center' });
+          requestAnimationFrame(rafTry);
+        }
+      };
+      requestAnimationFrame(rafTry);
     }
   
     function syncButtonsFor(audioId, isPlaying) {
@@ -1889,12 +1915,13 @@
       const track = findTrackContainerByAudioId(audioId);
       if (track) {
         markTrack(track, audioId);
-        scheduleResilientScroll(track); // <- das ist der iPhone-Fix
+        scheduleResilientScroll(track); // <- iPhone/Safari-freundlich
       }
   
       // Autoplay (wo erlaubt) + Tap-Fallback
       tryAutoplay(audioId);
     });
   </script>
+  
 </body>
 </html>
