@@ -38,6 +38,8 @@ $_SESSION["captcha_result"] = $a + $b;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Schreib mir – Katja Kobusch</title>
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
   <div class="kontakt-hero">
