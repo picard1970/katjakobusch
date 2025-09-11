@@ -3,23 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bücher – Katja Kobusch (Neu, Blau)</title>
+  <title>Bücher – Katja Kobusch (neu)</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Seitenspezifisches Styling: Header klar, Main mit Overlay -->
   <style>
-    body.buecher-neu-blau {
-      background-image: url('assets/images/buecherregal-background.jpg');
-      background-repeat: repeat-y;
-      background-size: cover;
-      background-position: center;
+    /* 1) Regalbild auf die ganze Seite, vertikal wiederholen */
+    body.buecher-neu {
       margin: 0;
       padding: 0;
+      /* Pfad wie von dir gewünscht */
+      background-image: url('assets/images/buecherregal-background.jpg');
+      background-repeat: repeat-y;
+      background-size: 100% auto;   /* füllt die Breite, wiederholt nach unten */
+      background-position: top center;
+      color: var(--dunkelgrau2);
+      line-height: 1.6;
     }
 
-    .book-hero-neu {
-      background: none;
+    /* 2) Header steht "klar" vor dem Hintergrund (kein Overlay) */
+    .book-hero-klar {
+      /* kein eigenes Background – wir nutzen das Body-Bild „klar“ */
       height: 300px;
       position: relative;
       display: flex;
@@ -29,40 +36,97 @@
       color: var(--hellgrau);
       text-shadow: 1px 1px 2px var(--dunkelgrau2);
     }
-
-    .book-hero-neu-content {
-      padding: 20px;
-      border-radius: 5px;
+    .book-hero-klar .home-link {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: var(--weiss);
+      text-decoration: underline;
+      cursor: pointer;
     }
+    .book-hero-klar .home-link:hover { color: var(--gelb); }
 
-    /* Overlay in pastelligem Blau */
-    .main-overlay {
-      background-color: rgba(143, 179, 204, 0.65); /* Himmelblau, halbtransparent */
+    /* 3) Hauptteil: vollbreiter Overlay-Balken über dem Regalbild */
+    .books-overlay {
+      /* pastelliges Himmelblau aus deinem Design, halbtransparent */
+      background-color: rgba(143, 179, 204, 0.65);
+      width: 100%;
       padding: 2em 0;
     }
 
-    .container {
-      background: none;
+    /* 4) Buchkarten wie gehabt – wir nutzen dein vorhandenes CSS */
+    /* nur: Hintergrund der Karte transparent lassen, damit Overlay wirkt */
+    .books-overlay .book {
+      background: transparent; /* vorhandene .book-Definition überschreiben */
+      border-color: rgba(0,0,0,.25);
+      backdrop-filter: saturate(1.05);
     }
+
+    /* 5) Footer vom Overlay ausnehmen (klar auf Regal oder einfarbig) */
+    footer {
+      background: rgba(255,255,255,0.85);
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+
+    /* Kleinigkeit: lokale Korrektur der .home-link-Definition
+       (dein globales CSS hat dort einen Doppelpunkttippfehler) */
+    .home-link { text-decoration: underline; }
   </style>
 </head>
-<body class="buecher-neu-blau">
-  <div class="book-hero-neu">
+
+<body class="buecher-neu">
+  <!-- HEADER: klarer Regalhintergrund + Text -->
+  <header class="book-hero-klar">
     <a href="index.html" class="home-link">Home</a>
-    <div class="book-hero-neu-content">
+    <div class="book-hero-content">
       <h1>Meine Bücher</h1>
       <h2>
         Hier findest du meine aktuellen und kommenden Bücher – Geschichten<br>
         voller Musik, Magie, Geheimnisse und unerwarteter Begegnungen.
       </h2>
     </div>
-  </div>
+  </header>
 
-  <div class="main-overlay">
+  <!-- MAIN: Overlay über dem (weiterlaufenden) Regalbild -->
+  <main class="books-overlay">
     <div class="container">
-      <!-- gleiche Buch-Blöcke wie in buecher_neu.html -->
+      <!-- Buch 2 (aus deiner buecher.html) -->
+      <div class="book">
+        <img src="assets/images/echo-ember-cover.JPG" alt="Echo &amp; Ember Cover">
+        <div class="book-text"> 
+          <h2>Echo &amp; Ember</h2>
+          <p>Jake muss die Großstadt verlassen, um zu seinem Vater auf eine abgelegene Nordseeinsel zu ziehen. Sein einziger Halt: eine türkisgrüne Gitarre.<br>
+          Anouk ist mit der Insel verwurzelt, doch die finanziellen Sorgen ihrer Familie könnten sie zum Weggehen zwingen. Zwei Welten prallen aufeinander – doch zwischen Sand, Sturm und Streitgesprächen finden die beiden mehr als nur die Antwort auf die Frage, was Zuhause wirklich ist.</p>
+          <p><strong>Ein Jugendroman über Herkunft, Herzklopfen und zweite Chancen.</strong></p>
+          <p>Mehr Informationen demnächst hier...</p>
+          <p><strong>Veröffentlichung:</strong> Herbst/Winter 2025</p>
+          <a href="jake-interview.html" class="book-button">Meet Jake</a>
+          <!--
+            <a href="echo-ember.html" class="book-button">Mehr erfahren</a>
+            <a href="dekker-album.html" class="book-button">Musik</a>
+          -->
+        </div>
+      </div>
+
+      <!-- Buch 3 -->
+      <div class="book">
+        <img src="assets/images/elodies-geheimnis-cover.JPG" alt="Elodies Geheimnis Cover">
+        <div class="book-text">
+          <h2>Elodies Geheimnis</h2>
+          <p>Olivia reist mit ihrer Familie zum 90. Geburtstag ihrer Großmutter in ein kleines Künstlerdorf.<br>
+          Was als friedliches Wochenende beginnt, wird zu einem geheimnisvollen Abenteuer: ein altes Hotelzimmer, eine flüsternde Schreibmaschine – und ein Mädchen, das im Kampf für eine andere sich selbst findet.</p>
+          <p><strong>Ein Jugendroman über den Mut, für andere einzustehen und den eigenen Weg zu gehen.</strong></p>
+          <p><strong>Geplant für:</strong> 2026</p>
+          <a href="elodiesgeheimnis.html" class="book-button">Mehr zu Elodie</a>
+        </div>
+      </div>
+
+      <!-- Platzhalter: Buch 1 / 4 kannst du wie gehabt ergänzen -->
+      <!--
+      <div class="book"> … </div>
+      -->
     </div>
-  </div>
+  </main>
 
   <footer>
     <p>
