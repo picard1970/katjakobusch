@@ -54,12 +54,11 @@
       padding: 2em 0;
     }
 
-    /* 4) Buchkarten wie gehabt – wir nutzen dein vorhandenes CSS */
-    /* nur: Hintergrund der Karte transparent lassen, damit Overlay wirkt */
+    /* 4) Buchkarten wie gehabt – diesmal wieder mit Hintergrundfarbe */
     .books-overlay .book {
-      background: transparent; /* vorhandene .book-Definition überschreiben */
-      border-color: rgba(0,0,0,.25);
-      backdrop-filter: saturate(1.05);
+      background: var(--himmelblau2);   /* gleiche Farbe wie alte Seite */
+      border: 1px solid var(--dunkelgrau2);
+      border-radius: 4px;
     }
 
     /* 5) Footer vom Overlay ausnehmen (klar auf Regal oder einfarbig) */
