@@ -393,6 +393,7 @@ body.buecher {
   margin: 0;
   padding: 0;
   /* color: var(--dunkelgrau2); */
+  background-color: #f2f2eb;
   line-height: 1.6;
 }
 .book {
@@ -406,7 +407,7 @@ body.buecher {
   align-items: flex-start;
   flex-wrap: wrap;
   /* background: var(--himmelblau2); */
-  background: #f2f2eb;
+  background: #cfd7c2;
 }
 .book h2 {
   margin-top: 0;
