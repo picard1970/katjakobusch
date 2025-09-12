@@ -8,7 +8,7 @@
   font-style: normal;
 }
 :root {
-  --background_body: #eef2e5;
+  --background_body: #e8eddf; /* noch heller: #eef2e5 */
   --background_text: #cfd7c2;
   --umrandung: #999;
   --button: #6b8f71;
@@ -456,8 +456,8 @@ body.buecher {
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* color: var(--hellgrau); */
-  /* text-shadow: 1px 1px 2px var(--dunkelgrau2); */
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau2);
   /* color: #f2f2eb; */
 }
 .book-hero-content {
