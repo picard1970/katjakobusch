@@ -1,12 +1,12 @@
 /* ================================================= */
 /* === GLOBAL ====================================== */
 /* Fonts */
-@font-face {
+/* @font-face {
   font-family: 'Cutive Mono';
   src: url('../fonts/CutiveMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-}
+} */
 :root {
   --background_body: #e8eddf; /* noch heller: #eef2e5 */
   --background_text: #cfd7c2;
