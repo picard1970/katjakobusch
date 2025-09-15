@@ -56,9 +56,6 @@
   .stack{ position:relative; min-height:520px; }
   .photo{
     position:absolute;
-    background:#fff;
-    padding: var(--photo-pad);
-    border-radius: 8px;
     box-shadow: var(--shadow);
     transition: transform .25s ease;
   }
@@ -66,18 +63,18 @@
     display:block;
     width:100%;
     height:auto;
-    border-radius:6px;
+    border-radius:0;
   }
   .photo:hover{ transform: translateY(-3px) rotate(-.5deg) }
 
   /* Positionen Desktop */
-  .left .p1{ width:240px; left:0;    top:10px;   transform:rotate(-6deg); }
-  .left .p2{ width:220px; left:30px; top:190px;  transform:rotate(3deg);  }
-  .left .p3{ width:260px; left:-10px; top:370px; transform:rotate(-8deg); }
+  .left .p1{ width:240px; left:0;    top:10px;   transform:rotate(-6deg); z-index: 1; }
+  .left .p2{ width:220px; left:30px; top:190px;  transform:rotate(3deg); z-index: 2; }
+  .left .p3{ width:260px; left:-10px; top:370px; transform:rotate(-8deg); z-index: 3; }
 
-  .right .p4{ width:220px; right:0;    top:20px;  transform:rotate(7deg);  }
-  .right .p5{ width:230px; right:20px; top:210px; transform:rotate(-2deg); }
-  .right .p6{ width:260px; right:-10px; top:390px; transform:rotate(5deg); }
+  .right .p4{ width:220px; right:0;    top:20px;  transform:rotate(7deg); z-index: 3; }
+  .right .p5{ width:230px; right:20px; top:210px; transform:rotate(-2deg); z-index: 2; }
+  .right .p6{ width:260px; right:-10px; top:390px; transform:rotate(5deg); z-index: 1; }
 
   /* === Mobile: Text nach oben, Säulen untereinander === */
   @media (max-width: 980px){
