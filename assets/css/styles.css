@@ -29,8 +29,6 @@
   --gruen-hover: #5a7d62;
 }
 
-*/
-
 /* Reset + Basis */
 html, body { margin:0; padding:0; font-family: Arial, sans-serif; }
 /*body:not(.album-page) { background-color: var(--background_body); }*/
@@ -74,6 +72,12 @@ footer a:hover { text-decoration: underline; }
   cursor: pointer;
 }
 .home-link:hover{ color: darkblue; }
+
+/* Den Standard-Container-Abstand direkt NACH einem Hero schlanker machen */
+.hero + .container,
+.book-hero + .container{
+  margin-top: clamp(8px, 1.8vw, 20px);
+}
 
 /* ================================================= */
 /* === HOME / INDEX ================================ */
@@ -236,6 +240,7 @@ body.buecher{
 }
 /* Hero oben auf der Bücher-Seite */
 .book-hero{
+  position: relative;
   display:flex;                 /* macht den Bereich zum Flex-Container */
   align-items:center;           /* vertikal zentrieren */
   justify-content:center;       /* horizontal zentrieren */
