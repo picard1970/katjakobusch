@@ -301,13 +301,8 @@ body.buecher{
 
 /* Container direkt nach dem Hero: Top-Abstand + Top-Padding weg */
 .book-hero + .container{
-  margin-top: 0 !important;   /* überschreibt die globalen 2em */
-  padding-top: 0;             /* überschreibt die globalen 1em */
-}
-
-/* Die allererste Buchkarte braucht dann auch keinen Extra-Top-Margin */
-.book-hero + .container > .book:first-child{
-  margin-top: 0;
+  margin-top: clamp(12px, 2vw, 24px);
+  padding-top: 0;
 }
 
 /* Der innere Wrapper begrenzt die Zeilenbreite und zentriert den Text */
@@ -319,16 +314,30 @@ body.buecher{
   text-align: center;           /* Überschrift & Untertitel mittig */
 }
 
-/* Optionale, saubere Headline-Abstände im Hero */
 .book-hero-content h1{ margin: .2em 0 .3em; }
 .book-hero-content h2{ margin: 0; font-weight: 400; line-height: 1.3; }
 .book{
-  display:flex; gap:1em; flex-wrap:wrap; align-items:flex-start;
+  display: block;                       /* statt flex */
   background: var(--background_text);
-  border:1px solid var(--umrandung);
-  padding:1em; margin-top:1.5em; border-radius:4px;
+  border: 1px solid var(--umrandung);
+  padding: 1em;
+  margin-top: 1.5em;
+  border-radius: 4px;
+  /* falls irgendwo noch display:flex geerbt wird */
 }
-.book img{ max-width:150px; height:auto; border-radius:4px; }
+.book::after{                           /* Float sauber „einfangen“ */
+  content: "";
+  display: block;
+  clear: both;
+}
+.book img{
+  float: left;                           /* Umfluss aktivieren */
+  max-width: 150px;
+  width: 150px;                          /* optional: fix, wie im Screenshot */
+  height: auto;
+  border-radius: 4px;
+  margin: .2em 1.2em .6em 0;             /* Abstand rechts/unten zum Text */
+}
 .book-button{
   display:inline-block; padding:.6em 1.2em;
   background: var(--button); color: var(--button_text);
@@ -415,6 +424,52 @@ body.buecher{
 /* === MEDIA QUERIES =============================== */
 
 /* Tablet (≤1024px) */
+  /* --- ALBUM --- */
+  .container.album-layout{
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 16px;
+    max-width: 100%;
+  }
+  .left, .right{ flex: 1 0 100%; }
+
+  .album-header{
+    height: auto;
+    overflow: hidden;
+  }
+  /* auf Tablet darf das Panoramabild ruhig etwas croppen */
+  .album-header img{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* --- BÜCHER --- */
+  .book-hero{
+    min-height: 240px;             /* vorher 300px */
+    background-position: center;
+    background-size: cover;
+  }
+  .book-hero-content{
+    padding: 0 16px;
+  }
+
+  /* --- INTERVIEW / FLOAT-BILD --- */
+  .float-image{
+    float: left;
+    width: 280px;
+    margin: 0 16px 16px 0;
+  }
+
+  /* --- KONTAKT --- */
+  .kontakt-hero{
+    min-height: 320px;             /* vorher 380px */
+    background-position: center;
+  }
+}
+
+/* ---------------------------
 @media (max-width:1024px){
   body.home{ --side-scale: .9; }
   body.home .stage{
@@ -425,8 +480,74 @@ body.buecher{
     flex-direction:column; gap:20px; padding:20px 10px; max-width:100%;
   }
 }
+--------------------------- */
 
 /* Mobile (≤768px) */
+@media (max-width:768px){
+
+  /* allgemeine Container etwas kompakter */
+  .container{
+    margin: 1em auto;
+    padding: 0.75em;
+  }
+
+  /* --- ALBUM --- */
+  .container.album-layout{
+    gap: 16px;
+    padding: 18px 12px;
+  }
+  .track{ padding: 6px 0; }
+  .lyrics{ margin: 8px 0 14px 0; }
+
+  /* Header-Bild auf Mobil nicht croppen, komplett zeigen */
+  .album-header img{
+    object-fit: contain;
+  }
+
+  /* --- BÜCHER --- */
+  .book{
+    padding: .9em;
+  }
+  .book img{
+    float: none;
+    display: block;
+    margin: 0 auto 12px auto;
+    width: clamp(120px, 55vw, 220px);
+    max-width: 220px;
+  }
+  .book-hero{
+    min-height: 200px;
+    text-align: center;
+    background-position: center;
+  }
+  .book-hero-content h1{
+    font-size: clamp(20px, 6.4vw, 28px);
+  }
+  .book-hero-content h2{
+    font-size: clamp(14px, 3.8vw, 18px);
+  }
+
+  /* --- INTERVIEW / FLOAT-BILD --- */
+  .float-image{
+    float: none;
+    width: min(100%, 320px);
+    display: block;
+    margin: 0 auto 16px auto;
+  }
+
+  /* --- KONTAKT --- */
+  .kontakt-hero{
+    min-height: 220px;
+  }
+
+  /* Footer niemals überdecken */
+  footer{
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ---------------------------
 @media (max-width:768px){
   body.home .stage{
     grid-template-columns: 1fr;
@@ -453,6 +574,7 @@ body.buecher{
   .album-title, .track, .lyrics{ margin-top:0; margin-bottom:10px; }
   .float-image{ float:none; display:block; margin:0 auto 20px auto; }
 }
+--------------------------- */
 
 /* Bewegungspräferenz */
 @media (prefers-reduced-motion: reduce){
