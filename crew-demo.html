@@ -59,18 +59,77 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
 }
 
 /* Pin (dekorativ, blockiert keine Klicks) */
+/* Pin oben mittig */
 .pin {
   position: absolute;
-  top: -10px; left: 50%;
-  translate: -50% 0;
-  width: 18px; height: 18px;
-  background: radial-gradient(ellipse at 35% 35%, #fff, #d9d9d9 60%, #b9b9b9);
+  top: -10px;          /* etwas über dem Bild */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 30% 30%, #c00, #800);
   border-radius: 50%;
-  box-shadow: 0 2px 2px rgba(0,0,0,.25);
-  pointer-events: none;
-  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0,0,0,.4);
+  z-index: 2;          /* immer über Bild */
 }
 
+.crew-card{
+  position:relative;
+  display:block;
+  background:none;   /* kein Hintergrund */
+  border:0;          /* kein Rahmen */
+  padding:0;
+  cursor:pointer;
+  perspective:1000px;
+}
+
+/* Front & Back – ohne Border/Box */
+.crew-card .face{
+  backface-visibility:hidden;
+  transform-style:preserve-3d;
+}
+
+.crew-card .front img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* Rückseite (Steckbrief) */
+.crew-card .back{
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: #fffde8;     /* Papierähnlich, falls du willst */
+  color:#222;
+  padding:1em;
+  border-radius:0;         /* kein abgerundeter Rahmen */
+  transform:rotateY(180deg);
+}
+
+/* Flip-Effekt */
+.card{
+  position:relative;
+  width:220px;        /* fixe Polaroid-Breite */
+  height:280px;       /* fixe Höhe */
+  transform-style:preserve-3d;
+  transition:transform 0.6s;
+}
+.card.is-flipped{ transform:rotateY(180deg); }
+
+/* kleiner Klick-Hinweis (Chevron), ohne extra Box */
+.crew-card::after{
+  content:"";
+  position:absolute;
+  right:8px; bottom:8px;
+  width:22px; height:22px;
+  background:
+    url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+      <path d='M6 9l6 6 6-6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>\
+    </svg>") center/14px no-repeat;
+  opacity:0.8;
+  pointer-events:none;
+}
 /* Vorder- und Rückseite */
 .card__face {
   position: absolute;
@@ -142,20 +201,21 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
 
   <!-- 1 -->
   <article class="card rot--2">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Anouk umdrehen">
-      <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake Dekker Portrait" loading="lazy">
-        <p class="caption">Jake</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Anouk</h3>
-        <ul>
-          <li>Markenzeichen: Grüne Beanie, Moody-Vibes</li>
-          <li>Never without: Queen Faye (seine türksgrüne Gitarre) und Kaffee</li>
-          <li>Fun Fact: Liebt nicht nur Marvel, sondern auch Disney Filme</li>
-          <li>Wäre für einen Tag gerne ... mit Jimi Hendrix im Tonstudio</li>
-        </ul>
+    <button class="crew-card" aria-label="Jake" aria-pressed="false">
+      <div class="card faces">
+        <div class="face front">
+          <span class="pin" aria-hidden="true"></span>
+          <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake Dekker Portrait" loading="lazy">
+        </div>
+        <div class="fack back">
+          <h3>Jake</h3>
+          <ul>
+            <li>Markenzeichen: Grüne Beanie, Moody-Vibes</li>
+            <li>Never without: Queen Faye (seine türksgrüne Gitarre) und Kaffee</li>
+            <li>Fun Fact: Liebt nicht nur Marvel, sondern auch Disney Filme</li>
+            <li>Wäre für einen Tag gerne ... mit Jimi Hendrix im Tonstudio</li>
+          </ul>
+        </div>
       </div>
     </button>
   </article>
