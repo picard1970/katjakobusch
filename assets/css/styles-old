@@ -1,0 +1,714 @@
+/* ================================================= */
+/* === GLOBAL ====================================== */
+/* Fonts */
+/* @font-face {
+  font-family: 'Cutive Mono';
+  src: url('../fonts/CutiveMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+:root {
+  --background_body: #e8eddf; /* noch heller: #eef2e5 */
+  --background_text: #cfd7c2;
+  --umrandung: #999;
+  --button: #6b8f71;
+  --button_text: #fff;
+  --button_hover: #5a7d62;
+  --gelb: #FFD75F;
+  --gelb-hover: #f0c84b;
+  --gruen: #6B8F71;
+  --gruen-hover: #5a7d62;
+  --hellgelb: #fffbe6;
+  --dunkelgrau: #333;
+  --dunkelgrau2: #2b2b2b;
+  --grau: #666;
+  --hellgrau: #f4f4f4; /* #ccc */
+  --hellgrau2: #ddd;
+  --hellgrau3: #eaeaea;
+  --weissgrau: #f9f9f9;
+  --weissgraublau: #f2f6fa;
+  --weiss: #fff;
+  --weiss-transparent: rgba(255,255,255,0.3);
+  --ocker: #dbc49a;
+  --himmelblau: #8fb3cc;
+  --himmelblau2: #a9c7dd;
+  --schwarz: #000;
+  --graubraun: #4d4a3d;
+}
+/* Basis-Styles */ 
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+body:not(.album-page) {
+  background-color: var(--background_body); /* var(--himmelblau) */
+}
+.container {
+  max-width: 900px;
+  margin: 2em auto;
+  padding: 1em;
+}
+h1 {
+  font-size: 2.5em;
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.5em;
+  margin-top: 1.5em;
+}
+h3 {
+  font-size: 1.3em;
+  margin-top: 1.3em;
+}
+p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 1em 0;
+}
+ul {
+  text-align: left;
+  font-size: 1em;
+  margin: 1em auto;
+  padding-left: 1.2em;
+  list-style-position: outside;
+}
+li {
+  line-height: 1.6;
+}
+footer {
+  clear: both;
+  padding-top: 20px;
+  text-align: center;
+  margin-top: 3em;
+  font-size: 0.9em;
+  color: var(--grau);
+  padding-bottom: 2em;
+}
+footer a {
+  color: var(--grau);
+  text-decoration: none;
+  margin: 0 0.5em;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+.home-link {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: var(--black);
+  text-decoration: underline:
+  cursor: pointer;
+}
+.home-link:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
+
+/* ================================================= */
+/* === PAGE: INDEX ================================= */
+/*body.index-font {
+  font-family: 'Cutive Mono', sans-serif;
+}*/
+/* Hero-Bereich */
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../images/duene-leuchtturm-desktop.jpg');
+  background-size: cover;
+  background-position: top right;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /*color: white;*/
+  position: relative;
+}
+/* Textcontainer */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: var(--dunkgelgrau);
+  text-shadow: 1px 1px 2px var(--weiss-transparent);
+}
+/* Grundgrößen je nach Element (Standardgröße) */
+.hero-content h1 {
+  font-size: 4.5em;
+  font-weight: 550;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+.hero-content h2 {
+  font-size: 2.4em;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+}
+.hero-content h3 {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.hero-content p {
+  font-size: 1.3em;
+  font-weight: normal;
+  line-height: 1.2;
+}
+/* Buttons als Link-Container */
+.index-button-container {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  border-radius: 8px;
+  padding: 0.5em;
+  display: inline-block;
+  text-decoration: none;
+}
+/* Hover-Effekt */
+.index-button-container:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.1);
+}
+.index-button-container a,
+.index-button-container a:visited,
+.index-button-container a:hover,
+.index-button-container a:active {
+  text-decoration: none;
+  color: inherit;
+}
+/* Button */
+.index-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 1em 2em;
+}
+.index-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.index-button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 2em;
+}
+.index-button-icon {
+  width: 60px;
+  height: 60px;
+  color: var(--dunkelgrau);
+  text-shadow: 1px 1px 2px var(--weiss-transparent);
+}
+.index-button-label {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: var(--dunkelgrau);
+  text-shadow: 1px 1px 2px var(--weiss-transparent);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}
+.index-footer {
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+  color: var(--hellgrau);
+}
+.index-footer a {
+  color: var(--hellgrau);
+  text-decoration: none;
+  margin: 0 0.5em;
+}
+.index-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ================================================= */
+/* === PAGE: ALBUM ================================= */
+body.album-page {
+  margin: 0;
+  background-color: var(--weissgraublau);
+  color: var(--grau);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container.album-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  gap: 40px;
+}
+.left {
+  flex: 0 0 25%;
+  min-width: 200px;
+}
+.right {
+  flex: 1 1 75%;
+}
+.album-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.album-header {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.album-header img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* object-fit: cover; */
+}
+.artist {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+.album-title .edition {
+  font-size: 0.6em;      /* kleiner relativ zum Titel */
+  font-weight: 400;
+  opacity: 0.8;
+  white-space: nowrap;   /* zusammenhalten */
+  margin-left: .25em;
+}
+.artist.credits {
+  font-size: 0.85rem;    /* kleiner als normale Artist-Zeile */
+  opacity: 0.8;
+  line-height: 1.2;
+  margin-top: .2rem;
+}
+.platforms a {
+  display: flex;
+  align-items: center;
+  background-color: var(--weiss);
+  border: 1px solid var(--hellgrau2);
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: var(--schwarz);
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  gap: 10px;
+}
+.platforms a:hover {
+  background-color: var(--hellgrau3);
+}
+/* Track-Darstellung */
+.track {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--grau);
+  width: 100%;
+  box-sizing: border-box;
+}
+.track-header {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 100%;
+}
+.track-title {
+  font-weight: bold;
+}
+.track-subline {
+  font-size: 0.9em;
+  color: var(--grau);
+}
+.track-time {
+  color: var(--grau);
+  white-space: nowrap;
+  padding-left: 10px;
+  text-align: right;
+}
+.track.active-track {
+  outline: 3px solid currentColor;
+  border-radius: 8px;
+}
+.highlight-play { outline: 2px solid currentColor; }
+
+/* Lyrics  */
+.lyrics {
+  background-color: var(--weissgraublau);
+  border-left: 2px solid var(--gruen);
+  padding: 10px 0 10px 10px;
+  margin: 10px 0 20px 0;
+  font-style: italic;
+  font-size: 0.95em;
+  line-height: 1.4;
+  white-space: normal;
+  display: none;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.lyrics-toggle {
+  display: inline-block;
+  width: 20px;
+  height: auto;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+}
+.lyrics-toggle:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+.play-button {
+  font-size: 1.4em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 4px 8px;
+  user-select: none;
+  transition: transform 0.2s ease;
+  touch-action: manipulation;
+}
+.play-button:hover {
+  transform: scale(1.2);
+}
+
+/* ================ */
+/* === PAGE: BÜCHER */
+body.buecher {
+  margin: 0;
+  padding: 0;
+  /* color: var(--dunkelgrau2); */
+  background-color: var(--background_body);
+  line-height: 1.6;
+}
+.book {
+  display: flex;
+  gap: 1em;
+  border: 1px solid var(--umrandung);
+  padding: 1em;
+  margin-top: 1.5em;
+  border-radius: 4px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  background: var(--background_text);
+}
+.book h2 {
+  margin-top: 0;
+}
+.book-text {
+  flex: 1;
+  min-width: 200px;
+  margin-top: 0;
+}
+.book-text h2 {
+  margin-top: 0;
+}
+.book-text p:first-of-type {
+  margin-bottom: 0;
+}
+.book img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 4px;
+}
+.book-button {
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  background: var(--button);
+  color: var(--button_text);
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 0.5em;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.book-button:hover {
+  background: var(--button_hover);
+  transform: scale(1.05);
+}
+.book-hero {
+  background-image: url('../images/buecherregal-panorama.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau2);
+  /* color: #f2f2eb; */
+}
+.book-hero-content {
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+  padding: 20px;
+  border-radius: 5px;
+}
+.book-hero h1,
+.book-hero h2,
+.book-hero p {
+  margin: 5px 0;
+}
+
+/* ================================================= */
+/* === PAGE: KATJA ================================= */
+.katja-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+.sidebar {
+  flex: 1 1 300px;
+  max-width: 300px;
+}
+.portrait {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+.steckbrief {
+  background: var(--background_text); /* var(--himmelblau2) */
+  padding: 1em;
+  border-radius: 6px;
+  margin-top: 1em;
+}
+.steckbrief dt {
+  font-weight: bold;
+}
+.steckbrief dd {
+  margin: 0 0 0.5em 0;
+}
+.text-content {
+  flex: 2 1 500px;
+  min-width: 300px;
+}
+
+/* ================================================= */
+/* === PAGE: SCHREIB MIR =========================== */
+.kontakt-container {
+  max-width: 700px;
+  margin: 2em auto;
+  padding: 2em;
+  background: var(--background_text); 
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.kontakt-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.kontakt-container input,
+.kontakt-container textarea {
+  padding: 0.8em;
+  font-size: 1em;
+  border: 1px solid var(--background_text);
+  border-radius: 4px;
+}
+.kontakt-container input:focus,
+.kontakt-container textarea:focus {
+  outline: none;
+  border-color: var(--gruen);
+  box-shadow: 0 0 5px var(--gruen);
+}
+.kontakt-container button {
+  padding: 0.8em;
+  font-size: 1em;
+  background: var(--gruen);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.kontakt-container button:hover {
+  background: var(--gruen-hover);
+}
+.kontakt-container .message {
+  margin-bottom: 1em;
+  font-weight: bold;
+  text-align: left;
+}
+.kontakt-container .success {
+  color: green;
+}
+.kontakt-container .error {
+  color: red;
+}
+.kontakt-hero {
+  background-image: url('../images/schreib-mir-panorama.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 380px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau);
+}
+.kontakt-hero-content {
+  padding: 20px;
+  border-radius: 5px;
+}
+.kontakt-hero h1,
+.kontakt-hero h2,
+.kontakt-hero p {
+  margin: 5px 0;
+}
+
+/* ================================================= */
+/* === PAGE: Jake Interview  ======================= */
+.float-image {
+  float: left;
+  width: 300px;
+  margin: 0 20px 20px 0;
+  border-radius: 4px;
+}
+.interview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.interview-image {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+.interview-text {
+  flex: 2 1 400px;
+}
+.interview-text p {
+  margin-bottom: 1em;
+}
+
+/* ================================================= */
+/* === MEDIA QUERIES =============================== */
+/* Große Bildschirme (Desktop und große Tablets) */
+@media (min-width: 1024px) {
+  body, html {
+    height: 100%;
+  }
+  .hero-content {
+    transform: translateX(-50px); 
+  }
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  /* body, html {
+    height: 100%;
+  } */
+  .hero {
+    background-image: url('../images/duene-leuchtturm-tablet.jpg');
+  }
+  /*.hero-content h1 {
+    font-size: 2.4em;
+  }
+  .hero-content h2 {
+    font-size: 2.0em;
+  }
+  .hero-content h3 {
+    font-size: 1.0em;
+  }
+  .index-button-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .index-button-label {
+    margin-top: 0.4em;
+    font-size: 0.7em;
+  }*/
+}
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    /*background-image: url('../images/index-background-mobile.jpg');*/
+    background-image: url('../images/duene-leuchtturm-mobile.jpg');
+  }
+  .hero-content h1 {
+    font-size: 2.0em;
+  }
+  .hero-content h2 {
+    font-size: 1.5em;
+  }
+  .hero-content h3 {
+    font-size: 1.0em;
+  }
+  .container.album-layout {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    max-width: 100%;
+  }
+  .album-header {
+    height: auto;
+    /* min-height: 150px; */
+    overflow: hidden;
+  }
+  .album-header img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  body.album-page {
+    min-height: 100vh;
+  }
+  footer {
+    position: relative;
+    z-index: 1;
+  }
+  .left,
+  .right {
+    flex: 1 0 100%;
+    margin: 0;
+  }
+  .album-title,
+  .track,
+  .lyrics {
+    margin-top: 0;
+    margin-bottom: 10px; /* oder passend zur Ästhetik */
+  }
+  .index-button-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .index-button-label {
+    margin-top: 0.3em;
+    font-size: 0.6em;
+  }
+  .index-button-row {
+    gap: 0.5em; /* bisher 2em → verringert Abstand zwischen den Buttons */
+  }
+  .float-image {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto;
+  } 
+}
