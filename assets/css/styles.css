@@ -424,6 +424,7 @@ body.buecher{
 /* === MEDIA QUERIES =============================== */
 
 /* Tablet (≤1024px) */
+@media (max-width:1024px){
   /* --- ALBUM --- */
   .container.album-layout{
     flex-direction: column;
