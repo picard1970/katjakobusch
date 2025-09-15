@@ -276,6 +276,7 @@ body.buecher{
 }
 /* Hero oben auf der Bücher-Seite */
 .book-hero{
+  background-image: url('../images/buecherregal-panorama.jpg');
   position: relative;
   display:flex;                 /* macht den Bereich zum Flex-Container */
   align-items:center;           /* vertikal zentrieren */
@@ -341,6 +342,28 @@ body.buecher{
 
 /* ================================================= */
 /* === PAGE: SCHREIB MIR =========================== */
+
+/* --- BÜCHER: Bild wieder aktivieren (bestehenden .book-hero-Block ergänzen) --- */
+.book-hero{
+  background-image: url('../images/buecherregal-panorama.jpg');
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau2);
+}
+
+/* --- SCHREIB MIR: Hero wiederherstellen (neu hinzufügen) --- */
+.kontakt-hero{
+  background-image: url('../images/schreib-mir-panorama.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 380px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau);
+}
 
 .kontakt-container{
   max-width:700px; margin:2em auto; padding:2em;
