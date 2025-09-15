@@ -1,116 +1,135 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Katja Kobusch – Autorin</title>
-<style>
-  :root{
-    --maxw: 1100px;
-    --pad: clamp(16px, 4vw, 36px);
-    --gap: clamp(14px, 2.2vw, 26px);
-    --shadow: 0 12px 26px rgba(0,0,0,.25);
-    --photo-pad: clamp(6px, .9vw, 10px);
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katja Kobusch – Autorin</title>
+  <meta name="description" content="Katja Kobusch schreibt gefühlvolle Jugendromane, die berühren. Entdecke ihre Bücher und begleite sie beim Schreiben. Young Adult & New Adult.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js">
+  </script>
 
-  body{
-    margin:0;
-    color:#1b1b1b;
-    background:#dcd6c5 url("assets/images/homepage-background.jpg") center/cover fixed no-repeat;
-    font: 400 clamp(16px, 1.6vw, 20px)/1.45 "Georgia", "Times New Roman", ui-serif, serif;
-  }
+  <!-- Google Fonts Fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
+  
+  <style>
+    :root{
+      --maxw: 1100px;
+      --pad: clamp(16px, 4vw, 36px);
+      --gap: clamp(14px, 2.2vw, 26px);
+      --shadow: 0 12px 26px rgba(0,0,0,.25);
+      --photo-pad: clamp(6px, .9vw, 10px);
+    }
+  
+    /* Font lokal einbinden */
+    @font-face {
+      font-family: "Sweet Dreams";
+      src: url("assets/fonts/EmilysCandy-Regular.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
 
-  .wrap{
-    min-height: 100svh;
-    display:grid;
-    place-items:center;
-    padding: var(--pad);
-  }
-
-  /* Grid für Desktop */
-  .stage{
-    display:grid;
-    grid-template-columns: 1fr min(560px, 55vw) 1fr;
-    grid-template-areas: "left intro right";
-    align-items:center;
-    width: min(100%, var(--maxw));
-  }
-
-  .left  { grid-area: left;  }
-  .intro { grid-area: intro; text-align:center; }
-  .right { grid-area: right; }
-
-  .intro h1{
-    font-family: "Goudy Old Style","Cormorant Garamond", Garamond, ui-serf, serif;
-    font-weight: 700;
-    font-size: clamp(34px, 5.2vw, 64px);
-    margin: 0 0 .5em;
-  }
-  .intro p{
-    margin: 0 auto;
-    max-width: 45ch;
-    text-wrap: balance;
-  }
-
-  /* Foto-Karten */
-  .stack{ position:relative; min-height:520px; }
-  .photo{
-    position:absolute;
-    /* box-shadow: var(--shadow); */
-    transition: transform .25s ease;
-  }
-  .photo img{
-    display:block;
-    width:100%;
-    height:auto;
-    border-radius:0;
-    filter: 
-      drop-shadow(0 2px 3px rgba(0,0,0,0.35))   /* enger, dunkler Kernschatten */
-      drop-shadow(0 8px 12px rgba(0,0,0,0.25)); /* breiter, weicher Streuschaden */;
-  }
-  .photo:hover{ transform: translateY(-3px) rotate(-.5deg) }
-
-  /* Positionen Desktop */
-  .left .p1{ width:240px; left:0;    top:10px;   transform:rotate(-6deg); z-index: 1; }
-  .left .p2{ width:220px; left:30px; top:190px;  transform:rotate(3deg); z-index: 2; }
-  .left .p3{ width:260px; left:-10px; top:370px; transform:rotate(-8deg); z-index: 3; }
-
-  .right .p4{ width:220px; right:0;    top:20px;  transform:rotate(7deg); z-index: 3; }
-  .right .p5{ width:230px; right:20px; top:160px; transform:rotate(-2deg); z-index: 2; }
-  .right .p6{ width:260px; right:-10px; top:390px; transform:rotate(5deg); z-index: 1; }
-
-  /* === Mobile: Text nach oben, Säulen untereinander === */
-  @media (max-width: 980px){
+    body{
+      margin:0;
+      color:#1b1b1b;
+      background:#dcd6c5 url("assets/images/homepage-background.jpg") center/cover fixed no-repeat;
+      font: 400 clamp(16px, 1.6vw, 20px)/1.45 "Georgia", "Times New Roman", ui-serif, serif;
+    }
+  
+    .wrap{
+      min-height: 100svh;
+      display:grid;
+      place-items:center;
+      padding: var(--pad);
+    }
+  
+    /* Grid für Desktop */
     .stage{
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "intro"
-        "left"
-        "right";
-      row-gap: clamp(14px, 3.5vw, 28px);
-    }
-    .stack{
-      position: static;
-      min-height: unset;
-      display:flex;
-      flex-direction:column;
+      display:grid;
+      grid-template-columns: 1fr min(560px, 55vw) 1fr;
+      grid-template-areas: "left intro right";
       align-items:center;
-      gap: clamp(10px, 3vw, 18px);
+      width: min(100%, var(--maxw));
     }
+  
+    .left  { grid-area: left;  }
+    .intro { grid-area: intro; text-align:center; }
+    .right { grid-area: right; }
+  
+    .intro h1{
+      font-family: "Sweet Dreams", "Emilys Candy", "Goudy Old Style","Cormorant Garamond", Garamond, ui-serif, serif;
+      font-weight: 400;
+      font-size: clamp(34px, 5.2vw, 64px);
+      margin: 0 0 .5em;
+    }
+    .intro p{
+      margin: 0 auto;
+      max-width: 45ch;
+      text-wrap: balance;
+    }
+  
+    /* Foto-Karten */
+    .stack{ position:relative; min-height:520px; }
     .photo{
-      position: static;
-      width: clamp(160px, 80vw, 320px);
-      transform:none;
+      position:absolute;
+      transition: transform .25s ease;
     }
-    .stack .photo:nth-child(odd){ transform: rotate(-2deg); }
-    .stack .photo:nth-child(even){ transform: rotate(2deg); }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .photo{ transition:none }
-    .photo:hover{ transform:none }
-  }
-</style>
+    .photo img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:0;
+      filter: 
+        drop-shadow(0 2px 3px rgba(0,0,0,0.35))   /* enger, dunkler Kernschatten */
+        drop-shadow(0 8px 12px rgba(0,0,0,0.25)); /* breiter, weicher Streuschaden */;
+    }
+    .photo:hover{ transform: translateY(-3px) rotate(-.5deg) }
+  
+    /* Positionen Desktop */
+    .left .p1{ width:240px; left:0;    top:10px;   transform:rotate(-6deg); z-index: 1; }
+    .left .p2{ width:220px; left:30px; top:190px;  transform:rotate(3deg); z-index: 2; }
+    .left .p3{ width:260px; left:-10px; top:370px; transform:rotate(-8deg); z-index: 3; }
+  
+    .right .p4{ width:220px; right:0;    top:20px;  transform:rotate(7deg); z-index: 3; }
+    .right .p5{ width:230px; right:20px; top:160px; transform:rotate(-2deg); z-index: 2; }
+    .right .p6{ width:260px; right:-10px; top:390px; transform:rotate(5deg); z-index: 1; }
+  
+    /* === Mobile: Text nach oben, Säulen untereinander === */
+    @media (max-width: 980px){
+      .stage{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "intro"
+          "left"
+          "right";
+        row-gap: clamp(14px, 3.5vw, 28px);
+      }
+      .stack{
+        position: static;
+        min-height: unset;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap: clamp(10px, 3vw, 18px);
+      }
+      .photo{
+        position: static;
+        width: clamp(160px, 80vw, 320px);
+        transform:none;
+      }
+      .stack .photo:nth-child(odd){ transform: rotate(-2deg); }
+      .stack .photo:nth-child(even){ transform: rotate(2deg); }
+    }
+  
+    @media (prefers-reduced-motion: reduce){
+      .photo{ transition:none }
+      .photo:hover{ transform:none }
+    }
+  </style>
 </head>
 <body>
   <div class="wrap">
