@@ -426,6 +426,12 @@ body.buecher{
     font-size: clamp(30px, 4.6vw, 52px);
   }
 
+  body.home .intro p{
+    max-width: 38ch;   /* enger, damit kein Überlappen */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   /* Fotos enger vertikal stapeln (wie auf Desktop), aber dichter zusammen */
   body.home .left  .p1 { top: 0px;   }
   body.home .left  .p2 { top: 135px; }
@@ -490,32 +496,42 @@ body.buecher{
     padding: 0.75em;
   }
 
-  /* --- HOME: Grid einkolumnig + Fotos nicht absolut --- */
+  /* ===================== */
+  /* HOME / INDEX (mobil)  */
+  /* ===================== */
+
+  /* Stage auf 1 Spalte stapeln */
   body.home .stage{
     grid-template-columns: 1fr;
     grid-template-areas:
       "intro"
       "left"
       "right";
-    row-gap: clamp(14px, 3.5vw, 28px);
+    row-gap: clamp(10px, 2.8vw, 18px);
   }
+
+  /* Foto-Stapel wieder relativ + überlappend */
   body.home .stack{
-    position: static;
-    min-height: unset;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap: clamp(10px, 3vw, 18px);
+    position: relative;          /* erlaubt absolute Kind-Positionen */
+    min-height: 420px;           /* kompakte, aber überlappende Höhe */
   }
   body.home .photo{
-    position: static;
-    width: clamp(160px, 80vw, 320px);
-    transform: none;
+    position: absolute;          /* statt static → Überlagerung */
+    width: clamp(140px, 65vw, 220px);
+    transition: transform .25s ease;
   }
-  body.home .stack .photo:nth-child(odd){  transform: rotate(-2deg); }
-  body.home .stack .photo:nth-child(even){ transform: rotate(2deg); }
+  /* Beispiel-Positionen – gern feintunen */
+  body.home .left .p1{ top:   0px; left: 12%; transform: rotate(-4deg); z-index:1; }
+  body.home .left .p2{ top: 120px; left:  8%; transform: rotate( 3deg); z-index:2; }
+  body.home .left .p3{ top: 235px; left:  4%; transform: rotate(-6deg); z-index:3; }
 
-  /* --- ALBUM --- */
+  body.home .right .p4{ top:   0px; right: 12%; transform: rotate( 5deg); z-index:1; }
+  body.home .right .p5{ top: 135px; right: 10%; transform: rotate(-3deg); z-index:2; }
+  body.home .right .p6{ top: 255px; right:  6%; transform: rotate( 6deg); z-index:3; }
+
+  /* ===================== */
+  /* ALBUM (mobil)         */
+  /* ===================== */
   .container.album-layout{
     gap: 16px;
     padding: 18px 12px;
@@ -523,10 +539,17 @@ body.buecher{
   .track{ padding: 6px 0; }
   .lyrics{ margin: 8px 0 14px 0; }
 
-  .album-header img{ object-fit: contain; }
+  /* Header-Bild auf Mobil nicht croppen, komplett zeigen */
+  .album-header img{
+    object-fit: contain;
+  }
 
-  /* --- BÜCHER --- */
-  .book{ padding: .9em; }
+  /* ===================== */
+  /* BÜCHER (mobil)        */
+  /* ===================== */
+  .book{
+    padding: .9em;
+  }
   .book img{
     float: none;
     display: block;
@@ -539,10 +562,16 @@ body.buecher{
     text-align: center;
     background-position: center;
   }
-  .book-hero-content h1{ font-size: clamp(20px, 6.4vw, 28px); }
-  .book-hero-content h2{ font-size: clamp(14px, 3.8vw, 18px); }
+  .book-hero-content h1{
+    font-size: clamp(20px, 6.4vw, 28px);
+  }
+  .book-hero-content h2{
+    font-size: clamp(14px, 3.8vw, 18px);
+  }
 
-  /* --- INTERVIEW / FLOAT-BILD --- */
+  /* ===================== */
+  /* INTERVIEW (mobil)     */
+  /* ===================== */
   .float-image{
     float: none;
     width: min(100%, 320px);
@@ -550,11 +579,18 @@ body.buecher{
     margin: 0 auto 16px auto;
   }
 
-  /* --- KONTAKT --- */
-  .kontakt-hero{ min-height: 220px; }
+  /* ===================== */
+  /* KONTAKT (mobil)       */
+  /* ===================== */
+  .kontakt-hero{
+    min-height: 220px;
+  }
 
   /* Footer niemals überdecken */
-  footer{ position: relative; z-index: 1; }
+  footer{
+    position: relative;
+    z-index: 1;
+  }
 }
 
 /* Bewegungspräferenz */
