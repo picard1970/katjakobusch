@@ -7,7 +7,7 @@
   --background_body: #e8eddf;
   --background_text: #cfd7c2;
   /*--weissgraublau: #f2f6fa;*/
-  /*--weiss: #fff;*/
+  --weiss: #fff;
 
   /* Text / Neutral */
   --schwarz: #000;
@@ -76,6 +76,7 @@ footer a:hover { text-decoration: underline; }
 
 /* Den Standard-Container-Abstand direkt NACH einem Hero schlanker machen */
 .hero + .container,
+.book-hero + .container{
   margin-top: clamp(8px, 1.8vw, 20px);
 }
 
@@ -103,14 +104,37 @@ body.home .wrap{
   place-items:start center;
   padding: var(--pad);
 }
+/* Desktop: drei Spalten, Seitenspalten schrumpfen adaptiv */
 body.home .stage{
   display:grid;
-  grid-template-columns: minmax(260px,1fr) min(560px,55vw) minmax(260px,1fr);
+  grid-template-columns:
+    clamp(120px, 18vw, 240px)      /* links */
+    minmax(520px, 1fr)             /* intro */
+    clamp(140px, 18vw, 240px);     /* rechts */
   grid-template-areas: "left intro right";
   align-items:center;
   width: min(100%, var(--maxw));
-  column-gap: clamp(36px, 6vw, 96px);
+  column-gap: clamp(20px, 4vw, 48px);
 }
+@media (max-width:1200px){
+  body.home{ --side-scale: .85; }
+  body.home .stage{
+    grid-template-columns:
+      clamp(120px, 16vw, 200px)
+      minmax(480px, 1fr)
+      clamp(120px, 16vw, 200px);
+  }
+}
+@media (max-width:980px){
+  body.home{ --side-scale: .75; }
+  body.home .stage{
+    grid-template-columns:
+      clamp(100px, 14vw, 180px)
+      1fr
+      clamp(100px, 14vw, 180px);
+  }
+}
+
 body.home .left  { grid-area:left;  position:relative; }
 body.home .intro { grid-area:intro; text-align:center; }
 body.home .right { grid-area:right; position:relative; }
