@@ -77,7 +77,7 @@ footer a:hover { text-decoration: underline; }
 /* Den Standard-Container-Abstand direkt NACH einem Hero schlanker machen */
 .hero + .container,
 .book-hero + .container{
-  margin-top: clamp(8px, 1.8vw, 20px);
+  margin-top: clamp(8px, 1.8vw, 20px) !important;
 }
 
 /* ================================================= */
@@ -250,7 +250,7 @@ body.buecher{
   align-items:center;           /* vertikal zentrieren */
   justify-content:center;       /* horizontal zentrieren */
   width:100%;
-  min-height:300px;             /* wie vorher */
+  min-height: 180px;
   background-size:cover;
   background-position:center;
   /* (dein vorhandenes color/text-shadow kannst du hier lassen) */
