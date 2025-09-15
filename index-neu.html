@@ -56,7 +56,7 @@
   .stack{ position:relative; min-height:520px; }
   .photo{
     position:absolute;
-    box-shadow: var(--shadow);
+    /* box-shadow: var(--shadow); */
     transition: transform .25s ease;
   }
   .photo img{
@@ -64,6 +64,9 @@
     width:100%;
     height:auto;
     border-radius:0;
+    filter: 
+      drop-shadow(0 2px 3px rgba(0,0,0,0.35))   /* enger, dunkler Kernschatten */
+      drop-shadow(0 8px 12px rgba(0,0,0,0.25)); /* breiter, weicher Streuschaden */;
   }
   .photo:hover{ transform: translateY(-3px) rotate(-.5deg) }
 
