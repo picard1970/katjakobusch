@@ -533,9 +533,14 @@ body.buecher{
   /* ALBUM (mobil)         */
   /* ===================== */
   .container.album-layout{
+    flex-direction: column;
     gap: 16px;
     padding: 18px 12px;
   }
+  .left, .right{
+    flex: 1 0 100%;           /* volle Breite */
+    min-width: auto;          /* fix für schmale Screens */
+  }  
   .track{ padding: 6px 0; }
   .lyrics{ margin: 8px 0 14px 0; }
 
