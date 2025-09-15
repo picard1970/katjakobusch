@@ -3,342 +3,398 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Meet the Crew – Demo</title>
-
+<title>Meet the Crew</title>
 <style>
-/* ===== Reset / Basics ===== */
-* { box-sizing: border-box; }
-html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#2b2b2b; background:#e8eddf; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#e8eddf; color:#2b2b2b;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
-/* ===== Korkbrett (reines CSS, kein Bild nötig) ===== */
-.board {
-  --gap: clamp(12px, 2.2vw, 22px);
-  --card-w: clamp(180px, 26vw, 260px);
+  /* Korkbrett (reines CSS) */
+  .board{
+    --gap: clamp(12px, 2.2vw, 22px);
+    --card-w: clamp(180px, 26vw, 260px);
+    background:
+      radial-gradient(12px 12px at 20% 30%, rgba(0,0,0,.06), transparent 60%) 0 0/90px 90px,
+      radial-gradient(10px 10px at 70% 60%, rgba(0,0,0,.05), transparent 60%) 0 0/120px 120px,
+      #caa87a;
+    min-height: 100svh;
+    padding: clamp(18px, 3.2vw, 32px);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
+    gap: var(--gap);
+    justify-items: center;
+  }
 
-  /* Fake-Kork: 2 überlagerte Radial-Patterns + Grundfarbe */
-  background:
-    radial-gradient(12px 12px at 20% 30%, rgba(0,0,0,.06), transparent 60%) 0 0/90px 90px,
-    radial-gradient(10px 10px at 70% 60%, rgba(0,0,0,.05), transparent 60%) 0 0/120px 120px,
-    #caa87a;
-  min-height: 100svh;
-  padding: clamp(18px, 3.2vw, 32px);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
-  gap: var(--gap);
-  justify-items: center;
-}
+  /* einzelne Karte mit leichter Rotation */
+  .card{
+    width: var(--card-w);
+    aspect-ratio: 3 / 4.2;
+    position: relative;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.25))
+            drop-shadow(0 10px 18px rgba(0,0,0,.18));
+    transform-origin: center;
+  }
+  .rot--3{ transform: rotate(-3.2deg); }
+  .rot--2{ transform: rotate(-2.0deg); }
+  .rot--1{ transform: rotate(-1.1deg); }
+  .rot-1 { transform: rotate( 1.2deg); }
+  .rot-2 { transform: rotate( 2.2deg); }
+  .rot-3 { transform: rotate( 3.1deg); }
 
-/* ===== Polaroid-Karten ===== */
-.card {
-  position: relative;
-  width: var(--card-w);
-  aspect-ratio: 3 / 4.2;        /* Polaroid-Format */
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,.25))
-          drop-shadow(0 10px 18px rgba(0,0,0,.18));
-  transform-origin: center center;
-}
+  /* Klickfläche: kein Rahmen/Hintergrund – Bild bringt seinen Rahmen mit */
+  .crew-card{
+    position:relative;
+    display:block;
+    width:100%; height:100%;
+    padding:0; border:0; background:none;
+    cursor:pointer;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
 
-/* leichte Zufallsdrehungen (per Klasse mischen) */
-.rot--3 { transform: rotate(-3.2deg); }
-.rot--2 { transform: rotate(-2.1deg); }
-.rot--1 { transform: rotate(-1.2deg); }
-.rot-1  { transform: rotate(1.2deg); }
-.rot-2  { transform: rotate(2.2deg); }
-.rot-3  { transform: rotate(3.1deg); }
+  /* Stecknadel – klick-durchlässig */
+  .pin{
+    position:absolute;
+    top:-10px; left:50%;
+    transform: translateX(-50%);
+    width:20px; height:20px;
+    background: radial-gradient(circle at 30% 30%, #c00, #800);
+    border-radius:50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,.45);
+    z-index:3;
+    pointer-events:none;
+  }
 
-/* klickbare Innenfläche der Karte */
-.card__inner {
-  position: relative;
-  width: 100%; height: 100%;
-  border: 0; padding: 0;
-  background: none;
-  cursor: pointer;
-  perspective: 1200px;
-  transform-style: preserve-3d;
-  border-radius: 12px;
-}
+  /* Flip-Flächen (Vorder-/Rückseite) – keine zusätzlichen Rahmen */
+  .faces, .face{ position:absolute; inset:0; }
+  .faces{ transform-style:preserve-3d; }
+  .face{
+    backface-visibility:hidden;
+    transform-style:preserve-3d;
+  }
+  .front img{
+    display:block; width:100%; height:100%; object-fit:cover;
+    border:0; /* kein HTML-Rahmen */
+  }
 
-/* Pin (dekorativ, blockiert keine Klicks) */
-/* Pin oben mittig */
-.pin {
-  position: absolute;
-  top: -10px;          /* etwas über dem Bild */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle at 30% 30%, #c00, #800);
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0,0,0,.4);
-  z-index: 2;          /* immer über Bild */
-}
+  .back{
+    background:#fffde8; color:#222; padding:14px;
+    transform: rotateY(180deg);
+    display:grid; align-content:start; gap:8px;
+    border-radius:0; /* kein Polaroid-Rahmen – den hat dein JPG */
+  }
+  .back h3{ margin:0 0 4px; font:700 1rem/1.2 "Georgia", serif; }
+  .back ul{ margin:0; padding-left:1.1em; }
+  .back li{ margin:.2em 0; }
 
-.crew-card{
-  position:relative;
-  display:block;
-  background:none;   /* kein Hintergrund */
-  border:0;          /* kein Rahmen */
-  padding:0;
-  cursor:pointer;
-  perspective:1000px;
-}
+  /* Flip-Logik via aria-expanded */
+  .crew-card[aria-expanded="true"] .front{ transform: rotateY(180deg); }
+  .crew-card[aria-expanded="true"] .back { transform: rotateY(360deg); }
 
-/* Front & Back – ohne Border/Box */
-.crew-card .face{
-  backface-visibility:hidden;
-  transform-style:preserve-3d;
-}
+  /* dezenter Klick-Hinweis (Chevron) */
+  .crew-card::after{
+    content:"";
+    position:absolute; right:8px; bottom:8px;
+    width:22px; height:22px;
+    background:
+      url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+        <path d='M6 9l6 6 6-6' fill='none' stroke='black' stroke-opacity='.55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>\
+      </svg>") center/14px no-repeat;
+    opacity:.6;
+    pointer-events:none;
+  }
 
-.crew-card .front img{
-  display:block;
-  width:100%;
-  height:auto;
-}
+  /* Mobil: dichter untereinander */
+  @media (max-width:768px){
+    .board{ grid-template-columns: 1fr; }
+    .card{ margin-block: -10px; }
+  }
 
-/* Rückseite (Steckbrief) */
-.crew-card .back{
-  position:absolute;
-  top:0; left:0; right:0; bottom:0;
-  background: #fffde8;     /* Papierähnlich, falls du willst */
-  color:#222;
-  padding:1em;
-  border-radius:0;         /* kein abgerundeter Rahmen */
-  transform:rotateY(180deg);
-}
+  @media (prefers-reduced-motion: reduce){
+    .front, .back{ transition: none !important; }
+  }
 
-/* Flip-Effekt */
-.card{
-  position:relative;
-  width:220px;        /* fixe Polaroid-Breite */
-  height:280px;       /* fixe Höhe */
-  transform-style:preserve-3d;
-  transition:transform 0.6s;
-}
-.card.is-flipped{ transform:rotateY(180deg); }
-
-/* kleiner Klick-Hinweis (Chevron), ohne extra Box */
-.crew-card::after{
-  content:"";
-  position:absolute;
-  right:8px; bottom:8px;
-  width:22px; height:22px;
-  background:
-    url("data:image/svg+xml;utf8,\
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
-      <path d='M6 9l6 6 6-6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>\
-    </svg>") center/14px no-repeat;
-  opacity:0.8;
-  pointer-events:none;
-}
-/* Vorder- und Rückseite */
-.card__face {
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  background: #f5eedb;
-  padding: 10px 10px 28px;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transition: transform .6s ease;
-  outline: 1px solid rgba(0,0,0,.05);
-}
-.card__front {
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
-.card__front img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.caption {
-  margin-top: 8px;
-  text-align: center;
-  font: 600 .98rem/1.2 "Georgia", serif;
-  color: #3b3b3b;
-  letter-spacing: .2px;
-}
-
-.card__back {
-  transform: rotateY(180deg);
-  padding: 16px;
-  display: grid;
-  align-content: start;
-  gap: 8px;
-}
-.card__back h3 {
-  margin: 0 0 4px 0;
-  font: 700 1.05rem/1.2 "Georgia", serif;
-}
-.card__back ul {
-  margin: 0; padding-left: 1.1em;
-}
-.card__back li {
-  margin: .2em 0;
-}
-
-/* Flip-Zustand */
-.card__inner[aria-expanded="true"] .card__front { transform: rotateY(180deg); }
-.card__inner[aria-expanded="true"] .card__back  { transform: rotateY(360deg); }
-
-/* ===== Responsiv ===== */
-/* Mobile: untereinander & leicht dichter */
-@media (max-width: 768px) {
-  .board { grid-template-columns: 1fr; }
-  .card  { margin-block: -10px; } /* optisch „übereinander geschoben“ */
-}
-
-/* Reduzierte Bewegung respektieren */
-@media (prefers-reduced-motion: reduce) {
-  .card__face { transition: none; }
-}
+  /* sanfte Dreh-Transition */
+  .front, .back{ transition: transform .6s ease; }
 </style>
 </head>
-
 <body>
 
 <section class="board" aria-label="Meet the Crew">
 
-  <!-- 1 -->
+  <!-- 1 Jake -->
   <article class="card rot--2">
-    <button class="crew-card" aria-label="Jake" aria-pressed="false">
-      <div class="card faces">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Jake anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
         <div class="face front">
-          <span class="pin" aria-hidden="true"></span>
-          <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake Dekker Portrait" loading="lazy">
+          <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake Dekker" loading="lazy">
         </div>
-        <div class="fack back">
-          <h3>Jake</h3>
+        <div class="face back">
+          <h3>Jake Dekker</h3>
           <ul>
-            <li>Markenzeichen: Grüne Beanie, Moody-Vibes</li>
-            <li>Never without: Queen Faye (seine türksgrüne Gitarre) und Kaffee</li>
-            <li>Fun Fact: Liebt nicht nur Marvel, sondern auch Disney Filme</li>
-            <li>Wäre für einen Tag gerne ... mit Jimi Hendrix im Tonstudio</li>
+            <li>E-Gitarre, 18</li>
+            <li>Träumerisch, rebellisch</li>
+            <li>Immer dabei: „Queen Faye“</li>
           </ul>
         </div>
       </div>
     </button>
   </article>
 
-  <!-- 2 -->
+  <!-- 2 Sam -->
   <article class="card rot-3">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Jake umdrehen">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Sam anzeigen">
       <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1005/600/800" alt="Jake – nachdenklicher Blick" loading="lazy">
-        <p class="caption">Jake</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Jake</h3>
-        <p>18 Jahre, E-Gitarre. Verträumt, rebellisch, schreibt Texte im Geheimen.</p>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/SamTurner_Polaroid.jpg" alt="Sam Turner" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Sam Turner</h3>
+          <ul><li>Drums</li><li>Sarkasmus-Level: hoch</li></ul>
+        </div>
       </div>
     </button>
   </article>
 
-  <!-- 3 -->
-  <article class="card rot-1">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Elodie umdrehen">
-      <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1011/600/800" alt="Elodie – freundliches Lächeln" loading="lazy">
-        <p class="caption">Elodie</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Elodie</h3>
-        <p>16 Jahre, Keyboard. Sensibel aber entschlossen.</p>
-      </div>
-    </button>
-  </article>
-
-  <!-- 4 -->
+  <!-- 3 Raul -->
   <article class="card rot--1">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Sam umdrehen">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Raul anzeigen">
       <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1012/600/800" alt="Sam – lockere Frisur" loading="lazy">
-        <p class="caption">Sam</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Sam</h3>
-        <ul>
-          <li>Drums</li>
-          <li>Ironie-Level: hoch</li>
-        </ul>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/RaulMontez_Polaroid.jpg" alt="Raul Montez" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Raul Montez</h3>
+          <p>Bass · Ruhepol · Espresso-Junkie</p>
+        </div>
       </div>
     </button>
   </article>
 
-  <!-- 5 -->
+  <!-- 4 Chris -->
   <article class="card rot-2">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Mira umdrehen">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Chris anzeigen">
       <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1025/600/800" alt="Mira – ernsthafter Blick" loading="lazy">
-        <p class="caption">Mira</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Mira</h3>
-        <p>Bass, analytisch, Ruhepol der Gruppe.</p>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/ChrisStuckmann_Polaroid.jpg" alt="Chris Stuckmann" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Chris Stuckmann</h3>
+          <p>Filmnerd, Regiepult, perfektionistisch.</p>
+        </div>
       </div>
     </button>
   </article>
 
-  <!-- 6 -->
-  <article class="card rot--3">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Theo umdrehen">
-      <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1001/600/800" alt="Theo – mit Mütze" loading="lazy">
-        <p class="caption">Theo</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Theo</h3>
-        <p>Soundtüftler, lo-fi-Fan, mixt nachts.</p>
-      </div>
-    </button>
-  </article>
-
-  <!-- 7 -->
-  <article class="card rot-3">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Lena umdrehen">
-      <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1021/600/800" alt="Lena – lacht" loading="lazy">
-        <p class="caption">Lena</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Lena</h3>
-        <p>Management-Talent, organisiert alles (außer ihren Schreibtisch).</p>
-      </div>
-    </button>
-  </article>
-
-  <!-- 8 -->
-  <article class="card rot--2">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Noor umdrehen">
-      <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1019/600/800" alt="Noor – nachdenklich" loading="lazy">
-        <p class="caption">Noor</p>
-      </div>
-      <div class="card__face card__back">
-        <h3>Noor</h3>
-        <p>Texterin, schreibt heimlich Gedichte an der Küste.</p>
-      </div>
-    </button>
-  </article>
-
-  <!-- 9 -->
+  <!-- 5 Anouk -->
   <article class="card rot-1">
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Finn umdrehen">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Anouk anzeigen">
       <span class="pin" aria-hidden="true"></span>
-      <div class="card__face card__front">
-        <img src="https://picsum.photos/id/1035/600/800" alt="Finn – mit Kapuze" loading="lazy">
-        <p class="caption">Finn</p>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/AnoukHagedorn_Polaroid.jpg" alt="Anouk Hagedorn" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Anouk Hagedorn</h3>
+          <p>Keys, Skizzenbuch, Nordsee-Herz.</p>
+        </div>
       </div>
-      <div class="card__face card__back">
-        <h3>Finn</h3>
-        <p>Lichttechnik, heimlicher Gitarrengott.</p>
+    </button>
+  </article>
+
+  <!-- 6 Mister Tiffles -->
+  <article class="card rot--3">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Mister Tiffles anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/MisterTiffles_Polaroid.jpg" alt="Mister Tiffles" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Mister Tiffles</h3>
+          <p>Band-Hund, Decken-Connaisseur.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 7 Eike -->
+  <article class="card rot-3">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Eike anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/EikeHirsch_Polaroid.jpg" alt="Eike Hirsch" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Eike Hirsch</h3>
+          <p>Gitarrenbauer · schweigsam · detailverliebt.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 8 Björn -->
+  <article class="card rot--2">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Björn anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/BjoernTiedemann_Polaroid.jpg" alt="Björn Tiedemann" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Björn Tiedemann</h3>
+          <p>Fischer, Geschichten am Feuer.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 9 Lore -->
+  <article class="card rot-1">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Lore anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/LoreLuchterhand_Polaroid.jpg" alt="Lore Luchterhand" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Lore Luchterhand</h3>
+          <p>Buchladen, Tee, kluge Sprüche.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 10 Karla -->
+  <article class="card rot-2">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Karla anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/KarlaDekker_Polaroid.jpg" alt="Karla Dekker" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Karla Dekker</h3>
+          <p>Jakes Mum. Warmherzig, resolut.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 11 Pia -->
+  <article class="card rot--1">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Pia anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/PiaRosenberg_Polaroid.jpg" alt="Pia Rosenberg" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Pia Rosenberg</h3>
+          <p>Beste Freundin · Herz auf Zunge.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 12 Kat -->
+  <article class="card rot-3">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Kat anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/KatHernandez_Polaroid.jpg" alt="Kat Hernandez" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Kat Hernandez</h3>
+          <p>Soundtech · scharfzüngig.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 13 Esther -->
+  <article class="card rot--3">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Esther anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/EstherHagedorn_Polaroid.jpg" alt="Esther Hagedorn" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Esther Hagedorn</h3>
+          <p>Ruhe, Wärme, Meerblick.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 14 Philip -->
+  <article class="card rot-1">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Philip anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/PhilipHagedorn_Polaroid.jpg" alt="Philip Hagedorn" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Philip Hagedorn</h3>
+          <p>Pragmatisch, wortkarg, verlässlich.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 15 Granny -->
+  <article class="card rot-2">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Granny anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/GrannyTurner_Polaroid.jpg" alt="Granny Turner" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Granny Turner</h3>
+          <p>Kuchen & kluge Ratschläge.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 16 Peter -->
+  <article class="card rot--2">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Peter anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/PeterTurner_Polaroid.jpg" alt="Peter Turner" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Peter Turner</h3>
+          <p>Küstenwache im Herzen.</p>
+        </div>
+      </div>
+    </button>
+  </article>
+
+  <!-- 17 Lilly -->
+  <article class="card rot-3">
+    <button class="crew-card" aria-expanded="false" aria-label="Steckbrief von Lilly anzeigen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="faces">
+        <div class="face front">
+          <img src="assets/images/LillyTurner_Polaroid.jpg" alt="Lilly Turner" loading="lazy">
+        </div>
+        <div class="face back">
+          <h3>Lilly Turner</h3>
+          <p>Energie, Glitzer, gute Laune.</p>
+        </div>
       </div>
     </button>
   </article>
@@ -346,14 +402,25 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
 </section>
 
 <script>
-/* Flip per Klick – toggelt aria-expanded */
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.card__inner');
-  if (!btn) return;
-  const open = btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', String(!open));
-});
-</script>
+  // Flip per Klick – toggelt aria-expanded auf der jeweiligen Karte
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.crew-card');
+    if (!btn) return;
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+  });
 
+  /* Optional: nur eine Karte gleichzeitig offen lassen
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.crew-card');
+    if (!btn) return;
+    const willOpen = btn.getAttribute('aria-expanded') !== 'true';
+    document.querySelectorAll('.crew-card[aria-expanded="true"]').forEach(b=>{
+      if (b !== btn) b.setAttribute('aria-expanded','false');
+    });
+    btn.setAttribute('aria-expanded', String(willOpen));
+  });
+  */
+</script>
 </body>
 </html>
