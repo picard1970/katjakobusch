@@ -158,6 +158,14 @@ body.album-page{
 .album-header{ width:100%; height:auto; overflow:visible; flex-shrink:0; }
 .album-header img{ display:block; width:100%; height:auto; }
 
+.album-header .home-link {
+  color: var(--hellgrau);                  /* sichtbar auf dunklem Bild */
+  text-shadow: 0 2px 6px rgba(0,0,0,.45);  /* bessere Abhebung */
+}
+.album-header .home-link:hover {
+  color: var(--weiss);                     /* beim Hover noch heller */
+}
+
 body.album-page > footer{
   margin-top: auto;    /* schiebt den Footer an das Seitenende */
 }
