@@ -4,119 +4,134 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meet the Crew</title>
-
 <style>
 /* ===== Reset / Basics ===== */
 * { box-sizing: border-box; }
 html, body { margin:0; padding:0; }
-body {
+body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:#caa87a;
-  color:#2b2b2b;
+  color:#222;
 }
 
-/* ===== Korkbrett-Hintergrund ===== */
-.board {
+/* ===== Korkbrett ===== */
+.board{
   --gap: clamp(12px, 2.2vw, 22px);
   --card-w: clamp(180px, 22vw, 240px);
-
   background:
     radial-gradient(12px 12px at 20% 30%, rgba(0,0,0,.06), transparent 60%) 0 0/90px 90px,
     radial-gradient(10px 10px at 70% 60%, rgba(0,0,0,.05), transparent 60%) 0 0/120px 120px,
     #caa87a;
-  min-height: 100vh;
+  min-height:100vh;
   padding: clamp(18px, 3.2vw, 32px);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-w),1fr));
   gap: var(--gap);
-  justify-items: center;
+  justify-items:center;
 }
 
-/* ===== Karten ===== */
-.card {
-  position: relative;
-  width: var(--card-w);
+/* ===== Karten (mit leichter Schieflage) ===== */
+.card{
+  position:relative;
+  width:var(--card-w);
   aspect-ratio: 3 / 4.2;
-  transform-origin: center center;
+  filter:
+    drop-shadow(0 2px 3px rgba(0,0,0,.25))
+    drop-shadow(0 12px 18px rgba(0,0,0,.18));
 }
-
-/* leichte „zufällige“ Rotationen */
-.rot--3 { transform: rotate(-3.2deg); }
-.rot--2 { transform: rotate(-2.1deg); }
-.rot--1 { transform: rotate(-1.2deg); }
-.rot-1  { transform: rotate(1.2deg);  }
-.rot-2  { transform: rotate(2.2deg);  }
-.rot-3  { transform: rotate(3.1deg);  }
+.rot--3 { transform: rotate(-3deg); }
+.rot--2 { transform: rotate(-2deg); }
+.rot--1 { transform: rotate(-1deg); }
+.rot-1  { transform: rotate(1deg);  }
+.rot-2  { transform: rotate(2deg);  }
+.rot-3  { transform: rotate(3deg);  }
 
 /* Pin */
-.pin {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px; height: 20px;
+.pin{
+  position:absolute; top:-10px; left:50%;
+  transform:translateX(-50%);
+  width:20px; height:20px; border-radius:50%;
   background: radial-gradient(circle at 30% 30%, #c00, #800);
-  border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0,0,0,.45);
-  z-index: 2;
-  pointer-events: none;
+  z-index:2; pointer-events:none;
 }
 
-/* ===== Flip-Inner ===== */
+/* ===== Flip-Mechanik (robust & scharf) ===== */
 .card__inner{
-  position:relative;
+  position:relative; inset:0;
   width:100%; height:100%;
-  border:0; background:transparent; padding:0;
+  border:0; padding:0; background:transparent;
   cursor:pointer;
   transform-style:preserve-3d;
   transition: transform .6s ease;
   will-change: transform;
 }
-
-/* Vorder- & Rückseite */
 .card__face{
   position:absolute; inset:0;
-  backface-visibility:hidden;      /* NICHT entfernen */
+  backface-visibility:hidden;
   transform-style:preserve-3d;
-  border-radius:8px;
+  border-radius:10px;
   overflow:hidden;
   outline:1px solid rgba(0,0,0,.06);
 }
+
+/* Vorderseite: NUR Bild → kein Text-Blur */
 .card__front{
-  transform: rotateY(0deg);
+  transform:rotateY(0deg);
   background:#fff;
 }
 .card__front img{
   display:block; width:100%; height:100%; object-fit:cover;
 }
-.caption{
-  position:absolute; left:0; right:0; bottom:8px;
-  text-align:center;
-  font:700 .95rem/1.2 "Georgia", serif;
-  color:#111;
-  background:rgba(255,255,255,.65);
-  padding:2px 4px;
-}
+
+/* Rückseite: zwei Spalten, sehr gut lesbar */
 .card__back{
-  transform: rotateY(180deg) scale(var(--backScale,1));
+  transform:rotateY(180deg);
   background:#fffde8;
-  padding:12px;
+  padding:12px 12px 14px;
   display:grid;
-  align-content:start;
-  gap:6px;
-  font-size: clamp(.82rem, .95vw, .95rem);
+  grid-template-rows:auto 1fr;
+  gap:8px;
+  overflow:auto;               /* falls sehr viel Text */
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card__title{
+  margin:0;
+  font: 700 1.05rem/1.2 "Georgia", serif;
+  text-align:center;
+}
+
+/* Definition-List als zweispaltige Tabelle */
+.facts{
+  margin:0;
+  display:grid;
+  grid-template-columns: max-content 1fr;
+  column-gap:10px;
+  row-gap:6px;
+  font-size: clamp(.86rem, .95vw, .96rem);
   line-height:1.28;
   hyphens:auto;
 }
-.card__back h3{ margin:0 0 6px; font:700 1rem/1.2 "Georgia", serif; }
-.card__back p{ margin:0; }
-.card__back p + p{ margin-top:4px; }
-.card__back p strong{ display:inline-block; width:7.2em; }
+.facts dt{
+  font-weight:700;
+  color:#222;
+}
+.facts dd{
+  margin:0;
+  color:#1c1c1c;
+}
+.facts dd ul{
+  margin:.2em 0 0 1em;
+  padding:0;
+}
+.facts dd li{ margin:.15em 0; }
 
-/* Flip-Zustand: Parent dreht 180°, dadurch zeigt die Back (mit 180°) nach vorne */
-.card__inner[aria-expanded="true"]{ transform: rotateY(180deg); }
+/* Flip an/aus */
+.card__inner[aria-expanded="true"]{ transform:rotateY(180deg); }
 
-/* Mobil: untereinander, leicht überlappend */
+/* Mobil: untereinander, leicht dichter gestapelt */
 @media (max-width:768px){
   .board{ grid-template-columns:1fr; }
   .card{ margin-block:-10px; }
@@ -127,325 +142,350 @@ body {
 
 <section class="board" aria-label="Meet the Crew">
 
-  <!-- 1: Jake -->
+  <!-- Helper: Komponente -->
+  <!--
+    Für jede Karte:
+    - class="card rot-?" für die leichte Schieflage
+    - IMG-Pfad anpassen
+    - dt/dd Zeilen befüllen
+  -->
+
+  <!-- 1 Jake -->
   <article class="card rot--2">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Jake umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake">
-        <p class="caption">Jake</p>
       </div>
       <div class="card__face card__back">
-        <h3>Jake</h3>
-        <p><strong>Markenzeichen:</strong> Grüne Beanie, Moody-Vibes</p>
-        <p><strong>Never without:</strong> „Queen Faye“ (seine türkisgrüne Gitarre) und Kaffee</p>
-        <p><strong>Fun Fact:</strong> Liebt nicht nur Marvel, sondern auch Disney-Filme</p>
-        <p><strong>Soul-Food:</strong> Lores Apfelkuchen; Granny Turners Double Chocolate Pecan Cookies</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> mit Jimi Hendrix im Tonstudio</p>
+        <h3 class="card__title">Jake</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Grüne Beanie, Moody-Vibes</dd>
+          <dt>Never without</dt><dd>„Queen Faye“ (seine türkisgrüne Gitarre) und Kaffee</dd>
+          <dt>Fun Fact</dt><dd>Liebt nicht nur Marvel, sondern auch Disney-Filme</dd>
+          <dt>Soul-Food</dt><dd>Lores Apfelkuchen; Granny Turners Double Chocolate Pecan Cookies</dd>
+          <dt>Ein Tag als …</dt><dd>mit Jimi Hendrix im Tonstudio</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 2: Sam -->
+  <!-- 2 Sam -->
   <article class="card rot-1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Sam umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/SamTurner_Polaroid.jpg" alt="Sam">
-        <p class="caption">Sam</p>
       </div>
       <div class="card__face card__back">
-        <h3>Sam</h3>
-        <p><strong>Markenzeichen:</strong> Seine ruhige Ausstrahlung</p>
-        <p><strong>Never without:</strong> Sein Lieblingsplektrum, das aussieht wie Nordlichter</p>
-        <p><strong>Fun Fact:</strong> War mit Jake auf der deutschen Middle School</p>
-        <p><strong>Soul-Food:</strong> Das Adobo seiner Granny</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> im Weltall</p>
+        <h3 class="card__title">Sam</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Ruhige Ausstrahlung</dd>
+          <dt>Never without</dt><dd>Lieblingsplektrum (sieht aus wie Nordlichter)</dd>
+          <dt>Fun Fact</dt><dd>War mit Jake auf der deutschen Middle School</dd>
+          <dt>Soul-Food</dt><dd>Das Adobo seiner Granny</dd>
+          <dt>Ein Tag als …</dt><dd>im Weltall</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 3: Raul -->
+  <!-- 3 Raul -->
   <article class="card rot--1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Raul umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/RaulMontez_Polaroid.jpg" alt="Raul">
-        <p class="caption">Raul</p>
       </div>
       <div class="card__face card__back">
-        <h3>Raul</h3>
-        <p><strong>Markenzeichen:</strong> Breites Grinsen &amp; blöde Sprüche</p>
-        <p><strong>Never without:</strong> Kaugummis</p>
-        <p><strong>Fun Fact:</strong> Hat mal einen Liebesbrief an Jennifer Lopez geschrieben</p>
-        <p><strong>Soul-Food:</strong> Quesadillas</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> berühmt</p>
+        <h3 class="card__title">Raul</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Breites Grinsen &amp; blöde Sprüche</dd>
+          <dt>Never without</dt><dd>Kaugummis</dd>
+          <dt>Fun Fact</dt><dd>Schrieb mal einen Liebesbrief an Jennifer Lopez</dd>
+          <dt>Soul-Food</dt><dd>Quesadillas</dd>
+          <dt>Ein Tag als …</dt><dd>berühmt</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 4: Chris -->
+  <!-- 4 Chris -->
   <article class="card rot-2">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Chris umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/ChrisStuckmann_Polaroid.jpg" alt="Chris">
-        <p class="caption">Chris</p>
       </div>
       <div class="card__face card__back">
-        <h3>Chris</h3>
-        <p><strong>Markenzeichen:</strong> Wo Chris ist, ist Chaos</p>
-        <p><strong>Never without:</strong> Das Buch, das er gerade liest</p>
-        <p><strong>Fun Fact:</strong> Wollte in der 5. Klasse Klingonisch als Fremdsprache wählen</p>
-        <p><strong>Soul-Food:</strong> Cheeseburger mit Pommes und Milchshake</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> unsichtbar</p>
+        <h3 class="card__title">Chris</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Wo Chris ist, ist Chaos</dd>
+          <dt>Never without</dt><dd>Das Buch, das er gerade liest</dd>
+          <dt>Fun Fact</dt><dd>Wollte in der 5. Klasse Klingonisch als Fremdsprache wählen</dd>
+          <dt>Soul-Food</dt><dd>Cheeseburger mit Pommes und Milchshake</dd>
+          <dt>Ein Tag als …</dt><dd>unsichtbar</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 5: Anouk -->
+  <!-- 5 Anouk -->
   <article class="card rot--2">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Anouk umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/AnoukHagedorn_Polaroid.jpg" alt="Anouk">
-        <p class="caption">Anouk</p>
       </div>
       <div class="card__face card__back">
-        <h3>Anouk</h3>
-        <p><strong>Markenzeichen:</strong> Inselkind aus Überzeugung</p>
-        <p><strong>Never without:</strong> Ihren Border-Collie „Mister Tiffels“</p>
-        <p><strong>Fun Fact:</strong> Hat als 4-Jährige Frösche geküsst, um einen Prinzen zu finden</p>
-        <p><strong>Soul-Food:</strong> Ostfriesentee mit Kandis und Sahne</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> im Bundestag</p>
+        <h3 class="card__title">Anouk</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Inselkind aus Überzeugung</dd>
+          <dt>Never without</dt><dd>Border-Collie „Mister Tiffels“</dd>
+          <dt>Fun Fact</dt><dd>Hat als Vierjährige Frösche geküsst</dd>
+          <dt>Soul-Food</dt><dd>Ostfriesentee mit Kandis und Sahne</dd>
+          <dt>Ein Tag als …</dt><dd>im Bundestag</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 6: Mister Tiffels -->
+  <!-- 6 Mister Tiffels -->
   <article class="card rot-3">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Mister Tiffels umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/MisterTiffels_Polaroid.jpg" alt="Mister Tiffels">
-        <p class="caption">Mister Tiffels</p>
       </div>
       <div class="card__face card__back">
-        <h3>Mister Tiffels</h3>
-        <p><strong>Markenzeichen:</strong> Kulleraugen</p>
-        <p><strong>Never without:</strong> Anouk</p>
-        <p><strong>Fun Fact:</strong> Wurde mal von einem Krebs in die Nase gezwickt</p>
-        <p><strong>Soul-Food:</strong> Leckerlies</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> allein zuhause, um alle Leckerlies zu fressen</p>
+        <h3 class="card__title">Mister Tiffels</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Kulleraugen</dd>
+          <dt>Never without</dt><dd>Anouk</dd>
+          <dt>Fun Fact</dt><dd>Wurde mal von einem Krebs in die Nase gezwickt</dd>
+          <dt>Soul-Food</dt><dd>Leckerlies</dd>
+          <dt>Ein Tag als …</dt><dd>allein zuhause – alle Leckerlies fressen</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 7: Eike -->
+  <!-- 7 Eike -->
   <article class="card rot--1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Eike umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/EikeHirsch_Polaroid.jpg" alt="Eike">
-        <p class="caption">Eike</p>
       </div>
       <div class="card__face card__back">
-        <h3>Eike</h3>
-        <p><strong>Markenzeichen:</strong> Möchtegern-Thor-Vibes</p>
-        <p><strong>Never without:</strong> Einer Extraprise Gemeinheit</p>
-        <p><strong>Fun Fact:</strong> Ekelt sich vor Spinnen</p>
-        <p><strong>Soul-Food:</strong> Pizza</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> Harry Styles</p>
+        <h3 class="card__title">Eike</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Möchtegern-Thor-Vibes</dd>
+          <dt>Never without</dt><dd>Extraprise Gemeinheit</dd>
+          <dt>Fun Fact</dt><dd>Ekelt sich vor Spinnen</dd>
+          <dt>Soul-Food</dt><dd>Pizza</dd>
+          <dt>Ein Tag als …</dt><dd>Harry Styles</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 8: Björn -->
+  <!-- 8 Björn -->
   <article class="card rot-1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Björn umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/BjoernTiedemann_Polaroid.jpg" alt="Björn">
-        <p class="caption">Björn</p>
       </div>
       <div class="card__face card__back">
-        <h3>Björn</h3>
-        <p><strong>Markenzeichen:</strong> Schwarze Brille</p>
-        <p><strong>Never without:</strong> Seine Zeitung am Morgen</p>
-        <p><strong>Fun Fact:</strong> Hatte als Kind Angst vor Möwen, weil ihm eine mal sein Eis geklaut hat</p>
-        <p><strong>Soul-Food:</strong> Fischbrötchen</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> allwissend</p>
+        <h3 class="card__title">Björn</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Schwarze Brille</dd>
+          <dt>Never without</dt><dd>Seine Zeitung am Morgen</dd>
+          <dt>Fun Fact</dt><dd>Hatte als Kind Angst vor Möwen (Eis geklaut!)</dd>
+          <dt>Soul-Food</dt><dd>Fischbrötchen</dd>
+          <dt>Ein Tag als …</dt><dd>allwissend</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 9: Lore -->
+  <!-- 9 Lore -->
   <article class="card rot-2">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Lore umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/LoreLuchterhand_Polaroid.jpg" alt="Lore">
-        <p class="caption">Lore</p>
       </div>
       <div class="card__face card__back">
-        <h3>Lore</h3>
-        <p><strong>Markenzeichen:</strong> Wärme, Lächeln und kluger Rat</p>
-        <p><strong>Never without:</strong> Backen</p>
-        <p><strong>Fun Fact:</strong> Kann jonglieren</p>
-        <p><strong>Soul-Food:</strong> Schwarzbrot mit Käse</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> Mutter</p>
+        <h3 class="card__title">Lore</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Wärme, Lächeln, kluger Rat</dd>
+          <dt>Never without</dt><dd>Backen</dd>
+          <dt>Fun Fact</dt><dd>Kann jonglieren</dd>
+          <dt>Soul-Food</dt><dd>Schwarzbrot mit Käse</dd>
+          <dt>Ein Tag als …</dt><dd>Mutter</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 10: Karla -->
+  <!-- 10 Karla -->
   <article class="card rot--2">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Karla umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/KarlaDekker_Polaroid.jpg" alt="Karla">
-        <p class="caption">Karla</p>
       </div>
       <div class="card__face card__back">
-        <h3>Karla</h3>
-        <p><strong>Markenzeichen:</strong> Weltverbesser-Syndrom</p>
-        <p><strong>Never without:</strong> Handdesinfektionsmittel</p>
-        <p><strong>Fun Fact:</strong> Hat Flugangst</p>
-        <p><strong>Soul-Food:</strong> Vanille-Eis mit heißen Kirschen</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> ohne Verpflichtungen</p>
+        <h3 class="card__title">Karla</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Weltverbesser-Syndrom</dd>
+          <dt>Never without</dt><dd>Handdesinfektionsmittel</dd>
+          <dt>Fun Fact</dt><dd>Hat Flugangst</dd>
+          <dt>Soul-Food</dt><dd>Vanilleeis mit heißen Kirschen</dd>
+          <dt>Ein Tag als …</dt><dd>ohne Verpflichtungen</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 11: Pia -->
+  <!-- 11 Pia -->
   <article class="card rot-1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Pia umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/PiaRosenberg_Polaroid.jpg" alt="Pia">
-        <p class="caption">Pia</p>
       </div>
       <div class="card__face card__back">
-        <h3>Pia</h3>
-        <p><strong>Markenzeichen:</strong> Schwarzer Pixie-Schnitt, Brille</p>
-        <p><strong>Never without:</strong> ihren Erdbeer-Lipgloss</p>
-        <p><strong>Fun Fact:</strong> Liebt die Serie „Gilmore Girls“ (und ist Team Jess)</p>
-        <p><strong>Soul-Food:</strong> Bratkartoffeln mit Rührei</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> Eikes Nummer Eins</p>
+        <h3 class="card__title">Pia</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Schwarzer Pixie-Schnitt, Brille</dd>
+          <dt>Never without</dt><dd>Erdbeer-Lipgloss</dd>
+          <dt>Fun Fact</dt><dd>„Gilmore Girls“ – Team Jess</dd>
+          <dt>Soul-Food</dt><dd>Bratkartoffeln mit Rührei</dd>
+          <dt>Ein Tag als …</dt><dd>Eikes Nummer Eins</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 12: Kat -->
+  <!-- 12 Kat -->
   <article class="card rot--1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Kat umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/KatHernandez_Polaroid.jpg" alt="Kat">
-        <p class="caption">Kat</p>
       </div>
       <div class="card__face card__back">
-        <h3>Kat</h3>
-        <p><strong>Markenzeichen:</strong> böse Blicke, spitze Zunge</p>
-        <p><strong>Never without:</strong> Kopfhörer</p>
-        <p><strong>Fun Fact:</strong> Hat im Kindergarten Ballett getanzt und ihr Tütü nicht freiwillig ausgezogen</p>
-        <p><strong>Soul-Food:</strong> Churros mit Schokoladensauce</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> ein Vogel, um fliegen zu können</p>
+        <h3 class="card__title">Kat</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Böse Blicke, spitze Zunge</dd>
+          <dt>Never without</dt><dd>Kopfhörer</dd>
+          <dt>Fun Fact</dt><dd>Trug im Kindergarten lange ihr Tütü weiter</dd>
+          <dt>Soul-Food</dt><dd>Churros mit Schokoladensauce</dd>
+          <dt>Ein Tag als …</dt><dd>ein Vogel – fliegen!</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 13: Esther -->
+  <!-- 13 Esther -->
   <article class="card rot-2">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Esther umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/EstherHagedorn_Polaroid.jpg" alt="Esther">
-        <p class="caption">Esther</p>
       </div>
       <div class="card__face card__back">
-        <h3>Esther</h3>
-        <p><strong>Markenzeichen:</strong> Fels in der Brandung</p>
-        <p><strong>Never without:</strong> Chip für den Einkaufswagen</p>
-        <p><strong>Fun Fact:</strong> liest Anouks Jugendbücher, um up to date zu sein</p>
-        <p><strong>Soul-Food:</strong> Kartoffelcremesuppe</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> nochmal mit ihrer verstorbenen Tochter zusammen</p>
+        <h3 class="card__title">Esther</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Fels in der Brandung</dd>
+          <dt>Never without</dt><dd>Chip für den Einkaufswagen</dd>
+          <dt>Fun Fact</dt><dd>Liest Anouks Jugendbücher, um up to date zu sein</dd>
+          <dt>Soul-Food</dt><dd>Kartoffelcremesuppe</dd>
+          <dt>Ein Tag als …</dt><dd>noch einmal mit ihrer verstorbenen Tochter zusammen</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 14: Philip -->
+  <!-- 14 Philip -->
   <article class="card rot--2">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Philip umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/PhilipHagedorn_Polaroid.jpg" alt="Philip">
-        <p class="caption">Philip</p>
       </div>
       <div class="card__face card__back">
-        <h3>Philip</h3>
-        <p><strong>Markenzeichen:</strong> leichter Fischgeruch von der Arbeit auf der Seehundstation</p>
-        <p><strong>Never without:</strong> Sorge, dass es Anouk gut geht</p>
-        <p><strong>Fun Fact:</strong> Schläft immer auf der linken Seite</p>
-        <p><strong>Soul-Food:</strong> Milchreis mit Zimt und Zucker</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> in der Lage, unter Wasser zu atmen</p>
+        <h3 class="card__title">Philip</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Leichter Fischgeruch von der Seehundstation</dd>
+          <dt>Never without</dt><dd>Sorge um Anouk</dd>
+          <dt>Fun Fact</dt><dd>Schläft immer auf der linken Seite</dd>
+          <dt>Soul-Food</dt><dd>Milchreis mit Zimt &amp; Zucker</dd>
+          <dt>Ein Tag als …</dt><dd>unter Wasser atmen können</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 15: Granny Turner -->
+  <!-- 15 Granny Turner -->
   <article class="card rot-1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Granny Turner umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/GrannyTurner_Polaroid.jpg" alt="Granny Turner">
-        <p class="caption">Granny Turner</p>
       </div>
       <div class="card__face card__back">
-        <h3>Granny Turner</h3>
-        <p><strong>Markenzeichen:</strong> Double Chocolate Pecan Cookies</p>
-        <p><strong>Never without:</strong> warmem Lächeln</p>
-        <p><strong>Fun Fact:</strong> Hat Queen Elisabeth mal die Hand geschüttelt</p>
-        <p><strong>Soul-Food:</strong> Ube Halaya</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> Detektivin wie „Miss Marple“</p>
+        <h3 class="card__title">Granny Turner</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Double Chocolate Pecan Cookies</dd>
+          <dt>Never without</dt><dd>Warmes Lächeln</dd>
+          <dt>Fun Fact</dt><dd>Schüttelte Queen Elisabeth die Hand</dd>
+          <dt>Soul-Food</dt><dd>Ube Halaya</dd>
+          <dt>Ein Tag als …</dt><dd>Detektivin wie „Miss Marple“</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 16: Peter -->
+  <!-- 16 Peter -->
   <article class="card rot--1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Peter umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/PeterTurner_Polaroid.jpg" alt="Peter">
-        <p class="caption">Peter</p>
       </div>
       <div class="card__face card__back">
-        <h3>Peter</h3>
-        <p><strong>Markenzeichen:</strong> Elternweisheiten, die meistens helfen – und manchmal nerven</p>
-        <p><strong>Never without:</strong> Seine Lesebrille</p>
-        <p><strong>Fun Fact:</strong> Wäre gerne Schauspieler geworden</p>
-        <p><strong>Soul-Food:</strong> Mac &amp; Cheese</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> am Filmset in Hollywood</p>
+        <h3 class="card__title">Peter</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Elternweisheiten (meist hilfreich, manchmal nervig)</dd>
+          <dt>Never without</dt><dd>Lesebrille</dd>
+          <dt>Fun Fact</dt><dd>Wäre gern Schauspieler geworden</dd>
+          <dt>Soul-Food</dt><dd>Mac &amp; Cheese</dd>
+          <dt>Ein Tag als …</dt><dd>am Hollywood-Filmset</dd>
+        </dl>
       </div>
     </button>
   </article>
 
-  <!-- 17: Lilly -->
+  <!-- 17 Lilly -->
   <article class="card rot-3">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Lilly umdrehen">
       <div class="card__face card__front">
         <img src="assets/images/LillyTurner_Polaroid.jpg" alt="Lilly">
-        <p class="caption">Lilly</p>
       </div>
       <div class="card__face card__back">
-        <h3>Lilly</h3>
-        <p><strong>Markenzeichen:</strong> Zöpfchen &amp; Zahnlücken</p>
-        <p><strong>Never without:</strong> Kuschelhase „Mister Hops“</p>
-        <p><strong>Fun Fact:</strong> Kann auf Kommando weinen</p>
-        <p><strong>Soul-Food:</strong> Pancakes mit Bananen und Ahornsirup</p>
-        <p><strong>Wäre für einen Tag gerne …</strong> älter, damit Jake sie nicht nur wie eine kleine Schwester sieht</p>
+        <h3 class="card__title">Lilly</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Zöpfchen &amp; Zahnlücken</dd>
+          <dt>Never without</dt><dd>Kuschelhase „Mister Hops“</dd>
+          <dt>Fun Fact</dt><dd>Kann auf Kommando weinen</dd>
+          <dt>Soul-Food</dt><dd>Pancakes mit Bananen &amp; Ahornsirup</dd>
+          <dt>Ein Tag als …</dt><dd>älter – damit Jake sie nicht nur wie eine kleine Schwester sieht</dd>
+        </dl>
       </div>
     </button>
   </article>
@@ -453,30 +493,15 @@ body {
 </section>
 
 <script>
-/* Flip per Klick toggeln */
+/* Flip per Klick – simpel & stabil */
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('.card__inner');
   if (!btn) return;
-  const open = btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', String(!open));
-  requestAnimationFrame(fitBackFaces);
+  btn.setAttribute(
+    'aria-expanded',
+    btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+  );
 });
-
-/* Lange Steckbriefe leicht skalieren (statt sie abzuschneiden) */
-function fitBackFaces(){
-  document.querySelectorAll('.card__back').forEach(back => {
-    back.style.setProperty('--backScale', '1'); // reset
-    const boxH = back.getBoundingClientRect().height;
-    const scrollH = back.scrollHeight;
-    if (scrollH > boxH){
-      const scale = Math.max(0.85, Math.min(1, boxH / scrollH));
-      back.style.setProperty('--backScale', String(scale));
-    }
-  });
-}
-window.addEventListener('load', fitBackFaces);
-window.addEventListener('resize', fitBackFaces);
 </script>
-
 </body>
 </html>
