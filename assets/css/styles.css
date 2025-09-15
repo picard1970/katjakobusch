@@ -522,8 +522,8 @@ body.buecher{
   }
   /* Beispiel-Positionen – gern feintunen */
   body.home .left .p1{ top:   0px; left: 12%; transform: rotate(-4deg); z-index:1; }
-  body.home .left .p2{ top: 120px; left:  8%; transform: rotate( 3deg); z-index:2; }
-  body.home .left .p3{ top: 235px; left:  4%; transform: rotate(-6deg); z-index:3; }
+  body.home .left .p2{ top: 130px; left:  8%; transform: rotate( 3deg); z-index:2; }
+  body.home .left .p3{ top: 245px; left:  4%; transform: rotate(-6deg); z-index:3; }
 
   body.home .right .p4{ top:   0px; right: 12%; transform: rotate( 5deg); z-index:1; }
   body.home .right .p5{ top: 135px; right: 10%; transform: rotate(-3deg); z-index:2; }
