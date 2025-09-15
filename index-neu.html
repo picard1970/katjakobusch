@@ -37,13 +37,14 @@
       margin:0;
       color:#1b1b1b;
       background:#dcd6c5 url("assets/images/homepage-background.jpg") center/cover fixed no-repeat;
+      padding: clamp(12px, 3vh, 28px) var(--pad);  /* etwas, aber nicht zu viel Top-Padding */
       font: 400 clamp(16px, 1.6vw, 20px)/1.45 "Georgia", "Times New Roman", ui-serif, serif;
     }
   
     .wrap{
       min-height: 100svh;
       display:grid;
-      place-items:center;
+      place-items: start center;
       padding: var(--pad);
     }
   
@@ -180,11 +181,11 @@
       </div>
     </section>
   </div>
-</body>
   <footer>
     <p>
       <a href="impressum.html">Impressum</a> |
       <a href="datenschutz.html">Datenschutz</a>
     </p>
   </footer>
+</body>
 </html>
