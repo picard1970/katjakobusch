@@ -4,16 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Meet the Crew</title>
+
 <style>
 /* ===== Reset / Basics ===== */
 * { box-sizing: border-box; }
-html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#e8eddf; color:#2b2b2b; }
+html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#2b2b2b; background:#e8eddf; }
 
 /* ===== Korkbrett ===== */
 .board {
   --gap: clamp(12px, 2.2vw, 22px);
   --card-w: clamp(180px, 26vw, 260px);
-
   background:
     radial-gradient(12px 12px at 20% 30%, rgba(0,0,0,.06), transparent 60%) 0 0/90px 90px,
     radial-gradient(10px 10px at 70% 60%, rgba(0,0,0,.05), transparent 60%) 0 0/120px 120px,
@@ -26,7 +26,7 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
   justify-items: center;
 }
 
-/* ===== Karten ===== */
+/* ===== Polaroid-Karten ===== */
 .card {
   position: relative;
   width: var(--card-w);
@@ -34,50 +34,51 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
   filter: drop-shadow(0 2px 3px rgba(0,0,0,.25))
           drop-shadow(0 10px 18px rgba(0,0,0,.18));
   transform-origin: center center;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
 }
-.card.is-flipped { transform: rotateY(180deg); }
+.rot--3 { transform: rotate(-3deg); }
+.rot--2 { transform: rotate(-2deg); }
+.rot--1 { transform: rotate(-1deg); }
+.rot-1  { transform: rotate(1deg); }
+.rot-2  { transform: rotate(2deg); }
+.rot-3  { transform: rotate(3deg); }
 
-/* leichte Zufallsdrehungen */
-.rot--3 { transform: rotate(-3.2deg); }
-.rot--2 { transform: rotate(-2.1deg); }
-.rot--1 { transform: rotate(-1.2deg); }
-.rot-1  { transform: rotate(1.2deg); }
-.rot-2  { transform: rotate(2.2deg); }
-.rot-3  { transform: rotate(3.1deg); }
-
-/* clickable area */
 .card__inner {
-  width:100%; height:100%;
-  background:none; border:0; padding:0;
-  cursor:pointer;
-  perspective:1000px;
-  position:relative;
+  position: relative;
+  width: 100%; height: 100%;
+  background: none;
+  cursor: pointer;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  border: 0;
+  padding: 0;
 }
 
 /* Pin */
 .pin {
   position: absolute;
-  top: -10px; left: 50%;
+  top: -10px;
+  left: 50%;
   transform: translateX(-50%);
   width: 20px; height: 20px;
   background: radial-gradient(circle at 30% 30%, #c00, #800);
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0,0,0,.4);
   z-index: 2;
+  pointer-events: none;
 }
 
-/* Faces */
+/* Vorder- und Rückseite */
 .card__face {
   position: absolute;
   inset: 0;
+  border-radius: 8px;
+  background: #f5eedb;
+  padding: 10px 10px 28px;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  border-radius: 8px;
+  transition: transform .6s ease;
 }
 
-/* Front */
 .card__front {
   display: grid;
   grid-template-rows: 1fr auto;
@@ -88,260 +89,86 @@ html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe U
   border-radius: 6px;
 }
 .caption {
-  margin-top: 6px;
+  margin-top: 8px;
   text-align: center;
   font: 600 .95rem/1.2 "Georgia", serif;
-  color: #2b2b2b;
+  color: #3b3b3b;
 }
 
-/* Back */
 .card__back {
   transform: rotateY(180deg);
-  background: #fffbe9;
-  padding: clamp(14px, 2.2vw, 22px);
-  border-radius: 10px;
-  color:#212121;
-  display:grid;
-  gap: clamp(8px, 1.2vw, 12px);
-  line-height: 1.28;
-  font-size: clamp(13px, 1.55vw, 16px);
-  hyphens: auto;
+  padding: 14px;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  background: #fffde8;
 }
 .card__back h3 {
-  margin: 0;
-  text-align: center;
-  font: 700 clamp(18px, 2.2vw, 22px)/1.15 "Georgia", serif;
+  margin: 0 0 6px 0;
+  font: 700 1rem/1.2 "Georgia", serif;
+}
+.card__back ul {
+  margin: 0; padding-left: 1.1em;
+  font-size: .9rem;
+}
+.card__back li {
+  margin: .2em 0;
 }
 
-/* Steckbrief */
-.bio{
-  margin:0; display:grid; gap:.55em;
-}
-.bio__row{
-  display:grid;
-  grid-template-columns: minmax(98px, 0.9fr) 1fr;
-  align-items:start;
-  column-gap:.65em;
-  padding-top:.35em;
-  border-top:1px dashed rgba(0,0,0,.08);
-}
-.bio__row:first-child{ border-top:0; padding-top:0; }
-.bio dt{ font-weight:700; margin:0; }
-.bio dd{ margin:0; }
+/* Flip-Effekt */
+.card__front { transform: rotateY(0); }
+.card__back  { transform: rotateY(180deg); }
+.card__inner[aria-expanded="true"] .card__front { transform: rotateY(180deg); }
+.card__inner[aria-expanded="true"] .card__back  { transform: rotateY(360deg); }
 
 /* Responsiv */
-@media (max-width: 768px){
-  .board{ grid-template-columns: 1fr; }
-  .card { margin-block: -10px; }
-}
-@media (max-width: 380px){
-  .bio__row{ grid-template-columns: 1fr; row-gap:.15em; }
+@media (max-width: 768px) {
+  .board { grid-template-columns: 1fr; }
+  .card  { margin-block: -10px; }
 }
 </style>
 </head>
+
 <body>
 <section class="board" aria-label="Meet the Crew">
 
-<!-- 1 Jake -->
-<article class="card rot--2">
-  <button class="card__inner" aria-label="Jake">
-    <span class="pin" aria-hidden="true"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake Dekker" loading="lazy">
-      <p class="caption">Jake</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Jake</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Grüne Beanie, Moody-Vibes</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>„Queen Faye“ (türkisgrüne Gitarre) & Kaffee</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Liebt nicht nur Marvel, sondern auch Disney-Filme</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Lores Apfelkuchen; Granny Turners Double Chocolate Pecan Cookies</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Mit Jimi Hendrix im Tonstudio</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
+  <!-- Beispiel: Jake -->
+  <article class="card rot--2">
+    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief von Jake umdrehen">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="card__face card__front">
+        <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake Dekker" loading="lazy">
+        <p class="caption">Jake</p>
+      </div>
+      <div class="card__face card__back">
+        <h3>Jake</h3>
+        <ul>
+          <li><b>Markenzeichen:</b> Grüne Beanie, Moody-Vibes</li>
+          <li><b>Never without:</b> „Queen Faye“ (seine türkisgrüne Gitarre) und Kaffee</li>
+          <li><b>Fun Fact:</b> Liebt nicht nur Marvel, sondern auch Disney-Filme</li>
+          <li><b>Soul-Food:</b> Lores Apfelkuchen; Granny Turners Double Chocolate Pecan Cookies</li>
+          <li><b>Wäre für einen Tag gerne …</b> mit Jimi Hendrix im Tonstudio</li>
+        </ul>
+      </div>
+    </button>
+  </article>
 
-<!-- 2 Sam -->
-<article class="card rot-1">
-  <button class="card__inner" aria-label="Sam">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/SamTurner_Polaroid.jpg" alt="Sam Turner" loading="lazy">
-      <p class="caption">Sam</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Sam</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Ruhige Ausstrahlung</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Lieblingsplektrum (Nordlicht-Optik)</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>War mit Jake auf der deutschen Middle School</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Adobo seiner Granny</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Im Weltall</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
+  <!-- HIER folgen die restlichen 16 Charaktere 
+       → gleiche Struktur, nur Bild- und Textaustausch
+       z.B. assets/images/SamTurner_Polaroid.jpg, 
+            assets/images/RaulMontez_Polaroid.jpg usw.
+  -->
 
-<!-- 3 Raul -->
-<article class="card rot-3">
-  <button class="card__inner" aria-label="Raul">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/RaulMontez_Polaroid.jpg" alt="Raul Montez" loading="lazy">
-      <p class="caption">Raul</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Raul</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Breites Grinsen & blöde Sprüche</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Kaugummis</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Schrieb mal einen Liebesbrief an Jennifer Lopez</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Quesadillas</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Berühmt</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
+</section>
 
-<!-- 4 Chris -->
-<article class="card rot--1">
-  <button class="card__inner" aria-label="Chris">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/ChrisStuckmann_Polaroid.jpg" alt="Chris Stuckmann" loading="lazy">
-      <p class="caption">Chris</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Chris</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Wo Chris ist, ist Chaos</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Das Buch, das er gerade liest</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Wollte Klingonisch als Fremdsprache wählen</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Cheeseburger mit Pommes & Milchshake</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Unsichtbar</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
-
-<!-- 5 Anouk -->
-<article class="card rot-2">
-  <button class="card__inner" aria-label="Anouk">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/AnoukHagedorn_Polaroid.jpg" alt="Anouk Hagedorn" loading="lazy">
-      <p class="caption">Anouk</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Anouk</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Inselkind aus Überzeugung</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Border-Collie „Mister Tiffels“</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Küsste mit 4 Frösche, um einen Prinzen zu finden</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Ostfriesentee mit Kandis und Sahne</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Im Bundestag</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
-
-<!-- 6 Mister Tiffels -->
-<article class="card rot--3">
-  <button class="card__inner" aria-label="Mister Tiffels">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/MisterTiffels_Polaroid.jpg" alt="Mister Tiffels" loading="lazy">
-      <p class="caption">Mister Tiffels</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Mister Tiffels</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Kulleraugen</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Anouk</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Von einem Krebs in die Nase gezwickt</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Leckerlies</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Allein zuhause, alle Leckerlies fressen</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
-
-<!-- 7 Eike -->
-<article class="card rot-1">
-  <button class="card__inner" aria-label="Eike">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/EikeHirsch_Polaroid.jpg" alt="Eike Hirsch" loading="lazy">
-      <p class="caption">Eike</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Eike</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Möchtegern-Thor-Vibes</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Extraprise Gemeinheit</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Ekelt sich vor Spinnen</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Pizza</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Harry Styles</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
-
-<!-- 8 Björn -->
-<article class="card rot--2">
-  <button class="card__inner" aria-label="Björn">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/BjoernTiedemann_Polaroid.jpg" alt="Björn Tiedemann" loading="lazy">
-      <p class="caption">Björn</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Björn</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Schwarze Brille</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Morgenzeitung</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Hatte als Kind Angst vor Möwen (Eis geklaut)</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Fischbrötchen</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Allwissend</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
-
-<!-- 9 Lore -->
-<article class="card rot-3">
-  <button class="card__inner" aria-label="Lore">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/LoreLuchterhand_Polaroid.jpg" alt="Lore Luchterhand" loading="lazy">
-      <p class="caption">Lore</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Lore</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Wärme, Lächeln & kluger Rat</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Backen</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Kann jonglieren</dd></div>
-        <div class="bio__row"><dt>Soul-Food</dt><dd>Schwarzbrot mit Käse</dd></div>
-        <div class="bio__row"><dt>Für einen Tag</dt><dd>Mutter</dd></div>
-      </dl>
-    </div>
-  </button>
-</article>
-
-<!-- 10 Karla -->
-<article class="card rot--1">
-  <button class="card__inner" aria-label="Karla">
-    <span class="pin"></span>
-    <div class="card__face card__front">
-      <img src="assets/images/KarlaDekker_Polaroid.jpg" alt="Karla Dekker" loading="lazy">
-      <p class="caption">Karla</p>
-    </div>
-    <div class="card__face card__back">
-      <h3>Karla</h3>
-      <dl class="bio">
-        <div class="bio__row"><dt>Markenzeichen</dt><dd>Weltverbesser-Syndrom</dd></div>
-        <div class="bio__row"><dt>Never without</dt><dd>Handdesinfektionsmittel</dd></div>
-        <div class="bio__row"><dt>Fun Fact</dt><dd>Hat Flugangst</dd
+<script>
+// Flip per Klick – toggelt aria-expanded
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.card__inner');
+  if (!btn) return;
+  const open = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!open));
+});
+</script>
+</body>
+</html>
