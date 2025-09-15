@@ -6,7 +6,6 @@
   /* Hintergründe / Flächen */
   --background_body: #e8eddf;
   --background_text: #cfd7c2;
-  /*--weissgraublau: #f2f6fa;*/
   --weiss: #fff;
 
   /* Text / Neutral */
@@ -136,7 +135,7 @@ body.home .stage{
 }
 
 body.home .left  { grid-area:left;  position:relative; }
-body.home .intro { grid-area:intro; text-align:center; }
+body.home .intro { grid-area:intro; text-align:center; position:relative; z-index:10; padding-inline: clamp(8px, 2vw, 16px); }
 body.home .right { grid-area:right; position:relative; }
 
 body.home .intro h1{
@@ -151,7 +150,7 @@ body.home .intro p{
 
 /* Foto-Stapel */
 body.home .stack{ position:relative; min-height:520px; }
-body.home .photo{ position:absolute; transition: transform .25s ease; }
+body.home .photo{ position:absolute; transition: transform .25s ease; z-index:1; }
 body.home .photo img{
   display:block; width:100%; height:auto;
   filter:
@@ -183,16 +182,12 @@ body.album-page{
 .album-header img{ display:block; width:100%; height:auto; }
 
 .album-header .home-link {
-  color: var(--hellgrau);                  /* sichtbar auf dunklem Bild */
-  text-shadow: 0 2px 6px rgba(0,0,0,.45);  /* bessere Abhebung */
+  color: var(--hellgrau);
+  text-shadow: 0 2px 6px rgba(0,0,0,.45);
 }
-.album-header .home-link:hover {
-  color: var(--weiss);                     /* beim Hover noch heller */
-}
+.album-header .home-link:hover { color: var(--weiss); }
 
-body.album-page > footer{
-  margin-top: auto;    /* schiebt den Footer an das Seitenende */
-}
+body.album-page > footer{ margin-top: auto; }
 .container.album-layout{
   flex: 1 0 auto;
   display:flex;
@@ -212,7 +207,6 @@ body.album-page > footer{
 
 .platforms a{
   display:flex; align-items:center; gap:10px;
-  /* background-color: var(--weiss); */
   border:1px solid var(--hellgrau2);
   border-radius:6px;
   padding:10px 16px;
@@ -278,26 +272,21 @@ body.buecher{
 .book-hero{
   background-image: url('../images/buecherregal-panorama.jpg');
   position: relative;
-  display:flex;                 /* macht den Bereich zum Flex-Container */
-  align-items:center;           /* vertikal zentrieren */
-  justify-content:center;       /* horizontal zentrieren */
-  /* width:100%; */
+  display:flex;
+  align-items:center;
+  justify-content:center;
   min-height: 300px;
   color: var(--hellgrau);
   text-shadow: 1px 1px 2px var(--dunkelgrau2);
   background-size:cover;
   background-position:center;
-  /* padding-block: clamp(14px, 3.8vw, 28px) clamp(10px, 2.2vw, 18px); */
-  /* margin-bottom: clamp(6px, 1.2vw, 14px);  */
 }
 
-.book-hero .home-link {
-  color: var(--weiss);                  /* weiß sichtbar auf dunklem Regalbild */
-  text-shadow: 0 2px 6px rgba(0,0,0,.45);  /* leichte Abhebung */
+.book-hero .home-link{
+  color: var(--weiss);
+  text-shadow: 0 2px 6px rgba(0,0,0,.45);
 }
-.book-hero .home-link:hover {
-  color: var(--hellgrau);               /* beim Hover etwas heller/grauer */
-}
+.book-hero .home-link:hover{ color: var(--hellgrau); }
 
 /* Container direkt nach dem Hero: Top-Abstand + Top-Padding weg */
 .book-hero + .container{
@@ -307,36 +296,35 @@ body.buecher{
 
 /* Der innere Wrapper begrenzt die Zeilenbreite und zentriert den Text */
 .book-hero-content{
-  max-width: 900px;             /* gleiche Breite wie .container */
-  width: min(92vw, 900px);      /* auf kleinen Screens nicht überlaufen */
+  max-width: 900px;
+  width: min(92vw, 900px);
   margin: 0 auto;
-  padding: 0 16px;              /* etwas Seitenluft */
-  text-align: center;           /* Überschrift & Untertitel mittig */
+  padding: 0 16px;
+  text-align: center;
 }
 
 .book-hero-content h1{ margin: .2em 0 .3em; }
 .book-hero-content h2{ margin: 0; font-weight: 400; line-height: 1.3; }
 .book{
-  display: block;                       /* statt flex */
+  display: block;
   background: var(--background_text);
   border: 1px solid var(--umrandung);
   padding: 1em;
   margin-top: 1.5em;
   border-radius: 4px;
-  /* falls irgendwo noch display:flex geerbt wird */
 }
-.book::after{                           /* Float sauber „einfangen“ */
+.book::after{
   content: "";
   display: block;
   clear: both;
 }
 .book img{
-  float: left;                           /* Umfluss aktivieren */
+  float: left;
   max-width: 150px;
-  width: 150px;                          /* optional: fix, wie im Screenshot */
+  width: 150px;
   height: auto;
   border-radius: 4px;
-  margin: .2em 1.2em .6em 0;             /* Abstand rechts/unten zum Text */
+  margin: .2em 1.2em .6em 0;
 }
 .book-button{
   display:inline-block; padding:.6em 1.2em;
@@ -363,14 +351,6 @@ body.buecher{
 /* ================================================= */
 /* === PAGE: SCHREIB MIR =========================== */
 
-/* --- BÜCHER: Bild wieder aktivieren (bestehenden .book-hero-Block ergänzen) --- */
-.book-hero{
-  background-image: url('../images/buecherregal-panorama.jpg');
-  color: var(--hellgrau);
-  text-shadow: 1px 1px 2px var(--dunkelgrau2);
-}
-
-/* --- SCHREIB MIR: Hero wiederherstellen (neu hinzufügen) --- */
 .kontakt-hero{
   background-image: url('../images/schreib-mir-panorama.jpg');
   background-size: cover;
@@ -438,7 +418,6 @@ body.buecher{
     height: auto;
     overflow: hidden;
   }
-  /* auf Tablet darf das Panoramabild ruhig etwas croppen */
   .album-header img{
     display: block;
     width: 100%;
@@ -448,13 +427,11 @@ body.buecher{
 
   /* --- BÜCHER --- */
   .book-hero{
-    min-height: 240px;             /* vorher 300px */
+    min-height: 240px;
     background-position: center;
     background-size: cover;
   }
-  .book-hero-content{
-    padding: 0 16px;
-  }
+  .book-hero-content{ padding: 0 16px; }
 
   /* --- INTERVIEW / FLOAT-BILD --- */
   .float-image{
@@ -465,23 +442,10 @@ body.buecher{
 
   /* --- KONTAKT --- */
   .kontakt-hero{
-    min-height: 320px;             /* vorher 380px */
+    min-height: 320px;
     background-position: center;
   }
 }
-
-/* ---------------------------
-@media (max-width:1024px){
-  body.home{ --side-scale: .9; }
-  body.home .stage{
-    grid-template-columns: minmax(220px,1fr) min(520px,52vw) minmax(220px,1fr);
-    column-gap: clamp(32px, 7vw, 80px);
-  }
-  .container.album-layout{
-    flex-direction:column; gap:20px; padding:20px 10px; max-width:100%;
-  }
-}
---------------------------- */
 
 /* Mobile (≤768px) */
 @media (max-width:768px){
@@ -492,6 +456,31 @@ body.buecher{
     padding: 0.75em;
   }
 
+  /* --- HOME: Grid einkolumnig + Fotos nicht absolut --- */
+  body.home .stage{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "left"
+      "right";
+    row-gap: clamp(14px, 3.5vw, 28px);
+  }
+  body.home .stack{
+    position: static;
+    min-height: unset;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: clamp(10px, 3vw, 18px);
+  }
+  body.home .photo{
+    position: static;
+    width: clamp(160px, 80vw, 320px);
+    transform: none;
+  }
+  body.home .stack .photo:nth-child(odd){  transform: rotate(-2deg); }
+  body.home .stack .photo:nth-child(even){ transform: rotate(2deg); }
+
   /* --- ALBUM --- */
   .container.album-layout{
     gap: 16px;
@@ -500,15 +489,10 @@ body.buecher{
   .track{ padding: 6px 0; }
   .lyrics{ margin: 8px 0 14px 0; }
 
-  /* Header-Bild auf Mobil nicht croppen, komplett zeigen */
-  .album-header img{
-    object-fit: contain;
-  }
+  .album-header img{ object-fit: contain; }
 
   /* --- BÜCHER --- */
-  .book{
-    padding: .9em;
-  }
+  .book{ padding: .9em; }
   .book img{
     float: none;
     display: block;
@@ -521,12 +505,8 @@ body.buecher{
     text-align: center;
     background-position: center;
   }
-  .book-hero-content h1{
-    font-size: clamp(20px, 6.4vw, 28px);
-  }
-  .book-hero-content h2{
-    font-size: clamp(14px, 3.8vw, 18px);
-  }
+  .book-hero-content h1{ font-size: clamp(20px, 6.4vw, 28px); }
+  .book-hero-content h2{ font-size: clamp(14px, 3.8vw, 18px); }
 
   /* --- INTERVIEW / FLOAT-BILD --- */
   .float-image{
@@ -537,45 +517,11 @@ body.buecher{
   }
 
   /* --- KONTAKT --- */
-  .kontakt-hero{
-    min-height: 220px;
-  }
+  .kontakt-hero{ min-height: 220px; }
 
   /* Footer niemals überdecken */
-  footer{
-    position: relative;
-    z-index: 1;
-  }
+  footer{ position: relative; z-index: 1; }
 }
-
-/* ---------------------------
-@media (max-width:768px){
-  body.home .stage{
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "intro"
-      "left"
-      "right";
-    row-gap: clamp(14px, 3.5vw, 28px);
-  }
-  body.home .stack{
-    position: static; min-height: unset;
-    display:flex; flex-direction:column; align-items:center;
-    gap: clamp(10px, 3vw, 18px);
-  }
-  body.home .photo{ position: static; width: clamp(160px, 80vw, 320px); transform:none; }
-  body.home .stack .photo:nth-child(odd){  transform: rotate(-2deg); }
-  body.home .stack .photo:nth-child(even){ transform: rotate(2deg); }
-
-  .album-header{ height:auto; overflow:hidden; }
-  .album-header img{ object-fit: contain; }
-  body.album-page{ min-height:100vh; }
-  footer{ position:relative; z-index:1; }
-  .left, .right{ flex:1 0 100%; margin:0; }
-  .album-title, .track, .lyrics{ margin-top:0; margin-bottom:10px; }
-  .float-image{ float:none; display:block; margin:0 auto 20px auto; }
-}
---------------------------- */
 
 /* Bewegungspräferenz */
 @media (prefers-reduced-motion: reduce){
