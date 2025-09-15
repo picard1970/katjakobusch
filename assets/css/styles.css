@@ -6,8 +6,8 @@
   /* Hintergründe / Flächen */
   --background_body: #e8eddf;
   --background_text: #cfd7c2;
-  --weissgraublau: #f2f6fa;
-  --weiss: #fff;
+  /*--weissgraublau: #f2f6fa;*/
+  /*--weiss: #fff;*/
 
   /* Text / Neutral */
   --schwarz: #000;
@@ -29,18 +29,6 @@
   --gruen-hover: #5a7d62;
 }
 
-/* Unused (temporär deaktiviert – bei Bedarf reaktivieren)
-:root {
-  --gelb: #FFD75F;
-  --gelb-hover: #f0c84b;
-  --hellgelb: #fffbe6;
-  --weissgrau: #f9f9f9;
-  --weiss-transparent: rgba(255,255,255,0.3);
-  --ocker: #dbc49a;
-  --himmelblau: #8fb3cc;
-  --himmelblau2: #a9c7dd;
-  --graubraun: #4d4a3d;
-}
 */
 
 /* Reset + Basis */
@@ -158,7 +146,7 @@ body.home .right .p6{ width:calc(240px * var(--side-scale)); right:-10px; top:38
 
 body.album-page{
   margin:0;
-  background-color: var(--weissgraublau);
+  background-color: var(--background_body);
   color: var(--grau);
   display:flex; flex-direction:column;
   min-height:100vh;
@@ -184,7 +172,7 @@ body.album-page{
 
 .platforms a{
   display:flex; align-items:center; gap:10px;
-  background-color: var(--weiss);
+  /* background-color: var(--weiss); */
   border:1px solid var(--hellgrau2);
   border-radius:6px;
   padding:10px 16px;
@@ -211,7 +199,7 @@ body.album-page{
 
 /* Lyrics */
 .lyrics{
-  background-color: var(--weissgraublau);
+  background-color: var(--background_body);
   border-left:2px solid var(--gruen);
   padding:10px 0 10px 10px;
   margin:10px 0 20px 0;
