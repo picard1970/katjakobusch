@@ -97,6 +97,7 @@ $_SESSION["captcha_result"] = $a + $b;
     <p>
       <a href="index.html">Startseite</a> |
       <a href="buecher.html">Bücher</a> |
+      <a href="meetthecrew.html">Meet the Crew</a> |
       <a href="ideenmeer/">IdeenMeer</a> |
       <a href="ueberkatja.html">Über Katja</a> |
       <a href="impressum.html">Impressum</a> |
