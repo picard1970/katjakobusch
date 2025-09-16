@@ -27,7 +27,18 @@
       color: var(--dunkelgrau2);
       line-height: 1.6;
     }  
-  
+
+    /* Board-Layout + Basisvariablen */
+    .board{
+      --gap: clamp(12px, 2.2vw, 22px);
+      --card-w: clamp(180px, 26vw, 260px);  /* <— steuert die Kartengröße */
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
+      gap: var(--gap);
+      justify-items: center;
+      padding: clamp(18px, 3.2vw, 32px);
+    }
+    
     /* ===== Karten (mit leichter Schieflage) ===== */
     .card{
       position:relative;
@@ -68,9 +79,10 @@
       position:absolute; inset:0;
       backface-visibility:hidden;
       transform-style:preserve-3d;
-      border-radius:10px;
+      border-radius:0px;
       overflow:hidden;
-      outline:1px solid rgba(0,0,0,.06);
+      outline: none;
+      background: #fff;
     }
   
     /* Vorderseite: NUR Bild → kein Text-Blur */
@@ -113,7 +125,7 @@
     }
   </style>
 </head>
-<body>
+<body class="crew">
 
 <section class="board" aria-label="Meet the Crew">
 
