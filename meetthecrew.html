@@ -30,15 +30,15 @@
 
     /* ===== Sticky-Notes Header ===== */
     .notes {
-      --note-gap: clamp(10px, 2.2vw, 22px);
-      --note-w: clamp(220px, 32vw, 440px);     /* Standardbreite eines Zettels */
-      --note-w-sm: clamp(180px, 28vw, 360px);  /* etwas kleiner für rechte Spalte */
+      --note-gap: clamp(12px, 2.4vw, 26px);
+      --note-w: clamp(280px, 40vw, 520px);     /* Standardbreite eines Zettels */
+      --note-w-sm: clamp(220px, 34vw, 420px);  /* etwas kleiner für rechte Spalte */
 
       display: grid;
       grid-template-columns: 1fr auto;         /* links groß, rechts Spalte */
       align-items: start;
       gap: var(--note-gap);
-      padding: clamp(18px, 3.2vw, 32px);
+      padding: clamp(20px, 3.2vw, 36px);
     }
 
     .notes-left {
@@ -68,7 +68,7 @@
       width: 100%;
       height: auto;
       border-radius: 8px;
-      background: #fff; /* für PNGs mit Transparenz */
+    }
     
     /* Board-Layout + Basisvariablen */
     .board{
