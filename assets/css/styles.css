@@ -384,6 +384,46 @@ body.buecher{
 /* ================================================= */
 /* ===== PAGE: CREW ================================ */
 
+/* Hero mit Mauer-Hintergrund */
+.crew-hero {
+  background-image: url('../images/mauer_panorama.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: var(--weiss);
+  text-shadow: 1px 2px 4px rgba(0,0,0,.6);
+}
+
+.crew-hero__inner {
+  max-width: 900px;
+  padding: 20px;
+}
+
+.crew-hero__title {
+  font-size: clamp(28px, 5vw, 46px);
+  margin: 0 0 16px 0;
+  font-weight: 700;
+}
+
+/* Buttons im Hero */
+.crew-hero .crew-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Dünner grüner Streifen */
+.crew-separator {
+  height: 8px;
+  background: var(--background_text);
+}
+
 body.crew{
   margin:0;
   padding:0;
