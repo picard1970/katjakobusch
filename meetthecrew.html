@@ -84,23 +84,35 @@
       
       /* Karten breiter machen + angenehme Seitenränder */
       .board{
-        --card-w: clamp(260px, 90vw, 430px); /* Breite der Polaroids */
-        padding: clamp(10px, 3.5vw, 20px);
-        row-gap: clamp(8px, 2.6vw, 16px);    /* vertikaler Abstand zwischen Karten */
+        --card-w: clamp(300px, 92vw, 440px); /* Breite der Polaroids */
+        padding: clamp(12px, 4vw, 24px);
+        row-gap: clamp(16px, 3.6vw, 26px);    /* vertikaler Abstand zwischen Karten */
         grid-template-columns: 1fr;          /* einspaltig */
         justify-items: center;               /* mittig ausrichten */
       }
     
       /* Kein künstliches Überlappen mehr */
-      .card{ margin-block: 0; }              /* war vorher negativ für „Schieben“ */
+      .card{
+        width: min(92vw, 440px);
+        margin-block: 0;               /* war vorher negativ für „Schieben“ */
+        aspect-ratio: 3 / 4.2;
+      }
     
       /* Leicht kleinere Drehungen (verringert visuelle Kollisionen) */
-      .rot--3 { transform: rotate(-2deg); }
-      .rot--2 { transform: rotate(-1.4deg); }
-      .rot--1 { transform: rotate(-0.8deg); }
-      .rot-1  { transform: rotate(0.8deg);  }
-      .rot-2  { transform: rotate(1.4deg);  }
-      .rot-3  { transform: rotate(2deg);    }
+      .rot--3 { transform: rotate(-0.8deg); }
+      .rot--2 { transform: rotate(-0.6deg); }
+      .rot--1 { transform: rotate(-0.4deg); }
+      .rot-1  { transform: rotate( 0.4deg); }
+      .rot-2  { transform: rotate( 0.6deg); }
+      .rot-3  { transform: rotate( 0.8deg); }
+
+      /* Pin etwas dichter ans Bild, damit oben nichts abgeschnitten wirkt */
+      .pin{ top: -8px; }
+
+      /* Flip-Icon nicht zu groß auf kleinen Screens */
+      .card__front::after{
+        width: 22px; height: 22px;
+      }
     }
     
     /* Board-Layout + Basisvariablen */
