@@ -387,7 +387,7 @@ body.buecher{
 body.crew{
   margin:0;
   padding:0;
-  background: var(--background_body);
+  background: var(--background_text);
   color: var(--dunkelgrau2);
   line-height:1.6;
 }
