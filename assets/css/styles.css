@@ -382,26 +382,26 @@ body.buecher{
 .interview-text p{ margin-bottom:1em; }
 
 /* ================================================= */
-/* === PAGE: ALBUM ================================= */
+/* ===== PAGE: CREW ===== */
 
 body.crew {
   margin: 0;
   padding: 0;
-  background-image: url('.../images/kork-background.jpg');
+  background-image: url('../images/kork-background.jpg'); /* Pfad korrigiert */
   background-repeat: repeat-y;
-  background-size: 100% auto;   /* füllt die Breite, wiederholt nach unten */
+  background-size: 100% auto;
   background-position: top center;
   color: var(--dunkelgrau2);
   line-height: 1.6;
-}  
-<!-- Footer lesbar machen -->
+}
+
+/* Footer lesbar machen */
 body.crew footer{
   text-align:center;
   padding:16px 12px;
   margin-top:40px;
-  background: rgba(255,255,255,0.85); /* heller, milchiger Streifen */
+  background: rgba(255,255,255,0.85);
   color:#222;
-  /* optional, wo unterstützt: leichte Glas-Optik */
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
@@ -411,90 +411,101 @@ body.crew footer a{
   text-decoration:none;
   margin:0 6px;
 }
-<!-- Home link oben rechts lesbar machen -->
+
+/* Home-Link oben rechts gut lesbar */
 body.crew .home-link{
-  color: var(--weiss);
-  text-shadow: 0 2px 6px rgba(0,0,0,.45);
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.9);
+  color: #222;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background .2s ease, color .2s ease;
 }
-body.crew .home-link:hover{ color: var(--hellgrau); }
+body.crew .home-link:hover{
+  background: #222;
+  color: #fff;
+}
 
 /* ===== Sticky-Notes Header ===== */
 .notes {
-   --gap: clamp(10px, 2vw, 24px);
-  --left-w: clamp(260px, 36vw, 520px);   /* linke große Note */
-  --right-w: clamp(220px, 30vw, 420px);  /* rechte Notes */
+  --gap: clamp(10px, 2vw, 24px);
+  --left-w: clamp(260px, 36vw, 520px);
+  --right-w: clamp(220px, 30vw, 420px);
   display: grid;
   grid-template-columns: minmax(200px, var(--left-w)) minmax(180px, var(--right-w));
   align-items: start;
   gap: var(--gap);
   padding: clamp(18px, 3vw, 32px);
-  justify-content: start;                /* alles von links ausgerichtet */
+  justify-content: start;
 }
 .notes-left{ display: grid; justify-items: start; }
 .notes-right{
   display: grid;
   gap: var(--gap);
-  justify-items: start;                  /* ebenfalls linksbündig */
+  justify-items: start;
 }
-.note{ width: 100%; }
+.note{ width: 100%; margin: 0; }          /* figure-Standardrand neutralisieren */
 .note-lg{ max-width: var(--left-w); }
 .note-sm{ max-width: var(--right-w); }
-.note img {
+
+.note img{
   display: block;
   width: 100%;
   height: auto;
-  background: transparent;               /* PNG bleibt transparent */
+  background: transparent;
   filter: drop-shadow(2px 4px 6px rgba(0,0,0,.28));
 }
-/* leichte organische Schieflagen wie im Screenshot */
+
+/* leichte Schieflagen */
 .tilt--1{ transform: rotate(-1.6deg); }
 .tilt-1 { transform: rotate( 1.2deg); }
 .tilt-2 { transform: rotate( 2deg); }
-/* Zettel rechts leicht nach rechts verschieben */
-.notes-right .note-sm:nth-child(1) {
+
+/* Rechte Zettel leicht verschieben (überschreibt .tilt-*) */
+.notes-right .note-sm:nth-child(1){
   transform: rotate(1.2deg) translateX(36px);
 }
-.notes-right .note-sm:nth-child(2) {
-  transform: rotate(2deg) translate(36px, -25px); /* etwas nach rechts + leicht nach oben */
+.notes-right .note-sm:nth-child(2){
+  transform: rotate(2deg) translate(36px, -25px);
 }
 
-/* Mobil: alle 3 Notes untereinander, linksbündig */
+/* Mobil: untereinander + großzügige Breite */
 @media (max-width: 768px){
   .notes{
     grid-template-columns: 1fr;
     padding-inline: clamp(10px, 4vw, 20px);
   }
   .notes-right{ gap: clamp(8px, 2.5vw, 14px); }
-  .note, .note-lg, .note-sm{ max-width: min(92vw, 520px); }  
-  /* Karten breiter machen + angenehme Seitenränder */
+  .note, .note-lg, .note-sm{ max-width: min(92vw, 520px); }
+
+  /* Karten breiter, keine Überlappung */
   .board{
-    --card-w: clamp(300px, 92vw, 440px); /* Breite der Polaroids */
+    --card-w: clamp(300px, 92vw, 440px);
     padding: clamp(10px, 4vw, 20px);
-    row-gap: clamp(16px, 3.6vw, 26px);    /* vertikaler Abstand zwischen Karten */
-    grid-template-columns: 1fr;          /* einspaltig */
-    justify-items: center;               /* mittig ausrichten */
+    row-gap: clamp(16px, 3.6vw, 26px);
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
-  /* Kein künstliches Überlappen mehr */
   .card{
     width: min(94vw, 460px);
-    margin-block: 0;               /* war vorher negativ für „Schieben“ */
+    margin-block: 0;
     aspect-ratio: 3 / 4.2;
   }
-  /* Leicht kleinere Drehungen (verringert visuelle Kollisionen) */
   .rot--3 { transform: rotate(-0.8deg); }
   .rot--2 { transform: rotate(-0.6deg); }
   .rot--1 { transform: rotate(-0.4deg); }
   .rot-1  { transform: rotate( 0.4deg); }
   .rot-2  { transform: rotate( 0.6deg); }
   .rot-3  { transform: rotate( 0.8deg); }
-
-  /* Pin etwas dichter ans Bild, damit oben nichts abgeschnitten wirkt */
   .pin{ top: -8px; }
-
-  /* Flip-Icon nicht zu groß auf kleinen Screens */
-  .card__front::after{
-    width: 22px; height: 22px;
-  }
+  .card__front::after{ width: 22px; height: 22px; }
 }
 
 /* Board-Layout + Basisvariablen */
