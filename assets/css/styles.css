@@ -512,14 +512,15 @@ body.crew .home-link:hover{ color: var(--hellgrau); }
 }
 
 /* Board-Layout + Basisvariablen */
+/* Board-Layout: automatisch viele Spalten je nach Breite */
 .board{
-  --gap: clamp(12px, 2.2vw, 22px);
-  --card-w: clamp(180px, 26vw, 260px);  /* <— steuert die Kartengröße */
+  --gap: clamp(12px, 2vw, 22px);
+  --card-w: clamp(180px, 22vw, 260px);     /* Basis */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
   gap: var(--gap);
   justify-items: center;
-  padding: clamp(18px, 3.2vw, 32px);
+  padding: clamp(18px, 3vw, 32px);
 }
 
 /* ===== Karten (mit leichter Schieflage) ===== */
