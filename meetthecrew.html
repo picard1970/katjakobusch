@@ -9,26 +9,39 @@
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
   <link rel="stylesheet" href="assets/css/styles.css?v=124">
-  <script data-goatcounter="https://katjakobusch.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </head>
+
 <body class="crew">
 
-  <div class="crew-frame">
-    <!-- dickerer Top-Streifen + Header -->
-    <header class="crew-header" aria-label="Seitentitel und Filter">
-      <h1 class="crew-title">Meet the Cast</h1>
-      <div class="crew-filters" role="group" aria-label="Buch-Filter">
-        <button class="filter-btn" data-filter="jake" aria-pressed="true" type="button">
-          Jake &amp; the City
+  <!-- Home (bleibt) -->
+  <a href="index.html" class="home-link">Home</a>
+
+  <!-- Header mit Mauerbild + Titel + Filter -->
+  <header class="crew-hero" role="banner" aria-label="Seitenkopf">
+    <div class="crew-hero__inner">
+      <h1 class="crew-hero__title">MEET THE CAST</h1>
+
+      <div class="crew-filters" role="group" aria-label="Bücher filtern">
+        <button id="btn-jake" class="filter-btn" data-book="jake" aria-pressed="true">
+          Jake &amp; the City <span class="count" aria-hidden="true">(0)</span>
         </button>
-        <button class="filter-btn" data-filter="echo" aria-pressed="true" type="button">
-          Echo &amp; Ember
+        <button id="btn-echo" class="filter-btn" data-book="echo" aria-pressed="true">
+          Echo &amp; Ember <span class="count" aria-hidden="true">(0)</span>
         </button>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- Polaroid-Grid (unverändert, nur data-books wird verwendet) -->
-    <section class="board" aria-label="Meet the Crew">
+  <!-- Dünner grüner Trenner -->
+  <div class="crew-separator" aria-hidden="true"></div>
+
+  <!-- „Korkwand“ im grünen Rahmen -->
+  <main class="crew-frame" role="main">
+    <section class="board" aria-label="Cast">
+
+      <!-- Deine Polaroids unverändert, nur data-books ist schon drin -->
       <!-- 1 Jake -->
       <article class="card rot--2" data-books="jake,echo">
         <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Jake umdrehen">
@@ -67,273 +80,9 @@
         </button>
       </article>
 
-      <!-- 3 Chris -->
-      <article class="card rot-1" data-books="jake,echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Chris umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/ChrisStuckmann_Polaroid.jpg" alt="Chris">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Chris</h3>
-              <p><strong>Markenzeichen:</strong> Wo Chris ist, ist Chaos</p>
-              <p><strong>Nie ohne:</strong> Buch, das er gerade liest (aktuell Percy Jackson)</p>
-              <p><strong>Fun Fact:</strong> Wollte in der 5. Klasse Klingonisch als Fremdsprache wählen</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> unsichtbar</p>
-            </div>
-          </div>
-        </button>
-      </article>
+      <!-- ... ALLE WEITEREN Polaroids UNVERÄNDERT lassen ... -->
+      <!-- (dein kompletter Artikel-Block von oben hier hinein) -->
 
-      <!-- 4 Raul -->
-      <article class="card rot--2" data-books="jake,echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Raul umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/RaulMontez_Polaroid.jpg" alt="Raul">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Raul</h3>
-              <p><strong>Markenzeichen:</strong> breites Grinsen &amp; blöde Witze</p>
-              <p><strong>Nie ohne:</strong> Kaugummis</p>
-              <p><strong>Fun Fact:</strong> Hat mal einen Liebesbrief an Jennifer Lopez geschrieben</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> berühmt</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 5 Anouk -->
-      <article class="card rot--2" data-books="echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Anouk umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/AnoukHagedorn_Polaroid.jpg" alt="Anouk">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Anouk</h3>
-              <p><strong>Markenzeichen:</strong> Inselkind aus Überzeugung</p>
-              <p><strong>Nie ohne:</strong> Mister Tiffels</p>
-              <p><strong>Fun Fact:</strong> Hat als 4-Jährige Frösche geküsst, um einen Prinzen zu finden</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> im Bundestag</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 6 Mister Tiffels -->
-      <article class="card rot-3" data-books="echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Mister Tiffels umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/MisterTiffels_Polaroid.jpg" alt="Mister Tiffels">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Mister Tiffels</h3>
-              <p><strong>Markenzeichen:</strong> Kulleraugen</p>
-              <p><strong>Nie ohne:</strong> Anouk</p>
-              <p><strong>Fun Fact:</strong> Wude mal von einem Krebs in die Nase gezwickt</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> allein zuhause, um alle Leckerlies zu fressen</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 7 Eike -->
-      <article class="card rot--1" data-books="echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Eike umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/EikeHirsch_Polaroid.jpg" alt="Eike">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Eike</h3>
-              <p><strong>Markenzeichen:</strong> Möchtegern-Thor-Vibes</p>
-              <p><strong>Nie ohne:</strong> Extraprise Gemeinheit</p>
-              <p><strong>Fun Fact:</strong> Ekelt sich vor Spinnen</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> Harry Styles</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 8 Björn -->
-      <article class="card rot-1" data-books="jake,echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Björn umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/BjoernTiedemann_Polaroid.jpg" alt="Björn">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Björn</h3>
-              <p><strong>Markenzeichen:</strong> Schwarze Brille</p>
-              <p><strong>Nie ohne:</strong> Zeitung am Morgen</p>
-              <p><strong>Fun Fact:</strong> Hatte als Kind Angst vor Möwen, weil ihm eine sein Eis geklaut hat</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> allwissend</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 9 Lore -->
-      <article class="card rot-2" data-books="echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Lore umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/LoreLuchterhand_Polaroid.jpg" alt="Lore">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Lore</h3>
-              <p><strong>Markenzeichen:</strong> Verständnis &amp; kluger Rat</p>
-              <p><strong>Nie ohne:</strong> Backen</p>
-              <p><strong>Fun Fact:</strong> Kann jonglieren</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> Mutter</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 10 Karla -->
-      <article class="card rot--2" data-books="jake,echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Karla umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/KarlaDekker_Polaroid.jpg" alt="Karla">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Karla</h3>
-              <p><strong>Markenzeichen:</strong> Weltverbesserer-Syndrom</p>
-              <p><strong>Nie ohne:</strong> Handdesinfektionsmittel</p>
-              <p><strong>Fun Fact:</strong> Hat Flugangst</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> ohne Verpflichtungen</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 11 Pia -->
-      <article class="card rot-1" data-books="echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Pia umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/PiaRosenberg_Polaroid.jpg" alt="Pia">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Pia</h3>
-              <p><strong>Markenzeichen:</strong> schwarzer Pixie, Brille</p>
-              <p><strong>Nie ohne:</strong> Erdbeer-Lipgloss</p>
-              <p><strong>Fun Fact:</strong> Liebt "Gilmore Girls" (Team Jess)</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> Eikes Nummer Eins</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 12 Kat -->
-      <article class="card rot--1" data-books="jake">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Kat umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/KatHernandez_Polaroid.jpg" alt="Kat">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Kat</h3>
-              <p><strong>Markenzeichen:</strong> böse Blicke, spitze Zunge</p>
-              <p><strong>Nie ohne:</strong> Kopfhörer</p>
-              <p><strong>Fun Fact:</strong> Hat mal Ballett getanzt</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> ein Tier, das fliegen kann</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 13 Esther -->
-      <article class="card rot-2" data-books="echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Esther umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/EstherHagedorn_Polaroid.jpg" alt="Esther">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Esther</h3>
-              <p><strong>Markenzeichen:</strong> Fels in der Brandung</p>
-              <p><strong>Nie ohne:</strong> Chip für den Einkaufswagen</p>
-              <p><strong>Fun Fact:</strong> liest Jugendbücher, um "up to date" zu sein</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> mit ihrer verstorbenen Tochter zusammen</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 14 Philip -->
-      <article class="card rot--2" data-books="echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Philip umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/PhilipHagedorn_Polaroid.jpg" alt="Philip">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Philip</h3>
-              <p><strong>Markenzeichen:</strong> leichter Fischgeruch (von der Seehundstation)</p>
-              <p><strong>Nie ohne:</strong> Sorge um Anouk und Esther</p>
-              <p><strong>Fun Fact:</strong> Schläft auf der linken Seite</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> in der Lage, unter Wasser zu atmen</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 15 Granny Turner -->
-      <article class="card rot-1" data-books="jake,echo">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Granny Turner umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/GrannyTurner_Polaroid.jpg" alt="Granny Turner">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Granny Turner</h3>
-              <p><strong>Markenzeichen:</strong> Double Chocolate Pecan Cookies</p>
-              <p><strong>Nie ohne:</strong> Lächeln</p>
-              <p><strong>Fun Fact:</strong> Hat Barack Obama die Hand geschüttelt</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> Detektivin wie "Miss Marple"</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 16 Peter -->
-      <article class="card rot--1" data-books="jake">
-        <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Peter umdrehen">
-          <span class="pin" aria-hidden="true"></span>
-          <div class="card__face card__front">
-            <img src="assets/images/PeterTurner_Polaroid.jpg" alt="Peter">
-          </div>
-          <div class="card__face card__back">
-            <div class="steckbrief">
-              <h3>Peter</h3>
-              <p><strong>Markenzeichen:</strong> Elternweisheiten, die nerven - aber oft helfen</p>
-              <p><strong>Nie ohne:</strong> Lesebrille</p>
-              <p><strong>Fun Fact:</strong> Wäre gerne Schauspieler geworden</p>
-              <p><strong>Wäre für einen Tag gerne ...</strong> am Filmset in Hollywood</p>
-            </div>
-          </div>
-        </button>
-      </article>
-
-      <!-- 17 Lilly -->
       <article class="card rot-3" data-books="jake,echo">
         <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Lilly umdrehen">
           <span class="pin" aria-hidden="true"></span>
@@ -343,7 +92,7 @@
           <div class="card__face card__back">
             <div class="steckbrief">
               <h3>Lilly</h3>
-              <p><strong>Markenzeichen:</strong> Zöpfchen &amp; Zahnlücken</p>
+              <p><strong>Markenzeichen:</strong> Zöpfchen & Zahnlücken</p>
               <p><strong>Nie ohne:</strong> Kuschelhase "Herbert Hops"</p>
               <p><strong>Fun Fact:</strong> Kann auf Kommando weinen</p>
               <p><strong>Wäre für einen Tag gerne ...</strong> älter, damit Jake sie wahrnimmt</p>
@@ -351,94 +100,90 @@
           </div>
         </button>
       </article>
-    </section>
 
-    <!-- dezente Links unten im Rahmen (ersetzt Footer) -->
-    <nav class="crew-frame-bottom" aria-label="Seitennavigation">
-      <a href="index.html">Startseite</a>
-      <span aria-hidden="true">·</span>
-      <a href="impressum.html">Impressum</a>
-      <span aria-hidden="true">·</span>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">Startseite</a> |
+      <a href="impressum.html">Impressum</a> |
       <a href="datenschutz.html">Datenschutz</a>
-    </nav>
-  </div>
+    </p>
+  </footer>
 
   <script>
-    // Flip per Klick – unverändert
+    // Flip-Mechanik (wie gehabt)
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.card__inner');
       if (!btn) return;
-      btn.setAttribute(
-        'aria-expanded',
+      btn.setAttribute('aria-expanded',
         btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
       );
     });
 
-    // --- Filter-Logik ---
-    (function(){
-      const btns = Array.from(document.querySelectorAll('.filter-btn'));
-      const cards = Array.from(document.querySelectorAll('.board .card'));
+    // --- Filter-Logik mit URL-Preselect + Zählanzeigen ---------------------
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const btnJake = document.getElementById('btn-jake');
+    const btnEcho = document.getElementById('btn-echo');
+    const buttons = [btnJake, btnEcho];
 
-      // URL-Parameter lesen (?books=jake,echo | jake | echo)
-      const params = new URLSearchParams(location.search);
-      const initial = (params.get('books') || 'jake,echo')
-        .split(',')
-        .map(s => s.trim())
-        .filter(Boolean);
+    // aktive Bücher lesen/schreiben
+    const active = new Set();
 
-      // Buttons initial setzen
-      btns.forEach(b => {
-        const key = b.dataset.filter;
-        const on = initial.includes(key);
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        b.classList.toggle('is-active', on);
+    function setPressed(button, on){
+      button.setAttribute('aria-pressed', on ? 'true' : 'false');
+      button.classList.toggle('is-on', on);
+    }
+
+    function initFromURL(){
+      // ?books=jake  |  ?books=echo  |  ?books=both
+      const p = new URLSearchParams(location.search);
+      const v = (p.get('books') || '').toLowerCase();
+      if (v === 'jake'){ active.add('jake'); }
+      else if (v === 'echo'){ active.add('echo'); }
+      else { active.add('jake'); active.add('echo'); } // Default: beide
+      setPressed(btnJake, active.has('jake'));
+      setPressed(btnEcho, active.has('echo'));
+    }
+
+    function applyFilter(){
+      // Falls alles abgewählt -> wieder beide aktiv (nie „leer“)
+      if (active.size === 0){ active.add('jake'); active.add('echo'); setPressed(btnJake,true); setPressed(btnEcho,true); }
+
+      cards.forEach(card => {
+        const books = card.dataset.books.split(',').map(s => s.trim());
+        const show = books.some(b => active.has(b));
+        card.toggleAttribute('hidden', !show);
       });
+      updateCounts();
+    }
 
-      function activeKeys(){
-        return btns
-          .filter(b => b.getAttribute('aria-pressed') === 'true')
-          .map(b => b.dataset.filter);
-      }
+    function updateCounts(){
+      // sichtbare Karten zählen
+      const visible = cards.filter(c => !c.hasAttribute('hidden'));
+      const countJake = visible.filter(c => c.dataset.books.includes('jake')).length;
+      const countEcho = visible.filter(c => c.dataset.books.includes('echo')).length;
+      btnJake.querySelector('.count').textContent = `(${countJake})`;
+      btnEcho.querySelector('.count').textContent = `(${countEcho})`;
+    }
 
-      function applyFilter(pushUrl = true){
-        const keys = activeKeys();
-
-        // Mindestens ein Button bleibt aktiv
-        if (keys.length === 0){
-          // falls alle aus → aktiviere beide wieder
-          btns.forEach(b => { b.setAttribute('aria-pressed', 'true'); b.classList.add('is-active'); });
-          return applyFilter();
-        }
-
-        // Karten filtern
-        cards.forEach(card => {
-          const list = (card.dataset.books || '').split(',').map(s => s.trim());
-          const show = list.some(tag => keys.includes(tag));
-          card.style.display = show ? '' : 'none';
-        });
-
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.book;
+        const nowOn = btn.getAttribute('aria-pressed') !== 'true';
+        setPressed(btn, nowOn);
+        if (nowOn) active.add(key); else active.delete(key);
+        applyFilter();
         // URL aktualisieren (ohne Reload)
-        if (pushUrl){
-          const q = new URLSearchParams(location.search);
-          q.set('books', keys.join(','));
-          history.replaceState({}, '', `${location.pathname}?${q.toString()}`);
-        }
-      }
-
-      // Click-Handling
-      btns.forEach(b => {
-        b.addEventListener('click', () => {
-          const now = b.getAttribute('aria-pressed') === 'true';
-          // Umschalten
-          b.setAttribute('aria-pressed', now ? 'false' : 'true');
-          b.classList.toggle('is-active', !now);
-          applyFilter();
-        });
+        const s = new URLSearchParams(location.search);
+        s.set('books', active.size===2 ? 'both' : [...active][0]);
+        history.replaceState(null, '', `${location.pathname}?${s}`);
       });
+    });
 
-      // Startzustand anwenden
-      applyFilter(false);
-    })();
+    initFromURL();
+    applyFilter();
   </script>
 </body>
 </html>
