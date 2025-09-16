@@ -78,6 +78,7 @@
     @media (max-width: 768px){
       .notes{
         grid-template-columns: 1fr;
+        padding-inline: clamp(10px, 4vw, 20px);
       }
       .notes-right{ gap: clamp(8px, 2.5vw, 14px); }
       .note, .note-lg, .note-sm{ max-width: min(92vw, 520px); }
@@ -85,7 +86,7 @@
       /* Karten breiter machen + angenehme Seitenränder */
       .board{
         --card-w: clamp(300px, 92vw, 440px); /* Breite der Polaroids */
-        padding: clamp(12px, 4vw, 24px);
+        padding: clamp(10px, 4vw, 20px);
         row-gap: clamp(16px, 3.6vw, 26px);    /* vertikaler Abstand zwischen Karten */
         grid-template-columns: 1fr;          /* einspaltig */
         justify-items: center;               /* mittig ausrichten */
@@ -93,7 +94,7 @@
     
       /* Kein künstliches Überlappen mehr */
       .card{
-        width: min(92vw, 440px);
+        width: min(94vw, 460px);
         margin-block: 0;               /* war vorher negativ für „Schieben“ */
         aspect-ratio: 3 / 4.2;
       }
