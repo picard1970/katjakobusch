@@ -382,15 +382,14 @@ body.buecher{
 .interview-text p{ margin-bottom:1em; }
 
 /* ================================================= */
-/* ===== PAGE: CREW ===== */
+/* ===== PAGE: CREW ================================ */
 
-body.crew {
-  background-image: url('../images/kork-background.jpg');
-  background-repeat: repeat-y;
-  background-size: 100% auto;
-  background-position: top center;
+body.crew{
+  margin:0;
+  padding:0;
+  background: var(--background_body);
   color: var(--dunkelgrau2);
-  line-height: 1.6;
+  line-height:1.6;
 }
 
 /* Grüner Rahmen um den Inhalt – oben dicker */
@@ -398,9 +397,13 @@ body.crew {
   width: min(1100px, 94vw);
   margin: clamp(16px, 3vw, 24px) auto;
   border: 10px solid var(--background_text);
-  border-top-width: 28px;                 /* oben dicker */
-  background: transparent;
+  border-top-width: 28px;
   position: relative;
+  /* Kork nur im Rahmen: */
+  background-image: url('../images/kork-background.jpg');
+  background-repeat: repeat;
+  background-size: 100% auto;
+  background-position: top center;
 }
 
 /* Header sitzt optisch im oberen Rahmen */
