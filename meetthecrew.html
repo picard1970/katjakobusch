@@ -65,6 +65,15 @@
     .tilt-1 { transform: rotate( 1.2deg); }
     .tilt-2 { transform: rotate( 2deg); }
 
+    /* Zettel rechts leicht nach rechts verschieben */
+    .notes-right .note-sm:nth-child(1) {
+      transform: rotate(1.2deg) translateX(12px);
+    }
+    
+    .notes-right .note-sm:nth-child(2) {
+      transform: rotate(2deg) translate(6px, -10px); /* etwas nach rechts + leicht nach oben */
+    }
+    
     /* Mobil: alle 3 Notes untereinander, linksbündig */
     @media (max-width: 768px){
       .notes{
@@ -72,7 +81,7 @@
       }
       .notes-right{ gap: clamp(8px, 2.5vw, 14px); }
       .note, .note-lg, .note-sm{ max-width: min(92vw, 520px); }
-    
+      
       /* Karten breiter machen + angenehme Seitenränder */
       .board{
         --card-w: clamp(260px, 90vw, 430px); /* Breite der Polaroids */
