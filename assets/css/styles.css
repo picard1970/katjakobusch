@@ -394,7 +394,7 @@ body.crew{
 
 /* Grüner Rahmen um den Inhalt – oben dicker */
 .crew-frame{
-  width: min(1100px, 94vw);
+  /* width: min(1100px, 94vw); */
   margin: clamp(16px, 3vw, 24px) auto;
   border: 10px solid var(--background_text);
   border-top-width: 28px;
