@@ -508,6 +508,9 @@ body.crew .board{
   margin: 8px -10px -10px -10px;          /* bündig bis an den Rahmen */
   border-top: 1px solid rgba(0,0,0,.06);
 }
+.crew-frame{
+  margin-top: 2px; 
+}
 
 .crew-frame-bottom a{
   color: inherit;                 /* unauffällig */
