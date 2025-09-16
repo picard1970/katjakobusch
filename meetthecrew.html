@@ -1,142 +1,117 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Meet the Crew</title>
-<style>
-/* ===== Reset / Basics ===== */
-* { box-sizing: border-box; }
-html, body { margin:0; padding:0; }
-body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:#caa87a;
-  color:#222;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meet the Crew</title>
+  <meta name="description" content="Figuren sind für Katja Kobusch viel mehr als nur Worte auf Papier.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=123">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js">
+  </script>
+  <style>
+    /* ===== Reset / Basics ===== */
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; }
+   
+    body.crew {
+      margin: 0;
+      padding: 0;
+      background-image: url('assets/images/kork-background.jpg');
+      background-repeat: repeat-y;
+      background-size: 100% auto;   /* füllt die Breite, wiederholt nach unten */
+      background-position: top center;
+      color: var(--dunkelgrau2);
+      line-height: 1.6;
+    }  
+  
+    /* ===== Karten (mit leichter Schieflage) ===== */
+    .card{
+      position:relative;
+      width:var(--card-w);
+      aspect-ratio: 3 / 4.2;
+      filter:
+        drop-shadow(0 2px 3px rgba(0,0,0,.25))
+        drop-shadow(0 12px 18px rgba(0,0,0,.18));
+    }
+    .rot--3 { transform: rotate(-3deg); }
+    .rot--2 { transform: rotate(-2deg); }
+    .rot--1 { transform: rotate(-1deg); }
+    .rot-1  { transform: rotate(1deg);  }
+    .rot-2  { transform: rotate(2deg);  }
+    .rot-3  { transform: rotate(3deg);  }
+    
+    /* Pin */
+    .pin{
+      position:absolute; top:-10px; left:50%;
+      transform:translateX(-50%);
+      width:20px; height:20px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #c00, #800);
+      box-shadow: 0 2px 5px rgba(0,0,0,.45);
+      z-index:2; pointer-events:none;
+    }
+  
+    /* ===== Flip-Mechanik (robust & scharf) ===== */
+    .card__inner{
+      position:relative; inset:0;
+      width:100%; height:100%;
+      border:0; padding:0; background:transparent;
+      cursor:pointer;
+      transform-style:preserve-3d;
+      transition: transform .6s ease;
+      will-change: transform;
+    }
+    .card__face{
+      position:absolute; inset:0;
+      backface-visibility:hidden;
+      transform-style:preserve-3d;
+      border-radius:10px;
+      overflow:hidden;
+      outline:1px solid rgba(0,0,0,.06);
+    }
+  
+    /* Vorderseite: NUR Bild → kein Text-Blur */
+    .card__front{
+      transform:rotateY(0deg);
+      background:#fff;
+    }
+    .card__front img{
+      display:block; width:100%; height:100%; object-fit:cover;
+    }
+    
+    /* Rückseite */
+    .card__back{
+      transform:rotateY(180deg);
+      background:#fffde8;
+      padding:12px;
+      overflow:auto;               /* falls sehr viel Text */
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
 
-/* ===== Korkbrett ===== */
-.board{
-  --gap: clamp(12px, 2.2vw, 22px);
-  --card-w: clamp(180px, 22vw, 240px);
-  background:
-    radial-gradient(12px 12px at 20% 30%, rgba(0,0,0,.06), transparent 60%) 0 0/90px 90px,
-    radial-gradient(10px 10px at 70% 60%, rgba(0,0,0,.05), transparent 60%) 0 0/120px 120px,
-    #caa87a;
-  min-height:100vh;
-  padding: clamp(18px, 3.2vw, 32px);
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-w),1fr));
-  gap: var(--gap);
-  justify-items:center;
-}
+    .steckbrief p {
+      margin: 0 0 0.6em 0;      /* Abstand zwischen Absätzen */
+      text-indent: -0.8em;      /* erste Zeile ohne Einzug */
+      padding-left: 0.8em;      /* zweite Zeile leicht eingerückt */
+      line-height: 1.4;
+    }
 
-/* ===== Karten (mit leichter Schieflage) ===== */
-.card{
-  position:relative;
-  width:var(--card-w);
-  aspect-ratio: 3 / 4.2;
-  filter:
-    drop-shadow(0 2px 3px rgba(0,0,0,.25))
-    drop-shadow(0 12px 18px rgba(0,0,0,.18));
-}
-.rot--3 { transform: rotate(-3deg); }
-.rot--2 { transform: rotate(-2deg); }
-.rot--1 { transform: rotate(-1deg); }
-.rot-1  { transform: rotate(1deg);  }
-.rot-2  { transform: rotate(2deg);  }
-.rot-3  { transform: rotate(3deg);  }
-
-/* Pin */
-.pin{
-  position:absolute; top:-10px; left:50%;
-  transform:translateX(-50%);
-  width:20px; height:20px; border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, #c00, #800);
-  box-shadow: 0 2px 5px rgba(0,0,0,.45);
-  z-index:2; pointer-events:none;
-}
-
-/* ===== Flip-Mechanik (robust & scharf) ===== */
-.card__inner{
-  position:relative; inset:0;
-  width:100%; height:100%;
-  border:0; padding:0; background:transparent;
-  cursor:pointer;
-  transform-style:preserve-3d;
-  transition: transform .6s ease;
-  will-change: transform;
-}
-.card__face{
-  position:absolute; inset:0;
-  backface-visibility:hidden;
-  transform-style:preserve-3d;
-  border-radius:10px;
-  overflow:hidden;
-  outline:1px solid rgba(0,0,0,.06);
-}
-
-/* Vorderseite: NUR Bild → kein Text-Blur */
-.card__front{
-  transform:rotateY(0deg);
-  background:#fff;
-}
-.card__front img{
-  display:block; width:100%; height:100%; object-fit:cover;
-}
-
-/* Rückseite: zwei Spalten, sehr gut lesbar */
-.card__back{
-  transform:rotateY(180deg);
-  background:#fffde8;
-  padding:12px 12px 14px;
-  display:grid;
-  grid-template-rows:auto 1fr;
-  gap:8px;
-  overflow:auto;               /* falls sehr viel Text */
-  scrollbar-width: thin;
-  -webkit-overflow-scrolling: touch;
-}
-
-.card__title{
-  margin:0;
-  font: 700 1.05rem/1.2 "Georgia", serif;
-  text-align:center;
-}
-
-/* Definition-List als zweispaltige Tabelle */
-.facts{
-  margin:0;
-  display:grid;
-  grid-template-columns: max-content 1fr;
-  column-gap:10px;
-  row-gap:6px;
-  font-size: clamp(.86rem, .95vw, .96rem);
-  line-height:1.28;
-  hyphens:auto;
-}
-.facts dt{
-  font-weight:700;
-  color:#222;
-}
-.facts dd{
-  margin:0;
-  color:#1c1c1c;
-}
-.facts dd ul{
-  margin:.2em 0 0 1em;
-  padding:0;
-}
-.facts dd li{ margin:.15em 0; }
-
-/* Flip an/aus */
-.card__inner[aria-expanded="true"]{ transform:rotateY(180deg); }
-
-/* Mobil: untereinander, leicht dichter gestapelt */
-@media (max-width:768px){
-  .board{ grid-template-columns:1fr; }
-  .card{ margin-block:-10px; }
-}
-</style>
+    .steckbrief strong {
+      font-weight: 600;
+    }
+    
+    /* Flip an/aus */
+    .card__inner[aria-expanded="true"]{ transform:rotateY(180deg); }
+    
+    /* Mobil: untereinander, leicht dichter gestapelt */
+    @media (max-width:768px){
+      .board{ grid-template-columns:1fr; }
+      .card{ margin-block:-10px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -152,20 +127,23 @@ body{
 
   <!-- 1 Jake -->
   <article class="card rot--2">
-    <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Jake umdrehen">
+      <span class="pin" aria-hidden="true"></span>
+      <!-- Vorderseite -->
       <div class="card__face card__front">
         <img src="assets/images/JakeDekker_Polaroid.jpg" alt="Jake">
       </div>
+
+      <!-- Rückseite -->
       <div class="card__face card__back">
-        <h3 class="card__title">Jake</h3>
-        <dl class="facts">
-          <dt>Markenzeichen</dt><dd>Grüne Beanie, Moody-Vibes</dd>
-          <dt>Never without</dt><dd>„Queen Faye“ (seine türkisgrüne Gitarre) und Kaffee</dd>
-          <dt>Fun Fact</dt><dd>Liebt nicht nur Marvel, sondern auch Disney-Filme</dd>
-          <dt>Soul-Food</dt><dd>Lores Apfelkuchen; Granny Turners Double Chocolate Pecan Cookies</dd>
-          <dt>Ein Tag als …</dt><dd>mit Jimi Hendrix im Tonstudio</dd>
-        </dl>
+        <div class="steckbrief">
+          <h3>Jake</h3>
+          <p><strong>Markenzeichen:</strong> Grüne Beanie, Moody-Vibes</p>
+          <p><strong>Never without:</strong> Queen Faye (seine türkisgrüne Gitarre) und Kaffee</p>
+          <p><strong>Fun Fact:</strong> Liebt nicht nur Marvel, sondern auch Disney-Filme</p>
+          <p><strong>Soul-Food:</strong> Lores Kuchen; Granny Turners Double Chocolate Pecan Cookies</p>
+          <p><strong>Wäre für einen Tag gerne ...</strong> mit Jimi Hendrix im Tonstudio</p>
+        </div>
       </div>
     </button>
   </article>
@@ -190,28 +168,8 @@ body{
     </button>
   </article>
 
-  <!-- 3 Raul -->
-  <article class="card rot--1">
-    <span class="pin" aria-hidden="true"></span>
-    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Raul umdrehen">
-      <div class="card__face card__front">
-        <img src="assets/images/RaulMontez_Polaroid.jpg" alt="Raul">
-      </div>
-      <div class="card__face card__back">
-        <h3 class="card__title">Raul</h3>
-        <dl class="facts">
-          <dt>Markenzeichen</dt><dd>Breites Grinsen &amp; blöde Sprüche</dd>
-          <dt>Never without</dt><dd>Kaugummis</dd>
-          <dt>Fun Fact</dt><dd>Schrieb mal einen Liebesbrief an Jennifer Lopez</dd>
-          <dt>Soul-Food</dt><dd>Quesadillas</dd>
-          <dt>Ein Tag als …</dt><dd>berühmt</dd>
-        </dl>
-      </div>
-    </button>
-  </article>
-
-  <!-- 4 Chris -->
-  <article class="card rot-2">
+  <!-- 3 Chris -->
+  <article class="card rot-1">
     <span class="pin" aria-hidden="true"></span>
     <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Chris umdrehen">
       <div class="card__face card__front">
@@ -225,6 +183,26 @@ body{
           <dt>Fun Fact</dt><dd>Wollte in der 5. Klasse Klingonisch als Fremdsprache wählen</dd>
           <dt>Soul-Food</dt><dd>Cheeseburger mit Pommes und Milchshake</dd>
           <dt>Ein Tag als …</dt><dd>unsichtbar</dd>
+        </dl>
+      </div>
+    </button>
+  </article>
+
+  <!-- 4 Raul -->
+  <article class="card rot--2">
+    <span class="pin" aria-hidden="true"></span>
+    <button class="card__inner" aria-expanded="false" aria-label="Steckbrief Raul umdrehen">
+      <div class="card__face card__front">
+        <img src="assets/images/RaulMontez_Polaroid.jpg" alt="Raul">
+      </div>
+      <div class="card__face card__back">
+        <h3 class="card__title">Raul</h3>
+        <dl class="facts">
+          <dt>Markenzeichen</dt><dd>Breites Grinsen &amp; blöde Sprüche</dd>
+          <dt>Never without</dt><dd>Kaugummis</dd>
+          <dt>Fun Fact</dt><dd>Schrieb mal einen Liebesbrief an Jennifer Lopez</dd>
+          <dt>Soul-Food</dt><dd>Quesadillas</dd>
+          <dt>Ein Tag als …</dt><dd>berühmt</dd>
         </dl>
       </div>
     </button>
