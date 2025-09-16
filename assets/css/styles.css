@@ -385,9 +385,7 @@ body.buecher{
 /* ===== PAGE: CREW ===== */
 
 body.crew {
-  margin: 0;
-  padding: 0;
-  background-image: url('../images/kork-background.jpg'); 
+  background-image: url('../images/kork-background.jpg');
   background-repeat: repeat-y;
   background-size: 100% auto;
   background-position: top center;
@@ -395,21 +393,86 @@ body.crew {
   line-height: 1.6;
 }
 
-/* Footer lesbar machen */
-body.crew footer{
-  text-align:center;
-  padding:16px 12px;
-  margin-top:40px;
-  background: rgba(255,255,255,0.85);
-  color: var(--dunkelgrau2);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+/* Grüner Rahmen um den Inhalt – oben dicker */
+.crew-frame{
+  width: min(1100px, 94vw);
+  margin: clamp(16px, 3vw, 24px) auto;
+  border: 10px solid var(--background_text);
+  border-top-width: 28px;                 /* oben dicker */
+  background: transparent;
+  position: relative;
 }
-body.crew footer p{ margin:0; font-size:.95rem; }
-body.crew footer a{
+
+/* Header sitzt optisch im oberen Rahmen */
+.crew-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--background_text);
+  padding: 10px 12px;
+  margin: -28px -10px 0 -10px;            /* in den Rahmen „eingerückt“ */
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.crew-title{
+  margin: 0;
+  font-size: clamp(20px, 3.6vw, 28px);
+  font-weight: 700;
+}
+
+/* Filter-Buttons */
+.crew-filters{ display: flex; gap: 8px; }
+.filter-btn{
+  appearance: none;
+  border: 1px solid var(--umrandung);
+  background: var(--weiss);
   color: var(--dunkelgrau2);
-  text-decoration:none;
-  margin:0 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, transform .1s ease, border-color .2s ease;
+}
+.filter-btn:hover{ transform: translateY(-1px); }
+.filter-btn.is-active,
+.filter-btn[aria-pressed="true"]{
+  background: var(--gruen);
+  color: var(--weiss);
+  border-color: var(--gruen);
+}
+
+/* Board minimal enger innerhalb des Rahmens */
+body.crew .board{
+  padding: clamp(14px, 2.6vw, 24px);
+}
+
+/* Dezente Links unten im Rahmen – ersetzt Footer */
+.crew-frame-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: .9rem;
+  color: var(--grau);
+  background: var(--background_text);
+  padding: 6px 8px;
+  margin: 8px -10px -10px -10px;          /* bündig bis an den Rahmen */
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.crew-frame-bottom a{
+  color: inherit;                 /* unauffällig */
+  text-decoration: none;
+}
+.crew-frame-bottom a:hover{
+  text-decoration: underline;
+}
+
+/* Optional: auf sehr schmalen Screens Buttons umbrechen */
+@media (max-width: 420px){
+  .crew-header{ flex-wrap: wrap; }
+  .crew-filters{ width: 100%; justify-content: flex-start; }
 }
 
 /* Home-Link oben rechts gut lesbar */
@@ -419,58 +482,9 @@ body.crew .home-link{
 }
 body.crew .home-link:hover{ color: var(--hellgrau); }
 
-/* ===== Sticky-Notes Header ===== */
-.notes {
-  --gap: clamp(10px, 2vw, 24px);
-  --left-w: clamp(260px, 36vw, 520px);
-  --right-w: clamp(220px, 30vw, 420px);
-  display: grid;
-  grid-template-columns: minmax(200px, var(--left-w)) minmax(180px, var(--right-w));
-  align-items: start;
-  gap: var(--gap);
-  padding: clamp(18px, 3vw, 32px);
-  justify-content: start;
-}
-.notes-left{ display: grid; justify-items: start; }
-.notes-right{
-  display: grid;
-  gap: var(--gap);
-  justify-items: start;
-}
-.note{ width: 100%; margin: 0; }          /* figure-Standardrand neutralisieren */
-.note-lg{ max-width: var(--left-w); }
-.note-sm{ max-width: var(--right-w); }
-
-.note img{
-  display: block;
-  width: 100%;
-  height: auto;
-  background: transparent;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,.28));
-}
-
-/* leichte Schieflagen */
-.tilt--1{ transform: rotate(-1.6deg); }
-.tilt-1 { transform: rotate( 1.2deg); }
-.tilt-2 { transform: rotate( 2deg); }
-
-/* Rechte Zettel leicht verschieben (überschreibt .tilt-*) */
-.notes-right .note-sm:nth-child(1){
-  transform: rotate(1.2deg) translateX(36px);
-}
-.notes-right .note-sm:nth-child(2){
-  transform: rotate(2deg) translate(36px, -25px);
-}
 
 /* Mobil: untereinander + großzügige Breite */
 @media (max-width: 768px){
-  .notes{
-    grid-template-columns: 1fr;
-    padding-inline: clamp(10px, 4vw, 20px);
-  }
-  .notes-right{ gap: clamp(8px, 2.5vw, 14px); }
-  .note, .note-lg, .note-sm{ max-width: min(92vw, 520px); }
-
   /* Karten breiter, keine Überlappung */
   .board{
     --card-w: clamp(300px, 92vw, 440px);
