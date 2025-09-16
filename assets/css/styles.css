@@ -421,7 +421,7 @@ body.buecher{
 
 /* Dünner grüner Streifen */
 .crew-separator {
-  height: 4px;
+  height: 2px;
   background: var(--background_text);
 }
 
@@ -436,7 +436,7 @@ body.crew{
 /* Grüner Rahmen um den Inhalt – oben dicker */
 .crew-frame{
   /* width: min(1100px, 94vw); */
-  margin: clamp(16px, 3vw, 24px) auto;
+  margin: clamp(2px, 3vw, 24px) auto;
   border: 10px solid var(--background_text);
   border-top-width: 28px;
   position: relative;
@@ -472,8 +472,12 @@ body.crew{
   border: 1px solid var(--umrandung);
   background: var(--weiss);
   color: var(--dunkelgrau2);
-  padding: 12px 22px;
-  border-radius: 10px;
+  padding: 12px 26px;
+  font-size: clamp(18px, 2.4vw, 22px);
+  border-radius: 12px;
+  border-width: 2px;
+  line-height: 1.1;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
   font-weight: 600;
   cursor: pointer;
   transition: background .2s ease, color .2s ease, transform .1s ease, border-color .2s ease;
