@@ -382,6 +382,52 @@ body.buecher{
 .interview-text p{ margin-bottom:1em; }
 
 /* ================================================= */
+/* === PAGE: ALBUM ================================= */
+
+body.crew footer{
+  text-align:center;
+  padding:16px 12px;
+  margin-top:40px;
+  background: rgba(255,255,255,0.85); /* heller, milchiger Streifen */
+  color:#222;
+  /* optional, wo unterstützt: leichte Glas-Optik */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+body.crew footer p{ margin:0; font-size:.95rem; }
+
+body.crew footer a{
+  color:#222;
+  text-decoration:none;
+  margin:0 6px;
+}
+
+/* Home-Link oben rechts */
+body.crew .home-link {
+  position: fixed;         /* bleibt oben rechts kleben */
+  top: 12px;
+  right: 16px;
+  z-index: 1000;
+
+  background: rgba(255,255,255,0.9);  /* heller Hintergrund */
+  color: #222;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+body.crew .home-link:hover {
+  background: #222;
+  color: #fff;
+}
+
+
+/* ================================================= */
 /* === MEDIA QUERIES =============================== */
 
 @media (max-width:1200px){
