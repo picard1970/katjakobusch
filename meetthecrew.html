@@ -112,78 +112,83 @@
     </p>
   </footer>
 
-  <script>
-    // Flip-Mechanik (wie gehabt)
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.card__inner');
-      if (!btn) return;
-      btn.setAttribute('aria-expanded',
-        btn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+ <script>
+  // Buttons & Karten einsammeln
+  const buttons = [...document.querySelectorAll('.filter-btn')];
+  const cards   = [...document.querySelectorAll('.board .card')];
+
+  // Helper: Tags aus data-books normalisieren
+  const getTags = el =>
+    (el.dataset.books || '')
+      .toLowerCase()
+      .split(/[,\s]+/)        // trennt Komma ODER Leerzeichen
+      .map(s => s.trim())
+      .filter(Boolean);
+
+  // Initialzustand ggf. aus URL ?books=jake,echo lesen; default beide an
+  const params = new URLSearchParams(location.search);
+  const initial = (params.get('books') || 'jake,echo')
+    .toLowerCase()
+    .split(/[,\s]+/)
+    .filter(Boolean);
+
+  buttons.forEach(b => {
+    const on = initial.includes(b.dataset.filter);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+
+  // ODER-Filter anwenden + Zähler aktualisieren
+  function applyFilter(){
+    const active = new Set(
+      buttons.filter(b => b.getAttribute('aria-pressed') === 'true')
+             .map(b => b.dataset.filter)
+    );
+
+    // ODER-Logik: Karte wird gezeigt, wenn sie mind. EINEN aktiven Tag hat.
+    // Wenn beide aktiv sind, sieht man alles, was zu einem der beiden gehört.
+    cards.forEach(card => {
+      const tags = new Set(getTags(card));
+      const show = active.size === 0
+        ? false                                 // keine Auswahl = nichts zeigen (oder true, wenn du alles willst)
+        : [...active].some(t => tags.has(t));   // ODER
+      card.classList.toggle('is-hidden', !show);
+    });
+
+    // Zähler in den Buttons (sichtbar je nach Auswahl)
+    const totals = { jake: 0, echo: 0 };
+    cards.forEach(c => {
+      const t = getTags(c);
+      if (t.includes('jake')) totals.jake++;
+      if (t.includes('echo')) totals.echo++;
+    });
+
+    const visible = { jake: 0, echo: 0 };
+    cards.forEach(c => {
+      if (c.classList.contains('is-hidden')) return;
+      const t = getTags(c);
+      if (t.includes('jake')) visible.jake++;
+      if (t.includes('echo')) visible.echo++;
+    });
+
+    // Zahlen in Klammern aktualisieren (<span class="count">…</span> im Button)
+    const bj = document.querySelector('[data-filter="jake"] .count');
+    const be = document.querySelector('[data-filter="echo"] .count');
+    if (bj) bj.textContent = active.has('jake') ? visible.jake : totals.jake;
+    if (be) be.textContent = active.has('echo') ? visible.echo : totals.echo;
+  }
+
+  // Click-Toggles
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.setAttribute('aria-pressed',
+        btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
       );
+      applyFilter();
     });
+  });
 
-    // --- Filter-Logik mit URL-Preselect + Zählanzeigen ---------------------
-    const cards = Array.from(document.querySelectorAll('.card'));
-    const btnJake = document.getElementById('btn-jake');
-    const btnEcho = document.getElementById('btn-echo');
-    const buttons = [btnJake, btnEcho];
-
-    // aktive Bücher lesen/schreiben
-    const active = new Set();
-
-    function setPressed(button, on){
-      button.setAttribute('aria-pressed', on ? 'true' : 'false');
-      button.classList.toggle('is-on', on);
-    }
-
-    function initFromURL(){
-      // ?books=jake  |  ?books=echo  |  ?books=both
-      const p = new URLSearchParams(location.search);
-      const v = (p.get('books') || '').toLowerCase();
-      if (v === 'jake'){ active.add('jake'); }
-      else if (v === 'echo'){ active.add('echo'); }
-      else { active.add('jake'); active.add('echo'); } // Default: beide
-      setPressed(btnJake, active.has('jake'));
-      setPressed(btnEcho, active.has('echo'));
-    }
-
-    function applyFilter(){
-      // Falls alles abgewählt -> wieder beide aktiv (nie „leer“)
-      if (active.size === 0){ active.add('jake'); active.add('echo'); setPressed(btnJake,true); setPressed(btnEcho,true); }
-
-      cards.forEach(card => {
-        const books = card.dataset.books.split(',').map(s => s.trim());
-        const show = books.some(b => active.has(b));
-        card.toggleAttribute('hidden', !show);
-      });
-      updateCounts();
-    }
-
-    function updateCounts(){
-      // sichtbare Karten zählen
-      const visible = cards.filter(c => !c.hasAttribute('hidden'));
-      const countJake = visible.filter(c => c.dataset.books.includes('jake')).length;
-      const countEcho = visible.filter(c => c.dataset.books.includes('echo')).length;
-      btnJake.querySelector('.count').textContent = `(${countJake})`;
-      btnEcho.querySelector('.count').textContent = `(${countEcho})`;
-    }
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const key = btn.dataset.book;
-        const nowOn = btn.getAttribute('aria-pressed') !== 'true';
-        setPressed(btn, nowOn);
-        if (nowOn) active.add(key); else active.delete(key);
-        applyFilter();
-        // URL aktualisieren (ohne Reload)
-        const s = new URLSearchParams(location.search);
-        s.set('books', active.size===2 ? 'both' : [...active][0]);
-        history.replaceState(null, '', `${location.pathname}?${s}`);
-      });
-    });
-
-    initFromURL();
-    applyFilter();
-  </script>
+  // Start
+  applyFilter();
+</script>
 </body>
 </html>
