@@ -113,81 +113,33 @@
   </footer>
 
  <script>
-  // Buttons & Karten einsammeln
-  const buttons = [...document.querySelectorAll('.filter-btn')];
-  const cards   = [...document.querySelectorAll('.board .card')];
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards   = document.querySelectorAll('.board .card');
 
-  // Helper: Tags aus data-books normalisieren
-  const getTags = el =>
-    (el.dataset.books || '')
-      .toLowerCase()
-      .split(/[,\s]+/)        // trennt Komma ODER Leerzeichen
-      .map(s => s.trim())
-      .filter(Boolean);
+  function applyFilter() {
+    const active = Array.from(buttons)
+      .filter(b => b.getAttribute('aria-pressed') === 'true')
+      .map(b => b.dataset.filter);
 
-  // Initialzustand ggf. aus URL ?books=jake,echo lesen; default beide an
-  const params = new URLSearchParams(location.search);
-  const initial = (params.get('books') || 'jake,echo')
-    .toLowerCase()
-    .split(/[,\s]+/)
-    .filter(Boolean);
-
-  buttons.forEach(b => {
-    const on = initial.includes(b.dataset.filter);
-    b.setAttribute('aria-pressed', on ? 'true' : 'false');
-  });
-
-  // ODER-Filter anwenden + Zähler aktualisieren
-  function applyFilter(){
-    const active = new Set(
-      buttons.filter(b => b.getAttribute('aria-pressed') === 'true')
-             .map(b => b.dataset.filter)
-    );
-
-    // ODER-Logik: Karte wird gezeigt, wenn sie mind. EINEN aktiven Tag hat.
-    // Wenn beide aktiv sind, sieht man alles, was zu einem der beiden gehört.
     cards.forEach(card => {
-      const tags = new Set(getTags(card));
-      const show = active.size === 0
-        ? false                                 // keine Auswahl = nichts zeigen (oder true, wenn du alles willst)
-        : [...active].some(t => tags.has(t));   // ODER
-      card.classList.toggle('is-hidden', !show);
+      const tags = (card.dataset.books || "").toLowerCase().split(',');
+      // ODER-Logik: Karte sichtbar, wenn mind. 1 aktiver Tag vorkommt
+      const visible = active.length === 0 || active.some(tag => tags.includes(tag));
+      card.style.display = visible ? '' : 'none';
     });
-
-    // Zähler in den Buttons (sichtbar je nach Auswahl)
-    const totals = { jake: 0, echo: 0 };
-    cards.forEach(c => {
-      const t = getTags(c);
-      if (t.includes('jake')) totals.jake++;
-      if (t.includes('echo')) totals.echo++;
-    });
-
-    const visible = { jake: 0, echo: 0 };
-    cards.forEach(c => {
-      if (c.classList.contains('is-hidden')) return;
-      const t = getTags(c);
-      if (t.includes('jake')) visible.jake++;
-      if (t.includes('echo')) visible.echo++;
-    });
-
-    // Zahlen in Klammern aktualisieren (<span class="count">…</span> im Button)
-    const bj = document.querySelector('[data-filter="jake"] .count');
-    const be = document.querySelector('[data-filter="echo"] .count');
-    if (bj) bj.textContent = active.has('jake') ? visible.jake : totals.jake;
-    if (be) be.textContent = active.has('echo') ? visible.echo : totals.echo;
   }
 
-  // Click-Toggles
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      btn.setAttribute('aria-pressed',
+      btn.setAttribute(
+        'aria-pressed',
         btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
       );
       applyFilter();
     });
   });
 
-  // Start
+  // Initial anwenden
   applyFilter();
 </script>
 </body>
