@@ -389,22 +389,24 @@
     const buttons = document.querySelectorAll('.filter-btn');
     const cards   = document.querySelectorAll('.board .card');
 
-    function applyFilter() {
-      const active = Array.from(buttons)
-        .filter(b => b.getAttribute('aria-pressed') === 'true')
-        .map(b => (b.dataset.book || '').toLowerCase());
-
-      cards.forEach(card => {
-        const tags = (card.dataset.books || '')
-          .toLowerCase()
-          .split(',')
-          .map(t => t.trim())
-          .filter(Boolean);
-
-        const visible = active.length === 0 || active.some(tag => tags.includes(tag));
-        card.style.display = visible ? '' : 'none';
-      });
-    }
+   function applyFilter() {
+    const active = Array.from(buttons)
+      .filter(b => b.getAttribute('aria-pressed') === 'true')
+      .map(b => (b.dataset.filter || '').toLowerCase())  // <-- statt dataset.book
+      .map(t => t.trim())
+      .filter(Boolean);                                   // leere Werte raus
+  
+    cards.forEach(card => {
+      const tags = (card.dataset.books || '')
+        .toLowerCase()
+        .split(',')
+        .map(t => t.trim())
+        .filter(Boolean);
+  
+      const visible = active.length === 0 || active.some(tag => tags.includes(tag));
+      card.style.display = visible ? '' : 'none';
+    });
+  }
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
