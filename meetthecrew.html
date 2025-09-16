@@ -112,35 +112,48 @@
     </p>
   </footer>
 
- <script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards   = document.querySelectorAll('.board .card');
-
-  function applyFilter() {
-    const active = Array.from(buttons)
-      .filter(b => b.getAttribute('aria-pressed') === 'true')
-      .map(b => b.dataset.filter);
-
-    cards.forEach(card => {
-      const tags = (card.dataset.books || "").toLowerCase().split(',');
-      // ODER-Logik: Karte sichtbar, wenn mind. 1 aktiver Tag vorkommt
-      const visible = active.length === 0 || active.some(tag => tags.includes(tag));
-      card.style.display = visible ? '' : 'none';
+  <script>
+  (() => {
+    const buttons = document.querySelectorAll('.filter-btn');   // Buttons mit data-book="jake|echo"
+    const cards   = document.querySelectorAll('.board .card');  // Polaroids mit data-books="jake,echo"
+  
+    // Hilfsfunktionen
+    const getTags = (card) =>
+      (card.dataset.books || '')
+        .toLowerCase()
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+  
+    const getActive = () =>
+      Array.from(buttons)
+        .filter(b => b.getAttribute('aria-pressed') === 'true')
+        .map(b => (b.dataset.book || '').toLowerCase());
+  
+    function applyFilter() {
+      const active = getActive();
+      cards.forEach(card => {
+        const tags = getTags(card);
+        const visible = active.length === 0 || active.some(t => tags.includes(t)); // ODER-Logik
+        card.style.display = visible ? '' : 'none';
+      });
+    }
+  
+    // Toggle-Handling
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.setAttribute(
+          'aria-pressed',
+          btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
+        );
+        applyFilter();
+      });
     });
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.setAttribute(
-        'aria-pressed',
-        btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
-      );
-      applyFilter();
-    });
-  });
-
-  // Initial anwenden
-  applyFilter();
-</script>
+  
+    // Sicherstellen, dass nichts „hängengeblieben“ ist und dann initial filtern
+    cards.forEach(c => (c.style.display = ''));
+    applyFilter();
+  })();
+  </script>
 </body>
 </html>
