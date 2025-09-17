@@ -23,7 +23,7 @@
       <h1 class="crew-hero__title">MEET THE CAST</h1>
   
       <div class="crew-filters" role="group" aria-label="Bücher filtern">
-        <button id="btn-jake" class="filter-btn" data-filter="jake" aria-pressed="true">
+        <button id="btn-jake" class="filter-btn" data-filter="jake" aria-pressed="false">
           Jake &amp; the City
         </button>
         <button id="btn-echo" class="filter-btn" data-filter="echo" aria-pressed="true">
@@ -410,10 +410,8 @@
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        btn.setAttribute(
-          'aria-pressed',
-          btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
-        );
+        // genau ein Button aktiv halten
+        buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
         applyFilter();
       });
     });
@@ -424,14 +422,10 @@
       const btnJake = document.getElementById('btn-jake');
       const btnEcho = document.getElementById('btn-echo');
       if (!btnJake || !btnEcho) return;
-
-      function set(btn, val){ btn.setAttribute('aria-pressed', val ? 'true' : 'false'); }
-
-      if (q === 'jake')      { set(btnJake, true);  set(btnEcho, false); }
-      else if (q === 'echo'){ set(btnJake, false); set(btnEcho, true);  }
-      else if (q === 'both'){ set(btnJake, true);  set(btnEcho, true);  }
-      else if (q === 'none'){ set(btnJake, false); set(btnEcho, false); }
-      // sonst: beide bleiben true (default)
+    
+      const pick = (q === 'jake') ? 'jake' : 'echo'; // Default: echo
+      btnJake.setAttribute('aria-pressed', pick === 'jake' ? 'true' : 'false');
+      btnEcho.setAttribute('aria-pressed', pick === 'echo' ? 'true' : 'false');
     })();
 
     // Initial anwenden
