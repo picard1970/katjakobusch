@@ -116,7 +116,7 @@ body.home .stage{
   column-gap: clamp(20px, 4vw, 48px);
 }
 body.home .left  { grid-area:left;  position:relative; }
-body.home .intro { grid-area:intro; text-align:center; position:relative; z-index:10; padding-inline: clamp(8px, 2vw, 16px); }
+body.home .intro { grid-area:intro; text-align:center; position:relative; z-index:1; padding-inline: clamp(8px, 2vw, 16px); }
 body.home .right { grid-area:right; position:relative; }
 
 body.home .intro h1{
@@ -131,7 +131,7 @@ body.home .intro p{
 
 /* Foto-Stapel */
 body.home .stack{ position:relative; min-height:520px; }
-body.home .photo{ position:absolute; transition: transform .25s ease; z-index:1; }
+body.home .photo{ position:absolute; transition: transform .25s ease; z-index:50; }
 body.home .photo img{
   display:block; width:100%; height:auto;
   filter:
@@ -141,13 +141,13 @@ body.home .photo img{
 body.home .photo:hover{ transform: translateY(-3px) rotate(-.5deg); }
 
 /* Positionen */
-body.home .left  .p1{ width:calc(240px * var(--side-scale)); left:0;     top:10px;   transform:rotate(-6deg); z-index:1; }
-body.home .left  .p2{ width:calc(220px * var(--side-scale)); left:30px;  top:190px;  transform:rotate(3deg);  z-index:2; }
-body.home .left  .p3{ width:calc(260px * var(--side-scale)); left:-10px; top:370px;  transform:rotate(-8deg); z-index:3; }
+body.home .left  .p1{ width:calc(240px * var(--side-scale)); left:0;     top:10px;   transform:rotate(-6deg); z-index:51; }
+body.home .left  .p2{ width:calc(220px * var(--side-scale)); left:30px;  top:190px;  transform:rotate(3deg);  z-index:52; }
+body.home .left  .p3{ width:calc(260px * var(--side-scale)); left:-10px; top:370px;  transform:rotate(-8deg); z-index:53; }
 
-body.home .right .p4{ width:calc(240px * var(--side-scale)); right:0;     top:20px;   transform:rotate(7deg);  z-index:3; }
-body.home .right .p5{ width:calc(200px * var(--side-scale)); right:20px;  top:175px;  transform:rotate(-2deg); z-index:1; }
-body.home .right .p6{ width:calc(240px * var(--side-scale)); right:-10px; top:385px;  transform:rotate(5deg);  z-index:2; }
+body.home .right .p4{ width:calc(240px * var(--side-scale)); right:0;     top:20px;   transform:rotate(7deg);  z-index:53; }
+body.home .right .p5{ width:calc(200px * var(--side-scale)); right:20px;  top:175px;  transform:rotate(-2deg); z-index:51; }
+body.home .right .p6{ width:calc(240px * var(--side-scale)); right:-10px; top:385px;  transform:rotate(5deg);  z-index:52; }
 
 /* ================================================= */
 /* === PAGE: ALBUM ================================= */
@@ -314,6 +314,19 @@ body.buecher{
   transition: background .3s ease, transform .2s ease;
 }
 .book-button:hover{ background: var(--button_hover); transform: scale(1.05); }
+
+/* Buch-Überschriften bündig oben starten */
+.book h1,
+.book h2{
+  margin-top: 0;           /* standardmäßigen oberen Abstand entfernen */
+  padding-top: 0;
+  line-height: 1.2;
+}
+
+/* Cover nicht künstlich nach unten schieben */
+.book img{
+  margin: 0 1.2em .6em 0;  /* statt .2em oben */
+}
 
 /* ================================================= */
 /* === PAGE: KATJA ================================= */
