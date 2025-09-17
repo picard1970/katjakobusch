@@ -42,42 +42,21 @@ $_SESSION["captcha_result"] = $a + $b;
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+  <!-- Hero: nur das Bild, max. 250px -->
   <div class="kontakt-hero">
     <a href="index.html" class="home-link">Home</a>
-    <div class="kontakt-hero-content">
-      <h1>Schreib mir!</h1>
-      <h2>Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?</h2>
-      <p>Auch wenn mein erstes Buch erst im Herbst/Winter 2025 erscheint, freue ich mich natürlich auch jetzt schon über Post.</p>
-    </div>
   </div>
-  
-  <div class="kontakt-container">
-    <!--<h1>Schreib mir!</h1>
-    <h2>
+
+  <!-- Einleitung direkt unter dem Bild -->
+  <section class="kontakt-intro">
+    <p>
       Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?
-    </h2>
-    <p>
-      Auch wenn mein erstes Buch erst im Herbst/Winter 2025 erscheint, freue ich mich natürlich auch jetzt schon über Post. 📧
-    </p>-->
-    <!--
-    <p>
-      Vielleicht möchtest du mir erzählen, wie dir <em>Echo & Ember</em> gefallen hat – ob du mit Jake mitgelitten hast, Anouks Sprüche feierst oder ob Eike dir auf die Nerven gegangen ist.<br><br>
-      Ich freue mich über Post – ganz gleich, ob:
+      Auch wenn mein erstes Buch erst im Herbst/Winter 2025 erscheint,
+      freue ich mich natürlich auch jetzt schon über Post. 📧
     </p>
-    <ul>
-      <li>Lob</li>
-      <li>Leseeindruck</li>
-      <li>literarischer Seufzer</li>
-      <li>Fragen</li>
-      <li>oder auch Kritik (bitte konstruktiv 😉)</li>
-    </ul>
-    <h2>
-      Und natürlich leite ich auch Fan- und Liebesbriefe an Jake & Co weiter.
-    </h2>
-    <p>
-      (Ob sie antworten, kann ich allerdings nicht versprechen.)
-    </p>
-    -->
+  </section>
+
+  <div class="kontakt-container">
     <?php if ($success): ?>
       <p class="message success"><?php echo $success; ?></p>
     <?php elseif ($error): ?>
