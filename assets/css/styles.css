@@ -336,14 +336,32 @@ body.buecher{
   background-image: url('../images/schreib-mir-panorama.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 380px;
+  height: 250px;        /* fixierte Höhe */
+  max-height: 250px;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+}
+
+.kontakt-hero .home-link {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  color: var(--weiss);
+  text-shadow: 0 2px 6px rgba(0,0,0,.45);
+}
+.kontakt-hero .home-link:hover {
   color: var(--hellgrau);
-  text-shadow: 1px 1px 2px var(--dunkelgrau);
+}
+
+.kontakt-intro{
+  max-width: 700px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  text-align: center;
+  color: var(--dunkelgrau2);   /* dunkelgrau2 passt zu deinem restlichen Design */
+}
+.kontakt-intro p{
+  margin: 0;
+  line-height: 1.5;
 }
 
 .kontakt-container{
