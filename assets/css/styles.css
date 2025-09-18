@@ -342,8 +342,9 @@ body.buecher{
 .steckbrief dd{ margin:0 0 .5em 0; }
 .text-content{ flex:2 1 500px; min-width:300px; }
 
-/* ================================================= */
-/* === PAGE: SCHREIB MIR =========================== */
+/* ======================================================================= */
+/* === PAGE: SCHREIB MIR ================================================= */
+/* ======================================================================= */
 
 .kontakt-hero{
   background-image: url('../images/schreib-mir-panorama.jpg');
@@ -353,7 +354,6 @@ body.buecher{
   max-height: 250px;
   position: relative;
 }
-
 .kontakt-hero .home-link {
   position: absolute;
   top: 12px;
@@ -364,7 +364,6 @@ body.buecher{
 .kontakt-hero .home-link:hover {
   color: var(--hellgrau);
 }
-
 .kontakt-intro{
   max-width: 700px;
   margin: 16px auto 0;
@@ -374,9 +373,9 @@ body.buecher{
 }
 .kontakt-intro p{
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 1.3em;
 }
-
 .kontakt-container{
   max-width:700px; margin:2em auto; padding:2em;
   background: var(--background_text); border-radius:8px;
@@ -400,8 +399,9 @@ body.buecher{
 .kontakt-container .success{ color: green; }
 .kontakt-container .error{ color: red; }
 
-/* ================================================= */
-/* === PAGE: INTERVIEW ============================= */
+/* ======================================================================= */
+/* === PAGE: INTERVIEW =================================================== */
+/* ======================================================================= */
 
 .float-image{ float:left; width:300px; margin:0 20px 20px 0; border-radius:4px; }
 .interview-container{
@@ -412,8 +412,9 @@ body.buecher{
 .interview-text{  flex:2 1 400px; }
 .interview-text p{ margin-bottom:1em; }
 
-/* ================================================= */
-/* ===== PAGE: CREW ================================ */
+/* ======================================================================= */
+/* ===== PAGE: CREW ====================================================== */
+/* ======================================================================= */
 
 /* Hero mit Mauer-Hintergrund */
 .crew-hero {
@@ -730,8 +731,9 @@ body.crew .home-link:hover{ color: #000; }
     
 
 
-/* ================================================= */
-/* === MEDIA QUERIES =============================== */
+/* ======================================================================= */
+/* === MEDIA QUERIES ===================================================== */
+/* ======================================================================= */
 
 @media (max-width:1200px){
   body.home{ --side-scale: .85; }
