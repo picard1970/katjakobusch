@@ -931,7 +931,7 @@ body.crew .home-link:hover{ color: #000; }
   }
   .card{
     /* width: min(94vw, 460px); */
-    width: 100%;
+    width: 90%;
     max-width: none;
     margin-block: 0;
     aspect-ratio: 3 / 4.2;
