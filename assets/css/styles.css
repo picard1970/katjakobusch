@@ -146,8 +146,8 @@ body.home .left  .p2{ width:calc(220px * var(--side-scale)); left:30px;  top:190
 body.home .left  .p3{ width:calc(260px * var(--side-scale)); left:-10px; top:370px;  transform:rotate(-8deg); z-index:53; }
 
 body.home .right .p4{ width:calc(280px * var(--side-scale)); right:0;     top:20px;   transform:rotate(7deg);  z-index:53; }
-body.home .right .p5{ width:calc(200px * var(--side-scale)); right:20px;  top:220px;  transform:rotate(-2deg); z-index:52; }
-body.home .right .p6{ width:calc(250px * var(--side-scale)); right:-10px; top:420px;  transform:rotate(5deg);  z-index:51; }
+body.home .right .p5{ width:calc(200px * var(--side-scale)); right:20px;  top:2500px;  transform:rotate(-2deg); z-index:52; }
+body.home .right .p6{ width:calc(250px * var(--side-scale)); right:-10px; top:445px;  transform:rotate(5deg);  z-index:51; }
 
 /* ================================================= */
 /* === PAGE: ALBUM ================================= */
