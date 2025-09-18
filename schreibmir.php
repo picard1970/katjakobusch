@@ -50,9 +50,9 @@ $_SESSION["captcha_result"] = $a + $b;
   <!-- Einleitung direkt unter dem Bild -->
   <section class="kontakt-intro">
     <p>
-      Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?
+      Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br>
       Auch wenn mein erstes Buch erst Ende 2025 erscheint,
-      freue ich mich natürlich auch jetzt schon über Post. 📧
+      freue ich mich natürlich auch jetzt schon über Post. 💌
     </p>
   </section>
 
