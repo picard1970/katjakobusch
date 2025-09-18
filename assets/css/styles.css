@@ -608,10 +608,11 @@ body.crew .home-link:hover{ color: #000; }
   /* iOS Safari Fixes */
   appearance: none;
   -webkit-appearance: none;
-  color: inherit;
+  color: var(--dunkelgrau2) !important;
+  -webkit-text-fill-color: var(--dunkelgrau2);
+  -webkit-tap-highlight-color: transparent;
   font: inherit;
   text-align: inherit;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .card__face {
@@ -621,6 +622,9 @@ body.crew .home-link:hover{ color: #000; }
   border-radius: 0px;
   overflow: hidden;
   outline: none;
+  background: var(--weiss);
+  color: var(--dunkelgrau2);
+  -webkit-text-fill-color: var(--dunkelgrau2);
 }
 
 /* Vorderseite: NUR Bild → kein Text-Blur */
@@ -673,19 +677,20 @@ body.crew .home-link:hover{ color: #000; }
 }
 
 /* Rückseite */
-.card__back{
-  transform:rotateY(180deg);
+.card__back {
+  transform: rotateY(180deg);
   background: var(--background_text);
-  padding:12px;
-  overflow:auto;               /* falls sehr viel Text */
+  padding: 12px;
+  overflow: auto;
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
-  /* iOS Safari Fixes */
-  appearance: none;
-  -webkit-appearance: none;
-  color: var(--dunkelgrau2);   /* explizite Textfarbe */
-  font: inherit;               /* Schrift beibehalten */
-  text-align: left;
+  color: var(--dunkelgrau2) !important;
+  -webkit-text-fill-color: var(--dunkelgrau2);
+}
+.card__back a,
+.card__back a:visited {
+  color: inherit !important;
+  text-decoration: underline;
 }
 
 .steckbrief h3 {
