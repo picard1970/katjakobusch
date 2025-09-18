@@ -92,7 +92,7 @@ body.home{
   --maxw: 1100px;
   --pad: clamp(16px, 4vw, 36px);
   --side-scale: 1;
-  background: #dcd6c5 url("../images/homepage-background.jpg") center/cover fixed no-repeat;
+  background: #dcd6c5 url("../images/homepage-background-large.jpg") center/cover fixed no-repeat;
   color:#1b1b1b;
   padding: clamp(12px,3vh,28px) var(--pad);
   font: 400 clamp(16px,1.6vw,20px)/1.45 "Georgia","Times New Roman",ui-serif,serif;
