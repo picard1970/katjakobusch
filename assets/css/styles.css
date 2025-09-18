@@ -926,8 +926,8 @@ body.crew .home-link:hover{ color: #000; }
     padding: clamp(4px, 1.8vw, 10px);
     /* row-gap: clamp(16px, 3.6vw, 26px); */
     grid-template-columns: 1fr;
-    /* justify-items: center; */
-    justify-items: stretch;
+    justify-items: center;
+    /* justify-items: stretch; */
   }
   .card{
     /* width: min(94vw, 460px); */
