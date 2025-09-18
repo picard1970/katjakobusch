@@ -467,10 +467,8 @@ body.crew{
 
 /* Grüner Rahmen um den Inhalt – oben dicker */
 .crew-frame{
-  /* width: min(1100px, 94vw); */
   margin: clamp(2px, 3vw, 24px) auto;
   border: 10px solid var(--background_text);
-  border-top-width: 28px;
   position: relative;
   /* Kork nur im Rahmen: */
   background-image: url('../images/kork-background.jpg');
