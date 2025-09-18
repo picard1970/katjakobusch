@@ -621,8 +621,6 @@ body.crew .home-link:hover{ color: #000; }
   border-radius: 0px;
   overflow: hidden;
   outline: none;
-  background: var(--weiss);
-  color: var(--dunkelgrau2);   /* Fix: Textfarbe explizit setzen */
 }
 
 /* Vorderseite: NUR Bild → kein Text-Blur */
@@ -682,6 +680,12 @@ body.crew .home-link:hover{ color: #000; }
   overflow:auto;               /* falls sehr viel Text */
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
+  /* iOS Safari Fixes */
+  appearance: none;
+  -webkit-appearance: none;
+  color: var(--dunkelgrau2);   /* explizite Textfarbe */
+  font: inherit;               /* Schrift beibehalten */
+  text-align: left;
 }
 
 .steckbrief h3 {
