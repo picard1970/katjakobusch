@@ -596,23 +596,33 @@ body.crew .home-link:hover{ color: #000; }
 }
 
 /* ===== Flip-Mechanik (robust & scharf) ===== */
-.card__inner{
-  position:relative; inset:0;
-  width:100%; height:100%;
-  border:0; padding:0; background:transparent;
-  cursor:pointer;
-  transform-style:preserve-3d;
+.card__inner {
+  position: relative; inset: 0;
+  width: 100%; height: 100%;
+  border: 0; padding: 0; background: transparent;
+  cursor: pointer;
+  transform-style: preserve-3d;
   transition: transform .6s ease;
   will-change: transform;
+
+  /* iOS Safari Fixes */
+  appearance: none;
+  -webkit-appearance: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
-.card__face{
-  position:absolute; inset:0;
-  backface-visibility:hidden;
-  transform-style:preserve-3d;
-  border-radius:0px;
-  overflow:hidden;
+
+.card__face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border-radius: 0px;
+  overflow: hidden;
   outline: none;
   background: var(--weiss);
+  color: var(--dunkelgrau2);   /* Fix: Textfarbe explizit setzen */
 }
 
 /* Vorderseite: NUR Bild → kein Text-Blur */
