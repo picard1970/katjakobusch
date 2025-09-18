@@ -937,7 +937,7 @@ body.crew .home-link:hover{ color: #000; }
     aspect-ratio: 3 / 4.2;
   }
   .crew-frame{
-    border-width: 6px;   /* statt 10px */
+    border-width: 8px;   /* etwas kompakter */
     margin: 8px auto;    /* etwas kompakter */
   }
   .rot--3 { transform: rotate(-0.8deg); }
