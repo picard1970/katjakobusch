@@ -41,11 +41,10 @@ $_SESSION["captcha_result"] = $a + $b;
   <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
-<body>
-  <!-- Hero: nur das Bild, max. 250px -->
+<body class="kontakt">
   <div class="kontakt-hero">
     <a href="index.html" class="home-link">Home</a>
-    <div class="book-hero-content">
+    <div class="kontakt-hero-content">
       <h1>Schreib mir!</h1>
       <h2>
         Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br>
