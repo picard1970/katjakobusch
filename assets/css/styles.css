@@ -351,7 +351,7 @@ body.buecher{
 .kontakt-hero{
   background-image: url('../images/schreib-mir-panorama.jpg');
   position: relative;
-  /* display:flex; */
+  display:flex;
   align-items:center;
   justify-content:center;
   height: 250px;
@@ -368,17 +368,25 @@ body.buecher{
 }
 .kontakt-hero .home-link:hover{ color: var(--dunkelgrau2); }
 
-.kontakt-hero h1{ margin: 0; },
-.kontakt-hero h2{
+/* Der innere Wrapper begrenzt die Zeilenbreite und zentriert den Text */
+.kontakt-hero-content{
+  max-width: 900px;
+  width: min(92vw, 900px);
+  margin: 0 auto;
+  padding: 0 16px;
+  text-align: center;
+}
+.kontakt-hero-content h1{ margin: 0; },
+.kontakt-hero-content h2{
   margin-top: 0;           /* standardmäßigen oberen Abstand entfernen */
   padding-top: 0;
   line-height: 1.2;
 }
 
 /* Abstand nach dem Hero wie auf der Bücher-Seite */
-.kontakt-hero + .kontakt-container{
-  margin-top: clamp(12px, 2vw, 24px);
-}
+/* .kontakt-hero + .kontakt-container{ */
+/* margin-top: clamp(12px, 2vw, 24px); */
+/* } */
 
 /* Mobil kompakter */
 @media (max-width:768px){
