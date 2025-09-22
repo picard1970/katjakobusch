@@ -45,12 +45,14 @@ $_SESSION["captcha_result"] = $a + $b;
   <!-- Hero: nur das Bild, max. 250px -->
   <div class="kontakt-hero">
     <a href="index.html" class="home-link">Home</a>
-    <h1>Schreib mir!</h1>
-    <h2>
-      Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br>
-      Auch wenn mein erstes Buch erst Ende 2025 erscheint,<br>
-      freue ich mich natürlich auch jetzt schon über Post. 💌
-    </h2>
+    <div class="book-hero-content">
+      <h1>Schreib mir!</h1>
+      <h2>
+        Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br>
+        Auch wenn mein erstes Buch erst Ende 2025 erscheint,<br>
+        freue ich mich natürlich auch jetzt schon über Post. 💌
+      </h2>
+    </div>
   </div>
 
   <div class="kontakt-container">
