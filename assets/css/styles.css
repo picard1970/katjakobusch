@@ -367,6 +367,30 @@ body.buecher{
 }
 .kontakt-hero .home-link:hover{ color: var(--dunkelgrau); }
 
+/* Leseband für den Text */
+.kontakt-hero h1{ margin: 0; }
+.kontakt-hero p{
+  margin: .5rem 0 0;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 8px;
+  padding: 8px 12px;
+  line-height: 1.5;
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+}
+
+/* Abstand nach dem Hero wie auf der Bücher-Seite */
+.kontakt-hero + .kontakt-container{
+  margin-top: clamp(12px, 2vw, 24px);
+}
+
+/* Mobil kompakter */
+@media (max-width:768px){
+  .kontakt-hero{ height: 220px; max-height: 220px; }
+  .kontakt-hero p{ font-size: clamp(.95rem, 3.6vw, 1.05rem); }
+}
+
 .kontakt-container{
   max-width:700px; margin:2em auto; padding:2em;
   background: var(--background_text); border-radius:8px;
