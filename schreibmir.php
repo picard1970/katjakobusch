@@ -46,11 +46,11 @@ $_SESSION["captcha_result"] = $a + $b;
   <div class="kontakt-hero">
     <a href="index.html" class="home-link">Home</a>
     <h1>Schreib mir!</h1>
-    <p>
+    <h2>
       Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br>
       Auch wenn mein erstes Buch erst Ende 2025 erscheint,<br>
       freue ich mich natürlich auch jetzt schon über Post. 💌
-    </p>
+    </h2>
   </div>
 
   <div class="kontakt-container">
