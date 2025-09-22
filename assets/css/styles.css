@@ -349,7 +349,7 @@ body.buecher{
 
 /* Hero oben auf der Kontakt-Seite */
 .kontakt-hero{
-  background-image: url('../images/background-mauer-panorama-250.jpg');
+  background-image: url('../images/schreib-mir-panorama.jpg');
   position: relative;
   display:flex;
   align-items:center;
