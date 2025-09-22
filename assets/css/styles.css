@@ -347,6 +347,12 @@ body.buecher{
 /* === PAGE: SCHREIB MIR ================================================= */
 /* ======================================================================= */
 
+body.kontakt{
+  margin:0; padding:0;
+  background-color: var(--background_body);
+  line-height:1.6;
+}
+
 /* Hero oben auf der Kontakt-Seite */
 .kontakt-hero{
   background-image: url('../images/schreib-mir-panorama.jpg');
@@ -367,6 +373,11 @@ body.buecher{
   text-shadow: 0 2px 6px rgba(0,0,0,.45);
 }
 .kontakt-hero .home-link:hover{ color: var(--dunkelgrau2); }
+
+.kontakt-hero + .container{
+  margin-top: clamp(12px, 2vw, 24px);
+  padding-top: 0;
+}
 
 /* Der innere Wrapper begrenzt die Zeilenbreite und zentriert den Text */
 .kontakt-hero-content{
