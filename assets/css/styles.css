@@ -356,17 +356,17 @@ body.buecher{
   justify-content:center;
   height: 250px;
   max-height: 250px;
-  color: var(--dunkelgrau2);
-  text-shadow: 1px 1px 2px var(--hellgrau);
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau2);
   background-size:cover;
   background-position:center;
 }
 
 .kontakt-hero .home-link{
-  color: var(--dunkelgrau2);
+  color: var(--hellgrau);
   text-shadow: 0 2px 6px rgba(0,0,0,.45);
 }
-.kontakt-hero .home-link:hover{ color: var(--dunkelgrau); }
+.kontakt-hero .home-link:hover{ color: var(--dunkelgrau2); }
 
 /* Leseband für den Text */
 .kontakt-hero h1{ margin: 0; }
