@@ -258,17 +258,17 @@ body.buecher{
   align-items:center;
   justify-content:center;
   min-height: 250px;
-  color: var(--dunkelgrau2);
-  text-shadow: 1px 1px 2px var(--hellgrau);
+  color: var(--hellgrau);
+  text-shadow: 1px 1px 2px var(--dunkelgrau2);
   background-size:cover;
   background-position:center;
 }
 
 .book-hero .home-link{
-  color: var(--dunkelgrau2);
+  color: var(--hellgrau);
   text-shadow: 0 2px 6px rgba(0,0,0,.45);
 }
-.book-hero .home-link:hover{ color: var(--dunkelgrau); }
+.book-hero .home-link:hover{ color: var(--dunkelgrau2); }
 
 /* Container direkt nach dem Hero: Top-Abstand + Top-Padding weg */
 .book-hero + .container{
