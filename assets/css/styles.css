@@ -346,36 +346,27 @@ body.buecher{
 /* === PAGE: SCHREIB MIR ================================================= */
 /* ======================================================================= */
 
+/* Hero oben auf der Kontakt-Seite */
 .kontakt-hero{
   background-image: url('../images/background-mauer-panorama-250.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 250px;        /* fixierte Höhe */
-  max-height: 250px;
   position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: 250px;
+  max-height: 250px;
+  color: var(--dunkelgrau2);
+  text-shadow: 1px 1px 2px var(--hellgrau);
+  background-size:cover;
+  background-position:center;
 }
-.kontakt-hero .home-link {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  color: var(--weiss);
+
+.kontakt-hero .home-link{
+  color: var(--dunkelgrau2);
   text-shadow: 0 2px 6px rgba(0,0,0,.45);
 }
-.kontakt-hero .home-link:hover {
-  color: var(--hellgrau);
-}
-.kontakt-intro{
-  max-width: 700px;
-  margin: 16px auto 0;
-  padding: 0 16px;
-  text-align: center;
-  color: var(--dunkelgrau2);   /* dunkelgrau2 passt zu deinem restlichen Design */
-}
-.kontakt-intro p{
-  margin: 0;
-  line-height: 1.6;
-  font-size: 1.3em;
-}
+.kontakt-hero .home-link:hover{ color: var(--dunkelgrau); }
+
 .kontakt-container{
   max-width:700px; margin:2em auto; padding:2em;
   background: var(--background_text); border-radius:8px;
