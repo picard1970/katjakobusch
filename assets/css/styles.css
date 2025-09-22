@@ -251,12 +251,12 @@ body.buecher{
 }
 /* Hero oben auf der Bücher-Seite */
 .book-hero{
-  background-image: url('../images/background-mauer-panorama-200.jpg');
+  background-image: url('../images/background-mauer-panorama-250.jpg');
   position: relative;
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height: 200px;
+  min-height: 250px;
   color: var(--dunkelgrau2);
   text-shadow: 1px 1px 2px var(--hellgrau);
   background-size:cover;
