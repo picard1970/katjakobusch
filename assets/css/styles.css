@@ -251,7 +251,8 @@ body.buecher{
 }
 /* Hero oben auf der Bücher-Seite */
 .book-hero{
-  background-image: url('../images/background-mauer-grau-panorama-250.jpg');
+  /* background-image: url('../images/background-mauer-grau-panorama-250.jpg'); */
+  background-image: url('../images/buecher-lichterkette-panorama.jpg');
   position: relative;
   display:flex;
   align-items:center;
