@@ -712,12 +712,31 @@ body.crew .home-link:hover{ color: #000; }
   color: var(--dunkelgrau2) !important;
   -webkit-text-fill-color: var(--dunkelgrau2);
 }
+.card__back,
+.card__back *,
+.card__back *::before,
+.card__back *::after {
+  color: var(--dunkelgrau2) !important;
+  -webkit-text-fill-color: var(--dunkelgrau2) !important;
+}
 .card__back a,
-.card__back a:visited {
-  color: inherit !important;
+.card__back a:link,
+.card__back a:visited,
+.card__back a:hover,
+.card__back a:active,
+.card__back a:focus {
+  color: var(--dunkelgrau2) !important;
+  -webkit-text-fill-color: var(--dunkelgrau2) !important;
   text-decoration: underline;
 }
-
+/* Tel-/Mail-/SMS-Auto-Erkennung iOS */
+.card__back a[href^="tel"],
+.card__back a[href^="mailto"],
+.card__back a[href^="sms"] {
+  color: var(--dunkelgrau2) !important;
+  -webkit-text-fill-color: var(--dunkelgrau2) !important;
+  text-decoration: underline;
+}
 .steckbrief h3 {
   font-size: 1.1rem;     /* etwas größer */
   margin: 0 0 0.8em 0;
