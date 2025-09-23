@@ -768,61 +768,74 @@ body.crew .home-link:hover{ color: #000; }
 /* === Large Tablet (1024px < x ≤ 1200px) ================================ */
 /* ======================================================================= */
 @media (max-width:1200px){
-  body.home{ --side-scale: .85; }
+  body.home{ --side-scale: .9; }
   body.home .stage{
     grid-template-columns:
-      clamp(120px, 16vw, 200px)
-      minmax(480px, 1fr)
-      clamp(120px, 16vw, 200px);
+      clamp(110px, 14.5vw, 200px)   /* links schmaler */
+      minmax(520px, 1fr)            /* intro */
+      clamp(110px, 14.5vw, 200px);  /* rechts schmaler */
+    column-gap: clamp(14px, 2.4vw, 28px); /* engerer Abstand */
   }
+
+  /* leichte vertikale Korrekturen für die Stapel */
+  body.home .left  .p1 { top:  6px;  }
+  body.home .left  .p2 { top: 175px; }
+  body.home .left  .p3 { top: 340px; }
+
+  body.home .right .p4 { top: 10px;  }
+  body.home .right .p5 { top: 220px; }
+  body.home .right .p6 { top: 405px; }
 }
 
 /* ======================================================================= */
 /* === Tablet (980px < x ≤ 1024px) ======================================= */
 /* ======================================================================= */
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* --- Startseite --- */
+  /* ====================== */
+  /* HOME / INDEX (Tablet)  */
+  /* ====================== */
   /* weniger Außenabstand, etwas kleinere Seitenspalten + Fotos */
   body.home {
     background-image: url("../images/homepage-background-medium.jpg");
     --pad: clamp(10px, 2.2vw, 18px); /* Seitenrand kleiner */
-    --side-scale: 0.68;              /* Fotos schrumpfen, damit sie nicht in den Text ragen */
+    --side-scale: 0.60;              /* Fotos schrumpfen, damit sie nicht in den Text ragen */
   }
 
   /* schmalere Seitenspalten, mehr Platz für die Mitte */
   body.home .stage{
     grid-template-columns:
-      clamp(92px, 12.5vw, 150px)  /* links */
+      clamp(80px, 11vw, 130px)    /* links */
       1fr                         /* intro */
-      clamp(92px, 12.5vw, 150px); /* rechts */
-    column-gap: clamp(14px, 2vw, 24px);
+      clamp(80px, 11vw, 130px);   /* rechts */
+    column-gap: clamp(18px, 3vw, 32px);
   }
 
   /* Headline in diesem Bereich leicht kleiner, damit sie nicht kollidiert */
   body.home .intro h1{
-    font-size: clamp(30px, 4.6vw, 52px);
+    font-size: clamp(28px, 4.2vw, 48px);
   }
 
   body.home .intro p{
-    max-width: 38ch;   /* enger, damit kein Überlappen */
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 40ch;   /* enger, damit kein Überlappen */
   }
   
   /* Fotos enger vertikal stapeln (wie auf Desktop), aber dichter zusammen */
   body.home .left  .p1 { top: 0px;   }
-  body.home .left  .p2 { top: 135px; }
-  body.home .left  .p3 { top: 270px; }
+  body.home .left  .p2 { top: 120px; }
+  body.home .left  .p3 { top: 245px; }
 
   body.home .right .p4 { top: 0px;   }
-  body.home .right .p5 { top: 125px; }
-  body.home .right .p6 { top: 260px; }
+  body.home .right .p5 { top: 118px; }
+  body.home .right .p6 { top: 236px; }
 
-  /* optional: Textblock etwas schmaler, damit die Zeilenlänge schön bleibt */
+  /* Textblock etwas schmaler, damit die Zeilenlänge schön bleibt */
   body.home .intro p{
     max-width: 42ch;
   }
-  /* --- ALBUM --- */
+  
+  /* ====================== */
+  /* Album (Tablet) ======= */
+  /* ====================== */
   .container.album-layout{
     flex-direction: column;
     gap: 24px;
@@ -842,7 +855,9 @@ body.crew .home-link:hover{ color: #000; }
     object-fit: cover;
   }
 
-  /* --- BÜCHER --- */
+  /* ====================== */
+  /* Bücher (Tablet) ====== */
+  /* ====================== */
   .book-hero{
     min-height: 240px;
     background-position: center;
@@ -850,14 +865,18 @@ body.crew .home-link:hover{ color: #000; }
   }
   .book-hero-content{ padding: 0 16px; }
 
-  /* --- INTERVIEW / FLOAT-BILD --- */
+  /* ====================== */
+  /* Interview (Tablet) === */
+  /* ====================== */
   .float-image{
     float: left;
     width: 280px;
     margin: 0 16px 16px 0;
   }
 
-  /* --- KONTAKT --- */
+  /* ====================== */
+  /* Kontakt (Tablet) ===== */
+  /* ====================== */
   .kontakt-hero{
     min-height: 320px;
     background-position: center;
@@ -882,6 +901,9 @@ body.crew .home-link:hover{ color: #000; }
 /* ======================================================================= */
 @media (max-width:768px){
 
+  body.home{
+    background-image: url("../images/homepage-background-small.jpg");
+  }
   /* allgemeine Container etwas kompakter */
   .container{
     margin: 1em auto;
@@ -904,7 +926,6 @@ body.crew .home-link:hover{ color: #000; }
 
   /* Foto-Stapel wieder relativ + überlappend */
   body.home .stack{
-    background-image: url("../images/homepage-background-small.jpg");
     position: relative;          /* erlaubt absolute Kind-Positionen */
     min-height: 420px;           /* kompakte, aber überlappende Höhe */
   }
