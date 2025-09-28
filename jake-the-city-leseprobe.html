@@ -163,37 +163,86 @@
     <a href="datenschutz.html">Datenschutz</a>
   </footer>
 
-  <!-- jQuery (falls nicht global eingebunden) -->
-  <script src="wow_book/jquery.min.js"></script>
-  <!-- wowBook JS -->
-  <script src="wow_book/wow_book.min.js"></script>
+  <!-- jQuery zuerst (lokal, dann CDN-Fallback) -->
+<script src="wow_book/jquery.min.js"></script>
+<script>
+  if(!window.jQuery){
+    document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>');
+  }
+</script>
 
-  <script>
-    (function(){
-      var $book = $("#wb-jake").wowBook({
-        height: $("#wb-jake").height(),
-        width:  $("#wb-jake").width(),
-        centeredWhenClosed: true,
-        hardcovers: true,
-        pageNumbers: true,
-        flipSound: true,
-        thumbnails: true,
-        scaleToFit: "#wb-jake",
-        handleResize: true,
-        toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen"
-      });
+<!-- wowBook-Plugin -->
+<script src="wow_book/wow_book.min.js"></script>
 
-      // Doppelseite >820px, darunter Einzelseite – angepasst an dein Responsiv-Design
-      function responsiveSinglePage(){
-        var wb = $("#wb-jake").data("wowBook");
-        if(!wb) return;
-        wb.opts.doublePages = (window.innerWidth > 820);
-        wb.resize();
+<script>
+  (function(){
+    // ===== Sichtbares Diagnose-Overlay =====
+    function diag(msg){
+      var el = document.getElementById('wb-diag');
+      if(!el){
+        el = document.createElement('div');
+        el.id = 'wb-diag';
+        el.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:99999;background:#222;color:#fff;padding:8px 10px;border-radius:6px;font:14px/1.3 system-ui';
+        document.body.appendChild(el);
       }
-      window.addEventListener('resize', responsiveSinglePage);
-      responsiveSinglePage();
+      el.innerText = msg;
+    }
+
+    // 1) jQuery geladen?
+    if(!window.jQuery){ diag('Fehler: jQuery wurde nicht geladen. Prüfe wow_book/jquery.min.js / CDN.'); return; }
+
+    // 2) wowBook-Plugin vorhanden?
+    if(!jQuery.fn || !jQuery.fn.wowBook){
+      diag('Fehler: wowBook-Plugin nicht gefunden. Prüfe Pfad: wow_book/wow_book.min.js');
+      console.error('$.fn.wowBook ist', jQuery.fn && jQuery.fn.wowBook);
+      return;
+    }
+
+    // 3) CSS geladen? (rudimentärer Test auf typische Klasse)
+    var cssOK = (function(){
+      var t = document.createElement('div');
+      t.className = 'wowbook-toolbar';
+      document.body.appendChild(t);
+      var hasStyle = window.getComputedStyle(t).position !== 'static';
+      document.body.removeChild(t);
+      return hasStyle;
     })();
-  </script>
+    if(!cssOK){
+      diag('Hinweis: wow_book.css scheint nicht zu greifen. Pfad prüfen: wow_book/wow_book.css');
+    }
+
+    // 4) Init (sicher & responsiv)
+    var $ = jQuery;
+    var $node = $('#wb-jake');
+    if($node.length === 0){ diag('Fehler: #wb-jake nicht gefunden.'); return; }
+
+    var wb = $node.wowBook({
+      // Breite/Höhe vom Container übernehmen
+      height: $node.height(),
+      width : $node.width(),
+      centeredWhenClosed: true,
+      hardcovers: true,
+      pageNumbers: true,
+      flipSound: true,
+      thumbnails: true,
+      handleResize: true,
+      scaleToFit: "#wb-jake",
+      // Toolbar einschalten
+      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen"
+    }).data('wowBook');
+
+    // 5) Ein-/Doppelseite je nach Breite
+    function applyLayout(){
+      if(!wb) return;
+      wb.opts.doublePages = (window.innerWidth > 820);
+      wb.resize();
+    }
+    window.addEventListener('resize', applyLayout);
+    applyLayout();
+
+    diag('OK: wowBook initialisiert. Wenn Toolbar nicht sichtbar: prüfen, ob wow_book.css geladen wird.');
+  })();
+</script>
 
   <noscript>
     <div class="container">
