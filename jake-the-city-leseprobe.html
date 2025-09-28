@@ -321,8 +321,12 @@
     var $wrap = $('#wb-jake');
     if (!$wrap.length) return;
   
-    function init() {
-      var wb = $wrap.wowBook({
+    var wb = null;
+    var mode = null; // 'single' | 'double'
+  
+    function build(newMode) {
+      mode = newMode;
+      wb = $wrap.wowBook({
         width:  $wrap.outerWidth(),
         height: $wrap.outerHeight(),
         hardcovers: true,
@@ -332,33 +336,37 @@
         toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
         imagesPath: "wow_book/images/",
         handleResize: true,
-        doublePages: window.innerWidth >= 820
+        doublePages: (mode === 'double')
       }).data('wowBook');
+    }
   
-      function applyLayout() {
-        var single = window.innerWidth < 820;
-        wb.opts.doublePages = !single;
+    function currentMode() {
+      return (window.innerWidth < 820) ? 'single' : 'double';
+    }
   
-        // Bei Einzelseite auf „rechte“ Seite wechseln, falls nötig
-        if (single && wb.currentPage() % 2 === 0) {
-          wb.gotoPage(wb.currentPage() + 1);
-        }
+    function apply() {
+      var need = currentMode();
   
-        // Größe an Container anpassen
+      // Wenn sich der Modus ändert: Buch neu aufbauen
+      if (need !== mode) {
+        if (wb && wb.destroy) wb.destroy();
+        build(need);
+        return;
+      }
+  
+      // Größe einfach nachziehen
+      if (wb && wb.setSize) {
         wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
         wb.resize();
       }
-  
-      // nach Layout/Fonts anwenden und bei Resize
-      setTimeout(applyLayout, 0);
-      window.addEventListener('resize', applyLayout);
     }
   
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
+    // initial
+    build(currentMode());
+    // nach Layout/Fonts einmal nachziehen
+    setTimeout(apply, 0);
+    // und bei Resize/Orientation-Change
+    window.addEventListener('resize', apply);
   })();
   </script>
   
