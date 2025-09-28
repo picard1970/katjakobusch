@@ -172,7 +172,6 @@
 
 <script>
   (function(){
-    // ===== Sichtbares Diagnose-Overlay =====
     function diag(msg){
       var el = document.getElementById('wb-diag');
       if(!el){
@@ -184,62 +183,52 @@
       el.innerText = msg;
     }
 
-    // 1) jQuery geladen?
-    if(!window.jQuery){ diag('Fehler: jQuery wurde nicht geladen. Prüfe wow_book/jquery.min.js / CDN.'); return; }
+    if(!window.jQuery){ diag('Fehler: jQuery wurde nicht geladen.'); return; }
+    if(!jQuery.fn || !jQuery.fn.wowBook){ diag('Fehler: wowBook-Plugin nicht gefunden.'); return; }
 
-    // 2) wowBook-Plugin vorhanden?
-    if(!jQuery.fn || !jQuery.fn.wowBook){
-      diag('Fehler: wowBook-Plugin nicht gefunden. Prüfe Pfad: wow_book/wow_book.min.js');
-      console.error('$.fn.wowBook ist', jQuery.fn && jQuery.fn.wowBook);
-      return;
+    var RATIO = 2650/1600;              // Höhe/Breite deines Covers
+    var el = document.getElementById('wb-jake');
+    if(!el){ diag('#wb-jake nicht gefunden'); return; }
+
+    function computeSizes(){
+      var rect     = el.getBoundingClientRect();
+      var isDouble = window.innerWidth > 820;       // deine Logik
+      var pageW    = Math.max(1, rect.width / (isDouble ? 2 : 1)); // *** Seitenbreite! ***
+      var pageH    = pageW * RATIO;                 // Seitenhöhe im Cover-Verhältnis
+      return {pageW, pageH, isDouble};
     }
 
-    // 3) CSS geladen? (rudimentärer Test auf typische Klasse)
-    var cssOK = (function(){
-      var t = document.createElement('div');
-      t.className = 'wowbook-toolbar';
-      document.body.appendChild(t);
-      var hasStyle = window.getComputedStyle(t).position !== 'static';
-      document.body.removeChild(t);
-      return hasStyle;
-    })();
-    if(!cssOK){
-      diag('Hinweis: wow_book.css scheint nicht zu greifen. Pfad prüfen: wow_book/wow_book.css');
-    }
+    // Initiale Seitengrößen berechnen
+    var s = computeSizes();
 
-    // 4) Init (sicher & responsiv)
-    var $ = jQuery;
-    var $node = $('#wb-jake');
-    if($node.length === 0){ diag('Fehler: #wb-jake nicht gefunden.'); return; }
-
-    var wb = $node.wowBook({
-      // Breite/Höhe vom Container übernehmen
-      height: $node.height(),
-      width : $node.width(),
+    // Wichtig: keine Container-Width/Height, sondern ***Seiten***-Maße übergeben
+    var wb = jQuery(el).wowBook({
+      width : s.pageW,
+      height: s.pageH,
       centeredWhenClosed: true,
       hardcovers: true,
       pageNumbers: true,
       flipSound: true,
       thumbnails: true,
-      handleResize: true,
-      scaleToFit: "#wb-jake",
-      // Toolbar einschalten
-      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen"
+      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+      imagesPath: "wow_book/images/",
+      // scaleToFit verursacht hier unerwünschtes Autoscaling → aus
+      scaleToFit: null,
+      handleResize: false
     }).data('wowBook');
 
-    // 5) Ein-/Doppelseite je nach Breite
-    function applyLayout(){
-      if(!wb) return;
-      wb.opts.doublePages = (window.innerWidth > 820);
+    function apply(){
+      var ss = computeSizes();
+      wb.opts.doublePages = ss.isDouble;
+      if (wb.setSize) wb.setSize(ss.pageW, ss.pageH);   // Seitengröße anpassen
       wb.resize();
     }
-    window.addEventListener('resize', applyLayout);
-    applyLayout();
+    window.addEventListener('resize', apply);
+    apply();
 
-    diag('OK: wowBook initialisiert. Wenn Toolbar nicht sichtbar: prüfen, ob wow_book.css geladen wird.');
+    diag('OK: wowBook mit korrekten Seitenmaßen initialisiert.');
   })();
 </script>
-
   <noscript>
     <div class="container">
       <p><strong>Hinweis:</strong> Zum Blättern der Leseprobe benötigst du JavaScript. Hier ist ein
