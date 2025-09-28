@@ -314,57 +314,51 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="wow_book/wow_book.min.js"></script>
   <script>
-  (function(){
-    function diag(m){
-      let el = document.getElementById('wb-diag');
-      if(!el){ el=document.createElement('div'); el.id='wb-diag';
-        el.style.cssText='position:fixed;left:12px;bottom:12px;z-index:999999;background:#222;color:#fff;padding:8px 10px;border-radius:6px;font:13px/1.35 system-ui';
-        document.body.appendChild(el);
+  (function () {
+    if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
+  
+    var $ = jQuery;
+    var $wrap = $('#wb-jake');
+    if (!$wrap.length) return;
+  
+    function init() {
+      var wb = $wrap.wowBook({
+        width:  $wrap.outerWidth(),
+        height: $wrap.outerHeight(),
+        hardcovers: true,
+        centeredWhenClosed: true,
+        pageNumbers: true,
+        flipSound: true,
+        toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+        imagesPath: "wow_book/images/",
+        handleResize: true,
+        doublePages: window.innerWidth >= 820
+      }).data('wowBook');
+  
+      function applyLayout() {
+        var single = window.innerWidth < 820;
+        wb.opts.doublePages = !single;
+  
+        // Bei Einzelseite auf „rechte“ Seite wechseln, falls nötig
+        if (single && wb.currentPage() % 2 === 0) {
+          wb.gotoPage(wb.currentPage() + 1);
+        }
+  
+        // Größe an Container anpassen
+        wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+        wb.resize();
       }
-      el.textContent = m;
+  
+      // nach Layout/Fonts anwenden und bei Resize
+      setTimeout(applyLayout, 0);
+      window.addEventListener('resize', applyLayout);
     }
   
-    if(!window.jQuery){ diag('Fehler: jQuery nicht geladen'); return; }
-    if(!jQuery.fn || !jQuery.fn.wowBook){ diag('Fehler: wowBook-Plugin fehlt'); return; }
-  
-    // Prüfe, ob wow_book.css greift (Toolbar sollte per CSS position:fixed sein)
-    (function(){
-      const t=document.createElement('div'); t.className='wowbook-toolbar';
-      document.body.appendChild(t);
-      const pos=getComputedStyle(t).position;
-      document.body.removeChild(t);
-      if(pos==='static') diag('Hinweis: wow_book.css nicht geladen/greift nicht');
-    })();
-  
-    const $ = jQuery;
-    const $wrap = $('#wb-jake');
-    if(!$wrap.length){ diag('#wb-jake nicht gefunden'); return; }
-  
-    // Seitenmaße vom Container nehmen
-    const w = $wrap.outerWidth(), h = $wrap.outerHeight();
-  
-    const wb = $wrap.wowBook({
-      width:  w,
-      height: h,
-      hardcovers: true,
-      centeredWhenClosed: true,
-      pageNumbers: true,
-      flipSound: true,
-      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-      imagesPath: "wow_book/images/",   // wichtig: Icons der Toolbar
-      handleResize: true,
-      doublePages: false                 // Einzelseite
-    }).data('wowBook');
-  
-    // Bei Resize Größe neu setzen
-    function onResize(){
-      const ww=$wrap.outerWidth(), hh=$wrap.outerHeight();
-      if(wb && wb.setSize) wb.setSize(ww, hh);
-      wb.resize();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
     }
-    window.addEventListener('resize', onResize);
-  
-    diag('OK: wowBook initialisiert. Wenn Toolbar fehlt → CSS-Pfad prüfen.');
   })();
   </script>
   
