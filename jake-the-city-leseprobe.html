@@ -5,15 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leseprobe · Jake & the City · Katja Kobusch</title>
 
-  <!-- Deine Global-Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <!-- wowBook CSS (Pfad prüfen!) -->
-  <link rel="stylesheet" href="wow_book/wow_book.css" />
+  <!-- Dein globales CSS + wowBook CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="wow_book/wow_book.css">
 
-  <meta name="description" content="Leseprobe aus »Jake & the City« (Prequel zu Echo & Ember) von Katja Kobusch." />
-  <meta property="og:title" content="Leseprobe · Jake & the City" />
-  <meta property="og:description" content="Prequel zu »Echo & Ember« – Leseprobe von Katja Kobusch." />
-  <meta property="og:image" content="assets/images/jake-the-city-cover-large.jpg" />
+  <meta name="description" content="Leseprobe aus »Jake & the City« (Prequel zu Echo & Ember) von Katja Kobusch.">
 
   <style>
     body.leseprobe{
@@ -27,33 +23,15 @@
     .lp-head{ display:flex; align-items:center; gap:1rem; margin-bottom:.5rem; }
     .lp-cover{ width:84px; height:auto; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,.18); }
     .lp-title h1{ margin:0 0 .15rem; font-size:clamp(1.6rem,2.6vw,2.2rem); line-height:1.2; }
-    .lp-title small{ display:block; opacity:.85; color:var(--grau); }
 
-    /* Sichtbarer Buch-Container – Größe setzt das Script, hier nur Optik */
-    #wb-jake{
-      margin: 1rem auto;
-      background: var(--weiss);
-      border: 1px solid var(--umrandung);
-      border-radius: 4px;
-      overflow: hidden; /* keine Artefakte */
-    }
+    /* Host-Container – bekommt KEINE feste Höhe/Breite in CSS */
+    #bookHost{ margin:1rem auto; }
 
-    /* Inhalt */
-    .wb-page{
-      padding: 1.4rem;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: var(--dunkelgrau2);
-      hyphens: auto;
-    }
-    .wb-page h2{ margin:0 0 .75rem; font-size:1.25rem; line-height:1.3; }
+    /* Ganz wichtig: kein Innenabstand in den Seiteninhalten */
+    .wowbook-page-content{ padding:0 !important; }
 
-    .lp-back a{
-      color: var(--button);
-      text-decoration: none;
-      border-bottom: 1px dashed currentColor;
-    }
-    .lp-back a:hover{ border-bottom-style: solid; color: var(--button_hover); }
+    /* Optional: etwas Text-Layout im Buch */
+    .page-text{ padding:1.2rem; font-size:1.05rem; }
   </style>
 </head>
 <body class="leseprobe">
@@ -61,135 +39,92 @@
   <a class="home-link" href="index.html">Home</a>
 
   <header class="lp-wrap lp-head">
-    <img class="lp-cover" src="assets/images/jake-the-city-cover-large.jpg" alt="Cover Jake &amp; the City" width="84" height="130" />
+    <img class="lp-cover" src="assets/images/jake-the-city-cover-large.jpg" alt="Cover Jake &amp; the City">
     <div class="lp-title">
       <small>Prequel zu »Echo &amp; Ember«</small>
       <h1>Leseprobe · <em>Jake &amp; the City</em></h1>
-      <div style="color:var(--grau); font-size:.95rem;">Am Rand tippen/klicken zum Blättern · Toolbar oben für Zoom/Fullscreen.</div>
+      <div style="color:var(--grau);font-size:.95rem">Am Rand tippen/klicken zum Blättern · Toolbar oben für Zoom/Fullscreen.</div>
     </div>
   </header>
 
   <main class="lp-wrap">
-    <div id="wb-jake" class="wowbook">
-
-      <!-- Coverseite – füllt die Seite komplett -->
-      <div class="wb-page" style="padding:0">
+    <!-- wowBook erwartet die Seiten als Kinder dieses Elements -->
+    <div id="bookHost" class="wowbook">
+      <!-- Seite 1: Cover – soll die Seite komplett füllen -->
+      <div class="page">
         <img src="assets/images/jake-the-city-cover-large.jpg"
              alt="Jake &amp; the City – Cover"
-             style="display:block;width:100%;height:100%;object-fit:cover" />
+             style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
 
-      <!-- Seite 1 -->
-      <div class="wb-page">
-        <h2>Jake &amp; the City – Leseprobe</h2>
-        <p><strong>»Jakob Maximilian Theodor Dekker, dieses Gespräch ist noch nicht beendet. Ich möchte, dass du …«</strong></p>
-        <p>Jake stürmte die Treppe hoch in sein Zimmer, steckte sich Kopfhörer in die Ohren und startete <em>Pressure</em> von Muse. Was auch immer Mom von unten noch hochrief, ertrank im drängenden Beat des Liedes.</p>
-        <p><em>Sie möchte?</em></p>
-        <p>Jake griff nach seinem Hoodie, krallte die Finger in den weichen Stoff und schloss die Augen.</p>
-        <p><em>Und was ist mit dem, was ich möchte, verdammt?</em></p>
-        <p>Sein Herz schlug im Takt der Musik, viel zu schnell. Gedanken schwirrten wie ein wildgewordener Bienenschwarm durch seinen Kopf. <em>Don’t push me</em> sang Muse gerade und traf damit genau seine Stimmung …</p>
+      <!-- Seite 2 ff.: Textseiten -->
+      <div class="page">
+        <div class="page-text">
+          <h2>Jake &amp; the City – Leseprobe</h2>
+          <p><strong>»Jakob Maximilian Theodor Dekker, dieses Gespräch ist noch nicht beendet. Ich möchte, dass du …«</strong></p>
+          <p>Jake stürmte die Treppe hoch in sein Zimmer, steckte sich Kopfhörer in die Ohren und startete <em>Pressure</em> von Muse …</p>
+          <p><em>Sie möchte?</em></p>
+          <p>…</p>
+        </div>
       </div>
 
-      <!-- Seite 2 -->
-      <div class="wb-page">
-        <p>Jake öffnete die Augen und drehte die Lautstärke bis zum Anschlag auf, um seiner Wut wenigstens nach innen ein Ventil zu geben. Dann überprüfte er die Sachen, die er auf seinem Bett zurechtgelegt hatte: Socken, Boxershorts, kurze und lange Hose, Shirts, Hoodie …</p>
-        <p>Er marschierte ins Bad, um sein Waschzeug zu packen. …</p>
-        <p>»Du ignorierst mich? Wirklich, Jake?«</p>
-        <p>Er musterte sie eindringlich. »Wieso auch nicht? Machst du mit meinen Argumenten doch auch.«</p>
-        <p>…</p>
-      </div>
-
-      <!-- Seite 3 -->
-      <div class="wb-page">
-        <p>»Komm schon, Hase. Lass uns nicht so auseinandergehen.«</p>
-        <p><em>Hase? Ernsthaft?</em> …</p>
-        <p>»Geez, Mom.« Sein Atem kam schnell und flach. »Ich habe sehr genau zugehört. Dir passt bloß meine Meinung nicht. Aber die wird sich nicht ändern. Egal, wie viele Runden wir drehen.«</p>
-        <p>…</p>
-      </div>
-
-      <!-- Seite 4 -->
-      <div class="wb-page">
-        <p>… Er klemmte sie sich unter den Arm und murmelte: »Danke.«</p>
-        <p>Mom zog ihm wieder einen Kopfhörer heraus. »Ich habe dir ein Erste-Hilfe-Set aufs Bett gelegt. Pack das bitte auch ein.«</p>
-        <p>…</p>
-      </div>
-
+      <div class="page"><div class="page-text"><p>Weitere Seite …</p></div></div>
+      <div class="page"><div class="page-text"><p>Weitere Seite …</p></div></div>
     </div>
 
-    <p class="lp-back" style="margin-top:1rem">
-      <a href="/buecher.html">← Zurück zur Bücher-Übersicht</a>
-    </p>
+    <p style="margin-top:1rem"><a href="/buecher.html">← Zurück zur Bücher-Übersicht</a></p>
   </main>
 
-  <footer>
+  <footer class="lp-wrap">
     <a href="impressum.html">Impressum</a> ·
     <a href="datenschutz.html">Datenschutz</a>
   </footer>
 
   <!-- jQuery + wowBook -->
   <script src="wow_book/jquery.min.js"></script>
-  <script>if(!window.jQuery){document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>');}</script>
   <script src="wow_book/wow_book.min.js"></script>
 
   <script>
     (function(){
-      if(!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
+      // Seitenverhältnis 1600x2650
+      const RATIO = 2650/1600; // ≈1.65625
 
-      // Feste Seitenmaße (Einzelseite) – wowBook rechnet damit intern
-      const PAGE_W = 1600, PAGE_H = 2650, R = PAGE_W / PAGE_H;
-
-      const el = document.getElementById('wb-jake');
-
-      function sizeBook(){
-        // verfügbare Maximalbreite/-höhe des Viewports
-        const maxW = Math.min(window.innerWidth * 0.92, 900); // begrenzt Desktop-Breite
-        const maxH = window.innerHeight * 0.82;               // soll auf eine Seite passen
-
-        // Breite aus Höhe berechnen (Ratio 1600/2650) und das kleinere nehmen
-        let w = Math.min(maxW, maxH * R);
-        let h = w / R;
-
-        // auf ganze Pixel runden
-        w = Math.floor(w); h = Math.floor(h);
-
-        el.style.width  = w + 'px';
-        el.style.height = h + 'px';
-
-        // wowBook-Instanz ggf. updaten
-        const wb = jQuery(el).data('wowBook');
-        if (wb && wb.setSize){ wb.setSize(w, h); wb.resize(); }
+      function calcPageSize(){
+        // Nutze 90% der Viewportfläche, ohne zu scrollen
+        const maxW = Math.floor(window.innerWidth  * 0.9);
+        const maxH = Math.floor(window.innerHeight * 0.9);
+        // Breite so wählen, dass Höhe passt
+        const wByH = Math.floor(maxH / RATIO);     // Breite, wenn Höhe limitierend
+        const w     = Math.min(maxW, wByH);        // tatsächliche Breite
+        const h     = Math.round(w * RATIO);       // dazugehörige Höhe
+        return {w, h};
       }
 
-      // wowBook initialisieren
-      const wb = jQuery('#wb-jake').wowBook({
-        width:  PAGE_W,            // Seitenbreite in px
-        height: PAGE_H,            // Seitenhöhe in px
-        doublePages: false,        // Cover = Einzelseite
-        hardcovers: true,
-        bookShadow: 0.15,          // dezenter Rand
-        centeredWhenClosed: true,
-        pageNumbers: true,
-        flipSound: true,
-        thumbnails: true,
-        toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-        imagesPath: "wow_book/images/",
-        scaleToFit: null,          // Wir steuern das Scaling selbst
-        handleResize: false
-      }).data('wowBook');
+      function initOrResize(wb){
+        const s = calcPageSize();
+        if (wb){ wb.setSize(s.w, s.h); wb.resize(); return; }
 
-      // Erstes Sizing + bei Resize
-      sizeBook();
-      window.addEventListener('resize', sizeBook);
-      // kleiner Tick nach Layout-Finish
-      setTimeout(sizeBook, 0);
+        // Erstinitialisierung
+        const book = $('#bookHost').wowBook({
+          // WICHTIG: Zahlen, keine %-Angaben
+          width:  s.w,     // ***Seiten***-breite (nicht Doppelseite!)
+          height: s.h,     // ***Seiten***-höhe
+          doublePages: false,        // Einzelseitenmodus (Cover = ganze Seite)
+          centeredWhenClosed: true,
+          hardcovers: true,
+          pageNumbers: true,
+          toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+          imagesPath: "wow_book/images/",
+          handleResize: false,       // wir managen Resize selbst
+          turnPageDuration: 500
+        }).data('wowBook');
+
+        // Auf Resize reagieren
+        window.addEventListener('resize', () => initOrResize(book));
+      }
+
+      initOrResize(null);
     })();
   </script>
-
-  <noscript>
-    <div class="container">
-      <p><strong>Hinweis:</strong> Zum Blättern der Leseprobe benötigst du JavaScript.
-         Hier ist ein <a href="assets/images/jake-the-city-cover-large.jpg">Link zum Cover</a>.</p>
-    </div>
-  </noscript>
 </body>
 </html>
