@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leseprobe · Jake & the City · Katja Kobusch</title>
 
+  <!-- Deine Global-Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- wowBook CSS (Pfad prüfen!) -->
   <link rel="stylesheet" href="wow_book/wow_book.css" />
 
   <meta name="description" content="Leseprobe aus »Jake & the City« (Prequel zu Echo & Ember) von Katja Kobusch." />
@@ -27,17 +29,16 @@
     .lp-title h1{ margin:0 0 .15rem; font-size:clamp(1.6rem,2.6vw,2.2rem); line-height:1.2; }
     .lp-title small{ display:block; opacity:.85; color:var(--grau); }
 
-    /* Sichtbarer Buch-Container mit fester Seitenproportion (1600:2650) */
+    /* Sichtbarer Buch-Container – Größe setzt das Script, hier nur Optik */
     #wb-jake{
       margin: 1rem auto;
-      width: min(92vw, 860px);       /* hier stellst du „schmaler/breiter“ ein */
-      aspect-ratio: 1600 / 2650;     /* verhindert Weißräume oben/unten */
       background: var(--weiss);
       border: 1px solid var(--umrandung);
       border-radius: 4px;
-      overflow: hidden;              /* Sicherheit: keine Artefakte am Rand */
+      overflow: hidden; /* keine Artefakte */
     }
 
+    /* Inhalt */
     .wb-page{
       padding: 1.4rem;
       font-size: 1.05rem;
@@ -71,7 +72,7 @@
   <main class="lp-wrap">
     <div id="wb-jake" class="wowbook">
 
-      <!-- Coverseite (Einzelseite, füllt die Seite komplett) -->
+      <!-- Coverseite – füllt die Seite komplett -->
       <div class="wb-page" style="padding:0">
         <img src="assets/images/jake-the-city-cover-large.jpg"
              alt="Jake &amp; the City – Cover"
@@ -134,25 +135,53 @@
     (function(){
       if(!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
 
-      // Echte Seitenmaße: 1600 × 2650 (Einzelseite)
-      var wb = jQuery('#wb-jake').wowBook({
-        width: 1600,
-        height: 2650,
-        doublePages: false,             // Cover = Einzelseite
+      // Feste Seitenmaße (Einzelseite) – wowBook rechnet damit intern
+      const PAGE_W = 1600, PAGE_H = 2650, R = PAGE_W / PAGE_H;
+
+      const el = document.getElementById('wb-jake');
+
+      function sizeBook(){
+        // verfügbare Maximalbreite/-höhe des Viewports
+        const maxW = Math.min(window.innerWidth * 0.92, 900); // begrenzt Desktop-Breite
+        const maxH = window.innerHeight * 0.82;               // soll auf eine Seite passen
+
+        // Breite aus Höhe berechnen (Ratio 1600/2650) und das kleinere nehmen
+        let w = Math.min(maxW, maxH * R);
+        let h = w / R;
+
+        // auf ganze Pixel runden
+        w = Math.floor(w); h = Math.floor(h);
+
+        el.style.width  = w + 'px';
+        el.style.height = h + 'px';
+
+        // wowBook-Instanz ggf. updaten
+        const wb = jQuery(el).data('wowBook');
+        if (wb && wb.setSize){ wb.setSize(w, h); wb.resize(); }
+      }
+
+      // wowBook initialisieren
+      const wb = jQuery('#wb-jake').wowBook({
+        width:  PAGE_W,            // Seitenbreite in px
+        height: PAGE_H,            // Seitenhöhe in px
+        doublePages: false,        // Cover = Einzelseite
         hardcovers: true,
+        bookShadow: 0.15,          // dezenter Rand
         centeredWhenClosed: true,
         pageNumbers: true,
         flipSound: true,
         thumbnails: true,
         toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
         imagesPath: "wow_book/images/",
-        scaleToFit: "#wb-jake",         // skaliert IN den Container mit aspect-ratio
-        handleResize: true
+        scaleToFit: null,          // Wir steuern das Scaling selbst
+        handleResize: false
       }).data('wowBook');
 
-      function res(){ if(wb && wb.resize) wb.resize(); }
-      window.addEventListener('resize', res);
-      setTimeout(res, 0);
+      // Erstes Sizing + bei Resize
+      sizeBook();
+      window.addEventListener('resize', sizeBook);
+      // kleiner Tick nach Layout-Finish
+      setTimeout(sizeBook, 0);
     })();
   </script>
 
