@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leseprobe · Jake & the City · Katja Kobusch</title>
 
-  <!-- Deine globalen Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
-
-  <!-- wowBook CSS -->
   <link rel="stylesheet" href="wow_book/wow_book.css" />
 
   <meta name="description" content="Leseprobe aus »Jake & the City« (Prequel zu Echo & Ember) von Katja Kobusch." />
@@ -17,7 +14,6 @@
   <meta property="og:image" content="assets/images/jake-the-city-cover-large.jpg" />
 
   <style>
-    /* Seitenhintergrund = deine Mauer */
     body.leseprobe{
       background:
         url('assets/images/homepage-background-large.jpg') center/cover fixed no-repeat,
@@ -25,33 +21,23 @@
       color: var(--dunkelgrau2);
       line-height: 1.6;
     }
-
-    .lp-wrap{
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .lp-head{
-      display:flex; align-items:center; gap:1rem; margin-bottom:.5rem;
-    }
-    .lp-cover{
-      width:84px; height:auto; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,.18);
-    }
-    .lp-title h1{
-      margin:0 0 .15rem; font-size:clamp(1.6rem,2.6vw,2.2rem); line-height:1.2;
-    }
+    .lp-wrap{ max-width:1200px; margin:2rem auto; padding:0 1rem; }
+    .lp-head{ display:flex; align-items:center; gap:1rem; margin-bottom:.5rem; }
+    .lp-cover{ width:84px; height:auto; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,.18); }
+    .lp-title h1{ margin:0 0 .15rem; font-size:clamp(1.6rem,2.6vw,2.2rem); line-height:1.2; }
     .lp-title small{ display:block; opacity:.85; color:var(--grau); }
 
-    /* Der sichtbare Container; wowBook skaliert in dieses Element hinein */
+    /* Sichtbarer Buch-Container mit fester Seitenproportion (1600:2650) */
     #wb-jake{
       margin: 1rem auto;
-      width: min(92vw, 860px);    /* hier stellst du „schmaler/breiter“ ein */
+      width: min(92vw, 860px);       /* hier stellst du „schmaler/breiter“ ein */
+      aspect-ratio: 1600 / 2650;     /* verhindert Weißräume oben/unten */
       background: var(--weiss);
       border: 1px solid var(--umrandung);
       border-radius: 4px;
+      overflow: hidden;              /* Sicherheit: keine Artefakte am Rand */
     }
 
-    /* Inhalt einer Buchseite */
     .wb-page{
       padding: 1.4rem;
       font-size: 1.05rem;
@@ -83,14 +69,13 @@
   </header>
 
   <main class="lp-wrap">
-    <!-- wowBook: jede .wb-page ist EINE Seite -->
     <div id="wb-jake" class="wowbook">
 
-      <!-- Coverseite (Einzelseite) – vollständige Darstellung ohne Beschnitt -->
-      <div class="wb-page" style="padding:0; display:flex; align-items:center; justify-content:center;">
+      <!-- Coverseite (Einzelseite, füllt die Seite komplett) -->
+      <div class="wb-page" style="padding:0">
         <img src="assets/images/jake-the-city-cover-large.jpg"
              alt="Jake &amp; the City – Cover"
-             style="width:100%; height:100%; object-fit:contain; display:block;" />
+             style="display:block;width:100%;height:100%;object-fit:cover" />
       </div>
 
       <!-- Seite 1 -->
@@ -140,22 +125,20 @@
     <a href="datenschutz.html">Datenschutz</a>
   </footer>
 
-  <!-- jQuery -->
+  <!-- jQuery + wowBook -->
   <script src="wow_book/jquery.min.js"></script>
   <script>if(!window.jQuery){document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>');}</script>
-
-  <!-- wowBook -->
   <script src="wow_book/wow_book.min.js"></script>
 
   <script>
     (function(){
       if(!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
 
-      // WICHTIG: echte Seitenmaße (Einzelseite) 1600 × 2650
+      // Echte Seitenmaße: 1600 × 2650 (Einzelseite)
       var wb = jQuery('#wb-jake').wowBook({
-        width: 1600,                 // Seitenbreite im Original
-        height: 2650,                // Seitenhöhe im Original
-        doublePages: false,          // Einzelseiten (Cover ist eine Seite)
+        width: 1600,
+        height: 2650,
+        doublePages: false,             // Cover = Einzelseite
         hardcovers: true,
         centeredWhenClosed: true,
         pageNumbers: true,
@@ -163,11 +146,10 @@
         thumbnails: true,
         toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
         imagesPath: "wow_book/images/",
-        scaleToFit: "#wb-jake",      // in den sichtbaren Container skalieren
+        scaleToFit: "#wb-jake",         // skaliert IN den Container mit aspect-ratio
         handleResize: true
       }).data('wowBook');
 
-      // Bei Resize sauber nachziehen
       function res(){ if(wb && wb.resize) wb.resize(); }
       window.addEventListener('resize', res);
       setTimeout(res, 0);
