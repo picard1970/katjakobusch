@@ -1,136 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>Leseprobe · Jake & the City</title>
-
-  <!-- Deine globale Seite -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-
-  <!-- wowBook -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="wow_book/wow_book.css">
   <style>
-    /* Seite: ruhige Basis, keine feste Höhe auf dem Buchcontainer! */
-    body.leseprobe{
-      background: url("assets/images/homepage-background-large.jpg") center/cover fixed no-repeat;
-      line-height: 1.6;
-      color: var(--dunkelgrau2,#222);
-      margin: 0;
+    body {
+      background: #f8f1e3;
+      font-family: Arial, sans-serif;
     }
-    .wrap{max-width:1200px; margin:24px auto; padding:0 16px;}
-    .head{display:flex; align-items:center; gap:14px; margin-bottom:8px;}
-    .head h1{margin:0; font-size:clamp(22px,4.2vw,36px);}
-    .hint{color:#666; font-size:.95rem;}
-
-    /* Buchcontainer: nur Breite + initiales Seitenverhältnis für die erste Berechnung */
-    #book{
-      width: min(92vw, 900px);             /* Buchbreite (Einzelseite) */
-      aspect-ratio: 1600 / 2650;           /* nur initial – JS setzt danach exakte px */
-      margin: 16px auto;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.15);
-      border-radius:4px;
+    #book {
+      width: 800px;
+      height: 600px;
+      margin: 40px auto;
     }
-
-    /* Cover/Bild füllt die Seite vollständig */
-    .page img{
-      width:100%; height:100%;
-      object-fit: cover; display:block;
-    }
-
-    /* Falls dein globales CSS img{max-width:100%} setzt, stört das nicht,
-       weil wir width/height auf 100% setzen. */
   </style>
 </head>
-<body class="leseprobe">
-  <div class="wrap">
-    <div class="head">
-      <img src="assets/images/jake-the-city-cover-large.jpg" alt="" style="width:70px;height:auto;border-radius:4px">
-      <div>
-        <h1>Leseprobe · <em>Jake &amp; the City</em></h1>
-        <div class="hint">Am Rand tippen/klicken zum Blättern · Toolbar oben für Zoom/Fullscreen.</div>
-      </div>
+<body>
+  <h1 style="text-align:center;">Leseprobe · Jake & the City</h1>
+  <div id="book">
+    <div><img src="assets/images/jake-cover.jpg" alt="Cover"></div>
+    <div>
+      <h2>Kapitel 1</h2>
+      <p>Jake stürmte die Treppe hoch in sein Zimmer, steckte sich Kopfhörer in die Ohren …</p>
     </div>
-
-    <!-- BUCH: jedes direkte Kindelement ist eine Seite -->
-    <div id="book" class="wowbook">
-      <!-- Cover (Einzelseite, randlos) -->
-      <div class="page"><img src="assets/images/jake-the-city-cover-large.jpg" alt="Cover Jake &amp; the City"></div>
-
-      <!-- Seite 1 -->
-      <div class="page">
-        <div style="padding:1.4rem">
-          <h2 style="margin:.2rem 0 1rem">Jake &amp; the City – Leseprobe</h2>
-          <p><strong>»Jakob Maximilian Theodor Dekker, dieses Gespräch ist noch nicht beendet. Ich möchte, dass du …«</strong></p>
-          <p>Jake stürmte die Treppe hoch …</p>
-          <p><em>Sie möchte?</em></p>
-          <p>…</p>
-        </div>
-      </div>
-
-      <!-- Seite 2 -->
-      <div class="page"><div style="padding:1.4rem"><p>Weitere Seite …</p></div></div>
-
-      <!-- Seite 3 -->
-      <div class="page"><div style="padding:1.4rem"><p>…</p></div></div>
+    <div>
+      <h2>Kapitel 2</h2>
+      <p>Weitere Beispielseite …</p>
     </div>
   </div>
 
-  <!-- jQuery und wowBook -->
   <script src="wow_book/jquery.min.js"></script>
-  <script>if(!window.jQuery){document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>')}</script>
   <script src="wow_book/wow_book.min.js"></script>
-
   <script>
-  (function () {
-    // Seitenverhältnis deiner Einzelseite
-    var RATIO = 2650/1600; // Höhe/Breite
-
-    function bookSize(){
-      var w = Math.min(window.innerWidth*0.92, 900); // gleiche Breite wie in CSS
-      var h = Math.round(w * RATIO);
-      return {w:w, h:h};
-    }
-
-    function afterImages(cb){
-      var imgs = Array.from(document.querySelectorAll('#book img'));
-      if(imgs.length===0){ cb(); return; }
-      var left = imgs.filter(i => !i.complete).length;
-      if(left===0){ cb(); return; }
-      imgs.forEach(img => img.addEventListener('load', done, {once:true}));
-      imgs.forEach(img => img.addEventListener('error', done, {once:true}));
-      function done(){ if(--left<=0) cb(); }
-    }
-
-    function init(){
-      var s = bookSize();
-      var $book = $('#book');
-      var wb = $book.wowBook({
-        width:  s.w,                 // *** Seitengröße (Einzelseite) ***
-        height: s.h,
-        doublePages: false,          // Einzelseiten-Modus (Cover = Seite 1)
-        hardcovers: true,
-        centeredWhenClosed: true,
-        pageNumbers: true,
-        flipSound: true,
-        toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-        imagesPath: "wow_book/images/",
-        handleResize: false,         // wir kümmern uns selbst darum
-        zoomMax: 3
-      }).data('wowBook');
-
-      function resize(){
-        var s = bookSize();
-        wb.setSize(s.w, s.h);
-        wb.resize();
+    $("#book").wowBook({
+      width: 800,
+      height: 600,
+      centeredWhenClosed: true,
+      hardcovers: true,
+      turnPageDuration: 1000,
+      numberedPages: [1, -2],
+      controls: {
+        zoomIn    : '#zoomin',
+        zoomOut   : '#zoomout',
+        next      : '#next',
+        back      : '#back',
+        first     : '#first',
+        last      : '#last',
+        slideShow : '#slideshow',
+        flipSound : '#flipsound',
+        thumbnails: '#thumbs'
       }
-      window.addEventListener('resize', resize);
-    }
-
-    // Erst initialisieren, *nachdem* Bilder gemessen werden können
-    afterImages(init);
-  })();
+    });
   </script>
 </body>
 </html>
