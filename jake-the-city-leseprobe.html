@@ -331,6 +331,19 @@
         /* Optionale Qualität der „Griff“-Zonen für mobile Geräte */
         responsiveHandleWidth: 24
       });
+       // Toolbar selektieren (Container erstellt wowBook automatisch drumherum)
+      var $toolbar = $wrap.closest('.wowbook-container').find('.wowbook-toolbar');
+      if ($toolbar.length) {
+        $toolbar.append(
+          $('<a/>', {
+            href: 'index.html',
+            class: 'wb-home',
+            title: 'Home',
+            'aria-label': 'Home',
+            text: 'Home'
+          })
+        );
+      }
     }
 
     if (document.readyState === 'loading') {
