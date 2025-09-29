@@ -20,6 +20,32 @@
   <meta property="og:image" content="assets/images/jake-the-city-cover-large.jpg" />
 
   <style>
+    /* Home-Button in der wowBook-Toolbar */
+    .wowbook-toolbar .wb-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-left: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      background: none;
+      cursor: pointer;
+    }
+    
+    /* kleines Haus-Icon mit Unicode */
+    .wowbook-toolbar .wb-home::before {
+      content: "\2302"; /* Haus-Symbol */
+      font-size: 20px;
+      line-height: 1;
+    }
+    
+    /* Hover-Effekt wie die anderen Buttons */
+    .wowbook-toolbar .wb-home:hover {
+      color: #ffd700; /* z.B. Goldgelb beim Hovern */
+    }
     /* Seitenhintergrund etc. – nutzt deine Variablen */
     body.leseprobe{
       background:
@@ -331,7 +357,7 @@
         /* Optionale Qualität der „Griff“-Zonen für mobile Geräte */
         responsiveHandleWidth: 24
       });
-       // Toolbar selektieren (Container erstellt wowBook automatisch drumherum)
+     // Toolbar selektieren und Home-Button ergänzen
       var $toolbar = $wrap.closest('.wowbook-container').find('.wowbook-toolbar');
       if ($toolbar.length) {
         $toolbar.append(
@@ -339,8 +365,7 @@
             href: 'index.html',
             class: 'wb-home',
             title: 'Home',
-            'aria-label': 'Home',
-            text: 'Home'
+            'aria-label': 'Home'
           })
         );
       }
