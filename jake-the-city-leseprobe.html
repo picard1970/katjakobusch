@@ -314,87 +314,79 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="wow_book/wow_book.min.js"></script>
   <script>
-    (function () {
-      if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
-    
-      var $ = jQuery;
-      var $wrap = $('#wb-jake');
-      if (!$wrap.length) return;
-    
-      var wb = null;                       // aktuelle Instanz
-      var mql = window.matchMedia('(max-width: 819px)');
-    
-      // Debug-Badge
-      var badge = document.createElement('div');
-      badge.style.cssText = 'position:fixed;left:10px;bottom:10px;z-index:9999;background:#222;color:#fff;padding:4px 8px;border-radius:4px;font:12px/1.3 system-ui;opacity:.75';
-      document.body.appendChild(badge);
-      function setBadge(mode){ badge.textContent = 'Mode: ' + mode; }
-    
-      function mode(){ return mql.matches ? 'single' : 'double'; }
-    
-      function build(modeStr, keepPage){
-        // aktuelle Seite merken (logisch)
-        var cur = 1;
-        if (wb && wb.currentPage) cur = wb.currentPage();
-    
-        // zerstören, falls vorhanden
-        if (wb && wb.destroy) wb.destroy();
-        wb = null;
-    
-        // neu aufbauen
-        wb = $wrap.wowBook({
-          width:  $wrap.outerWidth(),
-          height: $wrap.outerHeight(),
-          hardcovers: true,
-          centeredWhenClosed: true,
-          pageNumbers: true,
-          flipSound: true,
-          toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-          imagesPath: "wow_book/images/",
-          handleResize: false,                 // wir kümmern uns selbst
-          doublePages: (modeStr === 'double')  // << entscheidend
-        }).data('wowBook');
-    
-        // Seite wiederherstellen (bei Wechsel parity beachten)
-        if (keepPage && wb) {
-          var target = cur;
-          if (modeStr === 'single' && target % 2 === 0) target += 1;
-          wb.gotoPage(Math.max(1, Math.min(target, wb.pages())));
-        }
-    
-        // Größe an Container anpassen
-        if (wb && wb.setSize) wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-        if (wb && wb.resize)  wb.resize();
-    
-        setBadge(modeStr);
-      }
-    
-      // Initial
-      function init() {
-        build(mode(), false);
-    
-        // Umschalten per MediaQuery
-        var last = mode();
-        mql.addEventListener('change', function(){
-          var now = mode();
-          if (now !== last){ build(now, true); last = now; }
-        });
-    
-        // reflow bei Resize (ohne Moduswechsel)
-        window.addEventListener('resize', function(){
-          if (!wb) return;
-          if (wb.setSize) wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-          if (wb.resize)  wb.resize();
-        });
-      }
-    
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
+(function () {
+  if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
+
+  var $ = jQuery;
+  var $wrap = $('#wb-jake');
+  if (!$wrap.length) return;
+
+  var wb = null;
+  var currentMode = null; // 'single' | 'double'
+  var mql = window.matchMedia('(max-width: 819px)');
+
+  function getMode(){ return mql.matches ? 'single' : 'double'; }
+
+  function build(mode){
+    // alte Instanz sauber weg
+    if (wb && wb.destroy) wb.destroy();
+    $wrap.find('.wowbook-stage, .wowbook-toolbar').remove();
+
+    var single = (mode === 'single');
+
+    wb = $wrap.wowBook({
+      width:  $wrap.outerWidth(),
+      height: $wrap.outerHeight(),
+      // WICHTIG: beide Varianten setzen, je nach Plugin-Version greift eine
+      singlePage: single,
+      doublePages: !single,
+      hardcovers: true,
+      centeredWhenClosed: true,
+      pageNumbers: true,
+      flipSound: true,
+      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+      imagesPath: "wow_book/images/",
+      handleResize: true
+    }).data('wowBook');
+
+    // falls die API helper hat:
+    if (wb && typeof wb.singlePage === 'function') wb.singlePage(single);
+
+    currentMode = mode;
+    updateBadge(mode);
+  }
+
+  function sync(){
+    var mode = getMode();
+    if (mode !== currentMode) {
+      build(mode);                           // nur beim Moduswechsel neu aufbauen
+    } else if (wb && wb.setSize) {
+      wb.setSize($wrap.outerWidth(), $wrap.outerHeight()); // sonst nur resize
+      wb.resize();
+    }
+  }
+
+  // kleines Badge zum Anzeigen des aktuellen Modus
+  var badge = document.createElement('div');
+  function updateBadge(mode){
+    badge.textContent = 'Mode: ' + mode;
+  }
+  Object.assign(badge.style, {
+    position:'fixed', left:'12px', bottom:'12px',
+    background:'#222', color:'#fff', padding:'6px 8px',
+    borderRadius:'6px', font:'12px/1.2 system-ui', zIndex:99999
+  });
+  document.body.appendChild(badge);
+
+  // initial
+  build(getMode());
+
+  // reagieren auf Größe/Breakpoint
+  window.addEventListener('resize', sync);
+  if (mql.addEventListener) mql.addEventListener('change', sync);
+  else mql.addListener(sync);
+})();
+</script>
   
   <noscript>
     <div class="container">
