@@ -321,80 +321,71 @@
   var $wrap = $('#wb-jake');
   if (!$wrap.length) return;
 
-  // 1) Buch initial bauen
-  var wb = $wrap.wowBook({
-    width:  $wrap.outerWidth(),
-    height: $wrap.outerHeight(),
-    hardcovers: true,
-    centeredWhenClosed: true,
-    pageNumbers: true,
-    flipSound: true,
-    toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-    imagesPath: "wow_book/images/",
-    handleResize: true,
-    doublePages: (window.innerWidth >= 820) // Startmodus
-  }).data('wowBook');
-
-  // 2) Breakpoint überwachen
+  var wb = null;                 // aktuelle wowBook-Instanz
+  var currentMode = null;        // 'single' | 'double'
   var mql = window.matchMedia('(max-width: 819px)');
-  var currentMode = null; // 'single' | 'double'
 
-  function desiredMode(){ return mql.matches ? 'single' : 'double'; }
+  function wantedMode(){ return mql.matches ? 'single' : 'double'; }
 
-  // 3) Umschalten NUR beim Moduswechsel
-  function applyMode(){
-    var mode = desiredMode();
-    if (mode === currentMode) {
-      // nur Größe nachziehen
-      wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-      wb.resize();
-      return;
+  function build(mode, keepPage){
+    // 1) Seite merken (Zahl, keine Funktion!)
+    var page = 1;
+    if (wb && keepPage) {
+      page = wb.currentPage || 1;
+      // bei Wechsel double -> single: auf rechte Seite springen
+      if (mode === 'single' && page % 2 === 0) page += 1;
     }
 
-    // Seite merken & Parität justieren
-    var p = wb.currentPage();
-    var goTo = p;
-    if (mode === 'single' && p % 2 === 0) goTo = p + 1; // rechte Seite zeigen
-    if (mode === 'double' && p % 2 === 1) goTo = p - 1; // auf linke Seite zurück
+    // 2) alte Instanz sauber zerstören
+    if (wb && typeof wb.destroy === 'function') { wb.destroy(); wb = null; }
 
-    // — Versuche ohne Rebuild umzuschalten —
-    if (typeof wb.singlePage === 'function') {
-      if (mode === 'single') {
-        wb.opts.doublePages = false;
-        wb.singlePage(true);
-      } else {
-        wb.opts.doublePages = true;
-        wb.singlePage(false);
-      }
-      wb.gotoPage(goTo);
-      wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-      wb.resize();
-    } else {
-      // — Fallback: einmal sauber neu bauen —
-      var opts = $.extend({}, wb.opts);
-      wb.destroy();
-      wb = $wrap.wowBook($.extend(opts, {
-        width:  $wrap.outerWidth(),
-        height: $wrap.outerHeight(),
-        doublePages: (mode !== 'single')
-      })).data('wowBook');
-      wb.gotoPage(goTo);
-    }
+    // 3) neu initialisieren mit gewünschtem Modus
+    wb = $wrap.wowBook({
+      width:  $wrap.outerWidth(),
+      height: $wrap.outerHeight(),
+      hardcovers: true,
+      centeredWhenClosed: true,
+      pageNumbers: true,
+      flipSound: true,
+      imagesPath: "wow_book/images/",
+      handleResize: true,
+      doublePages: (mode === 'double')   // <-- Umschalter
+    }).data('wowBook');
+
+    // 4) Größe/Seite nach einem Tick setzen
+    setTimeout(function(){
+      if (wb && typeof wb.gotoPage === 'function') wb.gotoPage(page);
+      if (wb && typeof wb.setSize === 'function') wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+      if (wb && typeof wb.resize === 'function') wb.resize();
+    }, 0);
 
     currentMode = mode;
+    // kleine Mode-Anzeige (optional)
+    var badge = document.getElementById('mode-badge');
+    if (badge) badge.textContent = 'Mode: ' + currentMode;
   }
 
-  // 4) Initial & Listener
-  applyMode();
-  // nur Moduswechsel triggert applyMode; reines Resize nur Größe
-  if (mql.addEventListener) mql.addEventListener('change', applyMode);
-  else mql.addListener(applyMode);
+  function onChange(){
+    var mode = wantedMode();
+    // Nur beim echten Moduswechsel neu aufbauen
+    if (mode !== currentMode) build(mode, true);
+    else if (wb) { // sonst nur resizen
+      if (typeof wb.setSize === 'function') wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+      if (typeof wb.resize === 'function') wb.resize();
+    }
+  }
 
-  window.addEventListener('resize', function(){
-    // Größe nachziehen (kein Moduswechsel nötig)
-    wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-    wb.resize();
-  });
+  function init(){
+    build(wantedMode(), false);
+    // Breakpoint-Listener (alt+neu)
+    if (mql.addEventListener) mql.addEventListener('change', onChange);
+    else if (mql.addListener) mql.addListener(onChange);
+    // normales Resize
+    window.addEventListener('resize', onChange);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 </script>
   
