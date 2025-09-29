@@ -300,6 +300,38 @@
   <script src="wow_book/jquery-3.7.1.min.js"></script>
   <script src="wow_book/wow_book.min.js"></script>
 
+  <!-- jQuery + wowBook -->
+  <script src="wow_book/jquery-3.7.1.min.js"></script>
+  <script src="wow_book/wow_book.min.js"></script>
+
+  <!-- Clean URLs von Instagram / Facebook-Parametern -->
+  <script>
+  (function () {
+    try {
+      var url = new URL(window.location.href);
+      var drop = ['fbclid','igshid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+
+      var changed = false;
+
+      // Query-Parameter entfernen
+      drop.forEach(function(k){
+        if (url.searchParams.has(k)) { url.searchParams.delete(k); changed = true; }
+      });
+
+      // Hash säubern: alles nach ? entfernen
+      if (url.hash) {
+        var h = url.hash;
+        var i = h.indexOf('?');
+        if (i !== -1) { h = h.slice(0, i); changed = true; }
+        h = h.replace(/\/\?[^#]*$/,''); // "/?fbclid=..." am Hash-Ende
+        if (h !== url.hash) { url.hash = h; changed = true; }
+      }
+
+      if (changed) history.replaceState(null, '', url.toString());
+    } catch (e) { /* ignoriere */ }
+  })();
+  </script>
+  
   <script>
   (function () {
     if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
