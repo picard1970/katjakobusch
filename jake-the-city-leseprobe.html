@@ -97,7 +97,7 @@
       }
     }
     @media (max-width: 820px){
-      #wb-jake{ height: 78vh; }
+      #wb-jake{ height: 85vh; }
     }
 
   </style>
@@ -314,47 +314,33 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="wow_book/wow_book.min.js"></script>
 <script>
-(function () {
-  if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
+  (function () {
+    if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
 
-  var $wrap = $('#wb-jake');
-  if (!$wrap.length) return;
+    var $wrap = $('#wb-jake');
+    if (!$wrap.length) return;
 
-  // Let wowBook auto-switch based on container width < 820px
-  var wb = $wrap.wowBook({
-    width:  $wrap.outerWidth(),
-    height: $wrap.outerHeight(),
+    // wowBook initialisieren
+    var wb = $wrap.wowBook({
+      width: 800,                  // Basisgröße einer Einzelseite
+      height: 1325,                // Höhe im Seitenverhältnis (≈ 1600:2650)
+      scaleToFit: "#wb-jake",      // passt sich dem Container an
+      responsiveSinglePage: true,  // schaltet automatisch um (Höhe > Breite)
+      responsiveHandleWidth: 24,   // bessere Bedienung auf Mobile
+      hardcovers: true,
+      centeredWhenClosed: true,
+      pageNumbers: true,
+      flipSound: true,
+      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+      imagesPath: "wow_book/images/",
+      handleResize: true
+    }).data('wowBook');
 
-    // important for SPM to work
-    scaleToFit : "#wb-jake",
-    maxWidth   : 842,        // optional, keeps proportions sensible
-    maxHeight  : 697,        // optional
-
-    // Auto single-page when the container is narrower than 820px
-    responsiveSinglePage: function (book) {
-      return $wrap.width() < 820;
-    },
-
-    // Do NOT set singlePage here; the function above controls it.
-    // If you ever want to force it yourself, use:
-    // singlePage:true, responsiveSinglePage:false
-
-    hardcovers: true,
-    centeredWhenClosed: true,
-    pageNumbers: true,
-    flipSound: true,
-    toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-    imagesPath: "wow_book/images/",
-    handleResize: true
-  }).data('wowBook');
-
-  // Keep the book sized to the container; no full rebuild
-  function onResize(){
-    wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-    wb.resize();
-  }
-  window.addEventListener('resize', onResize);
-})();
+    // Auf Größenänderung reagieren
+    window.addEventListener('resize', function(){
+      if (wb) wb.resize();
+    });
+  })();
 </script>
   
   <noscript>
