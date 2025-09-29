@@ -321,19 +321,17 @@
     var $wrap = $('#wb-jake');
     if (!$wrap.length) return;
   
-    var wb = null;
-    var mode = null; // 'single' | 'double'
-    var lastWidth = window.innerWidth;
+    var wb = null;                 // aktuelle wowBook-Instanz
+    var currentMode = null;        // 'single' oder 'double'
+    var mql = window.matchMedia('(max-width: 819px)');
   
     function getMode() {
-      return (window.innerWidth < 820) ? 'single' : 'double';
+      return mql.matches ? 'single' : 'double';
     }
   
-    function build(newMode, pageToShow) {
-      // aufräumen (falls vorhanden)
-      if (wb && wb.destroy) wb.destroy();
-  
-      mode = newMode;
+    function build(mode, startPage) {
+      // evtl. alte Instanz sauber entfernen
+      if (wb && wb.destroy) { wb.destroy(); wb = null; }
   
       wb = $wrap.wowBook({
         width:  $wrap.outerWidth(),
@@ -348,47 +346,48 @@
         doublePages: (mode === 'double')
       }).data('wowBook');
   
-      // gewünschte Seite anzeigen
-      if (pageToShow != null && wb && wb.gotoPage) wb.gotoPage(pageToShow);
-  
-      // einmal nachziehen
-      if (wb && wb.setSize) {
-        wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-        wb.resize();
+      if (typeof startPage === 'number') {
+        // Seite sinnvoll justieren
+        var p = startPage;
+        if (mode === 'single' && p % 2 === 0) p += 1;   // bei Single keine linke Seite
+        if (mode === 'double' && p % 2 === 1) p -= 1;   // bei Double auf linke Seite des Spreads
+        p = Math.max(1, Math.min(p, wb.pages.length));
+        wb.gotoPage(p);
       }
+  
+      // Größe an Container koppeln
+      wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+      wb.resize();
+  
+      currentMode = mode;
     }
   
-    // initial
+    // Initial
     build(getMode(), 1);
   
-    // ——— Resize-Handling mit Debounce und Schwellen-Erkennung ———
-    var resizeTimer = null;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () {
-        var newMode = getMode();
-        var crossed = ( (lastWidth < 820 && window.innerWidth >= 820) ||
-                        (lastWidth >= 820 && window.innerWidth < 820) );
-        lastWidth = window.innerWidth;
-  
-        if (crossed) {
-          // aktuelle Seite ermitteln und für den Modus anpassen
-          var cur = wb ? wb.currentPage() : 1;
-          // Wechsel auf Einzelseite: falls wir eine linke Seite (gerade) zeigen, eine weiter
-          if (newMode === 'single' && cur % 2 === 0) cur = cur + 1;
-          // Wechsel auf Doppelseite: linke Seite des Spreads zeigen (ungerade)
-          if (newMode === 'double' && cur % 2 === 0) cur = cur - 1;
-  
-          build(newMode, cur);
-        } else {
-          // Modus gleich geblieben → nur Größe nachziehen
+    // Nur bei Schwellenwechsel neu aufbauen (debounced)
+    var t;
+    function onChange() {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        var next = getMode();
+        if (next === currentMode) {
+          // nur Größe anpassen
           if (wb && wb.setSize) {
             wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
             wb.resize();
           }
+          return;
         }
-      }, 120); // Debounce: 120 ms
-    });
+        // Moduswechsel: aktuelle Seite merken und neu bauen
+        var page = wb ? wb.currentPage() : 1;
+        build(next, page);
+      }, 120);
+    }
+  
+    // Listener für Breite + Resize
+    mql.addEventListener ? mql.addEventListener('change', onChange) : mql.addListener(onChange);
+    window.addEventListener('resize', onChange);
   })();
   </script>
   
