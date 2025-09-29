@@ -313,7 +313,7 @@
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="wow_book/wow_book.min.js"></script>
-  <script>
+<script>
 (function () {
   if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
 
@@ -321,70 +321,84 @@
   var $wrap = $('#wb-jake');
   if (!$wrap.length) return;
 
-  var wb = null;
-  var currentMode = null; // 'single' | 'double'
+  var wb = null;             // aktuelle wowBook-Instanz
+  var curMode = null;        // 'single' | 'double'
   var mql = window.matchMedia('(max-width: 819px)');
 
-  function getMode(){ return mql.matches ? 'single' : 'double'; }
+  // --------- Hilfen
+  function getMode() { return mql.matches ? 'single' : 'double'; }
 
-  function build(mode){
-    // alte Instanz sauber weg
-    if (wb && wb.destroy) wb.destroy();
-    $wrap.find('.wowbook-stage, .wowbook-toolbar').remove();
+  function targetPage(prevPage, fromMode, toMode){
+    if (typeof prevPage !== 'number') return 0;
+    // In Double ist linke Seite i. d. R. gerade, rechte ungerade.
+    if (fromMode === 'double' && toMode === 'single') {
+      return (prevPage % 2 === 0) ? prevPage + 1 : prevPage; // auf rechte Seite gehen
+    }
+    if (fromMode === 'single' && toMode === 'double') {
+      return (prevPage % 2 === 1) ? prevPage - 1 : prevPage; // rechte wieder nach links
+    }
+    return prevPage;
+  }
 
-    var single = (mode === 'single');
-
+  function build(mode, goTo) {
+    if (wb) { wb.destroy(); wb = null; }
     wb = $wrap.wowBook({
       width:  $wrap.outerWidth(),
       height: $wrap.outerHeight(),
-      // WICHTIG: beide Varianten setzen, je nach Plugin-Version greift eine
-      singlePage: single,
-      doublePages: !single,
       hardcovers: true,
       centeredWhenClosed: true,
       pageNumbers: true,
       flipSound: true,
       toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
       imagesPath: "wow_book/images/",
-      handleResize: true
+      handleResize: true,
+      doublePages: (mode === 'double')   // ← einzig maßgeblich
     }).data('wowBook');
 
-    // falls die API helper hat:
-    if (wb && typeof wb.singlePage === 'function') wb.singlePage(single);
-
-    currentMode = mode;
-    updateBadge(mode);
-  }
-
-  function sync(){
-    var mode = getMode();
-    if (mode !== currentMode) {
-      build(mode);                           // nur beim Moduswechsel neu aufbauen
-    } else if (wb && wb.setSize) {
-      wb.setSize($wrap.outerWidth(), $wrap.outerHeight()); // sonst nur resize
-      wb.resize();
+    if (typeof goTo === 'number') wb.gotoPage(goTo);
+    curMode = mode;
+    // (Optional) kleines Badge links unten:
+    var b = document.getElementById('mode-badge');
+    if (!b) {
+      b = document.createElement('div');
+      b.id = 'mode-badge';
+      b.style.cssText = 'position:fixed;left:16px;bottom:16px;z-index:9999;background:#222;color:#fff;padding:4px 8px;border-radius:6px;font:12px/1.2 system-ui;opacity:.8';
+      document.body.appendChild(b);
     }
+    b.textContent = 'Mode: ' + mode;
   }
 
-  // kleines Badge zum Anzeigen des aktuellen Modus
-  var badge = document.createElement('div');
-  function updateBadge(mode){
-    badge.textContent = 'Mode: ' + mode;
+  function sync() {
+    var next = getMode();
+    if (next === curMode) {
+      // nur Größe nachziehen
+      if (wb) { wb.setSize($wrap.outerWidth(), $wrap.outerHeight()); wb.resize(); }
+      return;
+    }
+    // Modus hat sich geändert → sauber neu aufbauen und sinnvolle Seite wählen
+    var prevPage = wb ? wb.currentPage() : 0;
+    var goTo = targetPage(prevPage, curMode, next);
+    build(next, goTo);
   }
-  Object.assign(badge.style, {
-    position:'fixed', left:'12px', bottom:'12px',
-    background:'#222', color:'#fff', padding:'6px 8px',
-    borderRadius:'6px', font:'12px/1.2 system-ui', zIndex:99999
-  });
-  document.body.appendChild(badge);
 
-  // initial
-  build(getMode());
+  // Debounce fürs Resize
+  var rAF, lastRun = 0;
+  function debouncedSync() {
+    var now = Date.now();
+    if (now - lastRun > 100) { lastRun = now; sync(); return; }
+    cancelAnimationFrame(rAF);
+    rAF = requestAnimationFrame(sync);
+  }
 
-  // reagieren auf Größe/Breakpoint
-  window.addEventListener('resize', sync);
-  if (mql.addEventListener) mql.addEventListener('change', sync);
-  else mql.addListener(sync);
+  // Init
+  function init(){
+    build(getMode(), 0);
+    window.addEventListener('resize', debouncedSync);
+    if (mql.addEventListener) mql.addEventListener('change', sync);
+    else mql.addListener(sync); // ältere Browser
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 </script>
   
