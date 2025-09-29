@@ -321,84 +321,80 @@
   var $wrap = $('#wb-jake');
   if (!$wrap.length) return;
 
-  var wb = null;             // aktuelle wowBook-Instanz
-  var curMode = null;        // 'single' | 'double'
+  // 1) Buch initial bauen
+  var wb = $wrap.wowBook({
+    width:  $wrap.outerWidth(),
+    height: $wrap.outerHeight(),
+    hardcovers: true,
+    centeredWhenClosed: true,
+    pageNumbers: true,
+    flipSound: true,
+    toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+    imagesPath: "wow_book/images/",
+    handleResize: true,
+    doublePages: (window.innerWidth >= 820) // Startmodus
+  }).data('wowBook');
+
+  // 2) Breakpoint überwachen
   var mql = window.matchMedia('(max-width: 819px)');
+  var currentMode = null; // 'single' | 'double'
 
-  // --------- Hilfen
-  function getMode() { return mql.matches ? 'single' : 'double'; }
+  function desiredMode(){ return mql.matches ? 'single' : 'double'; }
 
-  function targetPage(prevPage, fromMode, toMode){
-    if (typeof prevPage !== 'number') return 0;
-    // In Double ist linke Seite i. d. R. gerade, rechte ungerade.
-    if (fromMode === 'double' && toMode === 'single') {
-      return (prevPage % 2 === 0) ? prevPage + 1 : prevPage; // auf rechte Seite gehen
-    }
-    if (fromMode === 'single' && toMode === 'double') {
-      return (prevPage % 2 === 1) ? prevPage - 1 : prevPage; // rechte wieder nach links
-    }
-    return prevPage;
-  }
-
-  function build(mode, goTo) {
-    if (wb) { wb.destroy(); wb = null; }
-    wb = $wrap.wowBook({
-      width:  $wrap.outerWidth(),
-      height: $wrap.outerHeight(),
-      hardcovers: true,
-      centeredWhenClosed: true,
-      pageNumbers: true,
-      flipSound: true,
-      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-      imagesPath: "wow_book/images/",
-      handleResize: true,
-      doublePages: (mode === 'double')   // ← einzig maßgeblich
-    }).data('wowBook');
-
-    if (typeof goTo === 'number') wb.gotoPage(goTo);
-    curMode = mode;
-    // (Optional) kleines Badge links unten:
-    var b = document.getElementById('mode-badge');
-    if (!b) {
-      b = document.createElement('div');
-      b.id = 'mode-badge';
-      b.style.cssText = 'position:fixed;left:16px;bottom:16px;z-index:9999;background:#222;color:#fff;padding:4px 8px;border-radius:6px;font:12px/1.2 system-ui;opacity:.8';
-      document.body.appendChild(b);
-    }
-    b.textContent = 'Mode: ' + mode;
-  }
-
-  function sync() {
-    var next = getMode();
-    if (next === curMode) {
+  // 3) Umschalten NUR beim Moduswechsel
+  function applyMode(){
+    var mode = desiredMode();
+    if (mode === currentMode) {
       // nur Größe nachziehen
-      if (wb) { wb.setSize($wrap.outerWidth(), $wrap.outerHeight()); wb.resize(); }
+      wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+      wb.resize();
       return;
     }
-    // Modus hat sich geändert → sauber neu aufbauen und sinnvolle Seite wählen
-    var prevPage = wb ? wb.currentPage() : 0;
-    var goTo = targetPage(prevPage, curMode, next);
-    build(next, goTo);
+
+    // Seite merken & Parität justieren
+    var p = wb.currentPage();
+    var goTo = p;
+    if (mode === 'single' && p % 2 === 0) goTo = p + 1; // rechte Seite zeigen
+    if (mode === 'double' && p % 2 === 1) goTo = p - 1; // auf linke Seite zurück
+
+    // — Versuche ohne Rebuild umzuschalten —
+    if (typeof wb.singlePage === 'function') {
+      if (mode === 'single') {
+        wb.opts.doublePages = false;
+        wb.singlePage(true);
+      } else {
+        wb.opts.doublePages = true;
+        wb.singlePage(false);
+      }
+      wb.gotoPage(goTo);
+      wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+      wb.resize();
+    } else {
+      // — Fallback: einmal sauber neu bauen —
+      var opts = $.extend({}, wb.opts);
+      wb.destroy();
+      wb = $wrap.wowBook($.extend(opts, {
+        width:  $wrap.outerWidth(),
+        height: $wrap.outerHeight(),
+        doublePages: (mode !== 'single')
+      })).data('wowBook');
+      wb.gotoPage(goTo);
+    }
+
+    currentMode = mode;
   }
 
-  // Debounce fürs Resize
-  var rAF, lastRun = 0;
-  function debouncedSync() {
-    var now = Date.now();
-    if (now - lastRun > 100) { lastRun = now; sync(); return; }
-    cancelAnimationFrame(rAF);
-    rAF = requestAnimationFrame(sync);
-  }
+  // 4) Initial & Listener
+  applyMode();
+  // nur Moduswechsel triggert applyMode; reines Resize nur Größe
+  if (mql.addEventListener) mql.addEventListener('change', applyMode);
+  else mql.addListener(applyMode);
 
-  // Init
-  function init(){
-    build(getMode(), 0);
-    window.addEventListener('resize', debouncedSync);
-    if (mql.addEventListener) mql.addEventListener('change', sync);
-    else mql.addListener(sync); // ältere Browser
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  window.addEventListener('resize', function(){
+    // Größe nachziehen (kein Moduswechsel nötig)
+    wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+    wb.resize();
+  });
 })();
 </script>
   
