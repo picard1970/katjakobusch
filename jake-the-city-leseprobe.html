@@ -20,30 +20,7 @@
   <meta property="og:image" content="assets/images/jake-the-city-cover-large.jpg" />
 
   <style>
-    /* Home-Button in der wowBook-Toolbar */
-    .wowbook-toolbar .wowbook-controls-container{
-      display: inline-flex;
-      align-items: center;
-      gap: 6px; /* kleiner Abstand zwischen Buttons */
-    }
-    
-    /* Home-Button im Toolbar-Stil */
-    .wowbook-toolbar .wb-home{
-      width: 28px;
-      height: 28px;
-      display: inline-block;
-      vertical-align: middle;
-      opacity: .9;
-      background: url('data:image/svg+xml;utf8,\
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
-        <path fill="%23ffffff" d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3z"/>\
-      </svg>') center/20px 20px no-repeat;
-    }
-    
-    /* Hover-Effekt analog zu den anderen Icons */
-    .wowbook-toolbar .wb-home:hover{
-      opacity: 1;
-    }
+ 
     /* Seitenhintergrund etc. – nutzt deine Variablen */
     body.leseprobe{
       background:
@@ -339,8 +316,9 @@
         centeredWhenClosed: true,
         pageNumbers: true,
         flipSound: true,
-        toolbar: "first, back, next, last, fullscreen",
+        toolbar: "first, back, next, last, home, fullscreen",
         imagesPath: "wow_book/images/",
+        homeURL: "index.html",
 
         /* Container-Feature: wowBook baut einen Wrapper und passt das Buch hinein an */
         container: true,
@@ -355,22 +333,6 @@
         /* Optionale Qualität der „Griff“-Zonen für mobile Geräte */
         responsiveHandleWidth: 24
       });
-      // Nach dem Init: Toolbar finden und Home-Button hinzufügen
-      var $container = $wrap.closest('.wowbook-container');
-      var $controls  = $container.find('.wowbook-controls-container');
-  
-      if ($controls.length) {
-        // Falls noch ein alter "Home"-Link irgendwo im DOM ist, optional ausblenden:
-        $('.home-link').hide();
-  
-        // Home-Button im Toolbar-Stil hinzufügen
-        $('<a>', {
-          href: 'index.html',
-          class: 'wowbook-control wb-home',
-          title: 'Startseite',
-          'aria-label': 'Startseite'
-        }).appendTo($controls);
-      }
     }
 
     if (document.readyState === 'loading') {
