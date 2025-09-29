@@ -317,83 +317,43 @@
 (function () {
   if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
 
-  var $ = jQuery;
   var $wrap = $('#wb-jake');
   if (!$wrap.length) return;
 
-  var wb = null;               // aktuelle Instanz
-  var currentMode = null;      // 'single' | 'double'
-  var mql = window.matchMedia('(max-width: 819px)');
+  // Let wowBook auto-switch based on container width < 820px
+  var wb = $wrap.wowBook({
+    width:  $wrap.outerWidth(),
+    height: $wrap.outerHeight(),
 
-  function wantedMode(){ return mql.matches ? 'single' : 'double'; }
+    // important for SPM to work
+    scaleToFit : "#wb-jake",
+    maxWidth   : 842,        // optional, keeps proportions sensible
+    maxHeight  : 697,        // optional
 
-  function getInst() {
-    // manche Builds stecken die Instanz hier…
-    return $('#wb-jake').data('wowBook') || ($.wowBook && $.wowBook('#wb-jake')) || null;
+    // Auto single-page when the container is narrower than 820px
+    responsiveSinglePage: function (book) {
+      return $wrap.width() < 820;
+    },
+
+    // Do NOT set singlePage here; the function above controls it.
+    // If you ever want to force it yourself, use:
+    // singlePage:true, responsiveSinglePage:false
+
+    hardcovers: true,
+    centeredWhenClosed: true,
+    pageNumbers: true,
+    flipSound: true,
+    toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+    imagesPath: "wow_book/images/",
+    handleResize: true
+  }).data('wowBook');
+
+  // Keep the book sized to the container; no full rebuild
+  function onResize(){
+    wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+    wb.resize();
   }
-  function hardDestroy() {
-    var inst = getInst();
-    if (!inst) return;
-    if (typeof inst.destroy === 'function') inst.destroy();
-    else if ($.wowBook && typeof $.wowBook('#wb-jake').destroy === 'function') $.wowBook('#wb-jake').destroy();
-  }
-
-  function build(mode, keepPage) {
-    var page = 1;
-    wb = getInst();
-    if (wb && keepPage) {
-      page = (typeof wb.currentPage === 'number') ? wb.currentPage : 1;
-      if (mode === 'single' && page % 2 === 0) page += 1;
-    }
-    // alte Instanz sicher beenden
-    hardDestroy();
-
-    // neu initialisieren – hier entscheidet doublePages
-    $('#wb-jake').wowBook({
-      width:  $wrap.outerWidth(),
-      height: $wrap.outerHeight(),
-      hardcovers: true,
-      centeredWhenClosed: true,
-      pageNumbers: true,
-      flipSound: true,
-      imagesPath: "wow_book/images/",
-      handleResize: true,
-      doublePages: (mode === 'double')
-    });
-
-    wb = getInst();
-    setTimeout(function(){
-      if (wb && typeof wb.gotoPage === 'function') wb.gotoPage(page);
-      if (wb && typeof wb.setSize  === 'function') wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-      if (wb && typeof wb.resize  === 'function') wb.resize();
-    }, 0);
-
-    currentMode = mode;
-    var badge = document.getElementById('mode-badge');
-    if (badge) badge.textContent = 'Mode: ' + currentMode;
-  }
-
-  function onChange(){
-    var mode = wantedMode();
-    if (mode !== currentMode) {
-      build(mode, true);    // nur beim echten Moduswechsel re-init
-    } else {
-      // nur Größenanpassung
-      wb = getInst();
-      if (wb && typeof wb.setSize === 'function') wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-      if (wb && typeof wb.resize  === 'function') wb.resize();
-    }
-  }
-
-  function init(){
-    build(wantedMode(), false);
-    if (mql.addEventListener) mql.addEventListener('change', onChange);
-    else if (mql.addListener)   mql.addListener(onChange);
-    window.addEventListener('resize', onChange);
-  }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  window.addEventListener('resize', onResize);
 })();
 </script>
   
