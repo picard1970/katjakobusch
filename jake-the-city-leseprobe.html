@@ -54,17 +54,17 @@
       padding: clamp(1rem, 1rem + 1vw, 1.4rem);
     
       /* Fließende Grundschrift: min 0.95rem, Ziel ~1.05rem + 0.2vw, max 1.15rem */
-      font-size: clamp(0.95rem, 1.05rem + 0.2vw, 1.15rem);
+      font-size: clamp(1.9rem, 2.1rem + 0.4vw, 2.3rem);
     
       /* Fließender Zeilenabstand */
-      line-height: clamp(1.45, 1.45 + 0.1vw, 1.6);
+      line-height: clamp(1.5, 1.6 + 0.1vw, 1.8);
       
       color: var(--dunkelgrau2);
       hyphens: auto;
     }
     .wb-page h2{
-      margin: 0 0 0.6rem;
-      font-size: clamp(1.15rem, 1.05rem + 0.6vw, 1.4rem);
+      margin: 0 0 1.2rem;
+      font-size: clamp(2.4rem, 2.6rem + 0.5vw, 2.8rem);
       line-height: 1.25;
     }
     .wb-page p{ text-indent: 2ch; margin: 0; }
@@ -84,17 +84,17 @@
     @media (max-width: 1024px){
       .wb-page{
         /* etwas kompakter */
-        font-size: clamp(0.92rem, 0.95rem + 0.35vw, 1.06rem);
-        line-height: 1.5;
+        /* font-size: clamp(0.92rem, 0.95rem + 0.35vw, 1.06rem); */
+        /* line-height: 1.5; */
       }
     }
 
     @media (max-width: 820px){
     .wb-page{
       /* noch eine Spur kleiner auf sehr schmalen Screens */
-      font-size: clamp(0.9rem, 0.92rem + 0.35vw, 1.02rem);
-      line-height: 1.48;
-      padding: clamp(0.8rem, 0.9rem + 0.6vw, 1.1rem);
+      /* font-size: clamp(0.9rem, 0.92rem + 0.35vw, 1.02rem); */
+      /* line-height: 1.48; */
+      /* padding: clamp(0.8rem, 0.9rem + 0.6vw, 1.1rem); */
     }
   }
   </style>
