@@ -321,47 +321,27 @@
       var $wrap = $('#wb-jake');
       if (!$wrap.length) return;
     
-      var wb = null;
+      var wb = null;                       // aktuelle Instanz
       var mql = window.matchMedia('(max-width: 819px)');
-      var currentMode = null; // 'single' | 'double'
     
-      // --- Badge einbauen ---
+      // Debug-Badge
       var badge = document.createElement('div');
-      badge.id = 'wb-mode-badge';
-      badge.style.cssText = 'position:fixed;left:10px;bottom:10px;z-index:9999;background:#222;color:#fff;padding:4px 8px;font:12px/1.3 system-ui;border-radius:4px;opacity:.7;';
+      badge.style.cssText = 'position:fixed;left:10px;bottom:10px;z-index:9999;background:#222;color:#fff;padding:4px 8px;border-radius:4px;font:12px/1.3 system-ui;opacity:.75';
       document.body.appendChild(badge);
+      function setBadge(mode){ badge.textContent = 'Mode: ' + mode; }
     
-      function updateBadge() {
-        badge.textContent = 'Mode: ' + currentMode;
-      }
+      function mode(){ return mql.matches ? 'single' : 'double'; }
     
-      function getMode() {
-        return mql.matches ? 'single' : 'double';
-      }
+      function build(modeStr, keepPage){
+        // aktuelle Seite merken (logisch)
+        var cur = 1;
+        if (wb && wb.currentPage) cur = wb.currentPage();
     
-      function applyLayout(force) {
-        if (!wb) return;
-        var nextMode = getMode();
-        if (!force && nextMode === currentMode) {
-          wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-          wb.resize();
-          return;
-        }
+        // zerstören, falls vorhanden
+        if (wb && wb.destroy) wb.destroy();
+        wb = null;
     
-        currentMode = nextMode;
-        updateBadge();
-    
-        wb.opts.doublePages = (nextMode === 'double');
-    
-        if (nextMode === 'single' && wb.currentPage() % 2 === 0) {
-          wb.gotoPage(wb.currentPage() + 1);
-        }
-    
-        wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
-        wb.resize();
-      }
-    
-      function init() {
+        // neu aufbauen
         wb = $wrap.wowBook({
           width:  $wrap.outerWidth(),
           height: $wrap.outerHeight(),
@@ -371,16 +351,41 @@
           flipSound: true,
           toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
           imagesPath: "wow_book/images/",
-          handleResize: false,
-          doublePages: getMode() === 'double'
+          handleResize: false,                 // wir kümmern uns selbst
+          doublePages: (modeStr === 'double')  // << entscheidend
         }).data('wowBook');
     
-        currentMode = getMode();
-        updateBadge();
-        applyLayout(true);
+        // Seite wiederherstellen (bei Wechsel parity beachten)
+        if (keepPage && wb) {
+          var target = cur;
+          if (modeStr === 'single' && target % 2 === 0) target += 1;
+          wb.gotoPage(Math.max(1, Math.min(target, wb.pages())));
+        }
     
-        mql.addEventListener('change', function(){ applyLayout(true); });
-        window.addEventListener('resize', function(){ applyLayout(false); });
+        // Größe an Container anpassen
+        if (wb && wb.setSize) wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+        if (wb && wb.resize)  wb.resize();
+    
+        setBadge(modeStr);
+      }
+    
+      // Initial
+      function init() {
+        build(mode(), false);
+    
+        // Umschalten per MediaQuery
+        var last = mode();
+        mql.addEventListener('change', function(){
+          var now = mode();
+          if (now !== last){ build(now, true); last = now; }
+        });
+    
+        // reflow bei Resize (ohne Moduswechsel)
+        window.addEventListener('resize', function(){
+          if (!wb) return;
+          if (wb.setSize) wb.setSize($wrap.outerWidth(), $wrap.outerHeight());
+          if (wb.resize)  wb.resize();
+        });
       }
     
       if (document.readyState === 'loading') {
