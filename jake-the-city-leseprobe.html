@@ -29,7 +29,7 @@
     .lp-wrap{
       max-width: 1200px;
       margin: 2rem auto;
-      padding: 0 0 ;
+      padding: 0 ;
     }
 
     /* Head zentriert */
@@ -48,6 +48,14 @@
     }
     .lp-title small{ display:block; opacity:.85; color: var(--grau); }
 
+    /* wowBook-Container wirklich bündig machen */
+    .wowbook-container {
+      padding: 0 !important;   /* überschreibt evtl. Default aus wow_book.css */
+      margin: 0 auto;          /* bleibt mittig */
+      border: 1px solid var(--umrandung);
+      border-radius: 4px;
+    }
+    
     /* Buch-Seiten-Inhalt */
     .wb-page{
       /* Innenabstand skaliert mit – wird auf kleinen Screens etwas enger */
