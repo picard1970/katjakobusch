@@ -1,11 +1,11 @@
-<!doctype html>
+<!doc<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leseprobe · Jake & the City · Katja Kobusch</title>
 
-  <!-- Globale Styles (deine bestehende Datei) -->
+  <!-- Globale Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
   <!-- wowBook CSS -->
@@ -17,9 +17,8 @@
   <meta property="og:image" content="assets/images/jake-the-city-cover-large.jpg" />
 
   <style>
-    /* ==== Seiten-spezifische, minimale Ergänzungen – nutzt deine CSS-Variablen ==== */
+    /* Seitenhintergrund etc. – nutzt deine Variablen */
     body.leseprobe{
-      /* Mauerhintergrund analog zu crew-hero, aber seitenweit */
       background:
         url('assets/images/homepage-background-large.jpg') center/cover fixed no-repeat,
         var(--background_body);
@@ -32,20 +31,15 @@
       margin: 2rem auto;
       padding: 0 1rem;
     }
+
+    /* Head zentriert */
     .lp-head{
       width: min(100%, 842px);
       margin: 0 auto .5rem;
       display:flex;
       justify-content: center;
     }
-    .lp-cover{
-      width: 84px; height:auto;
-      border-radius: 6px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.18);
-    }
-    .lp-title{
-      text-align: center;
-    }
+    .lp-title{ text-align:center; }
     .lp-title h1{
       margin: 0 0 .15rem 0;
       font-size: clamp(1.6rem, 2.6vw, 2.2rem);
@@ -54,17 +48,7 @@
     }
     .lp-title small{ display:block; opacity:.85; color: var(--grau); }
 
-    /* wowBook-Container orientiert sich an deiner Container-Breite und wird responsiv skaliert */
-    #wb-jake{
-      margin: 1rem auto;
-      width: min(100%, 842px);
-      height: 697px;
-      background: var(--weiss);
-      border: 1px solid var(--umrandung);
-      border-radius: 4px;
-    }
-    
-    /* Seiteninhalt im Buch – nutzt deine Textfarben/Skalierung */
+    /* Buch-Seiten-Inhalt */
     .wb-page{
       padding: 1.4rem;
       font-size: 1.05rem;
@@ -73,38 +57,34 @@
       hyphens: auto;
     }
     .wb-page h2{
-      margin: 0 0 .75rem; font-size: 1.25rem; line-height: 1.3;
+      margin: 0 0 .75rem;
+      font-size: 1.25rem;
+      line-height: 1.3;
     }
     .wb-page p{ text-indent: 2ch; margin: 0; }
     .wb-page p:first-of-type{ text-indent: 0; margin: 0; }
 
-    /* Link zurück nutzt deinen Button-/Link-Stil farblich */
-    .lp-back a{
-      color: var(--button);
-      text-decoration: none;
-      border-bottom: 1px dashed currentColor;
-    }
-    .lp-back a:hover{
-      border-bottom-style: solid;
-      color: var(--button_hover);
+    /* Der von wowBook erzeugte Container (Optik/Zentrierung) */
+    .wowbook-container{
+      width: min(100%, 842px);          /* max. Buchbreite */
+      margin: 1rem auto;
+      background: var(--weiss);
+      border: 1px solid var(--umrandung);
+      border-radius: 4px;
+      /* Höhe kommt aus containerHeight (JS), kann hier aber zusätzlich überschrieben werden */
     }
 
+    /* Lesbarkeit auf kleineren Screens leicht anpassen */
     @media (max-width: 1024px){
-      #wb-jake{ height: 80vh; }
       .wb-page{
         font-size: 0.98rem;
         line-height: 1.45;
       }
     }
-    @media (max-width: 820px){
-      #wb-jake{ height: 85vh; } 
-    }
-
   </style>
 </head>
 <body class="leseprobe">
 
-  <!-- Optional: Home-Link wie auf anderen Seiten -->
   <a class="home-link" href="index.html">Home</a>
 
   <header class="lp-wrap lp-head">
@@ -116,7 +96,7 @@
   </header>
 
   <main class="lp-wrap">
-    <!-- wowBook: jede .wb-page ist eine Buchseite -->
+    <!-- Das Buch – wowBook legt den Container darum -->
     <div id="wb-jake" class="wowbook">
 
       <!-- Umschlag -->
@@ -305,42 +285,59 @@
     </p>
   </main>
 
-  <!-- Footer wie gewohnt -->
   <footer>
     <a href="impressum.html">Impressum</a> ·
     <a href="datenschutz.html">Datenschutz</a>
   </footer>
 
+  <!-- jQuery + wowBook -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="wow_book/wow_book.min.js"></script>
-<script>
+
+  <script>
   (function () {
     if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
 
     var $wrap = $('#wb-jake');
     if (!$wrap.length) return;
 
-    // wowBook initialisieren
-    var wb = $wrap.wowBook({
-      scaleToFit: "#wb-jake",      // passt sich dem Container an
-      responsiveSinglePage: true,  // schaltet automatisch um (Höhe > Breite)
-      responsiveHandleWidth: 24,   // bessere Bedienung auf Mobile
-      hardcovers: true,
-      centeredWhenClosed: true,
-      pageNumbers: true,
-      flipSound: true,
-      toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
-      imagesPath: "wow_book/images/",
-      handleResize: true
-    }).data('wowBook');
+    function init() {
+      $wrap.wowBook({
+        /* Basismaße des Buchs (Spread). 
+           Richtet sich nach deinem Seitenformat 1600x2650 → Spread ~3200x2650 */
+        width: 3200,
+        height: 2650,
 
-    // Auf Größenänderung reagieren
-    window.addEventListener('resize', function(){
-      if (wb) wb.resize();
-    });
+        hardcovers: true,
+        centeredWhenClosed: true,
+        pageNumbers: true,
+        flipSound: true,
+        toolbar: "first, back, next, last, zoomin, zoomout, thumbnails, fullscreen",
+        imagesPath: "wow_book/images/",
+
+        /* Container-Feature: wowBook baut einen Wrapper und passt das Buch hinein an */
+        container: true,
+        containerBackground: "white",
+        containerHeight: "85vh",   // Steuert die sichtbare Höhe
+        containerPadding: "0",
+        toolbarPosition: "top",
+
+        /* Automatische Einseiten-Darstellung, wenn Höhe > Breite (Default-Regel) */
+        responsiveSinglePage: true,
+
+        /* Optionale Qualität der „Griff“-Zonen für mobile Geräte */
+        responsiveHandleWidth: 24
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   })();
-</script>
-  
+  </script>
+
   <noscript>
     <div class="container">
       <p><strong>Hinweis:</strong> Zum Blättern der Leseprobe benötigst du JavaScript. Hier ist ein
