@@ -188,7 +188,6 @@ body.album-page > footer{ margin-top: auto; }
 
 .platforms a{
   display:flex; align-items:center; gap:10px;
-  border:1px solid var(--hellgrau2);
   border-radius:6px;
   padding:10px 16px;
   margin-bottom:10px;
