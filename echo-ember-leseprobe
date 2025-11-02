@@ -1,0 +1,381 @@
+<!doc<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leseprobe · Echo & Ember · Katja Kobusch</title>
+
+  <!-- Globale Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- wowBook CSS -->
+  <link rel="stylesheet" href="wow_book/wow_book.css" />
+
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+  <meta name="description" content="Leseprobe aus »Echo & Ember« von Katja Kobusch." />
+  <meta property="og:title" content="Leseprobe · Jake & the City" />
+  <meta property="og:description" content="»Echo & Ember« – Leseprobe von Katja Kobusch." />
+  <meta property="og:image" content="assets/images/echo-ember-cover-large.jpg" />
+
+  <style>
+ 
+    /* Seitenhintergrund etc. – nutzt deine Variablen */
+    body.leseprobe{
+      background:
+        url('assets/images/homepage-background-large.jpg') center/cover fixed no-repeat,
+        var(--background_body);
+      color: var(--dunkelgrau2);
+      line-height: 1.6;
+    }
+
+    .lp-wrap{
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 ;
+    }
+
+    /* Head zentriert */
+    .lp-head{
+      width: min(100%, 842px);
+      margin: 0 auto .5rem;
+      display:flex;
+      justify-content: center;
+    }
+    .lp-title{ text-align:center; }
+    .lp-title h1{
+      margin: 0 0 .15rem 0;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      line-height: 1.2;
+      color: var(--dunkelgrau2);
+    }
+    .lp-title small{ display:block; opacity:.85; color: var(--grau); }
+    
+    /* Buch-Seiten-Inhalt */
+    .wb-page{
+      /* Innenabstand skaliert mit – wird auf kleinen Screens etwas enger */
+      padding: clamp(1rem, 1rem + 1vw, 1.4rem);
+    
+      /* Fließende Grundschrift: min 0.95rem, Ziel ~1.05rem + 0.2vw, max 1.15rem */
+      font-size: clamp(3.4rem, 3.5rem + 0.6vw, 3.8rem);
+    
+      /* Fließender Zeilenabstand */
+      line-height: clamp(1.6, 1.7 + 0.1vw, 1.8);
+      
+      color: var(--dunkelgrau2);
+      hyphens: auto;
+    }
+    .wb-page h2{
+      margin: 0 0 2rem;
+      font-size: clamp(5rem, 5rem + 0.5vw, 3rem);
+      line-height: 1.2;
+    }
+    .wb-page p{ text-indent: 2ch; margin: 0; }
+    .wb-page p:first-of-type{ text-indent: 0; margin: 0; }
+
+    /* Der von wowBook erzeugte Container (Optik/Zentrierung) */
+    .wowbook-container{
+      width: min(100%, 842px);          /* max. Buchbreite */
+      margin: 1rem auto;
+      background: var(--white);
+      border: 1px solid var(--umrandung);
+      border-radius: 4px;
+      /* Höhe kommt aus containerHeight (JS), kann hier aber zusätzlich überschrieben werden */
+    }
+
+  }
+  </style>
+</head>
+<body class="leseprobe">
+
+  <header class="lp-wrap lp-head">
+    <div class="lp-title">
+      <h1>Leseprobe · <em>Echo &amp; Ember</em></h1>
+      <div style="color:var(--grau); font-size:.95rem;">Am Rand tippen/klicken zum Blättern.</div>
+    </div>
+  </header>
+
+  <main class="lp-wrap">
+    <!-- Das Buch – wowBook legt den Container darum -->
+    <div id="wb-jake" class="wowbook">
+
+      <!-- Umschlag -->
+      <div class="wb-page" style="display:flex;align-items:center;justify-content:center;padding:0;">
+        <img src="assets/images/echo-ember-cover-large.jpg" alt="Echo &amp; Ember – Cover" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+
+      <!-- Seite 0 -->
+      <div class="wb-page">
+        <h2>Echo &amp; Ember – Leseprobe</h2>
+      </div>
+
+      <!-- Seite 1 -->
+      <div class="wb-page">
+        <img class="chapter-ornament" src="assets/immages/kapitelzierde-jake.png" alt="Kapitelzierde: Jake" loading="eager" />
+        <p>Die Wasseroberfläche funkelte, als hätte jemand verschwenderisch kleine Diamanten darauf verteilt. Durch das offene Fenster wehte eine Brise ins Auto, die den markanten Geruch von Salz und Tang mit sich trug. Dünengräser wiegten sich träge im Wind und am Himmel flogen Möwen waghalsige Manöver unter wattebauschartigen Schäfchenwolken.</p>
+        <p>Jeden Sommer reisten Heerscharen von Touristen für diese Szenerie an die deutsche Nordseeküste – Jake hasste sie aus vollem Herzen. Er zog seine Wollmütze tiefer ins Gesicht und starrte mürrisch auf die Postkartenidylle, die an ihm vorbeizog.</p>
+        <p>»Schau mal, Hase.« Seine Mom zeigte auf etwas, ein breites Lächeln auf dem Gesicht. »Da hinten, ganz winzig am Horizont, sieht man schon den Leuchtturm von Haverooge. Dort hast du deine allerersten Schritte gemacht. Ist das nicht großartig?«</p>
+        <p>»Spektakulär«, murmelte er und rutschte tiefer in seinen Sitz. Es nervte ihn, dass sie ihn immer noch <em>Hase</em> nannte, obwohl er schon fünfzehn war. Und dass sie ihm jetzt Kindheitserinnerungen auftischte, um ihm sein Schicksal schmackhafter zu machen, war völlig daneben.</p>
+        <p>»Na, komm schon.« Sie warf ihm einen kurzen Seitenblick zu. »Wir haben doch darüber gesprochen. Es ist wichtig, dass du dem Ganzen hier eine Chance gibst.«</p>
+        <p><em>Gesprochen?</em> Beinahe hätte er laut gelacht. Er hatte in den vergangenen Wochen mit allen Mitteln versucht, sich gegen diesen Umzug zu wehren. Hatte argumentiert, gewütet, gefleht. Mom hatte ihm zwar geduldig zugehört – trotzdem saß er jetzt neben ihr im Auto, auf dem Weg in ein Leben, das er nicht gewählt hatte. Schlimmer noch: Ein Leben, auf das er absolut keinen Bock hatte. Aber er schwieg. Die Stille im Auto sagte mehr als alle Worte, die er bisher zu diesem Thema vergeudet hatte.</p>
+        <p>»Du warst immer so glücklich am Strand. Und ich bin sicher, dass das wieder so sein kann.« Sie drückte kurz sein Knie. »Wenn du offen dafür bist.«</p>
+        <p><em>Na klar!</em> Wenn er offen war, würde all das hier natürlich ein Klacks werden. Wen interessierte schon, dass alles, was er kannte und liebte, Tausende von Kilometern weit weg war? Außerdem gab es bei San Francisco auch jede Menge Strände – was sollte das also für ein Argument sein? Er wandte demonstrativ den Kopf zur Seite und sah aus dem Fenster.</p>
+        <p>»Ach, Jake. Dein Vater freut sich wirklich auf dich. Dass du jetzt mal bei ihm auf Haverooge leben wirst, ist doch eine tolle Gelegenheit für euch beide.«</p>
+        <p><em>Eine tolle Gelegenheit?</em> Er verdrehte die Augen. Seine Eltern hatten sich getrennt, als Jake keine zwei Jahre alt gewesen war. Sie hatten sich im Urlaub kennengelernt und einen leidenschaftlichen Sommer miteinander verbracht – <em>er</em> war nie Teil des Plans gewesen.</p>
+        <p>Ungeplant, aber niemals ungewollt, beteuerten seine Eltern immer. Für eine Weile hatten sie es miteinander versucht, aber schnell gemerkt, dass keiner von ihnen bereit war, Kompromisse einzugehen: Mom hatte nicht auf ihren Traumjob in einem Krankenhaus in San Francisco verzichten wollen. Und für Björn war es nie eine Option gewesen, Haverooge und seine Gästepension dort hinter sich zu lassen. Es hatte nie böses Blut gegeben – aber auch nicht genug Liebe.</p>
+        <p>Anfangs war Mom hin und wieder mit Jake nach Haverooge gereist, woran er kaum Erinnerungen hatte. Den verfluchten Leuchtturm, wo er angeblich seine allerersten Schritte gemacht hatte, sah er bewusst zum ersten Mal.</p>
+        <p>Bald war Mom beruflich zu beschäftigt für Besuche auf Haverooge gewesen, und Jake hatte die Sommer stattdessen mit seinen Freunden in diversen Sommercamps verbracht – das war ohnehin viel cooler als die deutsche Nordseeküste.</p>
+        <p>Weil er die Pension nicht so lange allein lassen konnte, war Björn nie in Amerika gewesen. Jake hatte sich damit abgefunden, dass sein Vater nur Pakete zu Geburtstagen und an Weihnachten schickte, sie alle paar Monate mal telefonierten und ansonsten jeder sein Ding machte.</p>
+        <p>Mom hatte damals für ihren Job bewusst in Kauf genommen, dass Björn für Jake der Erzeuger und kein echter Vater war. Und jetzt schob sie ihn ausgerechnet zu ihm ab – wieder mal für ihren verdammten Job? Das war keine <em>tolle Gelegenheit</em>, sondern einfach nur ätzend, egoistisch und unfair von ihr! Aber alle seine Argumente in diese Richtung hatte sie vom Tisch gewischt.</p>
+        <p>Mom seufzte, als habe sie seine Gedanken gehört. »Du weißt, dass ich keine andere Wahl habe.«</p>
+        <p>Dieses Mal konnte er sein Lachen nicht unterdrücken, auch wenn es wie ein Knurren klang.</p>
+        <p>»Sicher, ich hätte den Forschungsauftrag in Afrika ausschlagen können.« Ihr Ton machte klar, dass sie davon absolut nichts hielt. »Damit hätte ich allerdings auch die Chance vertan, unzählige Leben zu retten.«</p>
+        <p>Da war es wieder, das Killerargument.</p>
+        <p>»Ich habe die Gelegenheit, etwas Großes zu bewirken. Verstehst du das denn nicht, Hase?«</p>
+        <p>Natürlich verstand <em>Hase</em> das, er war schließlich kein Volltrottel. Aber er hasste es. Denn jedes Widerwort machte ihn automatisch zu einem verdammten Egoisten.</p>
+        <p>»Wenn ich könnte, würde ich dich mit nach Afrika nehmen. Aber du weißt, dass das nicht geht.«</p>
+        <p>»Aber du hättest mich bei Sam wohnen lassen können«, presste er hervor.</p>
+        <p>Die Eltern seines besten Kumpels hatten angeboten, dass Jake bei ihnen wohnen konnte, solange Mom in Afrika war. Für ihn wäre das wie ein Sechser im Lotto gewesen – dummerweise hatte sie den Vorschlag freundlich, aber sehr bestimmt abgelehnt.</p>
+        <p>Mom stieß leise Luft aus. »Ich bin ein ganzes Jahr weg, vielleicht sogar länger. Diese Verantwortung kann ich den Turners nicht aufbürden. Da bist du bei deinem Vater einfach besser aufgehoben.«</p>
+        <p>»Wenn du es sagst«, murmelte er so leise, dass sie ihn nicht hören konnte, und zog seine Mütze noch tiefer ins Gesicht.</p>
+        <p>»Da hinten ist der Fähranleger«, rief Mom plötzlich. »Die Überfahrt dauert nur zwölf Minuten und dann sind wir endlich da.« Sie klopfte ihm auf den Oberschenkel. »Aufgeregt?«</p>
+        <p>Sein Magen zog sich zusammen. Er war nicht aufgeregt, er hatte eine Scheißangst. Aber das würde er natürlich niemals zugeben. Also zuckte er mit den Schultern und sah weiter aus dem Fenster.</p>
+        <p>»Das wird eine tolle Zeit, du wirst sehen.« Sie klang wie damals, als sie ihm als Fünfjährigem versichert hatte, dass das Fädenziehen gar nicht wehtun würde.</p>
+        <p>Jake sah kurz zu ihr hinüber. Mom wirkte völlig entspannt. Klar, warum auch nicht? Sie würde schließlich nicht ein ganzes Jahr ihres Lebens – wenn nicht länger – auf einer winzigen, verschlafenen Insel festsitzen.</p>
+        <p>Er wandte sich hastig wieder von ihr ab, damit sie auf keinen Fall sah, dass er plötzlich gegen Tränen ankämpfen musste.<br></p>
+        <p>Eine knappe Stunde später parkte Mom den Mietwagen vor der Pension <em>Möwenblick</em> – Jakes zukünftigem Zuhause. Das Gästehaus seines Vaters lag auf einem Felsvorsprung direkt am Meer. Dessen Eltern hatten es als junges Paar gekauft und Björn war hier aufgewachsen. Seine Liebe zu diesem Fleckchen Erde war immer größer gewesen als die für Mom. Oder ihn.</p>
+        <p>»Ich hatte vergessen, wie wunderschön es hier ist.« Mom beugte sich vor, um die Pension durch die Windschutzscheibe besser betrachten zu können. »Dein Vater hat diesen Ort in den vergangenen Jahren zu etwas Besonderem gemacht.«</p>
+        <p>Jake sah sich um. Etwas Besonderes konnte er nicht entdecken, aber die Pension wirkte ganz passabel: Ein gepflegtes, weiß gestrichenes Haus mit Fensterläden, die je in einer anderen Farbe leuchteten. Bunte Wildblumen blühten überall auf dem Grundstück, dazwischen saßen Möwen aus Holz oder Metall. »Der Name ist wohl Programm«, murmelte er. »Pension Möwenschiss.«</p>
+        <p>Mom knuffte ihm in die Seite. »Schäm dich.«</p>
+        <p>Statt zu antworten, sah er sich weiter um. Immerhin das Panorama war ganz cool: Von der Anhöhe, auf der die Pension thronte, hatte man einen freien Blick auf die Nordsee. Vom Haus führte ein schmaler Weg hinunter zum Strand.</p>
+        <p>»Traumhaft.« Mom stieg aus und streckte sich. Dann ging sie um den Wagen herum und klopfte auf seiner Seite gegen die Fensterscheibe. »Komm schon.«</p>
+        <p>Jake schnallte sich im Zeitlupentempo ab. Als er die Tür öffnete, fuhr der Wind in sein Shirt und seine Haare, sodass er seine Mütze festhalten musste. Eine Gänsehaut breitete sich auf seinem Körper aus. Mom zog ihn in die Arme und drückte ihn fest an sich. »Ich weiß, dass du es dir jetzt noch nicht vorstellen kannst, aber du wirst hier sehr glücklich werden.«</p>
+        <p>»Wenn ich dem Ganzen eine Chance gebe«, murmelte er.</p>
+        <p>Mom hob tadelnd eine Augenbraue, aber bevor sie etwas erwidern konnte, öffnete sich hinter ihnen die Tür der Pension.</p>
+        <p>»Hey, da seid ihr ja!«, ertönte eine tiefe Männerstimme.</p>
+        <p>»Hallo, Björn.« Mom löste sich von Jake und eilte auf seinen Vater zu.</p>
+        <p>Das letzte Mal hatte Jake ihn vor drei oder vier Jahren in London gesehen. Mom hatte dort einen Ärztekongress besucht und Jake für ein verlängertes Wochenende mitgeschleppt, damit er Zeit mit Björn verbringen konnte.</p>
+        <p>Dessen dunkle Haare und sein Bart waren von mehr Grau durchzogen, aber er war durchtrainiert und wirkte durch sein offenes Lachen und die wachen Augen trotzdem nicht alt.</p>
+        <p>»Karla, schön dich zu sehen.« Björn schloss sie in die Arme.</p>
+        <p>Jake rammte die Hände in die Hosentaschen und stand verlegen neben ihnen. Das wurde ihm schnell zu blöd, darum ging er zurück zum Auto und angelte seinen Rucksack und seine Akustikgitarre vom Rücksitz. Erst, als er die Autotür – etwas fester als notwendig – zuschlug, schenkten ihm seine Eltern ihre Aufmerksamkeit.</p>
+        <p>»Du heilige Möwe, bist du groß geworden!« Unschlüssig machte Björn einen Schritt auf ihn zu, mit leicht geöffneten Armen.</p>
+        <p>Damit er bloß nicht auf die Idee kam, ihn zu drücken, umklammerte Jake seine Gitarre wie einen Schutzschild.</p>
+        <p>Björn verstand und klopfte ihm unbeholfen auf die Schulter. »Ich freue mich, dass du da bist, Sohn. Ich weiß, es ist alles sehr ungewohnt, aber wir werden uns schon eingrooven. Meinst du nicht?«</p>
+        <p><em>Eingrooven?</em> Wollte sein Vater krampfhaft einen auf junggeblieben machen? Jake zuckte mit den Schultern.</p>
+        <p>Björn wirkte kurz verunsichert, dann lächelte er übereifrig. »Komm, ich zeig dir das Zimmer, das ich in den letzten Wochen für dich hergerichtet habe, Jakob.«</p>
+        <p>»Ich heiße Jake«, murmelte er und folgte seinen Eltern ins Haus. Er mochte auf Jakob getauft worden sein, aber in San Francisco hatten ihn alle nur Jake genannt. Beim Wohnort hatte er keine Wahl gehabt – aber seinen Namen würde er ganz sicher nicht ändern!</p>
+        <p>»Willkommen in der Pension <em>Möwenblick</em>«, sagte Björn, als sie das Haus betraten. »Ich hoffe, du wirst dich hier schon bald zu Hause fühlen.«</p>
+        <p>Jake bezweifelte das, sah sich aber höflich um. Die vorherrschenden Farben waren Beige und Blau, an den Wänden hingen Bilder mit maritimen Motiven. In der Luft lag ein dezenter Geruch, den Jake nicht genauer bestimmen konnte. Es roch ganz okay, irgendwie frisch und luftig.</p>
+        <p>»Mittlerweile gibt es fünfzehn Gästezimmer«, erklärte Björn, während er sie durch den Flur führte. »Du kriegst das ehemalige Schlafzimmer meiner Eltern, Karla.« Er lächelte sie an. »Es hat jetzt einen Balkon mit Blick aufs Meer.«</p>
+        <p>Mom strahlte wie ein Glühwürmchen im Zuckerrausch.</p>
+        <p>Björn ging weiter. »Hier im Erdgeschoss findest du die Rezeption, mein Büro, die Küche, den großen Aufenthaltsraum und natürlich das Esszimmer, Junge.«</p>
+        <p>Im Vorbeigehen warf Jake einen Blick in den Aufenthaltsraum. Ein großer Fernseher hing an einer Wand, ihm gegenüber standen Sofas, vor der verglasten Rückseite des Raums Lesesessel. Von dort konnte man direkt aufs Meer blicken. Ein riesiges Regal aus Naturholz beanspruchte den Großteil einer Wand. Es quoll über vor Büchern und Spielen. Einige Möwenfiguren standen dazwischen. Björn hatte es ganz eindeutig mit den Viechern.</p>
+        <p>»Du hast wirklich viel aus der Pension gemacht«, sagte Mom anerkennend.</p>
+        <p>»Danke dir.« Björn lächelte, was seine blauen Augen hinter der dunkel umrandeten Brille zum Leuchten brachte. Kurz streifte sein Blick ihn, als wolle er wissen, was Jake dachte.</p>
+        <p>Er wusste nicht, was er sagen sollte, also sagte er nichts.</p>
+        <p>»Okay.« Björn zeigte auf die Treppe am Ende des Flurs. »Wir müssen nach oben, meine … also unsere Wohnung ist unter dem Dach.«</p>
+        <p>Als sie das erste Stockwerk erreichten, hob Björn einige Details hervor, die er in den letzten Jahren ergänzt hatte, so wie die Bretter aus Treibholz an den Wänden. Darauf lagen Glasscherben und Muscheln, vermutlich Fundstücke vom Strand. Von einem der Regale glotzte ihm eine dicke, hässliche Möwe aus Gips entgegen. Jake verzog das Gesicht – meinte Björn nicht, dass er das Motto ein wenig überstrapazierte? Die Wand des Treppenabsatzes zum zweiten Stockwerk war angemalt, sodass sie aussah wie ein Fenster, das den Blick auf den Strand freigab. Es beeindruckte Jake tatsächlich, wie realistisch die Malerei wirkte. Vom Absatz zogen sich Dünen die Wand in den zweiten Stock hinauf, Gräser schienen sich sachte im Wind zu wiegen. Weitere Möwen – welch Überraschung – drehten auf dem oberen Teil der Wand ihre Kreise.</p>
+        <p>»Wann hast du das alles gemalt?«, fragte Mom leise und ließ ihre Fingerspitzen vorsichtig über die Malerei gleiten.</p>
+        <p>»Während der beiden Corona-Lockdowns«, sagte Björn. »So ganz ohne Gäste hatte ich viel Zeit.«</p>
+        <p>Sie stiegen die restlichen Treppen hoch und steuerten auf eine Tür am Ende des Gangs zu. Darauf war ein kleines Steuerrad angebracht, auf dem eine weitere Möwe saß.</p>
+        <p><em>Geez!</em></p>
+        <p>Björn bemerkte, dass Jake die Augenbrauen hochzog, kommentierte es aber nicht. »Das ist meine Kapitänskabine«, erklärte er stattdessen enthusiastisch, zog einen Schlüsselbund aus der Tasche und öffnete die Tür. »Willkommen im <em>Möwennest</em>.« Er machte eine einladende Geste.</p>
+        <p>»Wow«, entfuhr es Jake, bevor er sich stoppen konnte.</p>
+        <p>Der Raum war klein, aber die Stirnseite komplett verglast, und der Blick auf den Strand und das Meer von hier oben einfach atemberaubend. Eine große Couch und ein Ohrensessel standen, strategisch günstig für die perfekte Aussicht, davor. Zur Sitzgruppe gehörte auch ein Couchtisch.</p>
+        <p>Björn deutete auf die Küchenzeile. »Ist nicht viel, aber wir haben alles, was wir brauchen.«</p>
+        <p>Die Essecke bestand aus einem Tisch und vier Stühlen. An der Wand dahinter stand ein Regal, das mit Ordnern und Büchern gefüllt war.</p>
+        <p>Björn öffnete eine Tür neben der Küchenzeile. »Das Bad.« Es war klein, aber hell und sauber. »Und hier«, er durchquerte den Raum und öffnete eine Tür neben dem Essbereich, »mein bescheidenes Reich.«</p>
+        <p>In dem kleinen Raum stapelten sich Umzugskartons. Auf dem Schreibtisch vor dem Fenster türmten sich Akten, Papiere und Tuben voller Ölfarben. In der Ecke stand eine Staffelei. Ansonsten gab es nur ein schlichtes, weißes Bett und einen hellblauen Kleiderschrank.</p>
+        <p>»Das Atelier oben ist größer, deswegen steht hier so viel Kram herum. Ich bin bisher nicht dazu gekommen, Regale zu bauen.« Er lächelte und zuckte mit den Schultern. »Ein Projekt für den kommenden Winter.«</p>
+        <p>»Ach, Björn«, sagte Mom betroffen. »Du hättest doch im Atelier bleiben und Jake hier einquartieren können.«</p>
+        <p>Er schüttelte den Kopf. »Ich bin eh kaum in der Wohnung und brauche den Platz nicht. Und mir war wichtig, dass Jakob seinen eigenen Bereich hat.«</p>
+        <p>In diesem Moment wurde Jake bewusst, dass die Situation für seinen Vater genauso seltsam sein musste wie für ihn. Er hatte in seinem Leben innerhalb weniger Wochen Platz für ihn machen müssen. Dafür ließ er ihm dieses eine Mal das Jakob durchgehen.</p>
+        <p>»Na los.« Björn steuerte auf eine schmale Tür zwischen Küche und Bad zu, hinter der Jake eine Besenkammer oder einen Abstellraum vermutete. »Ich zeige dir dein Zimmer.«</p>
+        <p>Jake lag der Spruch auf der Zunge, ob er wie Harry Potter ein Kabuff beziehen musste, aber hinter der Tür führte eine schmale, steile Treppe nach oben.</p>
+        <p>»Ich habe den Spitzboden vor ein paar Jahren für mich ausgebaut, für dich aber noch ein paar weitere Renovierungen vorgenommen.« Björn klang aufgeregt. »Und Karla hat mir verraten, welche Farben du magst.«</p>
+        <p>Jake warf Mom einen kurzen Seitenblick zu. Sie zuckte mit den Schultern, lächelte und drängte sich an ihm vorbei, um hinter Björn die Treppe hochzusteigen.</p>
+        <p>Jake schlüpfte aus seinen Schuhen und blieb am Fuß der Treppe stehen. Plötzlich war er nervös. Was, wenn er das Zimmer nicht mochte? Wenn Mom die falschen Farben ausgewählt hatte? Wenn er sich in <em>seinem</em> Bereich, wie Björn es nannte, nicht wohlfühlen würde?</p>
+        <p>»Kommst du, Hase?«</p>
+        <p>Er atmete noch einmal tief durch und kletterte dann die Treppe hinauf. Nach wenigen Schritten stieß er mit dem Kopf gegen die niedrige Decke und fluchte leise.</p>
+        <p>»Sorry, hätte dich warnen müssen. Hier ist nicht viel Platz in der Höhe«, rief Björn ihm zu.</p>
+        <p>Wunderbar – würde er ab jetzt geduckt laufen müssen, um sich nicht ständig die Birne zu stoßen? »No shit«, presste er hervor und rieb sich die schmerzende Stelle.</p>
+        <p>»Was hast du gesagt, Sohn?«</p>
+        <p>Mom warf ihm einen mahnenden Blick zu, als er oben ankam.</p>
+        <p>»Nichts passiert«, murmelte er. Dann sah er sich um und riss ungläubig die Augen auf. Er wusste nicht genau, womit er gerechnet hatte – aber ganz sicher nicht <em>hiermit</em>.</p>
+      </div>
+
+      <!-- Seite 2 -->
+      <div class="wb-page">
+
+      </div>
+
+      <!-- Seite 3 -->
+      <div class="wb-page">
+      </div>
+
+      <!-- Seite 4 -->
+      <div class="wb-page">
+     </div>
+
+      <!-- Seite 5 -->
+      <div class="wb-page">
+      </div>
+
+      <!-- Seite 6 -->
+      <div class="wb-page">
+      </div>     
+
+      <!-- Seite 7 -->
+      <div class="wb-page">
+      </div>
+
+      <!-- Seite 8 -->
+      <div class="wb-page">
+      </div>     
+
+      <!-- Seite 9 -->
+      <div class="wb-page">
+      </div>     
+
+      <!-- Seite 10 -->
+      <div class="wb-page">
+      </div>     
+
+      <!-- Seite 11 -->
+      <div class="wb-page">
+      </div>     
+
+      <!-- Seite 12 -->
+      <div class="wb-page">
+      </div>     
+
+      <!-- Seite 13 -->
+      <div class="wb-page">
+      </div> 
+
+      <!-- Seite 14 -->
+      <div class="wb-page">
+      </div>
+
+      <!-- Seite 15 -->
+      <div class="wb-page">
+      </div>
+
+      <!-- Seite 16 -->
+      <div class="wb-page">
+      </div>
+
+
+      <!-- Seite xx -->
+      <div class="wb-page">
+      </div>
+      
+      
+      <!-- Seite xx -->
+      <div class="wb-page">
+        
+        <p><br></p>
+        <p><br><br><strong>Echo & Ember erscheint am 17. November 2025. Schon jetzt vorbestellen bei <a href="https://amzn.eu/d/j17BKaE"
+                                                                                                         data-goatcounter-click="amazon-klick-jake"
+                                                                                                         target="_blank"
+                                                                                                         rel="noopener noreferrer">Amazon</a>!</strong></p>
+      </div>
+      
+      
+    <p class="lp-back" style="margin-top:1rem">
+      <a href="buecher.html">← Zurück zur Bücher-Übersicht</a>
+    </p>
+  </main>
+
+  <footer>
+    <a href="index.html">Startseite</a> |
+    <a href="impressum.html">Impressum</a> |
+    <a href="datenschutz.html">Datenschutz</a>
+  </footer>
+
+  <!-- jQuery + wowBook -->
+  <script src="wow_book/jquery-3.7.1.min.js"></script>
+  <script src="wow_book/wow_book.min.js"></script>
+
+  <!-- Clean URLs von Instagram / Facebook-Parametern -->
+  <script>
+  (function () {
+    try {
+      var url = new URL(window.location.href);
+      var drop = ['fbclid','igshid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+
+      var changed = false;
+
+      // Query-Parameter entfernen
+      drop.forEach(function(k){
+        if (url.searchParams.has(k)) { url.searchParams.delete(k); changed = true; }
+      });
+
+      // Hash säubern: alles nach ? entfernen
+      if (url.hash) {
+        var h = url.hash;
+        var i = h.indexOf('?');
+        if (i !== -1) { h = h.slice(0, i); changed = true; }
+        h = h.replace(/\/\?[^#]*$/,''); // "/?fbclid=..." am Hash-Ende
+        if (h !== url.hash) { url.hash = h; changed = true; }
+      }
+
+      if (changed) history.replaceState(null, '', url.toString());
+    } catch (e) { /* ignoriere */ }
+  })();
+  </script>
+  
+  <script>
+  (function () {
+    if (!window.jQuery || !jQuery.fn || !jQuery.fn.wowBook) return;
+
+    var $wrap = $('#wb-jake');
+    if (!$wrap.length) return;
+
+    function init() {
+      $wrap.wowBook({
+        /* Basismaße des Buchs (Spread). 
+           Richtet sich nach deinem Seitenformat 1600x2650 → Spread ~3200x2650 */
+        width: 3200,
+        height: 2650,
+
+        hardcovers: true,
+        centeredWhenClosed: true,
+        pageNumbers: true,
+        flipSound: true,
+        toolbar: "first, back, next, last, home, fullscreen",
+        imagesPath: "wow_book/images/",
+        homeURL: "index.html",
+
+        /* Container-Feature: wowBook baut einen Wrapper und passt das Buch hinein an */
+        container: true,
+        containerBackground: "#4a5650",
+        containerHeight: "85vh",   // Steuert die sichtbare Höhe
+        containerPadding: "0",
+        toolbarPosition: "top",
+
+        /* Automatische Einseiten-Darstellung, wenn Höhe > Breite (Default-Regel) */
+        responsiveSinglePage: true,
+
+        /* Optionale Qualität der „Griff“-Zonen für mobile Geräte */
+        responsiveHandleWidth: 24
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+  <noscript>
+    <div class="container">
+      <p><strong>Hinweis:</strong> Zum Blättern der Leseprobe benötigst du JavaScript. Hier ist ein
+      <a href="assets/images/jake-the-city-cover-large.jpg">Link zum Cover</a>.</p>
+    </div>
+  </noscript>
+</body>
+</html>
