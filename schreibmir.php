@@ -48,8 +48,7 @@ $_SESSION["captcha_result"] = $a + $b;
       <h1>Schreib mir!</h1>
       <h2>
         Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br>
-        Auch wenn mein erstes Buch erst Ende 2025 erscheint,<br>
-        freue ich mich natürlich auch jetzt schon über Post. 💌
+        Ich freue mich auf deine Post. 💌
       </h2>
     </div>
   </div>
