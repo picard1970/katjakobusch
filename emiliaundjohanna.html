@@ -9,18 +9,20 @@
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script></head>
+        async src="//gc.zgo.at/count.js"></script>
+</head>
 <body class="album-page">
   <header class="album-header">
     <a href="index.html" class="home-link">Home</a>
     <img src="assets/images/dekker-album-panorama.jpg" alt="Under the Surface – Jake Dekker">
   </header>
+
   <div class="container album-layout">
     <div class="left">
       <div class="album-title">Under the Surface <span class="edition">(Book Edition)</span></div>
       <div class="artist">by Jake Dekker</div>
       <div class="artist">Buch erscheint November 2025</div>
-      
+
       <div class="platforms">
         <a href="https://open.spotify.com/intl-de/album/73aRBCZy51S0jMqqCu89mV?si=lJSLk0wdQ8ipq0WeGVfKGg" target="_blank" rel="noopener noreferrer">
           <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify" style="height: 32px;">
@@ -34,38 +36,33 @@
           <img src="assets/images/amazon-logo.svg" alt="Amazon" style="height: 32px;">
           Amazon
         </a>
-        <!--  Plattformen ausblenden
-        <a href="https://link.deezer.com/s/30q41QPXd18LJqBAg5mJ6" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/deezer-logo.svg" alt="Deezer" style="height: 32px;">
-          Deezer
-        </a>
-        -->
         <a href="https://www.youtube.com/watch?v=vCKO7gX56p4&list=OLAK5uy_k4PIhV0-xg9C-ePSxsjlmbggIGenH2Ks8&pp=0gcJCaIEOCosWNin" target="_blank" rel="noopener noreferrer">
           <img src="assets/images/youtube.PNG" alt="YouTube" style="height: 32px;">
           YouTube
         </a>
       </div>
+
       <div class="artist credits">Lyrics written by Katja Kobusch<br>Music created with Suno</div>
     </div>
+
     <div class="right">
       <div class="track">
-         <button class="play-button" onclick="togglePlay(this, 'audio-prison')">▶️</button>
-         <div class="track-header">
+        <button class="play-button" onclick="togglePlay(this, 'audio-prison')">▶️</button>
+        <div class="track-header">
           <div class="track-title"><strong>Prison of Whispers</strong></div>
           <div class="track-subline">
-            <em>Jake Dekker</em> (Lyrics: 
+            <em>Jake Dekker</em> (Lyrics:
             <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-1')">
             <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-1')">
             )
           </div>
         </div>
         <div class="track-time">3:00</div>
-        <!-- Verstecktes Audio -->
         <audio id="audio-prison" src="assets/audio/01_prison_of_whispers_remix.mp3" preload="none"></audio>
       </div>
-      <!-- Lyrics Container -->
+
       <div id="lyrics-en-1" class="lyrics" style="display:none; margin-top:1px;">
-        <p><strong>Prison of Whispers</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
+        <p><strong>Prison of Whispers</strong> <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
         <p>
           They’re your dreams, not mine,<br>
           still they carried me away,<br>
@@ -78,6 +75,7 @@
           I’m the shadow in the corner,<br>
           fighting ghosts that never get old.
         </p>
+        <p>
           Refrain:<br>
           Saving them is noble, yeah, I get that it’s right,<br>
           but who saves the ones left behind?<br>
@@ -96,9 +94,7 @@
           You hold lives in your hands, I’m left in despair,<br>
           caught between being strong and wishing you’d care.
         </p>
-        <p>
-          Refrain
-        </p>
+        <p>Refrain</p>
         <p>
           They’re your dreams, not mine – can’t you see what I hide?<br>
           In the stillness, I’m fighting to find my stride.<br>
@@ -107,9 +103,9 @@
           To save me.
         </p>
       </div>
-      <!-- Lyrics Container -->
+
       <div id="lyrics-de-1" class="lyrics" style="display:none; margin-top:2px;">
-        <p><strong>Gefängnis der Stille</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
+        <p><strong>Gefängnis der Stille</strong> <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
         <p>
           Es sind deine Träume, nicht meine – <br>
           doch sie habem mich fortgerissen.<br>
@@ -141,9 +137,7 @@
           Du hast Leben in der Hand, ich bleibe verzweifelt zurück,<br>
           zerrissen zwischen Durchhalten und dem Wunsch, dass es dir nicht egal ist.
         </p>
-        <p>
-          Refrain
-        </p>
+        <p>Refrain</p>
         <p>
           Es sind deine Träume, nicht meine – siehst du nicht, was ich verberge?<br>
           In der Stille kämpfe ich darum, meinen Tritt zu finden.<br>
@@ -152,1718 +146,9 @@
           Dass du mich rettest.
         </p>
       </div>
-      
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-screaming')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Screaming Silence</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-2')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-2')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:14</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-screaming" src="assets/audio/02_screaming_silence_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-2" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Screaming Silence</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          An empire of silence, endless and still,<br>
-          where waves pull me deeper, bending my will.<br>
-          The dark sea’s a king, his eyes on my soul,<br>
-          each tide a reminder to pay my toll.
-        </p>
-        <p>
-          Refrain:<br>
-          They seek solace in whispers, calm in the roars,<br>
-          but for me, the silence screams on these shores.<br>
-          The gulls may laugh, but I feel their scorn,<br>
-          their cries like a warning, I’m lost and torn.
-        </p>
-        <p>
-          Rain-kissed horizons promising infinity,<br>
-          am I the only one who sees the audacity?<br>
-          The vastness a cage beneath gray, heavy skies,<br>
-          as if telling me: »Here’s where hope dies.«
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          The setting sun colors the flood,<br>
-          turning waves to an ocean of blood.<br>
-          Thousands of lost souls in vain try to flee,<br>
-          the dark sea’s king in his ruthless spree.
-        </p>
-        <p>
-          Oh, mighty sea king, unknown are thee,<br>
-          do you mock the hearts that long to roam free?<br>
-          You reign with an ironclad hand,<br>
-          leaving me desperate and damned.
-        </p>
-        <p>
-          So here I stand, in your silent embrace,<br>
-          not free, but captive to this rigid place.<br>
-          They see beauty in waves that collide,<br>
-          but all I see is nowhere to hide.<br>
-          Nowhere to hide.
-       </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-2" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Schreiende Stille</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Ein Imperium des Schweigens, endlos und still,<br>
-          wo Wellen mich tiefer ziehen und meinen Willen zermürben.<br>
-          Die dunkle See ist ein König, der es auf meine Seele abgesehen hat.<br>
-          Jede Gezeit soll mich daran erinnern, meinen Tribut zu zahlen.
-        </p>
-        <p>
-          Refrain:<br>
-          Sie suchen Trost im Flüstern, Ruhe im Tosen der Wellen,<br>
-          doch für mich schreit die Stille an diesen Stränden.<br>
-          Möwen rufen, aber ich fühle mich ausgelacht,<br>
-          ihr Geschrei wie eine Warnung: Ich bin verloren und zerrissen.
-        </p>
-        <p>
-          Regengeküsste Horizonte gaukeln Unendlichkeit vor,<br>
-          bin ich der Einzige, der die Anmaßung durchschaut?<br>
-          Die Weite ist ein Käfig unter grau verhangenem Himmel,<br>
-          so als wolle er mir sagen: »Hier stirbt die Hoffnung.«
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Die untergehende Sonne färbt die Flut,<br>
-          verwandelt Wellen in einen Ozean aus Blut.<br>
-          Tausende verlorene Seelen versuchen vergebens,<br>
-          dem grausamen Rausch des dunklen Seekönigs zu entfliehen.
-        </p>
-        <p>
-          Oh, mächtiger Seekönig, unbekannt dein Gesicht,<br>
-          verhöhnst du all jene Herzen, die frei sein wollen?<br>
-          Du regierst mit einer eisernen Hand,<br>
-          hinterlässt mich verzweifelt und verdammt.
-        </p>
-        <p>
-          Hier stehe ich also, in deiner schweigenden Umarmung,<br>
-          nicht frei, sondern Gefangener dieses unnachgiebigen Ortes.<br>
-          Andere sehen Schönheit in den Wellen, die aneinander brechen –<br>
-          ich sehe nur: keinen Ort, um mich zu verstecken.<br>
-          Keinen Ort, um mich zu verstecken.
-        </p>
-      </div>
-      
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-borrowed')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Borrowed Sand</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-3')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-3')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:16</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-borrowed" src="assets/audio/03_borrowed_sand_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-3" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Borrowed Sand</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          I know I’m trouble, a thorn in your side,<br>
-          the shadow that dims your inner light.<br>
-          You reach out, but I keep my wall,<br>
-          lost in a dance where we stumble and fall.
-        </p>
-        <p>
-          Refrain:<br>
-          I’m lost in the in-between,<br>
-          haunted by places I have been.<br>
-          Trying to hold on, stay strong,<br>
-          to find the place where I belong.
-        </p>
-        <p>
-          I’m a riddle you try to solve,<br>
-          the problem you ache to resolve.<br>
-          We fight a silent war every day,<br>
-          too afraid of the words we won’t say.
-        </p>
-        <p>
-          You believe my truth to be a lie,<br>
-          meet my words with a silent sigh.<br>
-          You don't see the raging storm inside,<br>
-          so why would I take the leap to confide?
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          »Don't fight, give in«, is all they say,<br>
-          don't care about the price I pay.<br>
-          I was given no choice, just had to abide,<br>
-          had to uproot, nothing left to decide.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          So here I stand, on borrowed sand,<br>
-          not reaching out, just forging my plans.<br>
-          Maybe someday you'll understand,<br>
-          but for now, my world's a shadowed strand.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-3" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Geliehener Sand</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Ich weiß, ich bringe nur Ärger, bin der Stachel unter deiner Haut,<br>
-          der Schatten, der dein inneres Licht dimmt.<br>
-          Du gehst auf mich zu, aber ich ziehe mich zurück,<br>
-          wir sind gefangen in einem unbeholfenen Tanz.
-        </p>
-        <p>
-          Refrain:<br>
-          Ich bin verloren im Zwischendrin,<br>
-          hänge den Orten nach, an denen ich war.<br>
-          Ich versuche, mich zusammenzureißen, stark zu sein,<br>
-          den Ort zu finden, an den ich gehöre.
-        </p>
-        <p>
-          Ich bin ein Rätsel, das du zu lösen versuchst,<br>
-          ein Problem, das du unbedingt auflösen willst.<br>
-          Jeden Tag fechten wir einen schweigenden Kampf aus,<br>
-          zu ängstlich, uns die Wahrheit zu sagen.
-        </p>
-        <p>
-          Du glaubst, dass meien Wahrheit eine Lüge ist,<br>
-          begegnest meinen Worten mit schweigendem Seufzen.<br>
-          Du siehst den Sturm nicht, der in mir tobt,<br>
-          warum sollte ich es also wagen, mich dir anzuvertrauen?
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          »Hör auf zu kämpfen, gib auf«, ist alles, was sie sagen.<br>
-          Es kümmert sie nicht, welchen Preis ich zahle.<br>
-          Ich hatte keine Wahl, musste mich fügen,<br>
-          meine Wurzeln kappen, durfte nichts entscheiden. 
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Jetzt stehe ich hier, auf geliehenem Sand,<br>
-          ziehe mich zurück, plane meine Flucht.<br>
-          Vielleicht verstehst du mich irgendwann,<br>
-          doch momentan ist meine Welt ein düsteres Ufer.
-        </p>
-      </div>
-
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-newkid')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>New Kid in Town</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-4')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-4')">
-            )
-          </div>
-        </div>
-        <div class="track-time">4:05</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-newkid" src="assets/audio/04_new_kid_in_town_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-4" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>New Kid in Town</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          You guard your kingdom like a precious treasure,<br>
-          am I the one putting you under pressure?<br>
-          The reign is yours, I didn’t come to dethrone,<br>
-          my heart doesn’t beat for the unknown.
-        </p>
-        <p>
-          Refrain:<br>
-          The new kid in town doesn’t lurch for your crown,<br>
-          yet here we are, walls built up, tearing down.<br>
-          Your fortress high, but the cracks show through,<br>
-          what is it I’ve done to threaten you?          
-        </p>
-        <p>
-          Your soldiers marching across guarded land,<br>
-          though I never challenged the line in the sand.<br>
-          Every look a challenge, every word a sharp knife,<br>
-          don’t want to be part of this needless strife.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          You act like I am the pawn in this game,<br>
-          but behind all the pomp, we’re just the same.<br>
-          Wearing shining armor of seclusion,<br>
-          perfecting this tremendous illusion.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Kings rise, kings fall, I’m just here passing by,<br>
-          but you cling to your realm like it’s do or die.<br>
-          I don’t belong in your world of might,<br>
-          would leave if I could, in a fortnight.
-        </p>
-        <p>
-          So slacken the reins, let your stallion breathe,<br>
-          trust that I’m not a restless thief.<br>
-          I have my own kingdom, though far away,<br>
-          I’ll be back on my throne in a distant day.
-        </p>
-        <p>
-          Kings rise, kings fall, I’m just here passing by,<br>
-          but you cling to your realm like it’s do or die.<br>
-          I don’t belong in your world of might,<br>
-          would leave if I could, in a fortnight.
-        </p>
-        <p>
-          I have my own kingdom, though far away,<br>
-          I’ll be back on my throne in a distant day.
-        </p>
-         <p>
-          I have my own kingdom, though far away,<br>
-          I’ll be back on my throne in a distant day.
-        </p>       
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-4" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Der Neue in der Stadt</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Du bewachst dein Königreich wie einen wertvollen Schatz,<br>
-          bin ich derjenige, der dich unter Druck setzt?<br>
-          Deine Herrschaft ist sicher, ich will dich nicht vom Thron werfen,<br>
-          mein Herz schlägt nicht für das Unbekannte.
-        </p>
-        <p>
-          Refrain:<br>
-          Der Neue in der Stadt greift nicht nach deiner Krone,<br>
-          trotzdem ziehst du Mauern hoch, die dich selbst zermürben.<br>
-          Deine Festung ist hoch, aber ihre Wände haben Risse.<br>
-          Was habe ich getan, um dir Angst zu machen?
-        </p>
-        <p>
-          Deine Soldaten marschieren durch bewachtes Land<br>
-          Obwohl ich deine Grenzen niemals bedroht habe.<br>
-          Jeder Blick eine Herausforderung, jedes Wort scharf wie eine Klinge,<br>
-          ich will nicht Teil dieses sinnlosen Streits sein.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Du tust so, als wäre ich nur eine Figur in deinem Spiel,<br>
-          aber hinter deinem Gehabe bist du so wie ich.<br>
-          Trägst eine schillernde Rüstung der Einsamkeit,<br>
-          perfektionierst deine ungeheuerliche Illusion.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Könige steigen auf, Könige fallen – ich ziehe nur vorbei,<br>
-          aber du klammerst dich an dein Reich,<br>
-          als würde dein Leben davon abhängen.<br>
-          Ich gehöre nicht in deine Welt aus Macht,<br>
-          würde sie sofort verlassen, wenn ich könnte.
-        </p>
-        <p>
-          Also lass die Zügel locker, lass dein Streitross verschnaufen,<br>
-          glaub mir einfach: Ich will dir nichts rauben.<br>
-          Ich habe mein eigenes Königreich, auch wenn es weit weg ist –<br>
-          eines fernen Tages werde ich meinen Thron wieder besteigen.
-        </p>
-        <p>
-          Könige steigen auf, Könige fallen – ich ziehe nur vorbei,<br>
-          aber du klammerst dich an dein Reich,<br>
-          als würde dein Leben davon abhängen.<br>
-          Ich gehöre nicht in deine Welt aus Macht,<br>
-          würde sie sofort verlassen, wenn ich könnte.
-        </p>
-        <p>
-          Ich habe mein eigenes Königreich, auch wenn es weit weg ist –<br>
-          eines fernen Tages werde ich meinen Thron wieder besteigen.
-        </p>
-        <p>
-          Ich habe mein eigenes Königreich, auch wenn es weit weg ist –<br>
-          eines fernen Tages werde ich meinen Thron wieder besteigen.
-        </p>
-      </div>
-      
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-echoes')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Echoes of Elsewhere</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-5')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-5')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:35</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-echoes" src="assets/audio/05_echoes_of_elsewhere_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-5" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Echoes of Elsewhere</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          I might be here, but my heart’s far away,<br>
-          back in the city where I used to stray.<br>
-          Where friends and their songs filled the dark of the night,<br>
-          their voices a memory I hold on to tight.
-        </p>
-        <p>
-          Refrain:<br>
-          Echoes of elsewhere, calling my heart,<br>
-          filling the distance of worlds far apart.<br>
-          Friends I left in the fog and rain,<br>
-          but <em>Whispers of Mischief</em> still remain.
-        </p>
-        <p>
-          My heart once wild and without any fear,<br>
-          the sky was the limit with friends living near.<br>
-          Footsteps on concrete, coffee in hand,<br>
-          now I’m walking on fucking quicksand.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          My heart once wild and without any fear,<br>
-          the sky was the limit with friends living near.<br>
-          Footsteps on concrete, coffee in hand,<br>
-          now I’m walking on fucking quicksand.
-        </p>
-        <p>
-          Is my place still there, do I still belong,<br>
-          or have I faded from their song?<br>
-          Do they save a verse for me,<br>
-          or do they forget what they can’t see?         
-        </p>
-        <p>
-          Pieces of home already starting to fade,<br>
-          but I’m holding on to the life we made.<br>
-          Between the tides and the endless gray,<br>
-          I feel them close, though far away.
-        </p>
-        <p>
-          Like tides that pull and then retreat,<br>
-          I drift apart, feel the shore at my feet.<br>
-          Carried away but bound to return,<br>
-          to familiar shores where my lights still burn.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-5" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Echoes des Anderswo</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Ich mag hier sein, aber mein Herz ist weit entfernt,<br>
-          noch immer in der Stadt, durch die ich gestreift bin.<br>
-          Wo Freunde und ihre Lieder die Nacht durchdrangen –<br>
-          ich halte mich an der Erinnerung ihrer Stimmen fest.
-        </p>
-        <p>
-          Refrain:<br>
-          Echos des Anderswo rufen mein Herz,<br>
-          füllen die Distanz zwischen getrennten Welten.<br>
-          Ließ meine Freunde im Nebel und Regen zurück,<br>
-          aber <em>Whispers of Mischief</em> bleiben bestehen.
-        </p>
-        <p>
-          Mein Herz war einst wild und ohne Angst –<br>
-          alles war möglich, als Freunde in der Nähe wohnten.<br>
-          Schritte auf Beton, Kaffee in der Hand,<br>
-          jetzt laufe ich auf verfluchtem Treibsand.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Mein Herz war einst wild und ohne Angst –<br>
-          alles war möglich, als Freunde in der Nähe wohnten.<br>
-          Schritte auf Beton, Kaffee in der Hand,<br>
-          jetzt laufe ich auf verfluchtem Treibsand.
-        </p>
-         <p>
-          Gehöre ich noch dazu, ist mein Platz noch da?<br>
-          Oder bin ich nicht mehr Teil ihres Liedes?<br>
-          Sichern sie mir eine Strophe,<br>
-          oder vergessen sie mich, wenn ich weg bin?
-        </p>
-        <p>
-          Erinnerungen an Zuhause verblassen bereits,<br>
-          aber ich halte an meinem Leben dort fest.<br>
-          Zwischen den Gezeiten und dem endlosen Grau,.<br>
-          spüre ich sie bei mir, auch wenn sie weit weg sind.
-        </p>
-        <p>
-          Wie Gezeiten, die kommen und gehen,<br>
-          drifte ich weg, spüre Sand zwischen den Zehen.<br>
-          Fortgetrieben, aber dazu bestimmt zurückzukehren –<br>
-          zu vertrauten Ufern, an denen mein Licht noch brennt.          
-        </p>
-      </div>
-      
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-lighthouse')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Lighthouse</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-6')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-6')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:32</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-lighthouse" src="assets/audio/06_lighthouse_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-6" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Lighthouse</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          I remember summer days, ice cream from the parlor,<br>
-          your Granny always took us to the place right next to the tailor.<br>
-          Laughter in the morning breeze, tooth gaps and scratched knees,<br>
-          always playing hide and seek, climbing up trees.
-        </p>
-        <p>
-          Refrain:<br>
-          You were the light across the street, my own consistent guide,<br>
-          no matter what the circumstance – I never had to hide.<br>
-          Your friendship always steadied me, still does so from afar,<br>
-          you are the lighthouse in the storm, setting a high bar.          
-        </p>
-        <p>
-          Awkward silence around girls, drinking in the den,<br>
-          first gig in the living room, playing for one fan.<br>
-          Late nights talking, chasing dreams, mapping out tomorrow,<br>
-          never thought that when it came, it would bring such sorrow.
-        </p>
-        <p>
-          Stars shine bright up in the sky, even when you can’t see,<br>
-          that’s what our friendship does, lighting the dark for me.<br>
-          Knowing you are still out there helps to keep me sane,<br>
-          taming the demons in my mind won’t have been in vain.
-        </p>
-        <p>
-          Across oceans, across time, I feel your light still glow,<br>
-          guiding me through stormy waves, cushion every blow.<br>
-          Distance can’t undo a bond when friendship runs this deep,<br>
-          always find the way back home, even if sirens weep.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Here’s to the future, the paths we’ll explore,<br>
-          tell me: What do I do with Wannabe-Thor?<br>
-          Miles lie between us, but fate we’ll betray,<br>
-          I’ll follow your light to shore, coming home to stay.<br>
-          Coming home to stay.<br>
-          To stay.<br>
-          Coming home to stay.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-6" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Leuchtturm</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Ich erinnere mich an Sommertage, Eiscreme von der Eisdiele.<br>
-          Deine Oma hat uns immer zu der neben dem Schneider mitgenommen.<br>
-          Gelächter am Morgen, Zahnlücken und aufgeschlagene Knie,<br>
-          ständig Verstecken spielen und auf Bäume klettern.
-        </p>
-        <p>
-          Refrain:<br>
-          Du warst mein Licht auf der anderen Straßenseite, mein Fixpunkt,<br>
-          egal, worum es ging – ich musste mich nie verstecken.<br>
-          Unsere Freundschaft hat mich immer geerdet, tut es noch – auch aus der Ferne.<br>
-          Du bist der Leuchtturm im Sturm, setzt die Messlatte hoch.
-        </p>
-        <p>
-          Betretenes Schweigen in der Nähe von Mädchen, heimliche Drinks und<br>
-          erstes Konzert im  Wohnzimmer – für nur einen Fan.<br>
-          Durchquatschte Nächte, Träume jagen: Wir hatten große Pläne für das Morgen,<br>
-          dachten nicht, dass es nichts als Kummer bereithält.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Sterne leuchten hoch am Himmel, auch wenn du sie nicht siehst,<br>
-          so ist unsere Freundschaft für mich – sie erhellt meine Dunkelheit.<br>
-          Dass du immer noch da draußen bist, hilft mir, nicht durchzudrehen,<br>
-          mein inneren Dämonen zu zähmen wird sich auszählen.
-        </p>
-        <p>
-          Über Ozeane und Zeit hinweg, spüre ich dein Licht noch immer,<br>
-          es leitet mich durch stürmische Wellen, dämpft jeden Aufprall.<br>
-          Distanz kann Freundschaft nichts anhaben, wenn sie so tief verwuzelt ist.<br>
-          Wir finden immer den Weg nach Hause, auch wenn Sirenen locken.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Ein Hoch auf die Zukunft, die Pfade, die wir erforschen werden.<br>
-          Sag mir: Was mache ich bloß mit Möchtegern-Thor?<br>
-          Meilen liegen zwischen uns, aber wir werden das Schicksal austricksen.<br>
-          Ich werde deinem Licht zum Ufer folgen, nach Hause kommen – und bleiben.<br>
-          Komme nach Hause und bleibe.<br>
-          Ich bleibe!
-        </p>
-      </div>
-            
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-golden')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Golden Times</strong></div>
-          <div class="track-subline"><em>Whispers of Mischief</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-7')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-7')">
-            )
-          </div>
-        </div>
-        <div class="track-time">4:15</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-golden" src="assets/audio/07_golden_times_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-7" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Golden Times</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          Fog’s rolling in, underneath Golden Gate,<br>
-          we chase the dawn – didn’t notice it’s late.<br>
-          Our hearts matching the city’s beat,<br>
-          wet concrete shimmers beneath our feet.<br>
-          Laughter echoes down the street,<br>
-          tonight we made memories, rooting deep.
-        </p>
-        <p>
-          Refrain:<br>
-          City lights and golden times,<br>
-          through endless streets, we’re side by side.<br>
-          With the bridge above and the world below,<br>
-          we’re unstoppable, letting go.
-        </p>
-        <p>
-          Midnight mist hugs the neon signs,<br>
-          we roam the city, best of times.<br>
-          Through hidden streets to Pier 39,<br>
-          taking each step just out of line.<br>
-          We’re kings of the moment, rebels at heart,<br>
-          nothing could ever pull us apart.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Different but equal, so much the same,<br>
-          we’re drawn to the beat of this city’s flame.<br>
-          Not everyone here feels the blessing like us,<br>
-          the city throws some under the bus.
-        </p>
-        <p>
-          We’re <em>Whispers of Mischief</em>, planning a coup,<br>
-          but we’re hardly ever seeing it through.<br>
-          Rooftops and laughter, Golden Bay,<br>
-          San Francisco – we’re gonna stay.
-        </p>
-        <p>
-          Watching the seals, chowder at the pier,<br>
-          nowhere else holds a spirit like here.<br>
-          Seagulls calling, stalking their keep,<br>
-          our love for this city, rooted deep.<br>
-          Running through fog in the midnight’s embrace,<br>
-          we’ll always belong to this wild, untamed place.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-7" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Goldene Zeiten</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Nebel kriecht heran, unter der Golden Gate,<br>
-          wir jagen den Sonnenaufgang – und vergessen die Zeit.<br>
-          Unsere Herzen spiegeln den Beat der Stadt wider,<br>
-          nasser Beton schimmert unter unseren Füßen.<br>
-          Gelächter brandet über die Straße,<br>
-          heute Nacht machen wir wertvolle Erinnerungen.
-        </p>
-        <p>
-          Refrain:<br>
-          Straßenlichter und goldene Zeiten,<br>
-          durch endlose Straßen gehen wir Seite an Seite.<br>
-          Mit der Brücke über und der Welt unter uns,<br>
-          sind wir unaufhaltsam, lassen locker.
-        </p>
-        <p>
-          Mitternachtsdunst umwabbert die Leuchtreklamen,<br>
-          wir ziehen durch die Stadt, haben die Zeit unseres Lebens.<br>
-          Durch versteckte Straßen zum Pier 39,<br>
-          laufen wir einen Takt neben der Spur.<br>
-          Wir sind die Könige des Moments, Rebellen im Herzen,<br>
-          nichts kann uns jemals auseinanderreißen.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Verschieden aber gleichwertig – und doch so ähnlich,<br>
-          es zieht uns in die Stadt wie Motten zum Licht.<br>
-          Aber nicht jeder hat es so gut wie wir,<br>
-          manche wirft die Stadt den Wölfen zum Fraß vor.
-        </p>
-        <p>
-          Wir sind <em>Whispers of Mischief</em>, planen Unfug,<br>
-          ziehen ihn aber so gut wie nie durch.<br>
-          Dächer und Gelächter, Goldene Bucht,<br>
-          San Francisco – wir bleiben hier!
-        </p>
-        <p>
-          Seehunde beobachten, Fischsuppe am Pier,<br>
-          kein anderer Ort hat diese Energie.<br>
-          Möwen rufen, lauern auf ihre Beute,<br>
-          unsere Liebe für diese Stadt hat tiefe Wurzeln.<br>
-          Rennen durch den Nebel in die Umarmung der Nacht,<br>
-          wir werden für immer an diesen ungezähmten, wilden Ort gehören.<br>
-          Wir gehören hierhier.<br>
-          Gehören hierher.
-        </p>
-      </div>
-    
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-beauty')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Beauty of Destruction</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-8')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-8')">
-            )
-          </div>
-        </div>
-        <div class="track-time">2:48</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-beauty" src="assets/audio/08_beauty_of_destruction_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-8" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Beauty of Destruction</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          There’s a fire inside, it burns and feasts,<br>
-          casting shadows, fueling the beast.<br>
-          I see the damage, it’s right there,<br>
-          but I feel calm when things tear.<br>
-          I wear the mask, I play the game,<br>
-          and I know I’m the one to blame.
-        </p>
-        <p>
-          Refrain:<br>
-          The beauty of destruction,<br>
-          the thrill in the fall,<br>
-          quiet satisfaction when I lose it all.<br>
-          I watch them scatter, watch them bleed,<br>
-          and somehow that chaos is all I need.<br>
-          The beauty of breaking, the comfort in pain –<br>
-          a twisted release in the pouring rain.
-        </p>
-        <p>
-          Something is shifting, hiding beneath,<br>
-          defiance digs in, baring its teeth.<br>
-          I know the hurt, see the harm I’ve done,<br>
-          but with each wound, a weight is gone.<br>
-          I’m not proud, but I won’t lie –<br>
-          there’s a twisted peace in a torn tie.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          It’s not that I want to see them hurt,<br>
-          but there’s a freedom in throwing dirt.<br>
-          A heart in ruins, a shattered trust,<br>
-          yet in the rubble, I find what I must.<br>
-          In pieces I’m whole, in the storm I’m free,<br>
-          the calm in the chaos, that’s where I’ll be.
-        </p>
-        <p>
-          The face in the mirror, a mask of deceit,<br>
-          the monster within waiting for release.<br>
-          I want to steer into calmer waters,<br>
-          but desperation still fuels my motor.<br>
-          The beauty of destruction draws me in –<br>
-          In the ashes, I feel the phoenix begin.<br>
-          The phoenix begin.<br>
-          Begin.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-8" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Schönheit der Zerstörung</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Es brennt ein Feuer in mir, es lodert, verzehrt,<br>
-          wirft Schatten, ernährt das Ungeheuer.<br>
-          Ich sehe die Zerstörung, die ich verursache,<br>
-          aber es beruhigt mich, wenn Dinge zerbrechen.<br>
-          Ich trage die Maske, spiele das Spiel,<br>
-          und ich weiß – es ist meine Schuld.
-        </p>
-        <p>
-          Refrain:<br>
-          Die Schönheit der Zerstörung, der Rausch des Sturzes,<br>
-          stille Genugtuung, wenn ich alles verliere.<br>
-          Ich sehe sie zerbrechen, sehe sie bluten,<br>
-          und irgendwie ist dieses Chaos das, was ich will.<br>
-          Die Schönheit des Zerbrechens, der Komfort von Schmerz –<br>
-          eine groteske Befreiung im strömenden Regen.
-        </p>
-        <p>
-          Etwas verändert sich unter der Oberfläche,<br>
-          Trotz schlägt zu, fletscht seine Zähne.<br>
-          Ich kenne den Schmerz, weiß, was ich anrichte,<br>
-          aber mit jeder zugefügten Wunde fühle ich mich leichter.<br>
-          Es macht mich nicht stolz, aber ich gebe zu:<br>
-          Beziehungen abzubrechen erfüllt mich mit einem seltsamen Frieden.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Ich will nicht, dass sie leiden – und doch:<br>
-          Es befreit mich, mit Dreck zu werfen.<br>
-          Ein Herz in Fetzen, zerbrochenes Vertrauen –<br>
-          im Schutt finde ich, was ich brauche.<br>
-          Zersplittert fühle ich mich vollständig, im Sturm bin ich frei,<br>
-          Im Auge des Sturms, da findest du mich!
-        </p>
-        <p>
-          Das Gesicht im Spiegel – eine Maske der Täuschung,<br>
-          das Monster in mir wartet auf seinen Auftritt.<br>
-          Ich möchte in ruhigeres Fahrwasser segeln,<br>
-          aber die Verzweiflung sitzt noch immer am Steuer.<br>
-          Die Schönheit der Zerstörung zieht mich in ihren Bann –<br>
-          aber in der Asche spüre ich den Phönix erwachen.<br>
-          Den Phönix erwachen.<br>
-          Erwachen.
-        </p>
-      </div>
-    
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-sweet')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Sweet Medicine</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-9')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-9')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:08</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-sweet" src="assets/audio/09_sweet_medicine_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-9" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Sweet Medicine</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          A pinch of laughter, a dash of care,<br>
-          sunny smiles, just being there.<br>
-          Songs in the kitchen, feet tapping the beat<br>
-          sometimes that’s all I need.
-        </p>
-        <p>
-          Refrain:<br>
-          You always say: »Stir it up, take a bite«,<br>
-          life’s too short to fuss and fight.<br>
-          A slice of cake, a laugh or two,<br>
-          that’s the sweet medicine I’ve got for you.          
-        </p>
-        <p>
-          You smell like cookies, sunshine and rain<br>
-          talking to you always brightens the pain.<br>
-          Your smile is wide, crinkles your nose<br>
-          you always keep me on my toes.          
-        </p>
-        <p>
-          You’re living the colors of the rainbow<br>
-          when blue and grey are all I know.<br>
-          You open my eyes, make me see<br>
-          sharing your love for the island with me.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          The recipe in your book of life<br>
-          doesn’t consist of »only survive«.<br>
-          It’s full of laughter, sugar, and heart<br>
-          throw in some love for the perfect tart.<br>
-          You always say I can learn from you<br>
-          and, hand on heart, I know that’s true.
-        </p>
-        <p>
-          So when I am lost or I’m feeling blue,<br>
-          I always come and search for you.<br>
-          With your colors and warmth, through and through,<br>
-          you’re my sunshine — the sweet medicine, it’s you.<br>
-          Sweet medicine, it’s you.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-9" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Süße Medizin</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Eine Prise Lachen, ein bisschen Fürsorge,<br>
-          sonniges Lächeln – einfach bei dir sein.<br>
-          Lieder in der Küche, die Füße wippen im Takt –<br>
-          manchmal ist das alles, was ich brauche.
-        </p>
-        <p>
-          Refrain:<br>
-          Du sagst immer: »Rühr’s zusammen, probier es aus«,<br>
-          das Leben ist zu kurz für Stress und Streit.<br>
-          Ein Stückchen Kuchen, ein Lachen oder zwei,<br>
-          das ist die süße Medizin, die ich für dich habe.
-        </p>
-        <p>
-          Du riechst nach Keksen, Sonnenschein und Regen,<br>
-          mit dir zu reden lindert jeden Schmerz.<br>
-          Dein Lächeln ist groß, es kräuselt deine Nase,<br>
-          du hältst mich ordentlich auf Trab.
-        </p>
-        <p>
-          Du lebst in den Farben des Regenbogens,<br>
-          für mich ist alles oft blau und grau.<br>
-          Du öffnest meine Augen, hilfst mir zu verstehen,<br>
-          teilst deine Liebe für die Insel mit mir.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Dein Rezept fürs Leben heißt nicht bloß »überleben«.<br>
-          Es ist reich an Lachen, Zucker und Herz,<br>
-          gewürzt mit ein bisschen Liebe – für die perfekte Torte.<br>
-          Du sagst immer, dass ich von dir was lernen kann,<br>
-          und Hand aufs Herz – ich weiß, dass du recht hast.
-        </p>
-        <p>
-          Wenn ich mich verloren oder traurig fühle,<br>
-          suche ich immer nach dir.<br>
-          Mit deiner Wärme und deinen Farben<br>
-          bist du durch und durch mein Sonnenschein.<br>
-          Die süße Medizin bist du.<br>
-          Die süße Medizin bist du.
-        </p>
-      </div>
-    
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-behind')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Behind the Mask</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-10')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-10')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:00</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-behind" src="assets/audio/10_behind_the_mask_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-10" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Behind the Mask</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          I’m the shadow, you are the light,<br>
-          you’re the calm shore, I’m the endless night.<br>
-          You’re anchored deep, while I drift alone,<br>
-          lost in a place that I can’t call home.
-        </p>
-        <p>
-          Refrain:<br>
-          No common ground, no stories to share,<br>
-          no joined past, no future — but do I care?<br>
-          I’m the intruder in your perfect space,<br>
-          the villain you see but can’t embrace.
-        </p>
-        <p>
-          You’re his pride, I’m a fleeting ghost,<br>
-          envying your roots while I wander the coast.<br>
-          You’re the beauty, a clear, shining day,<br>
-          I’m the storm that can’t find its way.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          But don’t forget: dogs that bark don’t bite,<br>
-          even they have fears they try to hide.<br>
-          Behind the mask lives more than pride —<br>
-          a tangled truth I hold inside.
-        </p>
-        <p>
-          I wear my disguise like a second skin,<br>
-          keeping my true self locked within.<br>
-          But somewhere below, beneath this fight,<br>
-          I wonder if shadows can reach the light.
-        </p>
-        <p>
-          Refrain
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-10" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Hinter der Maske</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Ich bin der Schatten, du das Licht,<br>
-          du das ruhige Ufer, ich die endlose Nacht.<br>
-          Du bist tief verwurzelt, ich treibe allein,<br>
-          verloren, wo ich nie zuhause sein kann.
-        </p>
-        <p>
-          Refrain:<br>
-          Nichts gemeinsam, keine Erinnerungen,<br>
-          keine Vergangenheit, keine Zukunft – ist das wichtig?<br>
-          Ich bin der Fremdkörper in deiner perfekten Welt,<br>
-          der Bösewicht, den du beäugst – und ablehnst.
-        </p>
-        <p>
-          Du bist sein Goldstück, ich ein rastloser Geist,<br>
-          beneide deine Wurzeln, während ich ziellos umhertreibe.<br>
-          Du bist der schöne, klare, strahlende Tag,<br>
-          ich der Sturm, der seinen Weg nicht finden kann.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Aber vergiss nicht: Hunde die bellen, beißen nicht,<br>
-          auch sie haben Ängste, die sie verbergen wollen.<br>
-          Hinter der Maske lebt mehr als nur Stolz,<br>
-          ich hüte eine verworrene Wahrheit tief in mir.
-        </p>
-        <p>
-          Ich trage meine Täuschung wie eine zweite Haut,<br>
-          schließe mein wahres Ich in mir ein.<br>
-          Aber irgendwo tief drinnen, hinter diesem Kampf,<br>
-          frage ich mich, ob Schatten je Licht berühren kann.
-        </p>
-      </div>
-    
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-summer')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Summer Secret</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-11')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-11')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:29</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-summer" src="assets/audio/11_summer_secret_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-11" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Summer Secret</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>   
-          You stand like a statue, just out of reach,<br>
-          a silent echo on this rain-kissed beach.<br>
-          I pushed, and you pushed right back,<br>
-          every word a step in a hidden track.<br>
-          Sometimes I feel your gaze like a plea,<br>
-          but freedom’s out there, beckoning me.
-        </p>
-        <p>
-          Refrain:<br>
-          You want roots, while I crave wings,<br>
-          caught in the pull of different things.<br>
-          How it must hurt, watching me fight,<br>
-          when all you want is to hold on tight.<br>
-          This island’s beauty is your well<br>
-          for every corner a story to tell
-        </p>
-        <p>
-          My mother’s far, but yours is gone,<br>
-          how lost must you feel while carrying on?<br>
-          I thought I knew what lonely meant,<br>
-          how many days of longing have you spent?<br>
-          A summer secret between you and me,<br>
-          we could be friends – do you agree?
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          If I help you to be the one who stays,<br>
-          would it soften the edge, clear the haze?<br>
-          If I opened up, tore down my walls,<br>
-          would you give me a chance, despite it all?<br>
-          A summer secret left unsaid,<br>
-          words like whispers in my head.
-        </p>
-        <p>
-          So here I stand, caught in between,<br>
-          the shores I know and the ones unseen.<br>
-          A summer secret in your eyes,<br>
-          and in your gaze my own disguise.<br>
-          What if, for once, I didn’t hide –<br>
-          would you stay then by my side?<br>
-          Stay by my side?
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-11" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Sommergeheimnis</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Starr wie eine Statue, nah und doch unerreichbar,<br>
-          wie ein stummes Echo stehst du am regengeküssten Strand.<br>
-          Ich provoziere, und du setzt dich zur Wehr,<br>
-          jedes unserer Worte ein Schritt in einem unbekannten Tanz.<br>
-          Manchmal spüre ich deinen Blick, fast wie ein Flehen,<br>
-          aber da draußen wartet Freiheit – und sie ruft nach mir.
-        </p>
-        <p>
-          Refrain:<br>
-          Du möchtest Wurzeln, ich wünsche mir Flügel,<br>
-          wir werden in unterschiedliche Richtungen gezogen.<br>
-          Du willst unbedingt bleiben – ich will weg!<br>
-          Es muss wehtuen, zu sehen, wie ich kämpfe.<br>
-          Die Schönheit der Insel ist deine Kraftquelle,<br>
-          du kennst jeden Winkel und seine Geschichte.
-        </p>
-        <p>
-          Meine Mutter ist weit weg, aber deine verloren,<br>
-          wie einsam musst du sein, während du weitermachst?<br>
-          Ich dachte, ich wüsste, was <em>einsam</em> bedeutet,<br>
-          aber wie viele deiner Tage sind mit Sehnsucht gefüllt?<br>
-          Ein Sommergeheimnis zwischen dir und mir,<br>
-          wir könnten Freunde sein – meinst du nicht auch?
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Wenn ich dir helfe, diejenige zu sein, die bleibt,<br>
-          würde dich das milde stimmen, deinen Blick klären?<br>
-          Wenn ich mich öffnen würde, meine Mauern einreiße,<br>
-          würdest du mir trotz allem eine Chance geben?<br>
-          Ein Sommergeheimnis, unausgesprochen,<br>
-          geistert wie ein Wispern durch meinen Kopf.
-        </p>
-        <p>
-          Hier stehe ich also, hin- und hergerrissen<br>
-          zwischen vertrauten und unbekannten Ufern.<br>
-          Ein Sommergeheimnis in deinen Augen –<br>
-          und in ihrer Reflektion meine eigene Täuschung.<br>
-          Was wäre, wenn ich mich dieses Mal nicht verstecke –<br>
-          würdest du an meiner Seite bleiben?<br>
-          An meiner Seite bleiben?           
-        </p>
-      </div>
-
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-two')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Two Worlds, two Hearts</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-12')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-12')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:38</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-two" src="assets/audio/12_two_worlds_two_hearts_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-12" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Two Worlds, two Hearts</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          For you it’s hectic, chaos and haze,<br>
-          traffic crawling at a snail’s pace.<br>
-          For me it’s freedom, chances and fun,<br>
-          Golden Gate gleaming in the sun.
-        </p>
-        <p>
-          For me it’s boredom, standstill and dread,<br>
-          nothing to do, just staying in bed.<br>
-          For you it’s calm, comfort and peace,<br>
-          whispering tides putting you at ease.
-        </p>
-        <p>
-          Refrain:<br>
-          A melody needs more than one note,<br>
-          a harmony keeps the tune afloat.<br>
-          Chords sound different, yet create a song,<br>
-          voices blending together, solid and strong.
-        </p>
-        <p>
-          Home is not just a place – it’s a feeling as well,<br>
-          it’s precious memories, a story to tell.<br>
-          Origins may vary, our hearts beat the same,<br>
-          in love with our homeland – no one to blame.
-        </p>
-        <p>
-          Our stories are similar, two sides of a coin,<br>
-          let’s tear down the walls, let each other join.<br>
-          Let’s call out a truce and cease to judge,<br>
-          open our hearts – let go of the grudge.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Two worlds, two hearts – pulsing to different beats,<br>
-          can still find a rhythm, no need to compete.<br>
-          Our lives, our voices may sing different songs,<br>
-          just different pitches — neither is wrong.<br>
-          Let’s combine our melodies, arrange a new sound,<br>
-          turn discord into common ground.<br>
-          Turn discord into common ground.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-12" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Zwei Welten, zwei Herzen</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Für dich sind es Hektik, Chaos und Nebel,<br>
-          Verkehr, der im Schneckentempo vorwärts kriecht.<br>
-          Für mich sind es Freiheit, Möglichkeiten und Spaß,<br>
-          die Golden Gate, die in der Sonne glänzt.
-        </p>
-        <p>
-          Für mich sind es Langeweile, Stillstand und Grauen,<br>
-          nicht aufzustehen, weil es eh nichts zu tun gibt.<br>
-          Du empfindest es als Ruhe, Komfort und Frieden,<br>
-          das Wispern der Gezeiten beruhigt dich.
-        </p>
-        <p>
-          Refrain:<br>
-          Eine Melodie braucht mehr als einen Ton,<br>
-          Harmonien halten den Song am Leben.<br>
-          Akkorde klingen unterschiedlich, aber sie gestalten den Song,<br>
-          Stimmen die sich vermischen – kräftig und stark
-        </p>
-        <p>
-          Zuhause ist nicht nur ein Ort, es ist auch ein Gefühl,<br>
-          es besteht aus Erinnerungen und Geschichten.<br>
-          Die Herkunft mag sich unterscheiden, aber unsere Herzen sind sich einig:<br>
-          Wir lieben unsere Heimat – daran ist keiner schuld.
-        </p>
-        <p>
-          Unsere Geschichten sind ähnlich – zwei Seiten einer Medaille,<br>
-          lass uns die Mauern einreißen und zusammenfinden.<br>
-          Lass uns aufhören zu kämpfen, uns nicht mehr verurteilen –<br>
-          unsere Herzen öffnen und den Groll ziehen lassen.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Zwei Welten, zwei Herzen – die unterschiedliche Takte schlagen,<br>
-          können trotzdem einen Rhythmus finden, müssen nicht konkurrieren.<br>
-          Unsere Leben, unsere Stimmen singen verschiedene Lieder,<br>
-          keiner von ihnen ist falsch, sie haben nur andere Klangfarben.<br>
-          Lass uns unsere Melodien vereinen, einen neuen Klang erzeugen,<br>
-          Dissonanz in Einklang verwandeln.<br>
-          Dissonanz in Einklang verwandeln
-        </p>
-      </div>
-      
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-borrowed-alt')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Borrowed Sand (Alternate)</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-13')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-13')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:06</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-borrowed-alt" src="assets/audio/13_borrowed_sand_alternate_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-13" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Borrowed Sand (Alternate)</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          I know I’m trouble, a thorn in your side,<br>
-          the shadow that dims your inner light.<br>
-          You reach out, but I keep my wall,<br>
-          lost in a dance where we stumble and fall.
-        </p>
-        <p>
-          Refrain:<br>
-          I’m lost in the in-between,<br>
-          haunted by places I have been.<br>
-          Trying to hold on, stay strong,<br>
-          to find the place where I belong.
-        </p>
-        <p>
-          I’m a riddle you try to solve,<br>
-          the problem you ache to resolve.<br>
-          We fight a silent war every day,<br>
-          too afraid of the words we won’t say.
-        </p>
-        <p>
-          You opened your heart, your home, your life,<br>
-          throwing me a line to survive.<br>
-          Linger by the door, as if you might stay,<br>
-          then leave ’cause I’m turning my gaze away.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          There’s warmth here, but it’s not mine,<br>
-          giving you the cold shoulder, time after time.<br>
-          But there’s a flicker I try to deny,<br>
-          and I owe it to you to finally try.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          So here I stand, on borrowed sand,<br>
-          trying to reach out and give you my hand.<br>
-          Maybe you are the place where I now belong,<br>
-          and it’s just my pride that has been too strong.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-13" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Geliehener Sand (Alternativ)</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Ich weiß, ich bring nur Ärger, bin der Stachel unter deiner Haut<br>
-          der Schatten, der dein inneres Licht dimmt.<br>
-          Du gehst auf mich zu, aber ich ziehe mich zurück<br>
-          wir sind gefangen in einem unbeholfenen Tanz.
-        </p>
-        <p>
-          Refrain:<br>
-          Ich bin verloren im Zwischendrin<br>
-          Hänge den Orten nach, an denen ich war.<br>
-          Ich versuche, mich zusammenzunehmen, stark zu sein,<br>
-          den Ort zu finden, an den ich gehöre.
-        </p>
-        <p>
-          Ich bin ein Rätsel, das du zu lösen versuchst<br>
-          Ein Problem, das du unbedingt auflösen willst.<br>
-          Jeden Tag fechten wir einen schweigenden Kampf aus<br>
-          Zu ängstlich, uns die Wahrheit zu sagen.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Du hast dein Herz, dein Zuhause, dein Leben geöffnet,<br>
-          hast mir einen Rettungsring zugeworfen.<br>
-          Zögerst an der Tür, so als wolltest du bleiben<br>
-          gehst dann aber, weil ich wegschaue.
-        </p>
-        <p>
-          Es gibt hier Wärme, aber sie kommt nicht von mir<br>
-          ich zeige dir immer wieder die kalte Schulter.<br>
-          Aber da ist ein Funken Hoffnung, den ich nicht wahrhaben wollte<br>
-          und ich schulde es dir, es endlich zu versuchen.
-        </p>
-        <p>
-          Hier stehe ich also, auf geliehenem Sand<br>
-          unbeholfen komm ich dir näher – reiche dir die Hand.<br>
-          Vielleicht bist du der Ort, an den ich jetzt gehöre<br>
-          und mein Stolz war bloß zu groß, um es mir einzugestehen.          
-        </p>
-      </div>  
-
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-line')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Line by Line</strong></div>
-          <div class="track-subline"><em>Eike Hirsch</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-14')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-14')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:10</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-line" src="assets/audio/14_line_by_line_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-14" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Line by line</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          Unsere erste Erinnerung wohnt tief in mir,<br>
-          ein Lachen, ein Leuchten, ein warmes Gefühl.<br>
-          Du bist ein Teil von mir geblieben,<br>
-          wie Hälften einer Muschel, die sich lieben.
-        </p>
-        <p>
-          Du warst immer da, bei jedem Schritt,<br>
-          jeden Meilenstein hast du mit mir geteilt.<br>
-          In glücklichen Zeiten und dunklen Stunden,<br>
-          zwei Herzen, zu jeder Zeit fest verbunden.
-        </p>
-        <p>
-          Refrain:<br>
-          Let’s write a new chapter, line by line,<br>
-          write a story where our stars align.<br>
-          You’re the girl of my past,<br>
-          be my future as well, make us last.
-        </p>
-        <p>
-          Barfuß im Sand, dem Sturm entgegen gelacht,<br>
-          die Zeit mit dir hat ein Feuer entfacht.<br>
-          Gedanken und Gefühle fest verflochten,<br>
-          wie Ströme des Meeres, die nie stockten.
-        </p>
-        <p>
-          Ich bin die Ebbe, du bist die Flut,<br>
-          füllst jeden Winkel mit deiner Glut.<br>
-          Der Sonnenaufgang, das Rauschen der See,<br>
-          das Lachen der Möwen – und du neben mir.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Gib mir deine Hand, gib mir dein Herz,<br>
-          dem Horizont entgegen die Wellen reiten.<br>
-          Unsere Geschichte hat gerade erst begonnen,<br>
-          das Morgen wartet – bist du dabei?
-        </p>
-        <p>
-          Die Gezeiten kommen, die Gezeiten gehen,<br>
-          doch wir bleiben – das wird jeder sehen.<br>
-          Stürme ziehen über uns hinweg,<br>
-          doch du und ich, ein unzertrennliches Band.
-        </p>
-        <p>
-          Refrain
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-14" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Linie bei Linie</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Unsere erste Erinnerung wohnt tief in mir,<br>
-          ein Lachen, ein Leuchten, ein warmes Gefühl.<br>
-          Du bist ein Teil von mir geblieben,<br>
-          wie Hälften einer Muschel, die sich lieben.
-        </p>
-        <p>
-          Refrain:<br>
-          Lass uns ein neues Kapitel aufschlagen,<br>
-          Zeile für Zeile unsere Geschichte schreiben.<br>
-          Du bist das Mädchen meiner Vergangenheit –<br>
-          sei meine Zukunft, sei mein Fürimmer!   
-        </p>
-        <p>
-          Barfuß im Sand, dem Sturm entgegen gelacht,<br>
-          die Zeit mit dir hat ein Feuer entfacht.<br>
-          Gedanken und Gefühle fest verflochten,<br>
-          wie Ströme des Meeres, die nie stockten.
-        </p>
-        <p>
-          Ich bin die Ebbe, du bist die Flut,<br>
-          füllst jeden Winkel mit deiner Glut.<br>
-          Der Sonnenaufgang, das Rauschen der See,<br>
-          das Lachen der Möwen – und du neben mir.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Gib mir deine Hand, gib mir dein Herz,<br>
-          dem Horizont entgegen die Wellen reiten.<br>
-          Unsere Geschichte hat gerade erst begonnen,<br>
-          das Morgen wartet – bist du dabei?
-        </p>
-        <p>
-          Die Gezeiten kommen, die Gezeiten gehen,<br>
-          doch wir bleiben – das wird jeder sehen.<br>
-          Stürme ziehen über uns hinweg,<br>
-          doch du und ich, ein unzertrennliches Band.
-        </p>
-        <p>
-          Refrain
-        </p>
-      </div>
-
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-tame')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Tame the Tides</strong></div>
-          <div class="track-subline"><em>Eike Hirsch</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-15')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-15')">
-            )
-          </div>
-        </div>
-        <div class="track-time">4:39</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-tame" src="assets/audio/15_tame_the_tides_remix.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-15" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Tame the Tides</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          Der Wind ist mein Freund, ein treuer Gefährte,<br>
-          doch in letzter Zeit ist er rau und schwer.<br>
-          Der Rückenwind hat die Richtung gewechselt,<br>
-          drückt mich unter Wasser – kein Entkommen mehr.
-        </p>
-        <p>
-          Refrain:
-          Why would you want to tame the tides,<br>
-          hold back the kite, deny its rise?<br>
-          It aches to ridge the edge, feel the gust,<br>
-          don’t depower – just give me trust.
-        </p>
-        <p>
-          Du nennst es die Strömung des Lebens,<br>
-          für mich sind es Wellen, die mich begraben.<br>
-          Gezeiten sind rhythmisch und verlässlich,<br>
-          doch Stürme bringen neue Perspektiven.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Spuren im Sand sind vergänglich,<br>
-          das Meer trägt sie von hier nach dort.<br>
-          Hinterlässt eine unberührte Leinwand,<br>
-          doch der Wind reißt die Träume fort.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Nach jeder Ebbe kommt die Flut,<br>
-          nach jedem Sturm die stille See.<br>
-          Lass mich Steine ins Wasser werfen,<br>
-          und sehen, ob sie Wellen schlagen.
-        </p>
-        <p>
-          Locker die Leinen, gönn mir einen Boost,<br>
-          fülle meine Lunge mit frischer Luft.<br>
-          Lass mich nicht ersticken und verkümmern,<br>
-          weil du ständig sagst: »Du musst!«
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          I’m following in your direction,<br>
-          spray hindering my sight.<br>
-          But all I want is to trace my own horizon,<br>
-          sailing into the unknown light.
-        </p>
-        <p>
-          Why would you want to tame the tides,<br>
-          hold back the kite, deny its rise?<br>
-          All I want is to trace my own horizon,<br>
-          sailing into the unknown light.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-15" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Zähme die Gezeiten</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Der Wind ist mein Freund, ein treuer Gefährte,<br>
-          doch in letzter Zeit ist er rau und schwer.<br>
-          Der Rückenwind hat die Richtung gewechselt,<br>
-          drückt mich unter Wasser – kein Entkommen mehr.
-        </p>
-        <p>
-          Refrain:
-          Warum willst du die Gezeiten zähmen,<br>
-          den Drachen zurückhalten, seinen Aufstieg verhindern?<br>
-          Er möchte bis ans Äußerste gehen, die Böe spüren.<br>
-          Bremse mich nicht aus – glaub an mich!
-        </p>
-        <p>
-          Du nennst es die Strömung des Lebens,<br>
-          für mich sind es Wellen, die mich begraben.<br>
-          Gezeiten sind rhythmisch und verlässlich,<br>
-          doch Stürme bringen neue Perspektiven.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Spuren im Sand sind vergänglich,<br>
-          das Meer trägt sie von hier nach dort.<br>
-          Hinterlässt eine unberührte Leinwand,<br>
-          doch der Wind reißt die Träume fort.
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Nach jeder Ebbe kommt die Flut,<br>
-          nach jedem Sturm die stille See.<br>
-          Lass mich Steine ins Wasser werfen,<br>
-          und sehen, ob sie Wellen schlagen.
-        </p>
-        <p>
-          Locker die Leinen, gönn mir einen Boost,<br>
-          fülle meine Lunge mit frischer Luft.<br>
-          Lass mich nicht ersticken und verkümmern,<br>
-          weil du ständig sagst: »Du musst!«
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Ich folge deinem Kurs,<br>
-          aber Gischt raubt mir die Sicht.<br>
-          Ich will meinen eigenen Horizont ansteuern,<br>
-          ins Unbekannte segeln.
-        </p>
-        <p>
-          Warum willst du die Gezeiten zähmen,<br>
-          den Drachen zurückhalten, seinen Aufstieg verhindern?<br>
-          Ich will meinen eigenen Horizont ansteuern,<br>
-          ins Unbekannte segeln.
-        </p>
-      </div>
-      
-      <div class="track">
-        <button class="play-button" onclick="togglePlay(this, 'audio-soul')">▶️</button>
-        <div class="track-header">
-          <div class="track-title"><strong>Soul on Fire (Jake & the City)</strong></div>
-          <div class="track-subline"><em>Jake Dekker</em> (Lyrics: 
-            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-16')">
-            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-16')">
-            )
-          </div>
-        </div>
-        <div class="track-time">3:25</div>
-        <!-- Verstecktes Audio -->
-        <audio id="audio-soul" src="assets/audio/16_soul_on_fire.mp3" preload="none"></audio>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-en-16" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Soul on Fire</strong>   <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
-        <p>
-          A few little words – igniting a spark,<br>
-          causing chaos, summoning the dark.<br>
-          My head’s not in the clouds, but filled with fog,<br>
-          time’s running out, can you hear the clock?
-        </p>
-        <p>
-          Shadows draw in, sucking in all the light,<br>
-          I’m trying to breathe, survive in the wild.<br>
-          You sense something’s lurking behind my smile,<br>
-          see right through my attempt of denial.
-        </p>
-        <p>
-          Life is full of twists and turns,<br>
-          but my soul is on fire, my future burns.<br>
-          It’s not just a bump in the road or a stormy sea –<br>
-          this feels like the end, the undoing of me.
-        </p>
-        <p>
-          I feel like a leaf, picked up by the breeze,<br>
-          after being ripped from the branch of a tree.<br>
-          No say in the direction it is blown,<br>
-          carried to a place far away and unknown.
-        </p>
-        <p>
-          I’m the Leaf Boy, being pulled apart,<br>
-          never thought this would be so hard.<br>
-          Letters shift as I’m tumbling, turning,<br>
-          spelling L-E-A-V-E – that’s why my soul is burning!
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Nonetheless the stars will continue to shine,<br>
-          but your sky won’t be the same as mine.<br>
-          You’ll still be here, and I will be gone –<br>
-          the night will sing a different song.
-        </p>
-        <p>
-          The sun will still rise and fall,<br>
-          just have to find my way through it all.<br>
-          Cling to the fact it’s goodbye, not the end –<br>
-          just one of life’s twists I couldn’t prevent.
-        </p>
-      </div>
-      <!-- Lyrics Container -->
-      <div id="lyrics-de-16" class="lyrics" style="display:none; margin-top:8px;">
-        <p><strong>Seele in Flammen</strong>   <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
-        <p>
-          Kleine Worte, die einen Funken zünden,<br>
-          Chaos stiften, Dunkelheit heraufbeschwören.<br>
-          Mein Kopf steckt nicht in den Wolken, er ist voller Nebel.<br>
-          Die Zeit arbeitet gegen mich, hört ihr sie ticken?
-        </p>
-        <p>
-          Schatten kriechen näher, verschlingen das Licht,<br>
-          ich ringe nach Luft, kämpfe ums Überleben.<br>
-          Ihr spürt, dass hinter meinem Lächeln etwas lauert,<br>
-          durchschaut meinen Versuch, es zu leugnen.
-        </p>
-        <p>
-          Refrain:<br>
-          Das Leben verläuft nicht immer geradeaus,<br>
-          aber meine Seele steht in Flammen, meine Zukunft verbrennt.<br>
-          Das ist nicht bloß eine ungemütliche Phase,<br>
-          für mich ist es das Ende, mein persönlicher Untergang.
-        </p>
-        <p>
-          Ich bin wie ein Blatt, fortgewirbelt vom Wind,<br>
-          nachdem es vom Ast gerissen wurde.<br>
-          Ohne Einfluss auf die Richtung,<br>
-          fortgetragen an einen fremden, unbekannten Ort.
-        </p>
-        <p>
-          Ich bin der Blattjunge, zerrissen vom Wind. 
-          dachte nicht, dass Loslassen so wehtut. 
-          Ich falle, taumle, meine Welt verschiebt sich, 
-          meine Seele leidet, weil ich weiß: "Ich muss gehen."
-        </p>
-        <p>
-          Refrain
-        </p>
-        <p>
-          Die Sterne funkeln trotzdem weiter,<br>
-          aber euer Himmel ist ein anderer als meiner.<br>
-          Ihr werdet hier sein – und ich dort,<br>
-          die Nacht wird ein anderes Lied flüstern.
-        </p>
-        <p>
-          Die Sonne wird weiter auf- und untergehen,<br>
-          ich muss nur einen Weg finden, das zu überstehen.<br>
-          Mich an den Gedanken klammern: Ein Abschied – nicht das Ende! Nur eine Kapriole des Lebens, gegen die ich machtlos bin.
-        </p>
-      </div>
     </div>
   </div>
+
   <footer>
     <p>
       <a href="index.html">Startseite</a> |
@@ -1871,25 +156,24 @@
       <a href="datenschutz.html">Datenschutz</a>
     </p>
   </footer>
+
   <script>
     function toggleLyrics(id) {
       const el = document.getElementById(id);
       el.style.display = (el.style.display === "block") ? "none" : "block";
     }
-  
+
     function togglePlay(button, audioId) {
       const audio = document.getElementById(audioId);
-  
-      // Stoppe alle anderen Audios
+
       document.querySelectorAll('audio').forEach(a => {
         if (a !== audio) a.pause();
       });
-  
-      // Setze andere Buttons zurück
+
       document.querySelectorAll('.play-button').forEach(btn => {
         if (btn !== button) btn.textContent = '▶️';
       });
-  
+
       if (audio.paused) {
         audio.play();
         button.textContent = '⏸️';
@@ -1897,79 +181,65 @@
         audio.pause();
         button.textContent = '▶️';
       }
-  
-      // Wenn Song zu Ende → zurück auf Play
+
       audio.onended = () => {
         button.textContent = '▶️';
       };
     }
-    
-    // --- Helfer ---
+
     function findTrackContainerByAudioId(audioId) {
       const audio = document.getElementById(audioId);
       if (!audio) return null;
-  
-      // 1) KORREKT: Audio liegt in .track → nimm den Vorfahren
       if (audio.closest) {
         const t = audio.closest('.track');
         if (t) return t;
       }
-  
-      // 2) Fallback (falls sich dein Markup ändert)
       let prev = audio.previousElementSibling;
       while (prev && !prev.classList.contains('track')) prev = prev.previousElementSibling;
       return prev || null;
     }
-  
+
     function isInViewport(el) {
       if (!el) return false;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      // als "sichtbar" werten, wenn der obere Rand im oberen 60%-Fenster liegt
       return rect.top >= 0 && rect.top < vh * 0.6;
     }
-  
+
     function markTrack(track, audioId) {
-      // Optionales Markieren (funktioniert auch ohne CSS, ist nur optisch)
       track.classList.add('active-track');
-  
       const btn = track.querySelector(`.play-button[onclick*="${audioId}"]`)
                || document.querySelector(`.play-button[onclick*="${audioId}"]`);
       if (btn) btn.classList.add('highlight-play');
     }
-  
+
     function softScrollTo(track) {
       track.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     }
-  
+
     function hardScrollTo(track) {
-      // „harte“ Variante über absoluten Y-Wert (hilft Safari, wenn smooth ignoriert wird)
       const y = track.getBoundingClientRect().top + window.pageYOffset - 16;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
-  
+
     function scheduleResilientScroll(track) {
-      // Mehrere Versuche, da iOS/Safari oft erst nach Bild-/Font-Ladezeiten korrekt scrollt
       const attempts = [0, 120, 320, 650];
       attempts.forEach(delay => {
         setTimeout(() => {
           if (!isInViewport(track)) {
-            // Kombi aus soft + hard, erhöht die Trefferquote auf iOS
             softScrollTo(track);
             setTimeout(() => { if (!isInViewport(track)) hardScrollTo(track); }, 60);
           }
         }, delay);
       });
-  
-      // Nach vollständigem Laden (Bilder/Fonts)
+
       if (document.readyState !== 'complete') {
         window.addEventListener('load', () => {
           setTimeout(() => { if (!isInViewport(track)) softScrollTo(track); }, 50);
           setTimeout(() => { if (!isInViewport(track)) hardScrollTo(track); }, 140);
         }, { once: true });
       }
-  
-      // Fallback: beim ersten User-Gesture nochmal sicherstellen
+
       const ensureOnFirstInteraction = () => {
         if (!isInViewport(track)) hardScrollTo(track);
         window.removeEventListener('pointerdown', ensureOnFirstInteraction);
@@ -1977,11 +247,10 @@
       };
       window.addEventListener('pointerdown', ensureOnFirstInteraction, { once: true });
       window.addEventListener('keydown', ensureOnFirstInteraction, { once: true });
-  
-      // Zusätzlich: ein paar Frames abwarten (Layout settle) und dann scrollen
+
       let rafCount = 0;
       const rafTry = () => {
-        if (rafCount++ > 16) return; // ~16 Frames ≈ 250ms bei 60fps
+        if (rafCount++ > 16) return;
         if (!isInViewport(track)) {
           track.scrollIntoView({ behavior: 'auto', block: 'center' });
           requestAnimationFrame(rafTry);
@@ -1989,26 +258,24 @@
       };
       requestAnimationFrame(rafTry);
     }
-  
+
     function syncButtonsFor(audioId, isPlaying) {
       document.querySelectorAll('.play-button').forEach(btn => btn.textContent = '▶️');
       if (!isPlaying) return;
       const btn = document.querySelector(`.play-button[onclick*="${audioId}"]`);
       if (btn) btn.textContent = '⏸️';
     }
-  
+
     function tryAutoplay(audioId) {
       const audio = document.getElementById(audioId);
       if (!audio) return;
-  
-      // Alle anderen Audios stoppen
+
       document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
-  
+
       audio.play().then(() => {
         syncButtonsFor(audioId, true);
         audio.onended = () => syncButtonsFor(audioId, false);
       }).catch(() => {
-        // Autoplay blockiert → beim 1. User-Gesture starten
         const startOnFirstInteraction = () => {
           audio.play().then(() => {
             syncButtonsFor(audioId, true);
@@ -2021,22 +288,20 @@
         window.addEventListener('keydown', startOnFirstInteraction, { once: true });
       });
     }
-  
+
     document.addEventListener('DOMContentLoaded', () => {
       const params  = new URLSearchParams(window.location.search);
       const audioId = params.get('song');
       if (!audioId) return;
-  
+
       const track = findTrackContainerByAudioId(audioId);
       if (track) {
         markTrack(track, audioId);
-        scheduleResilientScroll(track); // <- iPhone/Safari-freundlich
+        scheduleResilientScroll(track);
       }
-  
-      // Autoplay (wo erlaubt) + Tap-Fallback
+
       tryAutoplay(audioId);
-    });  
+    });
   </script>
-  
 </body>
 </html>
