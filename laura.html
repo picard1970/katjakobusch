@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laura</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="album-page">
+  <header class="album-header">
+    <img src="assets/images/emilia-und-johanna-panorama.png" alt="Two Stars – Jake Dekker">
+  </header>
+
+  <div class="container album-layout">
+    <div class="left">
+      <div class="album-title">Lauras</div>
+      <div class="artist">ganz privater Teil<br>der Jakemosphere</div>
+
+      <div class="artist credits">Lyrics written by Katja Kobusch<br>Music created with Suno</div>
+    </div>
+
+    <div class="right">
+      <div class="track">
+        <button class="play-button" onclick="togglePlay(this, 'audio-storiestobetold')">▶️</button>
+        <div class="track-header">
+          <div class="track-title"><strong>Stories to be told</strong></div>
+          <div class="track-subline">
+            <em>Jake Dekker</em> (Lyrics:
+            <img src="assets/images/flagge-us-icon.PNG" alt="En" class="lyrics-toggle" onclick="toggleLyrics('lyrics-en-1')">
+            <img src="assets/images/flagge-de-icon.PNG" alt="De" class="lyrics-toggle" onclick="toggleLyrics('lyrics-de-1')">
+            )
+          </div>
+        </div>
+        <div class="track-time">2:59</div>
+        <audio id="audio-storiestobetold" src="assets/audio/00_stories_to_be_told.mp3" preload="none"></audio>
+      </div>
+
+      <div id="lyrics-en-1" class="lyrics" style="display:none; margin-top:1px;">
+        <p><strong>Stories to be told</strong> <img src="assets/images/flagge-us-icon.PNG" alt="En"></p>
+        <p>
+          Here comes a special song<br>
+          for two very special girls.
+        </p>
+        <p>
+          When your day has been too long<br>
+          and you’re not feeling strong,<br>
+          always know: you’re not alone —<br>
+          someone awaits you at home.
+        </p>
+        <p>
+          Friends are like stars in the sky,<br>
+          always there, even as time goes by.<br>
+          You might not always see them,<br>
+          but they’ll shine for you again.
+        </p>
+        <p>
+          Chorus:<br>
+          Two stars finding their way,<br>
+          lighting up the same sky.<br>
+          Never alone in this life,<br>
+          always side by side.
+        </p>
+        <p>
+          May your days always be bright,<br>
+          full of wonder and light.<br>
+          May your nights be cozy and warm,<br>
+          safe from shadows, safe from harm.
+        </p>
+        <p>
+          And hey… just so it’s crystal clear:<br>
+          there’s a special place in the Jakemosphere<br>
+          for the both of you —<br>
+          and that will always be true.
+        </p>
+        <p>Chorus</p>
+        <p>
+          Go through life with open eyes,<br>
+          there’ll be wins and there’ll be tries.<br>
+          Keep shining, trust yourself,<br>
+          and have good books on your shelf.
+        </p>
+        <p>Chorus</p>
+        <p>
+          And hey… just so it’s crystal clear:<br>
+          there’s a special place in the Jakemosphere<br>
+          for the both of you —<br>
+          and that will always be true.
+        </p>
+        <p>Chorus</p>
+        <p>
+          Never alone in this life,<br>
+          always side by side.<br>
+          Side by Side
+        </p>
+      </div>
+
+      <div id="lyrics-de-1" class="lyrics" style="display:none; margin-top:2px;">
+        <p><strong>Zwei Sterne</strong> <img src="assets/images/flagge-de-icon.PNG" alt="De"></p>
+        <p>
+          Das ist ein besonderer Song<br>
+          für zwei ganz besondere Mädchen
+        </p>
+        <p>
+          Wenn euer Tag zu lang war<br>
+          und ihr euch nicht stark fühlt,<br>
+          denkt immer daran: Ihr seid nicht allein –<br>
+          zu Hause wartet jemand auf euch.
+        </p>
+        <p>
+          Freunde sind wie Sterne am Himmel,c<br>
+          immer da, auch wenn die Zeit vergeht.<br>
+          Ihr könnt sie nicht immer sehen,<br>
+          doch sie leuchten immer wieder für euch.
+        </p>
+        <p>
+          Refrain:<br>
+          Zwei Sterne, die ihren Weg finden<br>
+          und denselben Himmel erhellen.<br>
+          Nie allein in diesem Leben,<br>
+          immer Seite an Seite.
+        </p>
+        <p>
+          Mögen eure Tage immer hell sein,<br>
+          voller Wunder und Licht.<br>
+          Mögen eure Nächte warm und geborgen sein,<br>
+          geschützt vor Schatten und Angst.
+        </p>
+        <p>
+          Und hey… nur damit das ganz klar ist:<br>
+          Es gibt einen besonderen Platz in der Jakemosphere<br>
+          für euch beide –<br>
+          und das wird immer so bleiben.
+        </p>
+        <p>Refrain</p>
+        <p>
+          Geht euren Weg mit offenen Augen,<br>
+          es wird Erfolge geben – und auch Fehlversuche.<br>
+          Strahlt weiter, vertraut euch selbst<br>
+          und habt immer gute Bücher im Regal.
+        </p>
+        <p>Refrain</p>
+        <p>
+          Und hey… nur damit das ganz klar ist:<br>
+          Es gibt einen besonderen Platz in der Jakemosphere<br>
+          für euch beide –<br>
+          und das wird immer so bleiben.
+        </p>
+        <p>Refrain</p>
+        <p>
+          Nie allein in diesem Leben,<br>
+          immer Seite an Seite.<br>
+          Seite an Seite.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+  </footer>
+
+  <script>
+    function toggleLyrics(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === "block") ? "none" : "block";
+    }
+
+    function togglePlay(button, audioId) {
+      const audio = document.getElementById(audioId);
+
+      document.querySelectorAll('audio').forEach(a => {
+        if (a !== audio) a.pause();
+      });
+
+      document.querySelectorAll('.play-button').forEach(btn => {
+        if (btn !== button) btn.textContent = '▶️';
+      });
+
+      if (audio.paused) {
+        audio.play();
+        button.textContent = '⏸️';
+      } else {
+        audio.pause();
+        button.textContent = '▶️';
+      }
+
+      audio.onended = () => {
+        button.textContent = '▶️';
+      };
+    }
+
+    function findTrackContainerByAudioId(audioId) {
+      const audio = document.getElementById(audioId);
+      if (!audio) return null;
+      if (audio.closest) {
+        const t = audio.closest('.track');
+        if (t) return t;
+      }
+      let prev = audio.previousElementSibling;
+      while (prev && !prev.classList.contains('track')) prev = prev.previousElementSibling;
+      return prev || null;
+    }
+
+    function isInViewport(el) {
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      return rect.top >= 0 && rect.top < vh * 0.6;
+    }
+
+    function markTrack(track, audioId) {
+      track.classList.add('active-track');
+      const btn = track.querySelector(`.play-button[onclick*="${audioId}"]`)
+               || document.querySelector(`.play-button[onclick*="${audioId}"]`);
+      if (btn) btn.classList.add('highlight-play');
+    }
+
+    function softScrollTo(track) {
+      track.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    }
+
+    function hardScrollTo(track) {
+      const y = track.getBoundingClientRect().top + window.pageYOffset - 16;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    function scheduleResilientScroll(track) {
+      const attempts = [0, 120, 320, 650];
+      attempts.forEach(delay => {
+        setTimeout(() => {
+          if (!isInViewport(track)) {
+            softScrollTo(track);
+            setTimeout(() => { if (!isInViewport(track)) hardScrollTo(track); }, 60);
+          }
+        }, delay);
+      });
+
+      if (document.readyState !== 'complete') {
+        window.addEventListener('load', () => {
+          setTimeout(() => { if (!isInViewport(track)) softScrollTo(track); }, 50);
+          setTimeout(() => { if (!isInViewport(track)) hardScrollTo(track); }, 140);
+        }, { once: true });
+      }
+
+      const ensureOnFirstInteraction = () => {
+        if (!isInViewport(track)) hardScrollTo(track);
+        window.removeEventListener('pointerdown', ensureOnFirstInteraction);
+        window.removeEventListener('keydown', ensureOnFirstInteraction);
+      };
+      window.addEventListener('pointerdown', ensureOnFirstInteraction, { once: true });
+      window.addEventListener('keydown', ensureOnFirstInteraction, { once: true });
+
+      let rafCount = 0;
+      const rafTry = () => {
+        if (rafCount++ > 16) return;
+        if (!isInViewport(track)) {
+          track.scrollIntoView({ behavior: 'auto', block: 'center' });
+          requestAnimationFrame(rafTry);
+        }
+      };
+      requestAnimationFrame(rafTry);
+    }
+
+    function syncButtonsFor(audioId, isPlaying) {
+      document.querySelectorAll('.play-button').forEach(btn => btn.textContent = '▶️');
+      if (!isPlaying) return;
+      const btn = document.querySelector(`.play-button[onclick*="${audioId}"]`);
+      if (btn) btn.textContent = '⏸️';
+    }
+
+    function tryAutoplay(audioId) {
+      const audio = document.getElementById(audioId);
+      if (!audio) return;
+
+      document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
+
+      audio.play().then(() => {
+        syncButtonsFor(audioId, true);
+        audio.onended = () => syncButtonsFor(audioId, false);
+      }).catch(() => {
+        const startOnFirstInteraction = () => {
+          audio.play().then(() => {
+            syncButtonsFor(audioId, true);
+            audio.onended = () => syncButtonsFor(audioId, false);
+          }).catch(() => console.log("Playback weiterhin blockiert."));
+          window.removeEventListener('pointerdown', startOnFirstInteraction);
+          window.removeEventListener('keydown', startOnFirstInteraction);
+        };
+        window.addEventListener('pointerdown', startOnFirstInteraction, { once: true });
+        window.addEventListener('keydown', startOnFirstInteraction, { once: true });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const params  = new URLSearchParams(window.location.search);
+      const audioId = params.get('song');
+      if (!audioId) return;
+
+      const track = findTrackContainerByAudioId(audioId);
+      if (track) {
+        markTrack(track, audioId);
+        scheduleResilientScroll(track);
+      }
+
+      tryAutoplay(audioId);
+    });
+  </script>
+</body>
+</html>
