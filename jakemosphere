@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jakemosphere – Katja Kobusch</title>
+  <meta name="description" content="Willkommen in der Jakemosphere: Musik, Bücher, Interviews und Blicke hinter die Kulissen rund um Jake, Echo & Ember und Haverooge.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=124">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js">
+  </script>
+
+  <!-- Google Fonts Fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
+
+</head>
+<body class="home jakemosphere">
+  <a href="index.html" class="home-link">Home</a>
+
+  <div class="wrap">
+    <section class="stage">
+      <!-- linke Fotospalte -->
+      <div class="stack left">
+        <figure class="photo p1">
+          <a href="dekker-album.html" title="Hier gibt's was auf die Ohren!">
+            <img src="assets/images/Was_auf_die_Ohren_Musik_transparent.png" alt="Hier gibt's was auf die Ohren!">
+          </a>
+        </figure>
+        <figure class="photo p2">
+          <a href="buecher.html" title="Echo & Ember">
+            <img src="assets/images/MockUp_EchoEmber_transparent.png" alt="Echo & Ember – Buch und E-Book">
+          </a>
+        </figure>
+        <figure class="photo p3">
+          <a href="jake-interview.html" title="Interview mit Jake">
+            <img src="assets/images/Interview_transparent.png" alt="Interview mit Jake">
+          </a>
+        </figure>
+      </div>
+
+      <!-- Textblock -->
+      <div class="intro">
+        <h1>Welcome to the<br>Jakemosphere</h1>
+        <p>Ich hasse die Nordsee! Wer will schon von San<br>Francisco nach Haverooge verschleppt werden?</p>
+        <p>Ohne meine Gitarre Queen Faye würde ich<br>durchrehen. Hör gerne mal in die Musik rein, die<br>ich mit ihr geschrieben habe. Oder guck dir Bilder<br>
+        an. (Anouk ist hübsch, aber Vorsitzende des Anti-<br>Jake-Clubs. Und Eike? Nervt kolossal, der Typ.)</p>
+        <p>Falls du mich ein paar Seiten länger erleben willst,<br>schnapp dir meine Bücher und begleite mich von<br>der geilsten Stadt der Welt in mein Exil in der<br>Einöde!</p>
+      </div>
+
+      <!-- rechte Fotospalte -->
+      <div class="stack right">
+        <figure class="photo p4">
+          <a href="haverooge.html" title="Hinter den Kulissen von Haverooge">
+            <img src="assets/images/Hinter_den_Kulissen_Haverooge_transparent.png" alt="Hinter den Kulissen von Haverooge">
+          </a>
+        </figure>
+        <figure class="photo p5">
+          <a href="meetthecrew.html" title="Meet the Cast">
+            <img src="assets/images/Meet_the_Cast_transparent.png" alt="Meet the Cast">
+          </a>
+        </figure>
+        <figure class="photo p6">
+          <a href="buecher.html" title="Jake & the City">
+            <img src="assets/images/MockUp_JakeCity_transparent.png" alt="Jake & the City – E-Book">
+          </a>
+        </figure>
+        <figure class="photo p7">
+          <a href="buecher.html" title="I'll be back">
+            <img src="assets/images/I_ll_be_back_transparent.png" alt="I'll be back">
+          </a>
+        </figure>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p>
+      <a href="impressum.html">Impressum</a> |
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </footer>
+</body>
+</html>
