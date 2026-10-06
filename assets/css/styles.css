@@ -585,9 +585,9 @@ body.kontakt{
 body.crew{
   margin:0;
   padding:0;
-  /* gleiche Ziegelwand wie auf der Startseite; die Korkwand liegt darauf */
-  background: #d6dbc3 url("../images/ziegel-gruen.jpg") repeat;
-  background-size: 600px auto;
+  /* gleiche Ziegelwand wie in der Jakemosphere; die Korkwand liegt darauf */
+  background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
+  background-size: 700px auto;   /* etwas größere Ziegel als auf der Startseite */
   color: var(--dunkelgrau2);
   line-height:1.6;
 }
