@@ -204,12 +204,12 @@ body.jakemosphere .home-link:hover{ color: #000; }
 
 body.jakemosphere .stack{ min-height:calc(660px * var(--side-scale)); }
 
-/* Textblock: Fließtext linksbündig mit Absatzabstand (wie im Layout) */
+/* Textblock: Fließtext im Blocksatz */
 body.jakemosphere .intro p{
-  text-align:left;
-  max-width:40ch;
-  margin:.7em auto 0;
-  text-wrap:pretty;
+  text-align: justify;
+  hyphens: auto;          /* trennt deutsche Wörter, vermeidet große Lücken */
+  max-width: 40ch;
+  margin: .7em auto 0;
 }
 body.jakemosphere .intro h1 + p{ margin-top:.9em; }
 
