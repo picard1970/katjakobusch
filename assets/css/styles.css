@@ -195,7 +195,7 @@ body.home .right .p6{ /* Jake & the City: endet auf Höhe von Katja */
 
 body.home.jakemosphere{
   background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 700px auto;   /* etwas größere Ziegel als auf der Startseite */
+  background-size: 600px auto;   /* gleiche Ziegelgröße wie auf der Startseite */
 }
 
 /* Home-Link oben rechts */
@@ -576,10 +576,9 @@ body.kontakt{
   flex-wrap: wrap;
 }
 
-/* Dünner grüner Streifen */
+/* Dünner grüner Streifen – entfällt, die Korkwand hängt direkt an der Wand */
 .crew-separator {
-  height: 2px;
-  background: var(--background_text);
+  display: none;
 }
 
 body.crew{
@@ -587,16 +586,18 @@ body.crew{
   padding:0;
   /* gleiche Ziegelwand wie in der Jakemosphere; die Korkwand liegt darauf */
   background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 700px auto;   /* etwas größere Ziegel als auf der Startseite */
+  background-size: 600px auto;   /* gleiche Ziegelgröße wie auf der Startseite */
   color: var(--dunkelgrau2);
   line-height:1.6;
 }
 
-/* Grüner Rahmen um den Inhalt – oben dicker */
+/* Korkwand hängt ohne Rahmen direkt an der Ziegelwand */
 .crew-frame{
-  margin: clamp(2px, 3vw, 24px) auto;
-  border: 10px solid var(--background_text);
+  margin: 0 clamp(12px, 3vw, 32px);
   position: relative;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.25),
+    0 10px 24px rgba(0,0,0,.22);
   /* Kork nur im Rahmen: */
   background-image: url('../images/kork-background.jpg');
   background-repeat: repeat;
@@ -642,9 +643,9 @@ body.crew{
 .filter-btn:hover{ transform: translateY(-1px); }
 .filter-btn.is-active,
 .filter-btn[aria-pressed="true"]{
-  background: var(--gruen);
+  background: var(--dunkelgrau2);
   color: var(--weiss);
-  border-color: var(--gruen);
+  border-color: var(--dunkelgrau2);
 }
 
 /* Board minimal enger innerhalb des Rahmens */
@@ -664,9 +665,6 @@ body.crew .board{
   padding: 6px 8px;
   margin: 8px -10px -10px -10px;          /* bündig bis an den Rahmen */
   border-top: 1px solid rgba(0,0,0,.06);
-}
-.crew-frame{
-  margin-top: 2px;
 }
 
 .crew-frame-bottom a{
@@ -977,8 +975,8 @@ body.crew .home-link:hover{ color: #000; }
 
   /* Ziegelkacheln auf dem Handy etwas kleiner */
   body.home,
+  body.home.jakemosphere,
   body.crew{ background-size: 450px auto; }
-  body.home.jakemosphere{ background-size: 540px auto; }
   /* allgemeine Container etwas kompakter */
   .container{
     margin: 1em auto;
