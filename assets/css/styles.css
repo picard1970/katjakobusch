@@ -192,7 +192,7 @@ body.home .right .p6{ /* Jake & the City: endet auf HÃ¶he von Katja */
 
 body.home.jakemosphere{
   background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 600px auto;   /* Kachel 1200px â†’ scharf auf Retina */
+  background-size: 700px auto;   /* Kachel 1200px â†’ scharf auf Retina */
 }
 
 /* Home-Link oben rechts */
@@ -1017,7 +1017,7 @@ body.crew .home-link:hover{ color: #000; }
   /* Jakemosphere (mobil): Kachel bleibt, rechte Spalte hat 4 Bilder */
   body.home.jakemosphere{
     background-image: url("../images/ziegel-tuerkis.jpg");
-    background-size: 450px auto;
+    background-size: 540px auto;
   }
   body.jakemosphere .right.stack{ min-height: 540px; }
   body.home .right .p7{ top: 380px; right: 14%; --rot: -4deg; z-index:4; }
@@ -1043,7 +1043,7 @@ body.crew .home-link:hover{ color: #000; }
   }
 
   /* ===================== */
-  /* BÃœCHER (mobil)        */
+  /* BUECHER (mobil)        */
   /* ===================== */
   .book{
     padding: .9em;
