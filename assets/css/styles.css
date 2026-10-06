@@ -199,45 +199,54 @@ body.home.jakemosphere{
 body.jakemosphere .home-link{ color: var(--dunkelgrau2); }
 body.jakemosphere .home-link:hover{ color: #000; }
 
-body.jakemosphere .stack{ min-height:calc(680px * var(--side-scale)); }
+body.jakemosphere .stack{ min-height:calc(660px * var(--side-scale)); }
+
+/* Textblock: Fließtext linksbündig mit Absatzabstand (wie im Layout) */
+body.jakemosphere .intro p{
+  text-align:left;
+  max-width:40ch;
+  margin:.7em auto 0;
+  text-wrap:pretty;
+}
+body.jakemosphere .intro h1 + p{ margin-top:.9em; }
 
 /* links */
-body.jakemosphere .left .p1{ /* KopfhÃ¶rer */
-  width:calc(270px * var(--side-scale));
-  left:calc(-25px * var(--side-scale)); top:calc(-15px * var(--side-scale));
-  --rot: -6deg; z-index:51;
+body.jakemosphere .left .p1{ /* Kopfhörer */
+  width:calc(215px * var(--side-scale));
+  left:calc(90px * var(--side-scale)); top:calc(-30px * var(--side-scale));
+  --rot: 0deg; z-index:51;
 }
-body.jakemosphere .left .p2{ /* Echo & Ember Mockup */
-  width:calc(270px * var(--side-scale));
-  left:calc(-20px * var(--side-scale)); top:calc(225px * var(--side-scale));
-  --rot: 3deg; z-index:52;
+body.jakemosphere .left .p2{ /* Echo & Ember Mockup (Bild hat viel Rand) */
+  width:calc(335px * var(--side-scale));
+  left:calc(-90px * var(--side-scale)); top:calc(125px * var(--side-scale));
+  --rot: 0deg; z-index:52;
 }
 body.jakemosphere .left .p3{ /* Interview */
-  width:calc(230px * var(--side-scale));
-  left:calc(0px * var(--side-scale)); top:calc(460px * var(--side-scale));
-  --rot: -4deg; z-index:53;
+  width:calc(195px * var(--side-scale));
+  left:calc(85px * var(--side-scale)); top:calc(420px * var(--side-scale));
+  --rot: 3deg; z-index:53;
 }
 
 /* rechts */
 body.jakemosphere .right .p4{ /* Postkarte Haverooge */
-  width:calc(290px * var(--side-scale));
-  right:calc(-20px * var(--side-scale)); top:calc(0px * var(--side-scale));
-  --rot: 5deg; z-index:51;
+  width:calc(185px * var(--side-scale));
+  right:calc(30px * var(--side-scale)); top:calc(40px * var(--side-scale));
+  --rot: 19deg; z-index:52;
 }
 body.jakemosphere .right .p5{ /* Meet the Cast */
-  width:calc(230px * var(--side-scale));
-  right:calc(10px * var(--side-scale)); top:calc(210px * var(--side-scale));
-  --rot: -4deg; z-index:52;
+  width:calc(185px * var(--side-scale));
+  right:calc(70px * var(--side-scale)); top:calc(150px * var(--side-scale));
+  --rot: -13deg; z-index:51;
 }
 body.jakemosphere .right .p6{ /* Jake & the City Mockup */
-  width:calc(150px * var(--side-scale));
-  right:calc(120px * var(--side-scale)); top:calc(400px * var(--side-scale));
-  --rot: -3deg; z-index:53;
+  width:calc(155px * var(--side-scale));
+  right:calc(10px * var(--side-scale)); top:calc(345px * var(--side-scale));
+  --rot: 0deg; z-index:53;
 }
 body.jakemosphere .right .p7{ /* I'll be back */
-  width:calc(200px * var(--side-scale));
-  right:calc(-20px * var(--side-scale)); top:calc(560px * var(--side-scale));
-  --rot: -6deg; z-index:54;
+  width:calc(135px * var(--side-scale));
+  right:calc(85px * var(--side-scale)); top:calc(575px * var(--side-scale));
+  --rot: 0deg; z-index:54;
 }
 
 /* ================================================= */
