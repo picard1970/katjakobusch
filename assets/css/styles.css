@@ -135,7 +135,7 @@ body.home .intro p{
 }
 
 /* Foto-Stapel */
-body.home .stack{ position:relative; min-width:0; min-height:calc(700px * var(--side-scale)); }
+body.home .stack{ position:relative; min-width:0; min-height:calc(640px * var(--side-scale)); }
 body.home .photo{
   position:absolute; margin:0; z-index:50;
   --rot: 0deg;
@@ -174,14 +174,14 @@ body.home .right .p4{ /* Schreibmaschine */
   right:calc(55px * var(--side-scale)); top:calc(30px * var(--side-scale));
   --rot: 0deg; z-index:51;
 }
-body.home .right .p5{ /* Notizbuch */
+body.home .right .p5{ /* Notizbuch: näher an die Schreibmaschine */
   width:calc(285px * var(--side-scale));
-  right:calc(-15px * var(--side-scale)); top:calc(285px * var(--side-scale));
+  right:calc(-15px * var(--side-scale)); top:calc(250px * var(--side-scale));
   --rot: 14deg; z-index:52;
 }
-body.home .right .p6{ /* Jake & the City */
+body.home .right .p6{ /* Jake & the City: endet auf Höhe von Katja */
   width:calc(180px * var(--side-scale));
-  right:calc(110px * var(--side-scale)); top:calc(565px * var(--side-scale));
+  right:calc(110px * var(--side-scale)); top:calc(465px * var(--side-scale));
   --rot: 3deg; z-index:53;
 }
 
