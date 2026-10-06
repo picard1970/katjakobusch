@@ -135,24 +135,55 @@ body.home .intro p{
 }
 
 /* Foto-Stapel */
-body.home .stack{ position:relative; min-height:520px; }
-body.home .photo{ position:absolute; transition: transform .25s ease; z-index:50; }
+body.home .stack{ position:relative; min-height:calc(620px * var(--side-scale)); }
+body.home .photo{
+  position:absolute; margin:0; z-index:50;
+  --rot: 0deg;
+  transform: rotate(var(--rot));
+  transition: transform .25s ease;
+}
 body.home .photo img{
   display:block; width:100%; height:auto;
   filter:
     drop-shadow(0 2px 3px rgba(0,0,0,.35))
     drop-shadow(0 8px 12px rgba(0,0,0,.25));
 }
-body.home .photo:hover{ transform: translateY(-3px) rotate(-.5deg); }
+body.home .photo:hover{ transform: translateY(-3px) rotate(calc(var(--rot) - .5deg)); }
 
-/* Positionen */
-body.home .left  .p1{ width:calc(240px * var(--side-scale)); left:0;     top:10px;   transform:rotate(-6deg); z-index:51; }
-body.home .left  .p2{ width:calc(220px * var(--side-scale)); left:30px;  top:190px;  transform:rotate(3deg);  z-index:52; }
-body.home .left  .p3{ width:calc(260px * var(--side-scale)); left:-10px; top:370px;  transform:rotate(-8deg); z-index:53; }
+/* Positionen – alle Werte skalieren mit --side-scale */
+/* links */
+body.home .left .p1{ /* Gitarre */
+  width:calc(350px * var(--side-scale));
+  left:calc(-20px * var(--side-scale)); top:0;
+  --rot: 16deg; z-index:51;
+}
+body.home .left .p2{ /* Brief */
+  width:calc(105px * var(--side-scale));
+  left:calc(200px * var(--side-scale)); top:calc(245px * var(--side-scale));
+  --rot: -2deg; z-index:53;
+}
+body.home .left .p3{ /* Katja */
+  width:calc(260px * var(--side-scale));
+  left:calc(-10px * var(--side-scale)); top:calc(310px * var(--side-scale));
+  --rot: -4deg; z-index:52;
+}
 
-body.home .right .p4{ width:calc(280px * var(--side-scale)); right:0;     top:20px;   transform:rotate(7deg);  z-index:53; }
-body.home .right .p5{ width:calc(200px * var(--side-scale)); right:20px;  top:250px;  transform:rotate(-2deg); z-index:52; }
-body.home .right .p6{ width:calc(250px * var(--side-scale)); right:-10px; top:445px;  transform:rotate(5deg);  z-index:51; }
+/* rechts */
+body.home .right .p4{ /* Schreibmaschine */
+  width:calc(250px * var(--side-scale));
+  right:calc(55px * var(--side-scale)); top:calc(50px * var(--side-scale));
+  --rot: 0deg; z-index:51;
+}
+body.home .right .p5{ /* Notizbuch */
+  width:calc(235px * var(--side-scale));
+  right:0; top:calc(285px * var(--side-scale));
+  --rot: 8deg; z-index:52;
+}
+body.home .right .p6{ /* Jake & the City */
+  width:calc(130px * var(--side-scale));
+  right:calc(130px * var(--side-scale)); top:calc(455px * var(--side-scale));
+  --rot: 3deg; z-index:53;
+}
 
 /* ================================================= */
 /* === PAGE: ALBUM ================================= */
@@ -782,14 +813,14 @@ body.crew .home-link:hover{ color: #000; }
   }
 
   /* leichte vertikale Korrekturen für die Stapel */
-  body.home .left  .p1 { top:  6px;  }
+  /* body.home .left  .p1 { top:  6px;  }
   body.home .left  .p2 { top: 175px; }
   body.home .left  .p3 { top: 340px; }
 
   body.home .right .p4 { top: 10px;  }
   body.home .right .p5 { top: 220px; }
-  body.home .right .p6 { top: 405px; }
-}
+  body.home .right .p6 { top: 405px; } */
+} 
 
 /* ======================================================================= */
 /* === Tablet (980px < x ≤ 1024px) ======================================= */
@@ -824,13 +855,13 @@ body.crew .home-link:hover{ color: #000; }
   }
   
   /* Fotos enger vertikal stapeln (wie auf Desktop), aber dichter zusammen */
-  body.home .left  .p1 { top: 0px;   }
+  /* body.home .left  .p1 { top: 0px;   }
   body.home .left  .p2 { top: 120px; }
   body.home .left  .p3 { top: 245px; }
 
   body.home .right .p4 { top: 0px;   }
   body.home .right .p5 { top: 118px; }
-  body.home .right .p6 { top: 236px; }
+  body.home .right .p6 { top: 236px; } */
 
   /* Textblock etwas schmaler, damit die Zeilenlänge schön bleibt */
   body.home .intro p{
@@ -938,13 +969,13 @@ body.crew .home-link:hover{ color: #000; }
     width: clamp(140px, 65vw, 220px);
     transition: transform .25s ease;
   }
-  body.home .left .p1{ top:   0px; left: 12%; transform: rotate(-4deg); z-index:1; }
-  body.home .left .p2{ top: 130px; left:  8%; transform: rotate( 3deg); z-index:2; }
-  body.home .left .p3{ top: 245px; left:  4%; transform: rotate(-6deg); z-index:3; }
+  body.home .left .p1{ top:   0px; left: 12%; --rot: -4deg; z-index:1; }
+  body.home .left .p2{ top: 130px; left:  8%; --rot: 3deg; z-index:2; }
+  body.home .left .p3{ top: 245px; left:  4%; --rot: -6deg; z-index:3; }
 
-  body.home .right .p4{ top:   0px; right: 12%; transform: rotate( 5deg); z-index:1; }
-  body.home .right .p5{ top: 135px; right: 10%; transform: rotate(-3deg); z-index:2; }
-  body.home .right .p6{ top: 255px; right:  6%; transform: rotate( 6deg); z-index:3; }
+  body.home .right .p4{ top:   0px; right: 12%; --rot:  5deg; z-index:1; }
+  body.home .right .p5{ top: 135px; right: 10%; --rot: -3deg; z-index:2; }
+  body.home .right .p6{ top: 255px; right:  6%; --rot:  6deg; z-index:3; }
 
   /* ===================== */
   /* ALBUM (mobil)         */
