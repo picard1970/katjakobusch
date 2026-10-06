@@ -135,7 +135,7 @@ body.home .intro p{
 }
 
 /* Foto-Stapel */
-body.home .stack{ position:relative; min-height:calc(620px * var(--side-scale)); }
+body.home .stack{ position:relative; min-height:calc(680px * var(--side-scale)); }
 body.home .photo{
   position:absolute; margin:0; z-index:50;
   --rot: 0deg;
@@ -154,17 +154,17 @@ body.home .photo:hover{ transform: translateY(-3px) rotate(calc(var(--rot) - .5d
 /* links */
 body.home .left .p1{ /* Gitarre */
   width:calc(350px * var(--side-scale));
-  left:calc(-20px * var(--side-scale)); top:0;
+  left:calc(-20px * var(--side-scale)); top:calc(-20px * var(--side-scale));
   --rot: 16deg; z-index:51;
 }
 body.home .left .p2{ /* Brief */
   width:calc(105px * var(--side-scale));
-  left:calc(200px * var(--side-scale)); top:calc(245px * var(--side-scale));
+  left:calc(200px * var(--side-scale)); top:calc(265px * var(--side-scale));
   --rot: -2deg; z-index:53;
 }
 body.home .left .p3{ /* Katja */
   width:calc(260px * var(--side-scale));
-  left:calc(-10px * var(--side-scale)); top:calc(310px * var(--side-scale));
+  left:calc(-10px * var(--side-scale)); top:calc(370px * var(--side-scale));
   --rot: -4deg; z-index:52;
 }
 
@@ -177,7 +177,7 @@ body.home .right .p4{ /* Schreibmaschine */
 body.home .right .p5{ /* Notizbuch */
   width:calc(235px * var(--side-scale));
   right:0; top:calc(285px * var(--side-scale));
-  --rot: 8deg; z-index:52;
+  --rot: 14deg; z-index:52;
 }
 body.home .right .p6{ /* Jake & the City */
   width:calc(130px * var(--side-scale));
