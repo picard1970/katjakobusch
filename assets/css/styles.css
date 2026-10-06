@@ -1,9 +1,11 @@
+@charset "UTF-8";
+
 /* ================================================= */
 /* === GLOBAL ====================================== */
 
 /* Farb-Variablen (konsolidiert) */
 :root {
-  /* HintergrÃ¼nde / FlÃ¤chen */
+  /* Hintergründe / Flächen */
   --background_body: #e8eddf;
   --background_text: #cfd7c2;
   --weiss: #fff;
@@ -92,7 +94,8 @@ body.home{
   --maxw: 1100px;
   --pad: clamp(16px, 4vw, 36px);
   --side-scale: 1;
-  background: #dcd6c5 url("../images/homepage-background-large.jpg") center/cover fixed no-repeat;
+  background: #d6dbc3 url("../images/ziegel-gruen.jpg") repeat;
+  background-size: 600px auto;   /* Kachel 1200px → scharf auf Retina */
   color:#1b1b1b;
   padding: clamp(12px,3vh,28px) var(--pad);
   font: 400 clamp(16px,1.6vw,20px)/1.45 "Georgia","Times New Roman",ui-serif,serif;
@@ -150,7 +153,7 @@ body.home .photo img{
 }
 body.home .photo:hover{ transform: translateY(-3px) rotate(calc(var(--rot) - .5deg)); }
 
-/* Positionen â€“ alle Werte skalieren mit --side-scale */
+/* Positionen – alle Werte skalieren mit --side-scale */
 /* links */
 body.home .left .p1{ /* Gitarre */
   width:calc(350px * var(--side-scale));
@@ -174,12 +177,12 @@ body.home .right .p4{ /* Schreibmaschine */
   right:calc(55px * var(--side-scale)); top:calc(30px * var(--side-scale));
   --rot: 0deg; z-index:51;
 }
-body.home .right .p5{ /* Notizbuch: nÃ¤her an die Schreibmaschine */
+body.home .right .p5{ /* Notizbuch: näher an die Schreibmaschine */
   width:calc(285px * var(--side-scale));
   right:calc(-15px * var(--side-scale)); top:calc(250px * var(--side-scale));
   --rot: 14deg; z-index:52;
 }
-body.home .right .p6{ /* Jake & the City: endet auf HÃ¶he von Katja */
+body.home .right .p6{ /* Jake & the City: endet auf Höhe von Katja */
   width:calc(180px * var(--side-scale));
   right:calc(110px * var(--side-scale)); top:calc(465px * var(--side-scale));
   --rot: 3deg; z-index:53;
@@ -188,11 +191,11 @@ body.home .right .p6{ /* Jake & the City: endet auf HÃ¶he von Katja */
 /* ================================================= */
 /* === PAGE: JAKEMOSPHERE ========================== */
 /* Nutzt das komplette Home-Layout (body.home),      */
-/* Ã¼berschreibt nur Hintergrund und Bildpositionen.  */
+/* überschreibt nur Hintergrund und Bildpositionen.  */
 
 body.home.jakemosphere{
   background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 700px auto;   /* Kachel 1200px â†’ scharf auf Retina */
+  background-size: 700px auto;   /* etwas größere Ziegel als auf der Startseite */
 }
 
 /* Home-Link oben rechts */
@@ -341,14 +344,14 @@ body.album-page > footer{ margin-top: auto; }
 .play-button:hover{ transform: scale(1.2); }
 
 /* ================================================= */
-/* === PAGE: BÃœCHER ================================ */
+/* === PAGE: BÜCHER ================================ */
 
 body.buecher{
   margin:0; padding:0;
   background-color: var(--background_body);
   line-height:1.6;
 }
-/* Hero oben auf der BÃ¼cher-Seite */
+/* Hero oben auf der Bücher-Seite */
 .book-hero{
   /* background-image: url('../images/background-mauer-grau-panorama-250.jpg'); */
   background-image: url('../images/buecher-lichterkette-panorama.jpg');
@@ -415,15 +418,15 @@ body.buecher{
 }
 .book-button:hover{ background: var(--button_hover); transform: scale(1.05); }
 
-/* Buch-Ãœberschriften bÃ¼ndig oben starten */
+/* Buch-Überschriften bündig oben starten */
 .book h1,
 .book h2{
-  margin-top: 0;           /* standardmÃ¤ÃŸigen oberen Abstand entfernen */
+  margin-top: 0;           /* standardmäßigen oberen Abstand entfernen */
   padding-top: 0;
   line-height: 1.2;
 }
 
-/* Cover nicht kÃ¼nstlich nach unten schieben */
+/* Cover nicht künstlich nach unten schieben */
 .book img{
   margin: 0 1.2em .6em 0;  /* statt .2em oben */
 }
@@ -540,11 +543,9 @@ body.kontakt{
 /* ===== PAGE: CREW ====================================================== */
 /* ======================================================================= */
 
-/* Hero mit Mauer-Hintergrund */
+/* Hero: transparent – die Ziegelwand von body.crew scheint durch */
 .crew-hero {
-  background-image: url('../images/background-mauer-panorama-200.jpg');
-  background-size: cover;
-  background-position: center;
+  background: transparent;
   min-height: 200px;
 
   display: flex;
@@ -575,7 +576,7 @@ body.kontakt{
   flex-wrap: wrap;
 }
 
-/* DÃ¼nner grÃ¼ner Streifen */
+/* Dünner grüner Streifen */
 .crew-separator {
   height: 2px;
   background: var(--background_text);
@@ -584,12 +585,14 @@ body.kontakt{
 body.crew{
   margin:0;
   padding:0;
-  background: var(--background_text);
+  /* gleiche Ziegelwand wie auf der Startseite; die Korkwand liegt darauf */
+  background: #d6dbc3 url("../images/ziegel-gruen.jpg") repeat;
+  background-size: 600px auto;
   color: var(--dunkelgrau2);
   line-height:1.6;
 }
 
-/* GrÃ¼ner Rahmen um den Inhalt â€“ oben dicker */
+/* Grüner Rahmen um den Inhalt – oben dicker */
 .crew-frame{
   margin: clamp(2px, 3vw, 24px) auto;
   border: 10px solid var(--background_text);
@@ -609,7 +612,7 @@ body.crew{
   gap: 12px;
   background: var(--background_text);
   padding: 10px 12px;
-  margin: -28px -10px 0 -10px;            /* in den Rahmen â€žeingerÃ¼ckt" */
+  margin: -28px -10px 0 -10px;            /* in den Rahmen „eingerückt" */
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
 
@@ -649,7 +652,7 @@ body.crew .board{
   padding: clamp(14px, 2.6vw, 24px);
 }
 
-/* Dezente Links unten im Rahmen â€“ ersetzt Footer */
+/* Dezente Links unten im Rahmen – ersetzt Footer */
 .crew-frame-bottom{
   display: flex;
   justify-content: center;
@@ -659,7 +662,7 @@ body.crew .board{
   color: var(--grau);
   background: var(--background_text);
   padding: 6px 8px;
-  margin: 8px -10px -10px -10px;          /* bÃ¼ndig bis an den Rahmen */
+  margin: 8px -10px -10px -10px;          /* bündig bis an den Rahmen */
   border-top: 1px solid rgba(0,0,0,.06);
 }
 .crew-frame{
@@ -667,7 +670,7 @@ body.crew .board{
 }
 
 .crew-frame-bottom a{
-  color: inherit;                 /* unauffÃ¤llig */
+  color: inherit;                 /* unauffällig */
   text-decoration: none;
 }
 .crew-frame-bottom a:hover{
@@ -751,7 +754,7 @@ body.crew .home-link:hover{ color: #000; }
   -webkit-text-fill-color: var(--dunkelgrau2);
 }
 
-/* Vorderseite: NUR Bild â†’ kein Text-Blur */
+/* Vorderseite: NUR Bild → kein Text-Blur */
 .card__front{
   transform:rotateY(0deg);
   background: var(--weiss);
@@ -769,7 +772,7 @@ body.crew .home-link:hover{ color: #000; }
   width: clamp(18px, 2.8vw, 24px);
   height: clamp(18px, 2.8vw, 24px);
 
-  /* weiÃŸe runde Plakette + SVG-Pfeil */
+  /* weiße runde Plakette + SVG-Pfeil */
   background:
     url("data:image/svg+xml;utf8,\
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
@@ -800,7 +803,7 @@ body.crew .home-link:hover{ color: #000; }
   .card__front::after{ transition:none; }
 }
 
-/* RÃ¼ckseite */
+/* Rückseite */
 .card__back {
   transform: rotateY(180deg);
   background: var(--background_text);
@@ -837,15 +840,15 @@ body.crew .home-link:hover{ color: #000; }
   text-decoration: underline;
 }
 .steckbrief h3 {
-  font-size: 1.1rem;     /* etwas grÃ¶ÃŸer */
+  font-size: 1.1rem;     /* etwas größer */
   margin: 0 0 0.8em 0;
 }
 
 .steckbrief p {
-  margin: 0 0 0.7em 0;      /* Abstand zwischen AbsÃ¤tzen */
+  margin: 0 0 0.7em 0;      /* Abstand zwischen Absätzen */
   font-size: 0.95rem;
   /* text-indent: -0.8em;      erste Zeile ohne Einzug */
-  /* padding-left: 0.8em;      zweite Zeile leicht eingerÃ¼ckt */
+  /* padding-left: 0.8em;      zweite Zeile leicht eingerückt */
   line-height: 1.5;
   text-align: left;
 }
@@ -864,7 +867,7 @@ body.crew .home-link:hover{ color: #000; }
 /* ======================================================================= */
 
 /* ======================================================================= */
-/* === Large Tablet (1024px < x â‰¤ 1200px) ================================ */
+/* === Large Tablet (1024px < x ≤ 1200px) ================================ */
 /* ======================================================================= */
 @media (max-width:1200px){
   body.home{ --side-scale: .9; }
@@ -878,20 +881,19 @@ body.crew .home-link:hover{ color: #000; }
 }
 
 /* ======================================================================= */
-/* === Tablet (768px â‰¤ x â‰¤ 1024px) ======================================= */
+/* === Tablet (768px ≤ x ≤ 1024px) ======================================= */
 /* ======================================================================= */
 @media (min-width: 768px) and (max-width: 1024px) {
   /* ====================== */
   /* HOME / INDEX (Tablet)  */
   /* ====================== */
-  /* weniger AuÃŸenabstand, etwas kleinere Seitenspalten + Fotos */
+  /* weniger Außenabstand, etwas kleinere Seitenspalten + Fotos */
   body.home {
-    background-image: url("../images/homepage-background-medium.jpg");
     --pad: clamp(10px, 2.2vw, 18px); /* Seitenrand kleiner */
     --side-scale: 0.60;              /* Fotos schrumpfen, damit sie nicht in den Text ragen */
   }
 
-  /* schmalere Seitenspalten, mehr Platz fÃ¼r die Mitte */
+  /* schmalere Seitenspalten, mehr Platz für die Mitte */
   body.home .stage{
     grid-template-columns:
       clamp(80px, 11vw, 130px)    /* links */
@@ -900,7 +902,7 @@ body.crew .home-link:hover{ color: #000; }
     column-gap: clamp(18px, 3vw, 32px);
   }
 
-  /* Textblock etwas schmaler, damit die ZeilenlÃ¤nge schÃ¶n bleibt */
+  /* Textblock etwas schmaler, damit die Zeilenlänge schön bleibt */
   body.home .intro p{
     max-width: 42ch;
   }
@@ -928,7 +930,7 @@ body.crew .home-link:hover{ color: #000; }
   }
 
   /* ====================== */
-  /* BÃ¼cher (Tablet) ====== */
+  /* Bücher (Tablet) ====== */
   /* ====================== */
   .book-hero{
     min-height: 240px;
@@ -956,7 +958,7 @@ body.crew .home-link:hover{ color: #000; }
 }
 
 /* ======================================================================= */
-/* === Small Tablet (768px < x â‰¤ 980px) ================================== */
+/* === Small Tablet (768px < x ≤ 980px) ================================== */
 /* ======================================================================= */
 @media (max-width:980px){
   body.home{ --side-scale: .75; }
@@ -973,9 +975,10 @@ body.crew .home-link:hover{ color: #000; }
 /* ======================================================================= */
 @media (max-width:768px){
 
-  body.home{
-    background-image: url("../images/homepage-background-small.jpg");
-  }
+  /* Ziegelkacheln auf dem Handy etwas kleiner */
+  body.home,
+  body.crew{ background-size: 450px auto; }
+  body.home.jakemosphere{ background-size: 540px auto; }
   /* allgemeine Container etwas kompakter */
   .container{
     margin: 1em auto;
@@ -996,13 +999,13 @@ body.crew .home-link:hover{ color: #000; }
     row-gap: clamp(10px, 2.8vw, 18px);
   }
 
-  /* Foto-Stapel wieder relativ + Ã¼berlappend */
+  /* Foto-Stapel wieder relativ + überlappend */
   body.home .stack{
     position: relative;          /* erlaubt absolute Kind-Positionen */
-    min-height: 420px;           /* kompakte, aber Ã¼berlappende HÃ¶he */
+    min-height: 420px;           /* kompakte, aber überlappende Höhe */
   }
   body.home .stack .photo{
-    position: absolute;          /* statt static â†’ Ãœberlagerung */
+    position: absolute;          /* statt static → Überlagerung */
     width: clamp(140px, 65vw, 220px);
     transition: transform .25s ease;
   }
@@ -1014,11 +1017,7 @@ body.crew .home-link:hover{ color: #000; }
   body.home .right .p5{ top: 135px; right: 10%; --rot: -3deg; z-index:2; }
   body.home .right .p6{ top: 255px; right:  6%; --rot:  6deg; z-index:3; }
 
-  /* Jakemosphere (mobil): Kachel bleibt, rechte Spalte hat 4 Bilder */
-  body.home.jakemosphere{
-    background-image: url("../images/ziegel-tuerkis.jpg");
-    background-size: 540px auto;
-  }
+  /* Jakemosphere (mobil): rechte Spalte hat 4 Bilder */
   body.jakemosphere .right.stack{ min-height: 540px; }
   body.home .right .p7{ top: 380px; right: 14%; --rot: -4deg; z-index:4; }
 
@@ -1032,7 +1031,7 @@ body.crew .home-link:hover{ color: #000; }
   }
   .left, .right{
     flex: 1 0 100%;           /* volle Breite */
-    min-width: auto;          /* fix fÃ¼r schmale Screens */
+    min-width: auto;          /* fix für schmale Screens */
   }
   .track{ padding: 6px 0; }
   .lyrics{ margin: 8px 0 14px 0; }
@@ -1043,7 +1042,7 @@ body.crew .home-link:hover{ color: #000; }
   }
 
   /* ===================== */
-  /* BUECHER (mobil)        */
+  /* BÜCHER (mobil)        */
   /* ===================== */
   .book{
     padding: .9em;
@@ -1083,7 +1082,7 @@ body.crew .home-link:hover{ color: #000; }
   .kontakt-hero-content h1 { font-size: clamp(20px, 8vw, 34px); }
   .kontakt-hero-content h2 { font-size: clamp(15px, 5vw, 20px); }
 
-  /* Footer niemals Ã¼berdecken */
+  /* Footer niemals überdecken */
   footer{
     position: relative;
     z-index: 1;
@@ -1093,7 +1092,7 @@ body.crew .home-link:hover{ color: #000; }
   /* Meet the cast (mobil) */
   /* ===================== */
 
-  /* Karten breiter, keine Ãœberlappung */
+  /* Karten breiter, keine Überlappung */
   .board{
     --card-w: 100%;
     padding: clamp(4px, 1.8vw, 10px);
@@ -1126,7 +1125,7 @@ body.crew .home-link:hover{ color: #000; }
 }
 
 /* ======================================================================= */
-/* === BewegungsprÃ¤ferenz ================================================ */
+/* === Bewegungspräferenz ================================================ */
 /* ======================================================================= */
 @media (prefers-reduced-motion: reduce){
   body.home .photo{ transition:none }
