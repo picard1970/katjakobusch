@@ -135,7 +135,7 @@ body.home .intro p{
 }
 
 /* Foto-Stapel */
-body.home .stack{ position:relative; min-height:calc(680px * var(--side-scale)); }
+body.home .stack{ position:relative; min-width:0; min-height:calc(700px * var(--side-scale)); }
 body.home .photo{
   position:absolute; margin:0; z-index:50;
   --rot: 0deg;
@@ -163,25 +163,25 @@ body.home .left .p2{ /* Brief */
   --rot: -2deg; z-index:53;
 }
 body.home .left .p3{ /* Katja */
-  width:calc(260px * var(--side-scale));
-  left:calc(-10px * var(--side-scale)); top:calc(370px * var(--side-scale));
+  width:calc(235px * var(--side-scale));
+  left:calc(-5px * var(--side-scale)); top:calc(355px * var(--side-scale));
   --rot: -4deg; z-index:52;
 }
 
 /* rechts */
 body.home .right .p4{ /* Schreibmaschine */
   width:calc(250px * var(--side-scale));
-  right:calc(55px * var(--side-scale)); top:calc(50px * var(--side-scale));
+  right:calc(55px * var(--side-scale)); top:calc(30px * var(--side-scale));
   --rot: 0deg; z-index:51;
 }
 body.home .right .p5{ /* Notizbuch */
-  width:calc(235px * var(--side-scale));
-  right:0; top:calc(285px * var(--side-scale));
+  width:calc(285px * var(--side-scale));
+  right:calc(-15px * var(--side-scale)); top:calc(285px * var(--side-scale));
   --rot: 14deg; z-index:52;
 }
 body.home .right .p6{ /* Jake & the City */
-  width:calc(130px * var(--side-scale));
-  right:calc(130px * var(--side-scale)); top:calc(455px * var(--side-scale));
+  width:calc(180px * var(--side-scale));
+  right:calc(110px * var(--side-scale)); top:calc(565px * var(--side-scale));
   --rot: 3deg; z-index:53;
 }
 
@@ -964,7 +964,7 @@ body.crew .home-link:hover{ color: #000; }
     position: relative;          /* erlaubt absolute Kind-Positionen */
     min-height: 420px;           /* kompakte, aber überlappende Höhe */
   }
-  body.home .photo{
+  body.home .stack .photo{
     position: absolute;          /* statt static → Überlagerung */
     width: clamp(140px, 65vw, 220px);
     transition: transform .25s ease;
@@ -1090,5 +1090,5 @@ body.crew .home-link:hover{ color: #000; }
 /* ======================================================================= */
 @media (prefers-reduced-motion: reduce){
   body.home .photo{ transition:none }
-  body.home .photo:hover{ transform:none }
+  body.home .photo:hover{ transform: rotate(var(--rot)); }
 }
