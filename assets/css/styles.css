@@ -785,6 +785,18 @@ body.leseprobe footer,
 body.leseprobe footer a{ color: var(--dunkelgrau2); }
 .lp-back a{ font-weight:700; }
 
+/* Elodie-Leseprobe: Tapete statt Ziegelwand, kleine Kapitelzierde */
+body.leseprobe.elodie-lp{
+  background: var(--wand-tapete);
+  background-size: var(--tapete-groesse);
+}
+body.elodie-lp .wb-page .chapter-ornament{
+  display: block;
+  width: 28%;
+  height: auto;
+  margin: 0 auto 2.5rem;
+}
+
 
 /* ======================================================================= */
 /* === 2.9 ÜBER KATJA / STECKBRIEF ======================================= */
