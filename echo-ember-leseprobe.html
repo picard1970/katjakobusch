@@ -1,4 +1,4 @@
-<!doc<!doctype html>
+<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
@@ -11,88 +11,22 @@
   <!-- wowBook CSS -->
   <link rel="stylesheet" href="wow_book/wow_book.css" />
 
+  <link rel="stylesheet" href="assets/css/styles.css?v=134" />
   <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
   <meta name="description" content="Leseprobe aus »Echo & Ember« von Katja Kobusch." />
-  <meta property="og:title" content="Leseprobe · Jake & the City" />
+  <meta property="og:title" content="Leseprobe · Echo & Enber" />
   <meta property="og:description" content="»Echo & Ember« – Leseprobe von Katja Kobusch." />
   <meta property="og:image" content="assets/images/Echo-Ember-Cover-Gross.jpg" />
 
-  <style>
- 
-    /* Seitenhintergrund etc. – nutzt deine Variablen */
-    body.leseprobe{
-      background:
-        url('assets/images/homepage-background-large.jpg') center/cover fixed no-repeat,
-        var(--background_body);
-      color: var(--dunkelgrau2);
-      line-height: 1.6;
-    }
-
-    .lp-wrap{
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 ;
-    }
-
-    /* Head zentriert */
-    .lp-head{
-      width: min(100%, 842px);
-      margin: 0 auto .5rem;
-      display:flex;
-      justify-content: center;
-    }
-    .lp-title{ text-align:center; }
-    .lp-title h1{
-      margin: 0 0 .15rem 0;
-      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-      line-height: 1.2;
-      color: var(--dunkelgrau2);
-    }
-    .lp-title small{ display:block; opacity:.85; color: var(--grau); }
-    
-    /* Buch-Seiten-Inhalt */
-    .wb-page{
-      /* Innenabstand skaliert mit – wird auf kleinen Screens etwas enger */
-      padding: clamp(1rem, 1rem + 1vw, 1.4rem);
-    
-      /* Fließende Grundschrift: min 0.95rem, Ziel ~1.05rem + 0.2vw, max 1.15rem */
-      font-size: clamp(3.4rem, 3.5rem + 0.6vw, 3.8rem);
-    
-      /* Fließender Zeilenabstand */
-      line-height: clamp(1.6, 1.7 + 0.1vw, 1.8);
-      
-      color: var(--dunkelgrau2);
-      hyphens: auto;
-    }
-    .wb-page h2{
-      margin: 0 0 2rem;
-      font-size: clamp(5rem, 5rem + 0.5vw, 3rem);
-      line-height: 1.2;
-    }
-    .wb-page p{ text-indent: 2ch; margin: 0; }
-    .wb-page p:first-of-type{ text-indent: 0; margin: 0; }
-
-    /* Der von wowBook erzeugte Container (Optik/Zentrierung) */
-    .wowbook-container{
-      width: min(100%, 842px);          /* max. Buchbreite */
-      margin: 1rem auto;
-      background: var(--white);
-      border: 1px solid var(--umrandung);
-      border-radius: 4px;
-      /* Höhe kommt aus containerHeight (JS), kann hier aber zusätzlich überschrieben werden */
-    }
-
-  }
-  </style>
 </head>
 <body class="leseprobe">
 
   <header class="lp-wrap lp-head">
     <div class="lp-title">
       <h1>Leseprobe · <em>Echo &amp; Ember</em></h1>
-      <div style="color:var(--grau); font-size:.95rem;">Am Rand tippen/klicken zum Blättern.</div>
+         <div class="lp-hint">Am Rand tippen/klicken zum Blättern.</div>
     </div>
   </header>
 
@@ -286,9 +220,9 @@
                                                                         rel="noopener noreferrer">Amazon</a>.</strong><br>
         Taschenbuch und Hardcover bekommt ihr überall, wo es Bücher gibt.</p>
       </div>      
-      
+    </div>  
     <p class="lp-back" style="margin-top:1rem">
-      <a href="buecher.html">← Zurück zur Bücher-Übersicht</a>
+      <a href="jakemosphere_books.html">← Zurück zur Bücher-Übersicht</a>
     </p>
   </main>
 
