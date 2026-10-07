@@ -204,12 +204,11 @@ body.jakemosphere .home-link:hover{ color: #000; }
 
 body.jakemosphere .stack{ min-height:calc(660px * var(--side-scale)); }
 
-/* Textblock: Fließtext im Blocksatz */
+/* Textblock: Fließtext linksbündig mit Absatzabstand (wie im Layout) */
 body.jakemosphere .intro p{
-  text-align: justify;
-  text-wrap: wrap;
-  hyphens: auto;          /* trennt deutsche Wörter, vermeidet große Lücken */
-  -webkit-hyphens: auto;
+  text-align: justify;     /* Blocksatz: beide Kanten gerade */
+  hyphens: auto;           /* deutsche Silbentrennung (braucht lang="de") */
+  -webkit-hyphens: auto;   /* Safari */
   max-width: 40ch;
   margin: .7em auto 0;
 }
@@ -434,6 +433,103 @@ body.buecher{
 }
 
 /* ================================================= */
+/* === PAGE: JAKEMOSPHERE – BÜCHER ================= */
+/* jakemosphere_books.html – eigenständig, unabhängig von .book-hero */
+
+body.jm-books{
+  margin:0; padding:0;
+  background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
+  background-size: 600px auto;
+  color: var(--dunkelgrau2);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+/* Header: Panorama immer komplett sichtbar (nie seitlich abgeschnitten) */
+.jm-hero{
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+  container-type: inline-size;        /* Schrift skaliert mit der Header-Breite */
+}
+.jm-hero__img{
+  display: block;
+  width: 100%;
+  height: auto;                       /* Seitenverhältnis 5:1 bleibt erhalten */
+}
+
+/* Text liegt auf der Ziegelfläche in der Bildmitte */
+.jm-hero__text{
+  position: absolute;
+  top: 50%; left: 49.3%;              /* Mitte der Ziegelfläche im Bild */
+  transform: translate(-50%, -50%);
+  width: 26cqi;
+  text-align: center;
+  text-shadow: 0 0 .4em rgba(255,255,255,.55);
+}
+.jm-hero__text h1{
+  font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
+  font-weight: 400;
+  font-size: 3.6cqi;
+  line-height: 1.1;
+  margin: 0 0 .25em;
+  color: #1b1b1b;
+}
+.jm-hero__text h2{
+  font-weight: 400;
+  font-size: 1.35cqi;
+  line-height: 1.35;
+  margin: 0;
+  text-wrap: balance;
+}
+
+body.jm-books .home-link{
+  position: absolute;
+  top: 12px; right: 16px;
+  z-index: 2;
+  color: var(--weiss);
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
+}
+body.jm-books .home-link:hover{ color: var(--hellgrau); }
+
+/* Buchkarten: Polaroid-Papier statt Grün, dunkle Buttons */
+body.jm-books .container{ margin-top: clamp(16px, 3vw, 32px); }
+body.jm-books .book{
+  background: #fcf9e6;
+  border: 0;
+  border-radius: 4px;
+  padding: 1.4em;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2), 0 10px 24px rgba(0,0,0,.18);
+}
+body.jm-books .book h2{
+  font-size: 1.6em;
+  padding-bottom: .3em;
+  border-bottom: 2px solid #a01818;   /* Akzent wie auf den Cast-Karten */
+  overflow: hidden;                   /* Linie endet neben dem Cover */
+}
+body.jm-books .book a:not(.book-button){ color: #a01818; }
+body.jm-books .book-button{
+  background: var(--dunkelgrau2);
+  color: var(--weiss);
+}
+body.jm-books .book-button:hover{ background: #000; }
+body.jm-books footer,
+body.jm-books footer a{ color: var(--dunkelgrau2); }
+
+/* Schmale Bildschirme: Bild bleibt komplett, Text steht darunter auf der Wand */
+@media (max-width: 900px){
+  .jm-hero__text{
+    position: static;
+    transform: none;
+    width: auto;
+    padding: 18px 16px 0;
+  }
+  .jm-hero__text h1{ font-size: clamp(30px, 8vw, 44px); }
+  .jm-hero__text h2{ font-size: clamp(16px, 4.2vw, 20px); max-width: 28ch; margin: 0 auto; }
+  body.jm-books .home-link{ top: 6px; right: 10px; font-size: .9em; }
+}
+
+/* ================================================= */
 /* === PAGE: KATJA ================================= */
 
 .katja-container{
@@ -448,7 +544,7 @@ body.buecher{
 .text-content{ flex:2 1 500px; min-width:300px; }
 
 /* ======================================================================= */
-/* === PAGE: SCHREIB MIR ================================================= */
+/* === PAGE: SCHREIB UNS ================================================= */
 /* ======================================================================= */
 
 body.kontakt{
