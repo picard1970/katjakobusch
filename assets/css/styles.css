@@ -459,28 +459,60 @@ body.jm-books{
 }
 
 /* Text liegt auf der Ziegelfläche in der Bildmitte */
+/* Handschrift, lokal eingebunden (kein Google-Server, funktioniert überall) */
+@font-face{
+  font-family:"Caveat Brush";
+  src:url("../fonts/caveat-brush.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Caveat";
+  src:url("../fonts/caveat.woff2") format("woff2");
+  font-weight:400 700; font-style:normal; font-display:swap;
+}
+
 .jm-hero__text{
   position: absolute;
   top: 50%; left: 49.3%;              /* Mitte der Ziegelfläche im Bild */
-  transform: translate(-50%, -50%);
-  width: 26cqi;
+  transform: translate(-50%, -50%) rotate(-4deg);   /* leicht schräg wie gesprüht */
+  width: 30cqi;
   text-align: center;
-  text-shadow: 0 0 .4em rgba(255,255,255,.55);
+  color: #1f3d5c;                      /* dunkles Petrolblau wie im Entwurf */
+  text-shadow: 0 0 .5em rgba(255,255,255,.45);
 }
 .jm-hero__text h1{
-  font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
+  font-family: "Caveat Brush", "Caveat", "Segoe Print", "Bradley Hand", cursive;
   font-weight: 400;
-  font-size: 3.6cqi;
-  line-height: 1.1;
-  margin: 0 0 .25em;
-  color: #1b1b1b;
+  font-size: 4.1cqi;
+  line-height: 1.02;
+  margin: 0;
+  color: inherit;
+}
+/* Pinselstrich unter der Überschrift */
+.jm-hero__text h1::after{
+  content:"";
+  display:block;
+  width: 72%;
+  height: .32em;
+  margin: .12em auto .1em;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M4 14 C 60 6, 130 4, 196 7' fill='none' stroke='%231f3d5c' stroke-width='3.2' stroke-linecap='round'/><path d='M24 18 C 80 11, 140 10, 182 12' fill='none' stroke='%231f3d5c' stroke-width='1.6' stroke-linecap='round' opacity='.8'/></svg>") center/100% 100% no-repeat;
 }
 .jm-hero__text h2{
-  font-weight: 400;
-  font-size: 1.35cqi;
-  line-height: 1.35;
+  font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  font-weight: 600;
+  font-size: 1.9cqi;
+  line-height: 1.2;
   margin: 0;
+  color: inherit;
   text-wrap: balance;
+}
+.jm-hero__text h2::after{
+  content:"";
+  display:block;
+  width: 45%;
+  height: .3em;
+  margin: .1em auto 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M4 14 C 60 6, 130 4, 196 7' fill='none' stroke='%231f3d5c' stroke-width='3.2' stroke-linecap='round'/><path d='M24 18 C 80 11, 140 10, 182 12' fill='none' stroke='%231f3d5c' stroke-width='1.6' stroke-linecap='round' opacity='.8'/></svg>") center/100% 100% no-repeat;
 }
 
 body.jm-books .home-link{
@@ -520,12 +552,12 @@ body.jm-books footer a{ color: var(--dunkelgrau2); }
 @media (max-width: 900px){
   .jm-hero__text{
     position: static;
-    transform: none;
+    transform: rotate(-3deg);
     width: auto;
     padding: 18px 16px 0;
   }
-  .jm-hero__text h1{ font-size: clamp(30px, 8vw, 44px); }
-  .jm-hero__text h2{ font-size: clamp(16px, 4.2vw, 20px); max-width: 28ch; margin: 0 auto; }
+  .jm-hero__text h1{ font-size: clamp(34px, 10vw, 52px); }
+  .jm-hero__text h2{ font-size: clamp(20px, 5.5vw, 26px); max-width: 28ch; margin: 0 auto; }
   body.jm-books .home-link{ top: 6px; right: 10px; font-size: .9em; }
 }
 
