@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elodies Geheimnis – Katja Kobusch</title>
+  <meta name="description" content="Elodies Geheimnis – der neue Jugendroman von Katja Kobusch. Erscheint am 17.10.2026.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=138">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+  <!-- Google Fonts Fallback für die Überschrift -->
+  <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
+</head>
+<body class="jm-books elodie-books">
+  <header class="jm-hero">
+    <a href="index.html" class="home-link">Home</a>
+    <img class="jm-hero__img" src="assets/images/elodie-books-panorama.webp"
+         alt="Alte Schreibmaschine auf einem Holztisch, zwei Porträts und ein Kerzenleuchter"
+         width="1500" height="300">
+    <div class="jm-hero__text">
+      <h1>Elodies Geheimnis</h1>
+      <h2>Buch erscheint demnächst.</h2>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="book">
+      <img src="assets/images/MockUp_Elodie_transparent.png" alt="Elodies Geheimnis als Hardcover, Taschenbuch und E-Book">
+      <div class="book-text">
+        <h2>Elodies Geheimnis</h2>
+        <p>Olivia reist mit ihrer Familie zum 90. Geburtstag ihrer Großmutter in ein kleines Künstlerdorf.<br>
+        Was als friedliches Wochenende beginnt, wird zu einem geheimnisvollen Abenteuer: ein altes Hotelzimmer, eine flüsternde Schreibmaschine – und ein Mädchen, das im Kampf für eine andere sich selbst findet.</p>
+        <p><strong>Ein Jugendroman über den Mut, für andere einzustehen und den eigenen Weg zu gehen.</strong></p>
+        <p><strong>Veröffentlichung am:</strong> 17.10.2026</p>
+        <a href="elodies_geheimnis.html" class="book-button">Mehr zu Elodie</a>
+      </div>
+    </div>
+
+  </div>
+  <footer>
+    <p>
+      <a href="index.html">Startseite</a> |
+      <a href="impressum.html">Impressum</a> |
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </footer>
+</body>
+</html>
