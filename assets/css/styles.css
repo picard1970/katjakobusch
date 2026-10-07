@@ -6,14 +6,15 @@
    2. SEITEN ............ je Seite ein Block, Desktop-Werte
         2.1  Startseite (index.html)              body.home
         2.2  Jakemosphere (jakemosphere.html)     body.home.jakemosphere
-        2.3  Album (dekker-album.html)            body.album-page
-        2.4  Bücher (buecher.html)                body.buecher
-        2.5  Jakemosphere-Bücher                  body.jm-books
-        2.6  Leseproben (wowBook)                 body.leseprobe
-        2.7  Über Katja / Steckbrief
-        2.8  Schreib uns (Kontakt)                body.kontakt
-        2.9  Interview
-        2.10 Meet the Cast (meetthecrew.html)     body.crew
+        2.3  Elodies Geheimnis                    body.home.elodie
+        2.4  Album (dekker-album.html)            body.album-page
+        2.5  Bücher (buecher.html)                body.buecher
+        2.6  Jakemosphere-Bücher                  body.jm-books
+        2.7  Leseproben (wowBook)                 body.leseprobe
+        2.8  Über Katja / Steckbrief
+        2.9  Schreib uns (Kontakt)                body.kontakt
+        2.10 Interview
+        2.11 Meet the Cast (meetthecrew.html)     body.crew
    3. MEDIA QUERIES ..... von groß nach klein, darin nach Seiten sortiert
    ======================================================================= */
 
@@ -55,6 +56,8 @@
   --wand-gruen: #d6dbc3 url("../images/ziegel-gruen.jpg") repeat;
   --wand-tuerkis: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
   --wand-groesse: 600px auto;          /* Kachel 1200px → scharf auf Retina */
+  --wand-tapete: #9ec9c0 url("../images/tapete-elodie.jpg") repeat;
+  --tapete-groesse: 631px auto;        /* Kachel 1262px → scharf auf Retina */
 }
 
 /* Schriften (alle lokal, kein externer Server) */
@@ -66,6 +69,11 @@
 @font-face{
   font-family:"Caveat Brush";
   src:url("../fonts/caveat-brush.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Allura";
+  src:url("../fonts/allura.woff2") format("woff2");
   font-weight:400; font-style:normal; font-display:swap;
 }
 @font-face{
@@ -297,7 +305,80 @@ body.jakemosphere .right .p7{ /* I'll be back */
 
 
 /* ======================================================================= */
-/* === 2.3 ALBUM (dekker-album.html) ===================================== */
+/* === 2.3 ELODIES GEHEIMNIS (elodies_geheimnis.html) ==================== */
+/* Nutzt das komplette Home-Layout (body.home),                            */
+/* überschreibt nur Hintergrund, Text und Bildpositionen.                  */
+/* ======================================================================= */
+
+body.home.elodie{
+  background: var(--wand-tapete);
+  background-size: var(--tapete-groesse);
+}
+
+/* Home-Link oben rechts */
+body.elodie .home-link{ color: var(--dunkelgrau2); }
+body.elodie .home-link:hover{ color: #000; }
+
+body.elodie .stack{ min-height:calc(680px * var(--side-scale)); }
+
+/* Textblock: Blocksatz mit Silbentrennung (wie Jakemosphere) */
+body.elodie .intro p{
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  max-width: 40ch;
+  margin: .7em auto 0;
+}
+body.elodie .intro h1 + p{ margin-top:.9em; }
+
+/* Unterschrift: linke Kante bündig mit dem Text */
+body.elodie .intro p.signatur{
+  text-align: left;
+  margin-top: .4em;
+}
+body.elodie .intro .signatur span{
+  font-family: "Allura", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: 2.2em;
+  line-height: 1;
+}
+
+/* links */
+body.elodie .left .p1{ /* Eintrittskarte Museum */
+  width:calc(190px * var(--side-scale));
+  left:calc(112px * var(--side-scale)); top:0;
+  --rot: 8deg; z-index:51;
+}
+body.elodie .left .p2{ /* Buch-Mockup */
+  width:calc(240px * var(--side-scale));
+  left:calc(-10px * var(--side-scale)); top:calc(150px * var(--side-scale));
+  --rot: 0deg; z-index:52;
+}
+body.elodie .left .p3{ /* Hinter den Kulissen (Karte) */
+  width:calc(280px * var(--side-scale));
+  left:calc(37px * var(--side-scale)); top:calc(420px * var(--side-scale));
+  --rot: -6deg; z-index:53;
+}
+
+/* rechts */
+body.elodie .right .p4{ /* Meet the Cast */
+  width:calc(216px * var(--side-scale));
+  right:calc(5px * var(--side-scale)); top:calc(40px * var(--side-scale));
+  --rot: 0deg; z-index:51;
+}
+body.elodie .right .p5{ /* Interview Sam & Olivia */
+  width:calc(190px * var(--side-scale));
+  right:calc(88px * var(--side-scale)); top:calc(425px * var(--side-scale));
+  --rot: -6deg; z-index:52;
+}
+body.elodie .right .p6{ /* Teetasse */
+  width:calc(128px * var(--side-scale));
+  right:calc(-45px * var(--side-scale)); top:calc(550px * var(--side-scale));
+  --rot: 0deg; z-index:53;
+}
+
+
+/* ======================================================================= */
+/* === 2.4 ALBUM (dekker-album.html) ===================================== */
 /* ======================================================================= */
 
 body.album-page{
@@ -390,8 +471,8 @@ body.album-page > footer{ margin-top: auto; }
 
 
 /* ======================================================================= */
-/* === 2.4 BÜCHER (buecher.html) ========================================= */
-/* Die Buchkarten (.book) nutzt auch jakemosphere_books.html (2.5).        */
+/* === 2.5 BÜCHER (buecher.html) ========================================= */
+/* Die Buchkarten (.book) nutzt auch jakemosphere_books.html (2.6).        */
 /* ======================================================================= */
 
 body.buecher{
@@ -475,7 +556,7 @@ body.buecher{
 
 
 /* ======================================================================= */
-/* === 2.5 JAKEMOSPHERE-BÜCHER (jakemosphere_books.html) ================= */
+/* === 2.6 JAKEMOSPHERE-BÜCHER (jakemosphere_books.html) ================= */
 /* ======================================================================= */
 
 body.jm-books{
@@ -589,7 +670,7 @@ body.jm-books .book img[src*="MockUp_EchoEmber"]{
 
 
 /* ======================================================================= */
-/* === 2.6 LESEPROBEN (wowBook) ========================================== */
+/* === 2.7 LESEPROBEN (wowBook) ========================================== */
 /* echo-ember-leseprobe.html, jake-the-city-leseprobe.html                 */
 /* ======================================================================= */
 
@@ -659,8 +740,8 @@ body.leseprobe footer a{ color: var(--dunkelgrau2); }
 
 
 /* ======================================================================= */
-/* === 2.7 ÜBER KATJA / STECKBRIEF ======================================= */
-/* .steckbrief wird auch auf den Rückseiten der Cast-Karten genutzt (2.10) */
+/* === 2.8 ÜBER KATJA / STECKBRIEF ======================================= */
+/* .steckbrief wird auch auf den Rückseiten der Cast-Karten genutzt (2.11) */
 /* ======================================================================= */
 
 .katja-container{
@@ -688,7 +769,7 @@ body.leseprobe footer a{ color: var(--dunkelgrau2); }
 
 
 /* ======================================================================= */
-/* === 2.8 SCHREIB UNS (Kontakt) ========================================= */
+/* === 2.9 SCHREIB UNS (Kontakt) ========================================= */
 /* ======================================================================= */
 
 body.kontakt{
@@ -769,7 +850,7 @@ body.kontakt{
 
 
 /* ======================================================================= */
-/* === 2.9 INTERVIEW ===================================================== */
+/* === 2.10 INTERVIEW ==================================================== */
 /* ======================================================================= */
 
 .float-image{ float:left; width:300px; margin:0 20px 20px 0; border-radius:4px; }
@@ -783,7 +864,7 @@ body.kontakt{
 
 
 /* ======================================================================= */
-/* === 2.10 MEET THE CAST (meetthecrew.html) ============================= */
+/* === 2.11 MEET THE CAST (meetthecrew.html) ============================= */
 /* ======================================================================= */
 
 body.crew{
@@ -1220,6 +1301,7 @@ body.crew .board{
   body.home,
   body.home.jakemosphere,
   body.crew{ background-size: 450px auto; }   /* Ziegel etwas kleiner */
+  body.home.elodie{ background-size: 480px auto; }  /* Tapete etwas kleiner */
   .container{
     margin: 1em auto;
     padding: 0.75em;
@@ -1258,6 +1340,9 @@ body.crew .board{
   /* Jakemosphere: rechte Spalte hat 4 Bilder */
   body.jakemosphere .right.stack{ min-height: 540px; }
   body.home .right .p7{ top: 380px; right: 14%; --rot: -4deg; z-index:4; }
+
+  /* Elodies Geheimnis: Unterschrift mittig unter dem Text */
+  body.elodie .intro p.signatur{ text-align:center; }
 
   /* Album */
   .container.album-layout{
