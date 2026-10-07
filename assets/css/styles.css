@@ -207,8 +207,10 @@ body.jakemosphere .stack{ min-height:calc(660px * var(--side-scale)); }
 /* Textblock: Fließtext im Blocksatz */
 body.jakemosphere .intro p{
   text-align: justify;
+  text-wrap: wrap;
   hyphens: auto;          /* trennt deutsche Wörter, vermeidet große Lücken */
-  max-width: 40ch;
+  -webkit-hyphens: auto;
+  max-width: 46ch;
   margin: .7em auto 0;
 }
 body.jakemosphere .intro h1 + p{ margin-top:.9em; }
