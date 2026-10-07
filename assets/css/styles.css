@@ -548,6 +548,18 @@ body.jm-books .book-button:hover{ background: #000; }
 body.jm-books footer,
 body.jm-books footer a{ color: var(--dunkelgrau2); }
 
+/* Mockups statt Cover: transparente PNGs, Schatten folgt der Form */
+body.jm-books .book img.book-mockup{
+  height: auto;
+  max-width: none;
+  border-radius: 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.25));
+}
+
+body.jm-books .book img.book-mockup--jake{ width: 160px; }   /* einzelnes Tablet */
+body.jm-books .book img.book-mockup--echo{ width: 230px; }   /* Buch + Tablet, mit Rand im Bild */
+
+
 /* Schmale Bildschirme: Bild bleibt komplett, Text steht darunter auf der Wand */
 @media (max-width: 900px){
   .jm-hero__text{
@@ -644,7 +656,7 @@ body.leseprobe footer a{ color: var(--dunkelgrau2); }
 .text-content{ flex:2 1 500px; min-width:300px; }
 
 /* ======================================================================= */
-/* === PAGE: SCHREIB MIR ================================================= */
+/* === PAGE: SCHREIB UNS ================================================= */
 /* ======================================================================= */
 
 body.kontakt{
@@ -1315,6 +1327,9 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   .book-hero-content h2{
     font-size: clamp(14px, 3.8vw, 18px);
   }
+
+  body.jm-books .book img.book-mockup--jake{ width: clamp(140px, 45vw, 200px); }
+  body.jm-books .book img.book-mockup--echo{ width: clamp(200px, 70vw, 300px); }
 
   /* ===================== */
   /* INTERVIEW (mobil)     */
