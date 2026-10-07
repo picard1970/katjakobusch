@@ -328,6 +328,7 @@ body.elodie .intro p{
   -webkit-hyphens: auto;
   max-width: 40ch;
   margin: .7em auto 0;
+  font-size: .9em;                     /* etwas kleiner als auf der Jakemosphere */
 }
 body.elodie .intro h1 + p{ margin-top:.9em; }
 
@@ -345,23 +346,23 @@ body.elodie .intro .signatur span{
 /* links */
 body.elodie .left .p1{ /* Eintrittskarte Museum */
   width:calc(190px * var(--side-scale));
-  left:calc(112px * var(--side-scale)); top:0;
+  left:calc(112px * var(--side-scale)); top:calc(15px * var(--side-scale));
   --rot: 8deg; z-index:51;
 }
 body.elodie .left .p2{ /* Buch-Mockup */
-  width:calc(240px * var(--side-scale));
-  left:calc(-10px * var(--side-scale)); top:calc(150px * var(--side-scale));
+  width:calc(270px * var(--side-scale));
+  left:calc(-25px * var(--side-scale)); top:calc(150px * var(--side-scale));
   --rot: 0deg; z-index:52;
 }
 body.elodie .left .p3{ /* Hinter den Kulissen (Karte) */
   width:calc(280px * var(--side-scale));
-  left:calc(37px * var(--side-scale)); top:calc(420px * var(--side-scale));
+  left:calc(10px * var(--side-scale)); top:calc(420px * var(--side-scale));
   --rot: -6deg; z-index:53;
 }
 
 /* rechts */
 body.elodie .right .p4{ /* Meet the Cast */
-  width:calc(216px * var(--side-scale));
+  width:calc(230px * var(--side-scale));
   right:calc(5px * var(--side-scale)); top:calc(40px * var(--side-scale));
   --rot: 0deg; z-index:51;
 }
