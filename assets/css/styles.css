@@ -530,6 +530,74 @@ body.jm-books footer a{ color: var(--dunkelgrau2); }
 }
 
 /* ================================================= */
+/* === PAGE: LESEPROBEN (wowBook) ================== */
+/* echo-ember-leseprobe.html, jake-the-city-leseprobe.html */
+
+body.leseprobe{
+  margin:0;
+  background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
+  background-size: 600px auto;   /* gleiche Ziegelgröße wie auf den anderen Seiten */
+  color: var(--dunkelgrau2);
+  line-height: 1.6;
+}
+
+.lp-wrap{
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0;
+}
+
+/* Kopf zentriert */
+.lp-head{
+  width: min(100%, 842px);
+  margin: 0 auto .5rem;
+  display:flex;
+  justify-content: center;
+}
+.lp-title{ text-align:center; }
+.lp-title h1{
+  margin: 0 0 .15rem 0;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--dunkelgrau2);
+}
+.lp-title small,
+.lp-hint{ display:block; color: var(--dunkelgrau2); opacity:.8; font-size:.95rem; }
+
+/* Buch-Seiten-Inhalt (Werte unverändert übernommen) */
+.wb-page{
+  padding: clamp(1rem, 1rem + 1vw, 1.4rem);
+  font-size: clamp(3.4rem, 3.5rem + 0.6vw, 3.8rem);
+  line-height: clamp(1.6, 1.7 + 0.1vw, 1.8);
+  color: var(--dunkelgrau2);
+  hyphens: auto;
+}
+.wb-page h2{
+  margin: 0 0 2rem;
+  font-size: 5rem;
+  line-height: 1.2;
+}
+.wb-page p{ text-indent: 2ch; margin: 0; }
+.wb-page p:first-of-type{ text-indent: 0; margin: 0; }
+
+/* Von wowBook erzeugter Container */
+.wowbook-container{
+  width: min(100%, 842px);
+  margin: 1rem auto;
+  background: var(--weiss);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 12px 28px rgba(0,0,0,.22);
+}
+
+/* Zurück-Link und Footer auf der Wand gut lesbar */
+.lp-back{ text-align:center; }
+.lp-back a,
+body.leseprobe footer,
+body.leseprobe footer a{ color: var(--dunkelgrau2); }
+.lp-back a{ font-weight:700; }
+
+/* ================================================= */
 /* === PAGE: KATJA ================================= */
 
 .katja-container{
@@ -544,7 +612,7 @@ body.jm-books footer a{ color: var(--dunkelgrau2); }
 .text-content{ flex:2 1 500px; min-width:300px; }
 
 /* ======================================================================= */
-/* === PAGE: SCHREIB UNS ================================================= */
+/* === PAGE: SCHREIB MIR ================================================= */
 /* ======================================================================= */
 
 body.kontakt{
