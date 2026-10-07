@@ -685,6 +685,7 @@ body.jm-books.elodie-books{
 
 /* Kopftext mittig auf der freien Tapetenfläche zwischen Tisch und Bildern */
 body.elodie-books .jm-hero__text{
+  top: 38%;                            /* Bild ist nach unten verlängert (1500×404) */
   left: 55.5%;
   transform: translate(-50%, -50%);
   width: 34cqi;
@@ -920,6 +921,29 @@ body.kontakt{
 .interview-image{ flex:1 1 300px; max-width:400px; }
 .interview-text{  flex:2 1 400px; }
 .interview-text p{ margin-bottom:1em; }
+
+/* Elodie-Interview: Tapete als Hintergrund, Text auf Papier */
+body.elodie-interview{
+  background: var(--wand-tapete);
+  background-size: var(--tapete-groesse);
+  color: var(--dunkelgrau2);
+}
+body.elodie-interview .container{
+  background: var(--papier);
+  border-radius: 4px;
+  padding: clamp(1.2em, 3vw, 2.2em);
+  box-shadow: 0 2px 4px rgba(0,0,0,.2), 0 10px 24px rgba(0,0,0,.18);
+}
+body.elodie-interview h1{
+  font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
+  font-weight: 400;
+  font-size: clamp(1.7em, 3.6vw, 2.4em);
+  line-height: 1.2;
+}
+body.elodie-interview .home-link{ color: var(--dunkelgrau2); }
+body.elodie-interview footer,
+body.elodie-interview footer a{ color: var(--dunkelgrau2); }
+body.elodie-interview .float-image{ box-shadow: 0 3px 8px rgba(0,0,0,.25); }
 
 
 /* ======================================================================= */
