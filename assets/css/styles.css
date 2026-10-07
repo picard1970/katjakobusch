@@ -15,7 +15,7 @@
         2.9  Über Katja / Steckbrief
         2.10 Schreib uns (Kontakt)                body.kontakt
         2.11 Interview
-        2.12 Meet the Cast (meetthecrew.html)     body.crew
+        2.12 Meet the Cast (meetthecrew.html, elodie_meet_the_cast.html)  body.crew
    3. MEDIA QUERIES ..... von groß nach klein, darin nach Seiten sortiert
    ======================================================================= */
 
@@ -968,6 +968,23 @@ body.crew .home-link:hover{ color: #000; }
 body.crew footer,
 body.crew footer a{ color: var(--dunkelgrau2); }
 
+/* Variante Elodie (elodie_meet_the_cast.html): Tapete statt Ziegel, ohne Filter */
+body.crew.elodie-cast{
+  background: var(--wand-tapete);
+  background-size: var(--tapete-groesse);
+}
+body.crew.elodie-cast .crew-hero__title{
+  font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+/* Vor- und Nachname brauchen meist zwei Zeilen → Name etwas kleiner */
+body.crew.elodie-cast .polaroid__name{
+  font-size: 8.4cqi;
+  line-height: 1.05;
+}
+body.crew.elodie-cast .polaroid__role{ margin-top: 1.5cqi; }
+
 /* --- Kopf: transparent, die Ziegelwand scheint durch --- */
 .crew-hero {
   background: transparent;
@@ -1389,7 +1406,8 @@ body.crew .board{
   body.home,
   body.home.jakemosphere,
   body.crew{ background-size: 450px auto; }   /* Ziegel etwas kleiner */
-  body.home.elodie{ background-size: 480px auto; }  /* Tapete etwas kleiner */
+  body.home.elodie,
+  body.crew.elodie-cast{ background-size: 480px auto; }  /* Tapete etwas kleiner */
   .container{
     margin: 1em auto;
     padding: 0.75em;
