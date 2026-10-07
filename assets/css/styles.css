@@ -1,9 +1,28 @@
 @charset "UTF-8";
 
-/* ================================================= */
-/* === GLOBAL ====================================== */
+/* =======================================================================
+   INHALT
+   1. GLOBAL ............ Variablen, Schriften, Basis, gemeinsame Elemente
+   2. SEITEN ............ je Seite ein Block, Desktop-Werte
+        2.1  Startseite (index.html)              body.home
+        2.2  Jakemosphere (jakemosphere.html)     body.home.jakemosphere
+        2.3  Album (dekker-album.html)            body.album-page
+        2.4  Bücher (buecher.html)                body.buecher
+        2.5  Jakemosphere-Bücher                  body.jm-books
+        2.6  Leseproben (wowBook)                 body.leseprobe
+        2.7  Über Katja / Steckbrief
+        2.8  Schreib uns (Kontakt)                body.kontakt
+        2.9  Interview
+        2.10 Meet the Cast (meetthecrew.html)     body.crew
+   3. MEDIA QUERIES ..... von groß nach klein, darin nach Seiten sortiert
+   ======================================================================= */
 
-/* Farb-Variablen (konsolidiert) */
+
+/* ======================================================================= */
+/* === 1. GLOBAL ========================================================= */
+/* ======================================================================= */
+
+/* Farb-Variablen */
 :root {
   /* Hintergründe / Flächen */
   --background_body: #e8eddf;
@@ -28,6 +47,31 @@
   --button_hover: #5a7d62;
   --gruen: #6B8F71;
   --gruen-hover: #5a7d62;
+
+  /* Jakemosphere-Welt: Papier, Akzent, Ziegelwände */
+  --papier: #fcf9e6;                   /* Polaroid-/Kartenpapier */
+  --papier-alt: #f3edd8;               /* Kartenrückseite */
+  --akzent-rot: #a01818;               /* Linien, Links (Rot der Pins) */
+  --wand-gruen: #d6dbc3 url("../images/ziegel-gruen.jpg") repeat;
+  --wand-tuerkis: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
+  --wand-groesse: 600px auto;          /* Kachel 1200px → scharf auf Retina */
+}
+
+/* Schriften (alle lokal, kein externer Server) */
+@font-face{
+  font-family:"Sweet Dreams";
+  src:url("../fonts/EmilysCandy-Regular.ttf") format("truetype");
+  font-weight:400; font-style:normal;
+}
+@font-face{
+  font-family:"Caveat Brush";
+  src:url("../fonts/caveat-brush.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Caveat";
+  src:url("../fonts/caveat.woff2") format("woff2");
+  font-weight:400 700; font-style:normal; font-display:swap;
 }
 
 /* Reset + Basis */
@@ -81,21 +125,17 @@ footer a:hover { text-decoration: underline; }
   margin-top: clamp(8px, 1.8vw, 20px);
 }
 
-/* ================================================= */
-/* === HOME / INDEX ================================ */
 
-@font-face{
-  font-family:"Sweet Dreams";
-  src:url("../fonts/EmilysCandy-Regular.ttf") format("truetype");
-  font-weight:400; font-style:normal;
-}
+/* ======================================================================= */
+/* === 2.1 STARTSEITE (index.html) ======================================= */
+/* ======================================================================= */
 
 body.home{
   --maxw: 1100px;
   --pad: clamp(16px, 4vw, 36px);
   --side-scale: 1;
-  background: #d6dbc3 url("../images/ziegel-gruen.jpg") repeat;
-  background-size: 600px auto;   /* Kachel 1200px → scharf auf Retina */
+  background: var(--wand-gruen);
+  background-size: var(--wand-groesse);
   color:#1b1b1b;
   padding: clamp(12px,3vh,28px) var(--pad);
   font: 400 clamp(16px,1.6vw,20px)/1.45 "Georgia","Times New Roman",ui-serif,serif;
@@ -177,25 +217,27 @@ body.home .right .p4{ /* Schreibmaschine */
   right:calc(55px * var(--side-scale)); top:calc(30px * var(--side-scale));
   --rot: 0deg; z-index:51;
 }
-body.home .right .p5{ /* Notizbuch: näher an die Schreibmaschine */
+body.home .right .p5{ /* Notizbuch */
   width:calc(285px * var(--side-scale));
   right:calc(-15px * var(--side-scale)); top:calc(250px * var(--side-scale));
   --rot: 14deg; z-index:52;
 }
-body.home .right .p6{ /* Jake & the City: endet auf Höhe von Katja */
+body.home .right .p6{ /* Jake & the City */
   width:calc(180px * var(--side-scale));
   right:calc(110px * var(--side-scale)); top:calc(465px * var(--side-scale));
   --rot: 3deg; z-index:53;
 }
 
-/* ================================================= */
-/* === PAGE: JAKEMOSPHERE ========================== */
-/* Nutzt das komplette Home-Layout (body.home),      */
-/* überschreibt nur Hintergrund und Bildpositionen.  */
+
+/* ======================================================================= */
+/* === 2.2 JAKEMOSPHERE (jakemosphere.html) ============================== */
+/* Nutzt das komplette Home-Layout (body.home),                            */
+/* überschreibt nur Hintergrund, Text und Bildpositionen.                  */
+/* ======================================================================= */
 
 body.home.jakemosphere{
-  background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 600px auto;   /* gleiche Ziegelgröße wie auf der Startseite */
+  background: var(--wand-tuerkis);
+  background-size: var(--wand-groesse);
 }
 
 /* Home-Link oben rechts */
@@ -204,9 +246,9 @@ body.jakemosphere .home-link:hover{ color: #000; }
 
 body.jakemosphere .stack{ min-height:calc(660px * var(--side-scale)); }
 
-/* Textblock: Fließtext linksbündig mit Absatzabstand (wie im Layout) */
+/* Textblock: Blocksatz mit Silbentrennung */
 body.jakemosphere .intro p{
-  text-align: justify;     /* Blocksatz: beide Kanten gerade */
+  text-align: justify;
   hyphens: auto;           /* deutsche Silbentrennung (braucht lang="de") */
   -webkit-hyphens: auto;   /* Safari */
   max-width: 40ch;
@@ -253,8 +295,10 @@ body.jakemosphere .right .p7{ /* I'll be back */
   --rot: 0deg; z-index:54;
 }
 
-/* ================================================= */
-/* === PAGE: ALBUM ================================= */
+
+/* ======================================================================= */
+/* === 2.3 ALBUM (dekker-album.html) ===================================== */
+/* ======================================================================= */
 
 body.album-page{
   margin:0;
@@ -344,17 +388,20 @@ body.album-page > footer{ margin-top: auto; }
 }
 .play-button:hover{ transform: scale(1.2); }
 
-/* ================================================= */
-/* === PAGE: BÜCHER ================================ */
+
+/* ======================================================================= */
+/* === 2.4 BÜCHER (buecher.html) ========================================= */
+/* Die Buchkarten (.book) nutzt auch jakemosphere_books.html (2.5).        */
+/* ======================================================================= */
 
 body.buecher{
   margin:0; padding:0;
   background-color: var(--background_body);
   line-height:1.6;
 }
+
 /* Hero oben auf der Bücher-Seite */
 .book-hero{
-  /* background-image: url('../images/background-mauer-grau-panorama-250.jpg'); */
   background-image: url('../images/buecher-lichterkette-panorama.jpg');
   position: relative;
   display:flex;
@@ -366,7 +413,6 @@ body.buecher{
   background-size:cover;
   background-position:center;
 }
-
 .book-hero .home-link{
   color: var(--hellgrau);
   text-shadow: 0 2px 6px rgba(0,0,0,.45);
@@ -387,9 +433,10 @@ body.buecher{
   padding: 0 16px;
   text-align: center;
 }
-
 .book-hero-content h1{ margin: .2em 0 .3em; }
 .book-hero-content h2{ margin: 0; font-weight: 400; line-height: 1.3; }
+
+/* Buchkarten */
 .book{
   display: block;
   background: var(--background_text);
@@ -409,7 +456,14 @@ body.buecher{
   width: 150px;
   height: auto;
   border-radius: 4px;
-  margin: .2em 1.2em .6em 0;
+  margin: 0 1.2em .6em 0;  /* Cover oben bündig mit der Überschrift */
+}
+/* Buch-Überschriften bündig oben starten */
+.book h1,
+.book h2{
+  margin-top: 0;
+  padding-top: 0;
+  line-height: 1.2;
 }
 .book-button{
   display:inline-block; padding:.6em 1.2em;
@@ -419,31 +473,28 @@ body.buecher{
 }
 .book-button:hover{ background: var(--button_hover); transform: scale(1.05); }
 
-/* Buch-Überschriften bündig oben starten */
-.book h1,
-.book h2{
-  margin-top: 0;           /* standardmäßigen oberen Abstand entfernen */
-  padding-top: 0;
-  line-height: 1.2;
-}
 
-/* Cover nicht künstlich nach unten schieben */
-.book img{
-  margin: 0 1.2em .6em 0;  /* statt .2em oben */
-}
-
-/* ================================================= */
-/* === PAGE: JAKEMOSPHERE – BÜCHER ================= */
-/* jakemosphere_books.html – eigenständig, unabhängig von .book-hero */
+/* ======================================================================= */
+/* === 2.5 JAKEMOSPHERE-BÜCHER (jakemosphere_books.html) ================= */
+/* ======================================================================= */
 
 body.jm-books{
   margin:0; padding:0;
-  background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 600px auto;
+  background: var(--wand-tuerkis);
+  background-size: var(--wand-groesse);
   color: var(--dunkelgrau2);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.6;
 }
+
+body.jm-books .home-link{
+  position: absolute;
+  top: 12px; right: 16px;
+  z-index: 2;
+  color: var(--weiss);
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
+}
+body.jm-books .home-link:hover{ color: var(--hellgrau); }
 
 /* Header: Panorama immer komplett sichtbar (nie seitlich abgeschnitten) */
 .jm-hero{
@@ -458,26 +509,14 @@ body.jm-books{
   height: auto;                       /* Seitenverhältnis 5:1 bleibt erhalten */
 }
 
-/* Text liegt auf der Ziegelfläche in der Bildmitte */
-/* Handschrift, lokal eingebunden (kein Google-Server, funktioniert überall) */
-@font-face{
-  font-family:"Caveat Brush";
-  src:url("../fonts/caveat-brush.woff2") format("woff2");
-  font-weight:400; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:"Caveat";
-  src:url("../fonts/caveat.woff2") format("woff2");
-  font-weight:400 700; font-style:normal; font-display:swap;
-}
-
+/* Handschrift-Text auf der (transparenten) Ziegelfläche in der Bildmitte */
 .jm-hero__text{
   position: absolute;
-  top: 50%; left: 49.3%;              /* Mitte der Ziegelfläche im Bild */
+  top: 50%; left: 49.3%;
   transform: translate(-50%, -50%) rotate(-4deg);   /* leicht schräg wie gesprüht */
   width: 30cqi;
   text-align: center;
-  color: #1f3d5c;                      /* dunkles Petrolblau wie im Entwurf */
+  color: #1f3d5c;                      /* dunkles Petrolblau */
   text-shadow: 0 0 .5em rgba(255,255,255,.45);
 }
 .jm-hero__text h1{
@@ -488,15 +527,6 @@ body.jm-books{
   margin: 0;
   color: inherit;
 }
-/* Pinselstrich unter der Überschrift */
-.jm-hero__text h1::after{
-  content:"";
-  display:block;
-  width: 72%;
-  height: .32em;
-  margin: .12em auto .1em;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M4 14 C 60 6, 130 4, 196 7' fill='none' stroke='%231f3d5c' stroke-width='3.2' stroke-linecap='round'/><path d='M24 18 C 80 11, 140 10, 182 12' fill='none' stroke='%231f3d5c' stroke-width='1.6' stroke-linecap='round' opacity='.8'/></svg>") center/100% 100% no-repeat;
-}
 .jm-hero__text h2{
   font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive;
   font-weight: 600;
@@ -506,28 +536,20 @@ body.jm-books{
   color: inherit;
   text-wrap: balance;
 }
+/* Pinselstriche unter Überschrift und Unterzeile */
+.jm-hero__text h1::after,
 .jm-hero__text h2::after{
   content:"";
   display:block;
-  width: 45%;
-  height: .3em;
-  margin: .1em auto 0;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M4 14 C 60 6, 130 4, 196 7' fill='none' stroke='%231f3d5c' stroke-width='3.2' stroke-linecap='round'/><path d='M24 18 C 80 11, 140 10, 182 12' fill='none' stroke='%231f3d5c' stroke-width='1.6' stroke-linecap='round' opacity='.8'/></svg>") center/100% 100% no-repeat;
 }
-
-body.jm-books .home-link{
-  position: absolute;
-  top: 12px; right: 16px;
-  z-index: 2;
-  color: var(--weiss);
-  text-shadow: 0 1px 4px rgba(0,0,0,.6);
-}
-body.jm-books .home-link:hover{ color: var(--hellgrau); }
+.jm-hero__text h1::after{ width: 72%; height: .32em; margin: .12em auto .1em; }
+.jm-hero__text h2::after{ width: 45%; height: .3em;  margin: .1em auto 0; }
 
 /* Buchkarten: Polaroid-Papier statt Grün, dunkle Buttons */
 body.jm-books .container{ margin-top: clamp(16px, 3vw, 32px); }
 body.jm-books .book{
-  background: #fcf9e6;
+  background: var(--papier);
   border: 0;
   border-radius: 4px;
   padding: 1.4em;
@@ -536,10 +558,10 @@ body.jm-books .book{
 body.jm-books .book h2{
   font-size: 1.6em;
   padding-bottom: .3em;
-  border-bottom: 2px solid #a01818;   /* Akzent wie auf den Cast-Karten */
-  overflow: hidden;                   /* Linie endet neben dem Cover */
+  border-bottom: 2px solid var(--akzent-rot);
+  overflow: hidden;                   /* Linie endet neben dem Bild */
 }
-body.jm-books .book a:not(.book-button){ color: #a01818; }
+body.jm-books .book a:not(.book-button){ color: var(--akzent-rot); }
 body.jm-books .book-button{
   background: var(--dunkelgrau2);
   color: var(--weiss);
@@ -548,39 +570,33 @@ body.jm-books .book-button:hover{ background: #000; }
 body.jm-books footer,
 body.jm-books footer a{ color: var(--dunkelgrau2); }
 
-/* Mockups statt Cover: transparente PNGs, Schatten folgt der Form */
-body.jm-books .book img.book-mockup{
+/* Mockups statt Cover (transparente PNGs, Dateien bleiben unverändert).
+   Erkennung über den Dateinamen – im HTML ist keine Klasse nötig.        */
+body.jm-books .book img[src*="MockUp_"]{
   height: auto;
   max-width: none;
   border-radius: 0;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,.25));
 }
-
-body.jm-books .book img.book-mockup--jake{ width: 160px; }   /* einzelnes Tablet */
-body.jm-books .book img.book-mockup--echo{ width: 230px; }   /* Buch + Tablet, mit Rand im Bild */
-
-
-/* Schmale Bildschirme: Bild bleibt komplett, Text steht darunter auf der Wand */
-@media (max-width: 900px){
-  .jm-hero__text{
-    position: static;
-    transform: rotate(-3deg);
-    width: auto;
-    padding: 18px 16px 0;
-  }
-  .jm-hero__text h1{ font-size: clamp(34px, 10vw, 52px); }
-  .jm-hero__text h2{ font-size: clamp(20px, 5.5vw, 26px); max-width: 28ch; margin: 0 auto; }
-  body.jm-books .home-link{ top: 6px; right: 10px; font-size: .9em; }
+body.jm-books .book img[src*="MockUp_JakeCity"]{
+  width: 150px;
+  margin: -6px 1.2em .6em -7px;
+}
+body.jm-books .book img[src*="MockUp_EchoEmber"]{
+  width: 260px;
+  margin: -34px calc(1.2em - 30px) .6em -2px;   /* gleicht den transparenten Rand aus */
 }
 
-/* ================================================= */
-/* === PAGE: LESEPROBEN (wowBook) ================== */
-/* echo-ember-leseprobe.html, jake-the-city-leseprobe.html */
+
+/* ======================================================================= */
+/* === 2.6 LESEPROBEN (wowBook) ========================================== */
+/* echo-ember-leseprobe.html, jake-the-city-leseprobe.html                 */
+/* ======================================================================= */
 
 body.leseprobe{
   margin:0;
-  background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 600px auto;   /* gleiche Ziegelgröße wie auf den anderen Seiten */
+  background: var(--wand-tuerkis);
+  background-size: var(--wand-groesse);
   color: var(--dunkelgrau2);
   line-height: 1.6;
 }
@@ -608,7 +624,7 @@ body.leseprobe{
 .lp-title small,
 .lp-hint{ display:block; color: var(--dunkelgrau2); opacity:.8; font-size:.95rem; }
 
-/* Buch-Seiten-Inhalt (Werte unverändert übernommen) */
+/* Buch-Seiten-Inhalt */
 .wb-page{
   padding: clamp(1rem, 1rem + 1vw, 1.4rem);
   font-size: clamp(3.4rem, 3.5rem + 0.6vw, 3.8rem);
@@ -641,8 +657,11 @@ body.leseprobe footer,
 body.leseprobe footer a{ color: var(--dunkelgrau2); }
 .lp-back a{ font-weight:700; }
 
-/* ================================================= */
-/* === PAGE: KATJA ================================= */
+
+/* ======================================================================= */
+/* === 2.7 ÜBER KATJA / STECKBRIEF ======================================= */
+/* .steckbrief wird auch auf den Rückseiten der Cast-Karten genutzt (2.10) */
+/* ======================================================================= */
 
 .katja-container{
   max-width:1200px; margin:auto; padding:2em;
@@ -650,13 +669,26 @@ body.leseprobe footer a{ color: var(--dunkelgrau2); }
 }
 .sidebar{ flex:1 1 300px; max-width:300px; }
 .portrait{ width:100%; border-radius:6px; display:block; }
+.text-content{ flex:2 1 500px; min-width:300px; }
+
 .steckbrief{ background: var(--background_text); padding:1em; border-radius:6px; margin-top:1em; }
 .steckbrief dt{ font-weight:700; }
 .steckbrief dd{ margin:0 0 .5em 0; }
-.text-content{ flex:2 1 500px; min-width:300px; }
+.steckbrief h3{
+  font-size: 1.1rem;
+  margin: 0 0 0.8em 0;
+}
+.steckbrief p{
+  margin: 0 0 0.7em 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+.steckbrief strong{ font-weight: 600; }
+
 
 /* ======================================================================= */
-/* === PAGE: SCHREIB UNS ================================================= */
+/* === 2.8 SCHREIB UNS (Kontakt) ========================================= */
 /* ======================================================================= */
 
 body.kontakt{
@@ -681,7 +713,6 @@ body.kontakt{
   background-size:cover;
   background-position:center;
 }
-
 .kontakt-hero .home-link{
   color: var(--hellgrau);
   text-shadow: 0 2px 6px rgba(0,0,0,.45);
@@ -710,7 +741,7 @@ body.kontakt{
   font-weight: 400;
   font-size: clamp(16px, 4.8vw, 22px);
   line-height: 1.3;
-  text-wrap: balance; /* optional */
+  text-wrap: balance;
 }
 
 .kontakt-container{
@@ -736,8 +767,9 @@ body.kontakt{
 .kontakt-container .success{ color: green; }
 .kontakt-container .error{ color: red; }
 
+
 /* ======================================================================= */
-/* === PAGE: INTERVIEW =================================================== */
+/* === 2.9 INTERVIEW ===================================================== */
 /* ======================================================================= */
 
 .float-image{ float:left; width:300px; margin:0 20px 20px 0; border-radius:4px; }
@@ -749,92 +781,58 @@ body.kontakt{
 .interview-text{  flex:2 1 400px; }
 .interview-text p{ margin-bottom:1em; }
 
+
 /* ======================================================================= */
-/* ===== PAGE: CREW ====================================================== */
+/* === 2.10 MEET THE CAST (meetthecrew.html) ============================= */
 /* ======================================================================= */
 
-/* Hero: transparent – die Ziegelwand von body.crew scheint durch */
+body.crew{
+  margin:0;
+  padding:0;
+  background: var(--wand-tuerkis);
+  background-size: var(--wand-groesse);
+  color: var(--dunkelgrau2);
+  line-height:1.6;
+}
+
+/* Home-Link und Footer auf der Wand gut lesbar */
+body.crew .home-link{
+  color: var(--dunkelgrau2);
+  text-shadow: none;
+}
+body.crew .home-link:hover{ color: #000; }
+body.crew footer,
+body.crew footer a{ color: var(--dunkelgrau2); }
+
+/* --- Kopf: transparent, die Ziegelwand scheint durch --- */
 .crew-hero {
   background: transparent;
   min-height: 200px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-
   color: var(--dunkelgrau2);
   text-shadow: none;
 }
-
 .crew-hero__inner {
   max-width: 900px;
   padding: 20px;
 }
-
 .crew-hero__title {
   font-size: clamp(28px, 5vw, 46px);
   margin: 0 0 16px 0;
   font-weight: 700;
 }
 
-/* Buttons im Hero */
+/* Filter-Buttons */
+.crew-filters{ display: flex; gap: 8px; }
 .crew-hero .crew-filters {
   display: flex;
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
-
-/* Dünner grüner Streifen – entfällt, die Korkwand hängt direkt an der Wand */
-.crew-separator {
-  display: none;
-}
-
-body.crew{
-  margin:0;
-  padding:0;
-  /* gleiche Ziegelwand wie in der Jakemosphere; die Korkwand liegt darauf */
-  background: #6fccc4 url("../images/ziegel-tuerkis.jpg") repeat;
-  background-size: 600px auto;   /* gleiche Ziegelgröße wie auf der Startseite */
-  color: var(--dunkelgrau2);
-  line-height:1.6;
-}
-
-/* Korkwand hängt ohne Rahmen direkt an der Ziegelwand */
-.crew-frame{
-  margin: 0 clamp(12px, 3vw, 32px);
-  position: relative;
-  box-shadow:
-    0 2px 4px rgba(0,0,0,.25),
-    0 10px 24px rgba(0,0,0,.22);
-  /* Kork nur im Rahmen: */
-  background-image: url('../images/kork-background.jpg');
-  background-repeat: repeat;
-  background-size: 100% auto;
-  background-position: top center;
-}
-
-/* Header sitzt optisch im oberen Rahmen */
-.crew-header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  background: var(--background_text);
-  padding: 10px 12px;
-  margin: -28px -10px 0 -10px;            /* in den Rahmen „eingerückt" */
-  border-bottom: 1px solid rgba(0,0,0,.06);
-}
-
-.crew-title{
-  margin: 0;
-  font-size: clamp(20px, 3.6vw, 28px);
-  font-weight: 700;
-}
-
-/* Filter-Buttons */
-.crew-filters{ display: flex; gap: 8px; }
 .filter-btn{
   appearance: none;
   border: 1px solid var(--umrandung);
@@ -858,12 +856,40 @@ body.crew{
   border-color: var(--dunkelgrau2);
 }
 
-/* Board minimal enger innerhalb des Rahmens */
-body.crew .board{
-  padding: clamp(14px, 2.6vw, 24px);
+/* Trennstreifen entfällt – die Korkwand hängt direkt an der Wand */
+.crew-separator {
+  display: none;
 }
 
-/* Dezente Links unten im Rahmen – ersetzt Footer */
+/* --- Korkwand --- */
+.crew-frame{
+  margin: 0 clamp(12px, 3vw, 32px);
+  position: relative;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.25),
+    0 10px 24px rgba(0,0,0,.22);
+  background-image: url('../images/kork-background.jpg');
+  background-repeat: repeat;
+  background-size: 100% auto;
+  background-position: top center;
+}
+
+/* Header/Links im Rahmen (Klassen derzeit im HTML nicht verwendet) */
+.crew-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--background_text);
+  padding: 10px 12px;
+  margin: -28px -10px 0 -10px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.crew-title{
+  margin: 0;
+  font-size: clamp(20px, 3.6vw, 28px);
+  font-weight: 700;
+}
 .crew-frame-bottom{
   display: flex;
   justify-content: center;
@@ -873,46 +899,36 @@ body.crew .board{
   color: var(--grau);
   background: var(--background_text);
   padding: 6px 8px;
-  margin: 8px -10px -10px -10px;          /* bündig bis an den Rahmen */
+  margin: 8px -10px -10px -10px;
   border-top: 1px solid rgba(0,0,0,.06);
 }
-
 .crew-frame-bottom a{
-  color: inherit;                 /* unauffällig */
+  color: inherit;
   text-decoration: none;
 }
 .crew-frame-bottom a:hover{
   text-decoration: underline;
 }
 
-/* Home-Link oben rechts gut lesbar */
-body.crew .home-link{
-  color: var(--dunkelgrau2);
-  text-shadow: none;
-}
-body.crew .home-link:hover{ color: #000; }
-
-/* Footer auf der türkisen Wand gut lesbar */
-body.crew footer,
-body.crew footer a{ color: var(--dunkelgrau2); }
-
-/* Board-Layout + Basisvariablen */
-/* Board-Layout: automatisch viele Spalten je nach Breite */
+/* --- Board: automatisch viele Spalten je nach Breite --- */
 .board{
   --gap: clamp(12px, 2vw, 22px);
-  --card-w: clamp(180px, 22vw, 260px);     /* Basis */
+  --card-w: clamp(180px, 22vw, 260px);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
   gap: var(--gap);
   justify-items: center;
   padding: clamp(18px, 3vw, 32px);
 }
+body.crew .board{
+  padding: clamp(14px, 2.6vw, 24px);
+}
 
-/* ===== Karten (mit leichter Schieflage) ===== */
+/* --- Karten (mit leichter Schieflage) --- */
 .card{
   position:relative;
   width:var(--card-w);
-  aspect-ratio: 1024 / 1521;   /* Proportion der bisherigen Polaroids */
+  aspect-ratio: 1024 / 1521;   /* Proportion eines Polaroids */
   filter:
     drop-shadow(0 2px 3px rgba(0,0,0,.25))
     drop-shadow(0 12px 18px rgba(0,0,0,.18));
@@ -934,7 +950,7 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   z-index:2; pointer-events:none;
 }
 
-/* ===== Flip-Mechanik (robust & scharf) ===== */
+/* --- Flip-Mechanik --- */
 .card__inner {
   container-type: inline-size;   /* Schriftgrößen der Vorderseite skalieren mit der Kartenbreite */
   position: relative; inset: 0;
@@ -954,6 +970,7 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   font: inherit;
   text-align: inherit;
 }
+.card__inner[aria-expanded="true"]{ transform:rotateY(180deg); }
 
 .card__face {
   position: absolute; inset: 0;
@@ -967,11 +984,10 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   -webkit-text-fill-color: var(--dunkelgrau2);
 }
 
-/* Vorderseite: NUR Bild → kein Text-Blur */
-/* Vorderseite = Polaroid aus HTML: Foto + Name + Rolle */
+/* --- Vorderseite = Polaroid aus HTML: Foto + Name + Rolle --- */
 .card__front{
   transform:rotateY(0deg);
-  background: #fcf9e6;                 /* Polaroid-Papier */
+  background: var(--papier);
   display:flex; flex-direction:column; align-items:center;
   padding: 9.5cqi 6.6cqi 0;
   box-sizing:border-box;
@@ -987,8 +1003,7 @@ body.crew footer a{ color: var(--dunkelgrau2); }
 .polaroid__photo img{
   display:block; width:100%; height:100%;
   object-fit:cover;
-  object-position: 50% 35%;            /* pro Bild anpassbar per style="--pos: …" */
-  object-position: var(--pos, 50% 35%);
+  object-position: var(--pos, 50% 35%);   /* pro Bild anpassbar per style="--pos: …" */
 }
 .polaroid__caption{
   flex:1;
@@ -1011,7 +1026,7 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   margin-top:2.5cqi;
 }
 
-/* Kleiner Flip-Pfeil unten rechts auf der Vorderseite */
+/* Kleiner Umdreh-Pfeil unten rechts */
 .card__front::after{
   content:"";
   position:absolute;
@@ -1019,8 +1034,6 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   bottom:8px;
   width: clamp(18px, 2.8vw, 24px);
   height: clamp(18px, 2.8vw, 24px);
-
-  /* weiße runde Plakette + SVG-Pfeil */
   background:
     url("data:image/svg+xml;utf8,\
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
@@ -1030,32 +1043,23 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0,0,0,.18);
   opacity:.8;
-  pointer-events:none;             /* blockiert keine Klicks */
+  pointer-events:none;
   transition: opacity .2s ease, transform .2s ease;
 }
-
-/* deutlicher bei Hover/Focus */
 .card__inner:hover  .card__front::after,
 .card__inner:focus-visible .card__front::after{
   opacity:1;
   transform: translateY(-1px);
 }
-
-/* Pfeil ausblenden, wenn Karte gedreht ist */
 .card__inner[aria-expanded="true"] .card__front::after{
   display:none;
 }
 
-/* Motion-Respekt (falls du magst) */
-@media (prefers-reduced-motion: reduce){
-  .card__front::after{ transition:none; }
-}
-
-/* Rückseite */
+/* --- Rückseite --- */
 .card__back {
   transform: rotateY(180deg);
-  background: #f3edd8;                 /* Rückseite des Polaroids: gleiches Papier, etwas gealtert */
-  box-shadow: inset 0 0 0 6cqi #fcf9e6;/* heller Rand wie auf der Vorderseite */
+  background: var(--papier-alt);
+  box-shadow: inset 0 0 0 6cqi var(--papier);   /* heller Rand wie vorne */
   padding: 12px;
   overflow: auto;
   scrollbar-width: thin;
@@ -1075,25 +1079,16 @@ body.crew footer a{ color: var(--dunkelgrau2); }
 .card__back a:visited,
 .card__back a:hover,
 .card__back a:active,
-.card__back a:focus {
-  color: var(--dunkelgrau2) !important;
-  -webkit-text-fill-color: var(--dunkelgrau2) !important;
-  text-decoration: underline;
-}
-/* Tel-/Mail-/SMS-Auto-Erkennung iOS */
-.card__back a[href^="tel"],
+.card__back a:focus,
+.card__back a[href^="tel"],      /* Tel-/Mail-/SMS-Auto-Erkennung iOS */
 .card__back a[href^="mailto"],
 .card__back a[href^="sms"] {
   color: var(--dunkelgrau2) !important;
   -webkit-text-fill-color: var(--dunkelgrau2) !important;
   text-decoration: underline;
 }
-.steckbrief h3 {
-  font-size: 1.1rem;     /* etwas größer */
-  margin: 0 0 0.8em 0;
-}
 
-/* Steckbrief auf der Kartenrückseite: kein grüner Kasten, Name wie vorne */
+/* Steckbrief auf der Rückseite: kein grüner Kasten, Name wie vorne */
 .card__back .steckbrief{
   background: transparent;
   margin: 0;
@@ -1103,75 +1098,49 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.35rem;
   padding-bottom: .3em;
-  border-bottom: 2px solid #a01818;    /* Akzent im Rot der Pins */
+  border-bottom: 2px solid var(--akzent-rot);
 }
 
-.steckbrief p {
-  margin: 0 0 0.7em 0;      /* Abstand zwischen Absätzen */
-  font-size: 0.95rem;
-  /* text-indent: -0.8em;      erste Zeile ohne Einzug */
-  /* padding-left: 0.8em;      zweite Zeile leicht eingerückt */
-  line-height: 1.5;
-  text-align: left;
-}
-
-.steckbrief strong {
-  font-weight: 600;
-}
-
-/* Flip an/aus */
-.card__inner[aria-expanded="true"]{ transform:rotateY(180deg); }
-
-
 
 /* ======================================================================= */
-/* === MEDIA QUERIES ===================================================== */
+/* === 3. MEDIA QUERIES ================================================== */
+/* Reihenfolge ist wichtig: von breit nach schmal.                         */
 /* ======================================================================= */
 
-/* ======================================================================= */
-/* === Large Tablet (1024px < x ≤ 1200px) ================================ */
-/* ======================================================================= */
+/* ----------------------------------------------------------------------- */
+/* --- bis 1200px -------------------------------------------------------- */
+/* ----------------------------------------------------------------------- */
 @media (max-width:1200px){
+  /* Startseite + Jakemosphere */
   body.home{ --side-scale: .9; }
   body.home .stage{
     grid-template-columns:
-      clamp(110px, 14.5vw, 200px)   /* links schmaler */
-      minmax(520px, 1fr)            /* intro */
-      clamp(110px, 14.5vw, 200px);  /* rechts schmaler */
-    column-gap: clamp(14px, 2.4vw, 28px); /* engerer Abstand */
+      clamp(110px, 14.5vw, 200px)
+      minmax(520px, 1fr)
+      clamp(110px, 14.5vw, 200px);
+    column-gap: clamp(14px, 2.4vw, 28px);
   }
 }
 
-/* ======================================================================= */
-/* === Tablet (768px ≤ x ≤ 1024px) ======================================= */
-/* ======================================================================= */
+/* ----------------------------------------------------------------------- */
+/* --- Tablet 768–1024px ------------------------------------------------- */
+/* ----------------------------------------------------------------------- */
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* ====================== */
-  /* HOME / INDEX (Tablet)  */
-  /* ====================== */
-  /* weniger Außenabstand, etwas kleinere Seitenspalten + Fotos */
+  /* Startseite + Jakemosphere */
   body.home {
-    --pad: clamp(10px, 2.2vw, 18px); /* Seitenrand kleiner */
+    --pad: clamp(10px, 2.2vw, 18px);
     --side-scale: 0.60;              /* Fotos schrumpfen, damit sie nicht in den Text ragen */
   }
-
-  /* schmalere Seitenspalten, mehr Platz für die Mitte */
   body.home .stage{
     grid-template-columns:
-      clamp(80px, 11vw, 130px)    /* links */
-      1fr                         /* intro */
-      clamp(80px, 11vw, 130px);   /* rechts */
+      clamp(80px, 11vw, 130px)
+      1fr
+      clamp(80px, 11vw, 130px);
     column-gap: clamp(18px, 3vw, 32px);
   }
+  body.home .intro p{ max-width: 42ch; }
 
-  /* Textblock etwas schmaler, damit die Zeilenlänge schön bleibt */
-  body.home .intro p{
-    max-width: 42ch;
-  }
-
-  /* ====================== */
-  /* Album (Tablet) ======= */
-  /* ====================== */
+  /* Album */
   .container.album-layout{
     flex-direction: column;
     gap: 24px;
@@ -1179,7 +1148,6 @@ body.crew footer a{ color: var(--dunkelgrau2); }
     max-width: 100%;
   }
   .left, .right{ flex: 1 0 100%; }
-
   .album-header{
     height: auto;
     overflow: hidden;
@@ -1191,9 +1159,7 @@ body.crew footer a{ color: var(--dunkelgrau2); }
     object-fit: cover;
   }
 
-  /* ====================== */
-  /* Bücher (Tablet) ====== */
-  /* ====================== */
+  /* Bücher */
   .book-hero{
     min-height: 240px;
     background-position: center;
@@ -1201,28 +1167,25 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   }
   .book-hero-content{ padding: 0 16px; }
 
-  /* ====================== */
-  /* Interview (Tablet) === */
-  /* ====================== */
+  /* Interview */
   .float-image{
     float: left;
     width: 280px;
     margin: 0 16px 16px 0;
   }
 
-  /* ====================== */
-  /* Kontakt (Tablet) ===== */
-  /* ====================== */
+  /* Kontakt */
   .kontakt-hero{
     min-height: 320px;
     background-position: center;
   }
 }
 
-/* ======================================================================= */
-/* === Small Tablet (768px < x ≤ 980px) ================================== */
-/* ======================================================================= */
+/* ----------------------------------------------------------------------- */
+/* --- bis 980px --------------------------------------------------------- */
+/* ----------------------------------------------------------------------- */
 @media (max-width:980px){
+  /* Startseite + Jakemosphere */
   body.home{ --side-scale: .75; }
   body.home .stage{
     grid-template-columns:
@@ -1232,26 +1195,41 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   }
 }
 
-/* ======================================================================= */
-/* === Mobil (420 < x <= 768px) ========================================== */
-/* ======================================================================= */
+/* ----------------------------------------------------------------------- */
+/* --- bis 900px --------------------------------------------------------- */
+/* ----------------------------------------------------------------------- */
+@media (max-width: 900px){
+  /* Jakemosphere-Bücher: Bild bleibt komplett, Text steht darunter auf der Wand */
+  .jm-hero__text{
+    position: static;
+    transform: rotate(-3deg);
+    width: auto;
+    padding: 18px 16px 0;
+  }
+  .jm-hero__text h1{ font-size: clamp(34px, 10vw, 52px); }
+  .jm-hero__text h2{ font-size: clamp(20px, 5.5vw, 26px); max-width: 28ch; margin: 0 auto; }
+  body.jm-books .home-link{ top: 6px; right: 10px; font-size: .9em; }
+}
+
+/* ----------------------------------------------------------------------- */
+/* --- Mobil bis 768px --------------------------------------------------- */
+/* ----------------------------------------------------------------------- */
 @media (max-width:768px){
 
-  /* Ziegelkacheln auf dem Handy etwas kleiner */
+  /* Allgemein */
   body.home,
   body.home.jakemosphere,
-  body.crew{ background-size: 450px auto; }
-  /* allgemeine Container etwas kompakter */
+  body.crew{ background-size: 450px auto; }   /* Ziegel etwas kleiner */
   .container{
     margin: 1em auto;
     padding: 0.75em;
   }
+  footer{                                      /* Footer niemals überdecken */
+    position: relative;
+    z-index: 1;
+  }
 
-  /* ===================== */
-  /* HOME / INDEX (mobil)  */
-  /* ===================== */
-
-  /* Stage auf 1 Spalte stapeln */
+  /* Startseite + Jakemosphere: alles in einer Spalte */
   body.home .stage{
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -1260,14 +1238,12 @@ body.crew footer a{ color: var(--dunkelgrau2); }
       "right";
     row-gap: clamp(10px, 2.8vw, 18px);
   }
-
-  /* Foto-Stapel wieder relativ + überlappend */
   body.home .stack{
-    position: relative;          /* erlaubt absolute Kind-Positionen */
-    min-height: 420px;           /* kompakte, aber überlappende Höhe */
+    position: relative;
+    min-height: 420px;
   }
   body.home .stack .photo{
-    position: absolute;          /* statt static → Überlagerung */
+    position: absolute;
     width: clamp(140px, 65vw, 220px);
     transition: transform .25s ease;
   }
@@ -1279,36 +1255,26 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   body.home .right .p5{ top: 135px; right: 10%; --rot: -3deg; z-index:2; }
   body.home .right .p6{ top: 255px; right:  6%; --rot:  6deg; z-index:3; }
 
-  /* Jakemosphere (mobil): rechte Spalte hat 4 Bilder */
+  /* Jakemosphere: rechte Spalte hat 4 Bilder */
   body.jakemosphere .right.stack{ min-height: 540px; }
   body.home .right .p7{ top: 380px; right: 14%; --rot: -4deg; z-index:4; }
 
-  /* ===================== */
-  /* ALBUM (mobil)         */
-  /* ===================== */
+  /* Album */
   .container.album-layout{
     flex-direction: column;
     gap: 16px;
     padding: 18px 12px;
   }
   .left, .right{
-    flex: 1 0 100%;           /* volle Breite */
-    min-width: auto;          /* fix für schmale Screens */
+    flex: 1 0 100%;
+    min-width: auto;
   }
   .track{ padding: 6px 0; }
   .lyrics{ margin: 8px 0 14px 0; }
+  .album-header img{ object-fit: contain; }
 
-  /* Header-Bild auf Mobil nicht croppen, komplett zeigen */
-  .album-header img{
-    object-fit: contain;
-  }
-
-  /* ===================== */
-  /* BÜCHER (mobil)        */
-  /* ===================== */
-  .book{
-    padding: .9em;
-  }
+  /* Bücher (+ Jakemosphere-Bücher) */
+  .book{ padding: .9em; }
   .book img{
     float: none;
     display: block;
@@ -1321,19 +1287,21 @@ body.crew footer a{ color: var(--dunkelgrau2); }
     text-align: center;
     background-position: center;
   }
-  .book-hero-content h1{
-    font-size: clamp(20px, 6.4vw, 28px);
+  .book-hero-content h1{ font-size: clamp(20px, 6.4vw, 28px); }
+  .book-hero-content h2{ font-size: clamp(14px, 3.8vw, 18px); }
+
+  /* Jakemosphere-Bücher: Mockups zentriert */
+  body.jm-books .book img[src*="MockUp_JakeCity"]{
+    width: clamp(140px, 48vw, 200px);
+    margin: 0 auto 12px;
   }
-  .book-hero-content h2{
-    font-size: clamp(14px, 3.8vw, 18px);
+  body.jm-books .book img[src*="MockUp_EchoEmber"]{
+    width: clamp(220px, 78vw, 320px);
+    margin: calc(clamp(220px, 78vw, 320px) * -0.13) auto 4px;
+    transform: translateX(6%);   /* Motiv sitzt im Bild leicht links */
   }
 
-  body.jm-books .book img.book-mockup--jake{ width: clamp(140px, 45vw, 200px); }
-  body.jm-books .book img.book-mockup--echo{ width: clamp(200px, 70vw, 300px); }
-
-  /* ===================== */
-  /* INTERVIEW (mobil)     */
-  /* ===================== */
+  /* Interview */
   .float-image{
     float: none;
     width: min(100%, 320px);
@@ -1341,23 +1309,11 @@ body.crew footer a{ color: var(--dunkelgrau2); }
     margin: 0 auto 16px auto;
   }
 
-  /* ===================== */
-  /* KONTAKT (mobil)       */
-  /* ===================== */
+  /* Kontakt */
   .kontakt-hero-content h1 { font-size: clamp(20px, 8vw, 34px); }
   .kontakt-hero-content h2 { font-size: clamp(15px, 5vw, 20px); }
 
-  /* Footer niemals überdecken */
-  footer{
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ===================== */
-  /* Meet the cast (mobil) */
-  /* ===================== */
-
-  /* Karten breiter, keine Überlappung */
+  /* Meet the Cast: Karten breiter, eine Spalte, weniger Schieflage */
   .board{
     --card-w: 100%;
     padding: clamp(4px, 1.8vw, 10px);
@@ -1378,21 +1334,21 @@ body.crew footer a{ color: var(--dunkelgrau2); }
   .rot-3  { transform: rotate( 0.8deg); }
   .pin{ top: -8px; }
   .card__front::after{ width: 22px; height: 22px; }
-
 }
 
-/* ======================================================================= */
-/* === Old phones (<=420px) ============================================== */
-/* ======================================================================= */
+/* ----------------------------------------------------------------------- */
+/* --- Alte Handys bis 420px --------------------------------------------- */
+/* ----------------------------------------------------------------------- */
 @media (max-width: 420px){
   .crew-header{ flex-wrap: wrap; }
   .crew-filters{ width: 100%; justify-content: flex-start; }
 }
 
-/* ======================================================================= */
-/* === Bewegungspräferenz ================================================ */
-/* ======================================================================= */
+/* ----------------------------------------------------------------------- */
+/* --- Bewegung reduzieren (Systemeinstellung) --------------------------- */
+/* ----------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce){
   body.home .photo{ transition:none }
   body.home .photo:hover{ transform: rotate(var(--rot)); }
+  .card__front::after{ transition:none; }
 }
