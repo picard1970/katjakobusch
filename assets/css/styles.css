@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 /* =======================================================================
@@ -849,6 +850,43 @@ body.elodie-lp .wb-page .chapter-ornament{
   text-align: left;
 }
 .steckbrief strong{ font-weight: 600; }
+
+/* ueberkatja.html im neuen Look: grüne Ziegelwand, Text auf Papier */
+body.ueber-katja{
+  background: var(--wand-gruen);
+  background-size: var(--wand-groesse);
+  color: var(--dunkelgrau2);
+}
+body.ueber-katja .home-link{ color: var(--dunkelgrau2); }
+body.ueber-katja .home-link:hover{ color: #000; }
+body.ueber-katja footer,
+body.ueber-katja footer a{ color: var(--dunkelgrau2); }
+body.ueber-katja .katja-container{
+  box-sizing: border-box;
+  max-width: min(1100px, calc(100% - 24px));
+  margin: clamp(40px, 5vw, 56px) auto 2.5em;
+  padding: clamp(1.2em, 3vw, 2.2em);
+  background: var(--papier);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2), 0 10px 24px rgba(0,0,0,.18);
+}
+body.ueber-katja .portrait{ border-radius: 4px; box-shadow: 0 3px 8px rgba(0,0,0,.25); }
+body.ueber-katja .steckbrief{
+  background: var(--papier-alt);
+  border-top: 2px solid var(--akzent-rot);
+  border-radius: 0 0 4px 4px;
+}
+body.ueber-katja h1{
+  font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
+  font-weight: 400;
+  font-size: clamp(1.9em, 4vw, 2.6em);
+  line-height: 1.15;
+  margin-bottom: .2em;
+  padding-bottom: .2em;
+  border-bottom: 2px solid var(--akzent-rot);
+}
+body.ueber-katja h2{ margin-top: .8em; }
+body.ueber-katja .text-content a{ color: var(--akzent-rot); }
 
 
 /* ======================================================================= */
@@ -1713,6 +1751,10 @@ body.museum footer a{ color: var(--dunkelgrau2); }
   .rot-3  { transform: rotate( 0.8deg); }
   .pin{ top: -8px; }
   .card__front::after{ width: 22px; height: 22px; }
+
+  /* Über Katja: Foto + Steckbrief mittig über dem Text */
+  body.ueber-katja .sidebar{ margin: 0 auto; }
+  body.ueber-katja .text-content{ min-width: 0; }
 
   /* Museum: eine Spalte */
   .museum-wand{
