@@ -686,17 +686,18 @@ body.jm-books.elodie-books{
 
 /* Kopftext mittig auf der freien Tapetenfläche zwischen Tisch und Bildern */
 body.elodie-books .jm-hero__text{
-  top: 38%;                            /* Bild ist nach unten verlängert (1500×404) */
-  left: 55.5%;
+  top: 50%;                            /* mittig zwischen Schreibmaschine und Porträts */
+  left: 55%;
   transform: translate(-50%, -50%);
-  width: 34cqi;
+  width: 40cqi;
   color: var(--dunkelgrau2);
   text-shadow: 0 0 .5em rgba(255,255,255,.5);
 }
 body.elodie-books .jm-hero__text h1{
   font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
-  font-size: 4.4cqi;
-  line-height: 1.1;
+  font-size: 3.3cqi;                   /* passt auch für einen ganzen Satz in den Kopf */
+  line-height: 1.12;
+  text-wrap: balance;
 }
 body.elodie-books .jm-hero__text h2{
   font-family: Georgia, "Times New Roman", serif;
@@ -1539,7 +1540,7 @@ body.museum footer a{ color: var(--dunkelgrau2); }
 
   /* Elodie-Buch: Text unter dem Bild, gerade statt versetzt */
   body.elodie-books .jm-hero__text{ transform: none; width: auto; }
-  body.elodie-books .jm-hero__text h1{ font-size: clamp(32px, 9vw, 48px); }
+  body.elodie-books .jm-hero__text h1{ font-size: clamp(24px, 6.5vw, 40px); }
   body.elodie-books .jm-hero__text h2{ font-size: clamp(17px, 4.5vw, 22px); }
 }
 
