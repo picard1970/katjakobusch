@@ -323,6 +323,8 @@ body.jakemosphere .right .p7{ /* I'll be back */
 }
 
 
+/* Jakes Unterschrift mittig unter dem Text */
+body.jakemosphere .intro p.signatur{ text-align: center; }
 /* Jake unterschreibt mit Pinselschrift (wie »I'll be back«) */
 body.jakemosphere .intro .signatur span{
   font-family: "Caveat Brush", "Caveat", "Segoe Print", cursive;
