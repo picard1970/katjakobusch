@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museum Klüpfenhagen – Elodies Geheimnis – Katja Kobusch</title>
+  <meta name="description" content="Museum Klüpfenhagen: Gemälde aus »Elodies Geheimnis« von Katja Kobusch – zum Ansehen und Heranzoomen.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=142">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="museum">
+  <a href="elodies_geheimnis.html" class="home-link">Zurück</a>
+
+  <header class="museum-kopf">
+    <h1>Museum Klüpfenhagen</h1>
+    <p>Tritt näher! Ein Klick auf ein Gemälde, und du kannst es aus der Nähe betrachten.</p>
+  </header>
+
+  <main class="museum-wand">
+    <!-- Bilder: data-full = große Version für die Zoom-Ansicht.
+         Kommt später eine noch größere Datei, einfach die *-gross.webp ersetzen. -->
+
+    <figure class="museum-bild">
+      <button type="button" class="museum-bild__btn" data-full="assets/images/museum/daemmerung-gross.webp"
+              data-goatcounter-click="museum-daemmerung" aria-label="Dämmerung in Klüpfenhagen vergrößern">
+        <img src="assets/images/museum/daemmerung.webp" width="900" height="749"
+             alt="Gemälde »Dämmerung in Klüpfenhagen«: Blick durch ein erleuchtetes Fenster auf eine Familie am Esstisch">
+      </button>
+    </figure>
+
+    <figure class="museum-bild">
+      <button type="button" class="museum-bild__btn" data-full="assets/images/museum/sonntagsmomente-gross.webp"
+              data-goatcounter-click="museum-sonntagsmomente" aria-label="Sonntagsmomente vergrößern">
+        <img src="assets/images/museum/sonntagsmomente.webp" width="900" height="749"
+             alt="Gemälde »Sonntagsmomente«: Eine Frau unter einem Baum sieht zwei Mädchen beim Spielen mit einem Hund zu" loading="lazy">
+      </button>
+    </figure>
+
+    <figure class="museum-bild">
+      <button type="button" class="museum-bild__btn" data-full="assets/images/museum/stille-gross.webp"
+              data-goatcounter-click="museum-stille" aria-label="Stille vergrößern">
+        <img src="assets/images/museum/stille.webp" width="900" height="749"
+             alt="Gemälde »Stille«: Eine junge Frau auf einer Bank unter einem blühenden Baum blickt auf einen See" loading="lazy">
+      </button>
+    </figure>
+
+    <figure class="museum-bild">
+      <button type="button" class="museum-bild__btn" data-full="assets/images/museum/truegerische-idylle-gross.webp"
+              data-goatcounter-click="museum-truegerische-idylle" aria-label="Trügerische Idylle vergrößern">
+        <img src="assets/images/museum/truegerische-idylle.webp" width="900" height="749"
+             alt="Gemälde »Trügerische Idylle«: Blick aus einem offenen Fenster auf einen Garten und einen Mann auf einem Hügel" loading="lazy">
+      </button>
+    </figure>
+  </main>
+
+  <!-- Zoom-Ansicht -->
+  <dialog class="museum-zoom" aria-label="Gemälde vergrößert">
+    <div class="museum-zoom__buehne">
+      <img class="museum-zoom__bild" alt="">
+    </div>
+    <button type="button" class="museum-zoom__btn museum-zoom__zu" aria-label="Schließen">&times;</button>
+    <button type="button" class="museum-zoom__btn museum-zoom__vor" aria-label="Vorheriges Bild">&#8249;</button>
+    <button type="button" class="museum-zoom__btn museum-zoom__nach" aria-label="Nächstes Bild">&#8250;</button>
+    <div class="museum-zoom__leiste">
+      <button type="button" class="museum-zoom__btn" data-zoom="out" aria-label="Verkleinern">&minus;</button>
+      <button type="button" class="museum-zoom__btn" data-zoom="reset" aria-label="Ganzes Bild">⤢</button>
+      <button type="button" class="museum-zoom__btn" data-zoom="in" aria-label="Vergrößern">+</button>
+    </div>
+    <p class="museum-zoom__hinweis">Mausrad, Doppelklick oder zwei Finger zum Zoomen – ziehen zum Verschieben</p>
+  </dialog>
+
+  <footer>
+    <p>
+      <a href="index.html">Startseite</a> |
+      <a href="impressum.html">Impressum</a> |
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </footer>
+
+  <script>
+  (function () {
+    var btns   = Array.prototype.slice.call(document.querySelectorAll('.museum-bild__btn'));
+    var dlg    = document.querySelector('.museum-zoom');
+    var stage  = dlg.querySelector('.museum-zoom__buehne');
+    var img    = dlg.querySelector('.museum-zoom__bild');
+    if (!dlg.showModal) { return; }            // sehr alte Browser: Bilder bleiben einfach an der Wand
+
+    var idx = 0, s = 1, tx = 0, ty = 0, maxS = 4;
+    var pointers = new Map(), start = null, moved = false, lastTap = 0;
+
+    function apply(anim) {
+      img.style.transition = anim ? 'transform .25s ease' : 'none';
+      img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+      img.style.cursor = s > 1 ? 'grab' : 'default';
+    }
+    function clamp() {
+      var w = img.offsetWidth * s, h = img.offsetHeight * s;
+      var mx = Math.max(0, (w - stage.clientWidth) / 2);
+      var my = Math.max(0, (h - stage.clientHeight) / 2);
+      tx = Math.min(mx, Math.max(-mx, tx));
+      ty = Math.min(my, Math.max(-my, ty));
+    }
+    // auf Punkt (px,py) im Fenster zoomen, der Punkt bleibt stehen
+    function zoomTo(ns, px, py, anim) {
+      ns = Math.min(maxS, Math.max(1, ns));
+      var r = stage.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      if (px == null) { px = cx; py = cy; }
+      var k = ns / s;
+      tx = (px - cx) - k * (px - cx - tx);
+      ty = (py - cy) - k * (py - cy - ty);
+      s = ns;
+      if (s === 1) { tx = 0; ty = 0; }
+      clamp(); apply(anim);
+    }
+    function reset() { s = 1; tx = 0; ty = 0; apply(false); }
+
+    function show(i) {
+      idx = (i + btns.length) % btns.length;
+      var b = btns[idx], small = b.querySelector('img');
+      reset();
+      img.src = small.currentSrc || small.src;   // sofort die kleine (schon geladene) Version
+      img.alt = small.alt;
+      var full = new Image();
+      full.onload = function () {
+        if (btns[idx] !== b) return;
+        img.src = full.src;
+        // so weit zoomen, bis ein Bildpixel einem Bildschirmpixel entspricht – mindestens 3-fach
+        maxS = Math.max(3, full.naturalWidth / img.offsetWidth);
+      };
+      full.src = b.getAttribute('data-full');
+    }
+
+    btns.forEach(function (b, i) {
+      b.addEventListener('click', function () { show(i); dlg.showModal(); });
+    });
+    dlg.querySelector('.museum-zoom__zu').addEventListener('click', function () { dlg.close(); });
+    dlg.querySelector('.museum-zoom__vor').addEventListener('click', function () { show(idx - 1); });
+    dlg.querySelector('.museum-zoom__nach').addEventListener('click', function () { show(idx + 1); });
+    dlg.querySelector('[data-zoom="in"]').addEventListener('click', function () { zoomTo(s * 1.6, null, null, true); });
+    dlg.querySelector('[data-zoom="out"]').addEventListener('click', function () { zoomTo(s / 1.6, null, null, true); });
+    dlg.querySelector('[data-zoom="reset"]').addEventListener('click', function () { zoomTo(1, null, null, true); });
+    dlg.addEventListener('close', function () { img.removeAttribute('src'); });
+
+    // Mausrad / Trackpad
+    stage.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      zoomTo(s * Math.exp(-e.deltaY * 0.0025), e.clientX, e.clientY, false);
+    }, { passive: false });
+
+    // Doppelklick (Maus)
+    img.addEventListener('dblclick', function (e) {
+      zoomTo(s > 1.05 ? 1 : 2.5, e.clientX, e.clientY, true);
+    });
+
+    // Ziehen, Pinch, Doppel-Tipp
+    stage.addEventListener('pointerdown', function (e) {
+      stage.setPointerCapture(e.pointerId);
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      moved = false;
+      start = snapshot();
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (!pointers.has(e.pointerId)) return;
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      var now = snapshot();
+      if (!start || now.n !== start.n) { start = now; return; }
+      if (Math.abs(now.mx - start.mx) + Math.abs(now.my - start.my) > 4 || now.n > 1) moved = true;
+      if (now.n === 2 && start.d > 0) {
+        var ns = Math.min(maxS, Math.max(1, start.s * now.d / start.d));
+        s = start.s; tx = start.tx; ty = start.ty;
+        zoomTo(ns, start.mx, start.my, false);
+        tx += now.mx - start.mx; ty += now.my - start.my; clamp(); apply(false);
+      } else if (now.n === 1 && s > 1) {
+        tx = start.tx + (now.mx - start.mx);
+        ty = start.ty + (now.my - start.my);
+        clamp(); apply(false);
+        img.style.cursor = 'grabbing';
+      }
+    });
+    function up(e) {
+      if (!pointers.has(e.pointerId)) return;
+      pointers.delete(e.pointerId);
+      start = pointers.size ? snapshot() : null;
+      if (pointers.size || moved) return;
+      var t = Date.now();
+      if (e.pointerType !== 'mouse' && t - lastTap < 300) {     // Doppel-Tipp
+        zoomTo(s > 1.05 ? 1 : 2.5, e.clientX, e.clientY, true); lastTap = 0; return;
+      }
+      lastTap = t;
+      // Tipp neben das Bild schließt (nur wenn nicht gezoomt)
+      if (e.target === stage && s === 1) dlg.close();
+    }
+    stage.addEventListener('pointerup', up);
+    stage.addEventListener('pointercancel', up);
+
+    function snapshot() {
+      var p = Array.from(pointers.values()), n = p.length;
+      var mx = 0, my = 0;
+      p.forEach(function (q) { mx += q.x; my += q.y; });
+      mx /= n || 1; my /= n || 1;
+      var d = n > 1 ? Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y) : 0;
+      return { n: n, mx: mx, my: my, d: d, s: s, tx: tx, ty: ty };
+    }
+
+    // Tastatur
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') show(idx + 1);
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === '+' || e.key === '=') zoomTo(s * 1.6, null, null, true);
+      else if (e.key === '-') zoomTo(s / 1.6, null, null, true);
+      else if (e.key === '0') zoomTo(1, null, null, true);
+    });
+    window.addEventListener('resize', function () { if (dlg.open) { clamp(); apply(false); } });
+  })();
+  </script>
+</body>
+</html>
