@@ -1334,15 +1334,15 @@ body.museum footer a{ color: var(--dunkelgrau2); }
   content: "";
   position: absolute;
   left: 18%; right: 18%;
-  bottom: calc(100% - 3%);
-  height: 70px;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 70' preserveAspectRatio='none'><path d='M0 70 L50 4 L100 70' fill='none' stroke='%233b2c1c' stroke-width='1.4' vector-effect='non-scaling-stroke' opacity='.75'/></svg>") center/100% 100% no-repeat;
+  top: -64px;                          /* Spitze der Schnur = Nagel */
+  height: 90px;                        /* läuft hinter den Rahmen */
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90' preserveAspectRatio='none'><path d='M0 90 L50 0 L100 90' fill='none' stroke='%233b2c1c' stroke-width='1.4' vector-effect='non-scaling-stroke' opacity='.75'/></svg>") center/100% 100% no-repeat;
   pointer-events: none;
 }
 .museum-bild::after{
   content: "";
   position: absolute;
-  left: 50%; top: -76px;
+  left: 50%; top: -72px;               /* Nagel sitzt auf der Schnurspitze */
   width: 14px; height: 14px;
   margin-left: -7px;
   border-radius: 50%;
@@ -1357,6 +1357,8 @@ body.museum footer a{ color: var(--dunkelgrau2); }
   border: 0;
   background: none;
   cursor: zoom-in;
+  position: relative;                  /* Rahmen liegt über der Schnur */
+  z-index: 1;
   transition: transform .3s ease;
 }
 .museum-bild__btn img{
