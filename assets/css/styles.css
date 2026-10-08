@@ -563,6 +563,51 @@ body.album-page > footer{ margin-top: auto; }
 }
 .play-button:hover{ transform: scale(1.2); }
 
+/* Neuer Look (wie Jakemosphere): türkise Ziegelwand, Album auf Papierkarte */
+body.album-page{
+  background: var(--wand-tuerkis);
+  background-size: var(--wand-groesse);
+  color: var(--dunkelgrau2);
+}
+body.album-page footer,
+body.album-page footer a{ color: var(--dunkelgrau2); }
+.album-header{ box-shadow: 0 4px 12px rgba(0,0,0,.25); }
+
+body.album-page .container.album-layout{
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: auto;
+  max-width: min(1100px, calc(100% - 24px));
+  margin: clamp(20px, 3vw, 36px) auto 2.5em;
+  padding: clamp(1.2em, 3vw, 2.2em);
+  background: var(--papier);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2), 0 10px 24px rgba(0,0,0,.18);
+  font-family: Georgia, "Times New Roman", serif;
+}
+body.album-page .album-title{
+  padding-bottom: .25em;
+  border-bottom: 2px solid var(--akzent-rot);
+  line-height: 1.15;
+}
+body.album-page .artist{ color: var(--dunkelgrau2); }
+body.album-page .artist.credits{ color: var(--grau); }
+body.album-page .platforms a{ color: var(--dunkelgrau2); }
+body.album-page .platforms a:hover{ background-color: var(--papier-alt); }
+
+body.album-page .track{ border-bottom-color: #d8cfb4; }   /* warmes Beige statt Grau */
+body.album-page .track-subline,
+body.album-page .track-time{ color: var(--grau); }
+body.album-page .track.active-track{
+  outline: 2px solid var(--akzent-rot);
+  background: var(--papier-alt);
+}
+body.album-page .lyrics{
+  background-color: var(--papier-alt);
+  border-left-color: var(--akzent-rot);
+  padding-right: 10px;
+}
+
 
 /* ======================================================================= */
 /* === 2.5 BÜCHER (buecher.html) ========================================= */
