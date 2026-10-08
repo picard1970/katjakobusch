@@ -360,6 +360,15 @@ body.elodie .intro p{
   margin: .7em auto 0;
   font-size: .9em;                     /* etwas kleiner als auf der Jakemosphere */
 }
+/* Überschrift wie mit alter Schreibmaschine getippt (wie elodie_book.html) */
+body.elodie .intro h1{
+  font-family: "Special Elite","Courier New",Courier,monospace;
+  font-size: min(2.1em, 6.8vw);               /* auf dem Handy passt »Ein herzliches Hallo« in eine Zeile */
+  line-height: 1.25;
+  letter-spacing: .02em;
+  color: #2a2420;                              /* Farbband-Schwarz, leicht warm */
+  text-shadow: 0 0 1px rgba(42,36,32,.35);
+}
 body.elodie .intro h1 + p{ margin-top:.9em; }
 
 /* links */
