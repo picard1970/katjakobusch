@@ -37,23 +37,24 @@ $_SESSION["captcha_result"] = $a + $b;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Schreib mir – Katja Kobusch</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=147">
   <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="kontakt">
   <div class="kontakt-hero">
     <a href="index.html" class="home-link">Home</a>
-    <div class="kontakt-hero-content">
-      <h1>Schreib mir!</h1>
-      <h2>
-        Du hast Fragen, Feedback oder einfach Lust, mir zu schreiben?<br>
-        Ich freue mich auf deine Post. 💌
-      </h2>
-    </div>
+    <img class="kontakt-hero__img" src="assets/images/schreib-uns-header.webp"
+         alt="Vier Figuren mit Sprechblasen: »Jake! Du bist doch kein Rockstar!« – »Ich freue mich auf eure Fanpost.« – »Vielleicht wollen die Leute ja auch uns schreiben.« – »Du könntest mir schreiben.«"
+         width="2172" height="600">
   </div>
-
   <div class="kontakt-container">
+    <h1>Schreib uns!</h1>
+    <p class="kontakt-intro">
+      Du hast Fragen, Feedback oder einfach Lust, uns zu schreiben?<br>
+      Wir freuen uns auf deine Post. 💌
+    </p>
+
     <?php if ($success): ?>
       <p class="message success"><?php echo $success; ?></p>
     <?php elseif ($error): ?>
@@ -78,3 +79,4 @@ $_SESSION["captcha_result"] = $a + $b;
   </footer>
 </body>
 </html>
+
