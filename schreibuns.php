@@ -3,6 +3,19 @@ session_start();
 $success = "";
 $error = "";
 
+// Zurück-Link: merkt sich, von welcher eigenen Seite der Besucher kam
+// (z. B. jakemosphere.html oder elodies_geheimnis.html). Bleibt auch nach
+// dem Absenden des Formulars erhalten. Von außen oder unbekannt -> index.html
+$ref = $_SERVER["HTTP_REFERER"] ?? "";
+$host = strtolower(explode(":", $_SERVER["HTTP_HOST"] ?? "")[0]);
+if ($ref !== "" && strtolower(parse_url($ref, PHP_URL_HOST) ?? "") === $host) {
+  $seite = basename(parse_url($ref, PHP_URL_PATH) ?? "");
+  if (preg_match('/^[A-Za-z0-9_-]+\.html$/', $seite)) {
+    $_SESSION["zurueck"] = $seite;
+  }
+}
+$zurueck = $_SESSION["zurueck"] ?? "index.html";
+
 // Formularverarbeitung
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = htmlspecialchars($_POST["name"]);
@@ -43,7 +56,7 @@ $_SESSION["captcha_result"] = $a + $b;
 </head>
 <body class="kontakt">
   <div class="kontakt-hero">
-    <a href="index.html" class="home-link">Home</a>
+    <a href="<?php echo htmlspecialchars($zurueck); ?>" class="home-link">Zurück</a>
     <img class="kontakt-hero__img" src="assets/images/schreib-uns-header.webp"
          alt="Vier Figuren mit Sprechblasen: »Jake! Du bist doch kein Rockstar!« – »Ich freue mich auf eure Fanpost.« – »Vielleicht wollen die Leute ja auch uns schreiben.« – »Du könntest mir schreiben.«"
          width="2172" height="600">
@@ -79,4 +92,3 @@ $_SESSION["captcha_result"] = $a + $b;
   </footer>
 </body>
 </html>
-
