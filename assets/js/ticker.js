@@ -110,7 +110,6 @@
     var zu = box.querySelector('.ticker__zu');
     if (zu) zu.addEventListener('click', function () {
       box.hidden = true;
-      document.body.classList.remove('hat-ticker');
       if (takt) clearInterval(takt);
       try { localStorage.setItem(ZU_KEY, kennung); } catch (e) {}
     });
@@ -124,7 +123,6 @@
     }
 
     box.hidden = false;
-    document.body.classList.add('hat-ticker');
     zeigen();
     if (meldungen.length < 2) return;
 
