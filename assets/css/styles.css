@@ -936,6 +936,7 @@ body.kontakt footer a{ color: var(--dunkelgrau2); }
 /* ======================================================================= */
 
 .float-image{ float:left; width:300px; margin:0 20px 20px 0; border-radius:4px; }
+.float-image--rechts{ float:right; margin:0 0 20px 20px; }      /* zweites Bild, von rechts eingeschoben */
 .interview-container{
   display:flex; flex-wrap:wrap; gap:30px; align-items:flex-start;
   max-width:1000px; margin:40px auto; padding:20px;
@@ -1521,6 +1522,7 @@ body.museum footer a{ color: var(--dunkelgrau2); }
     width: 280px;
     margin: 0 16px 16px 0;
   }
+  .float-image--rechts{ float: right; margin: 0 0 16px 16px; }
 }
 
 /* ----------------------------------------------------------------------- */
