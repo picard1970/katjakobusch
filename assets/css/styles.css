@@ -83,6 +83,11 @@
   src:url("../fonts/caveat.woff2") format("woff2");
   font-weight:400 700; font-style:normal; font-display:swap;
 }
+@font-face{
+  font-family:"Special Elite";                 /* Schreibmaschine (Apache 2.0) */
+  src:url("../fonts/special-elite.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
 
 /* Reset + Basis */
 html, body { margin:0; padding:0; font-family: Arial, sans-serif; }
@@ -704,7 +709,11 @@ body.elodie-books .jm-hero__text{
   text-shadow: 0 0 .5em rgba(255,255,255,.5);
 }
 body.elodie-books .jm-hero__text h1{
-  font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
+  font-family: "Special Elite","Courier New",Courier,monospace;   /* wie mit alter Schreibmaschine getippt */
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: #2a2420;                              /* Farbband-Schwarz, leicht warm */
+  text-shadow: 0 0 1px rgba(42,36,32,.35), 0 0 .5em rgba(255,255,255,.5);
   font-size: 3.3cqi;                   /* passt auch für einen ganzen Satz in den Kopf */
   line-height: 1.12;
   text-wrap: balance;
