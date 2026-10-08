@@ -14,7 +14,7 @@
         2.8  Leseproben (wowBook)                 body.leseprobe
         2.9  Über Katja / Steckbrief
         2.10 Schreib uns (Kontakt)                body.kontakt
-        2.11 Interview
+        2.11 Interview                            body.elodie-interview, body.jake-interview
         2.12 Meet the Cast (meetthecrew.html, elodie_meet_the_cast.html)  body.crew
         2.13 Museum Klüpfenhagen (elodie_museum.html)  body.museum
    3. MEDIA QUERIES ..... von groß nach klein, darin nach Seiten sortiert
@@ -945,28 +945,39 @@ body.kontakt footer a{ color: var(--dunkelgrau2); }
 .interview-text{  flex:2 1 400px; }
 .interview-text p{ margin-bottom:1em; }
 
-/* Elodie-Interview: Tapete als Hintergrund, Text auf Papier */
+/* Interviews Elodie + Jake: Text auf Papier; Wand je nach Buch */
 body.elodie-interview{
   background: var(--wand-tapete);
   background-size: var(--tapete-groesse);
-  color: var(--dunkelgrau2);
 }
-body.elodie-interview .container{
+body.jake-interview{
+  background: var(--wand-tuerkis);       /* türkise Ziegelwand wie Jakemosphere */
+  background-size: var(--wand-groesse);
+}
+body.elodie-interview,
+body.jake-interview{ color: var(--dunkelgrau2); }
+body.elodie-interview .container,
+body.jake-interview .container{
   background: var(--papier);
   border-radius: 4px;
   padding: clamp(1.2em, 3vw, 2.2em);
   box-shadow: 0 2px 4px rgba(0,0,0,.2), 0 10px 24px rgba(0,0,0,.18);
 }
-body.elodie-interview h1{
+body.elodie-interview h1,
+body.jake-interview h1{
   font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
   font-weight: 400;
   font-size: clamp(1.7em, 3.6vw, 2.4em);
   line-height: 1.2;
 }
-body.elodie-interview .home-link{ color: var(--dunkelgrau2); }
+body.elodie-interview .home-link,
+body.jake-interview .home-link{ color: var(--dunkelgrau2); }
 body.elodie-interview footer,
-body.elodie-interview footer a{ color: var(--dunkelgrau2); }
-body.elodie-interview .float-image{ box-shadow: 0 3px 8px rgba(0,0,0,.25); }
+body.elodie-interview footer a,
+body.jake-interview footer,
+body.jake-interview footer a{ color: var(--dunkelgrau2); }
+body.elodie-interview .float-image,
+body.jake-interview .float-image{ box-shadow: 0 3px 8px rgba(0,0,0,.25); }
 
 
 /* ======================================================================= */
