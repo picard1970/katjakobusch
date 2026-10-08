@@ -563,6 +563,28 @@ body.album-page footer,
 body.album-page footer a{ color: var(--dunkelgrau2); }
 .album-header{ box-shadow: 0 4px 12px rgba(0,0,0,.25); }
 
+/* Albumtitel oben links im Header, in Jakes Handschrift */
+body.album-page .album-header{ position: relative; }
+.album-header__titel{
+  position: absolute;
+  top: 20%; left: 3.5%;
+  margin: 0;
+  color: #fff;
+  font-family: "Caveat Brush", cursive;
+  font-size: clamp(22px, 4.6vw, 72px);
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0,30,60,.55), 0 0 18px rgba(0,40,80,.45);
+  transform: rotate(-3deg);
+  transform-origin: left top;
+  pointer-events: none;
+}
+.album-header__titel span{
+  display: block;
+  margin: .15em 0 0 1.2em;
+  font-family: "Caveat", cursive;
+  font-size: .5em;
+}
+
 body.album-page .container.album-layout{
   box-sizing: border-box;
   flex: 0 0 auto;
