@@ -719,8 +719,8 @@ body.elodie-books .jm-hero__text h2{
 body.elodie-books .jm-hero__text h1::after,
 body.elodie-books .jm-hero__text h2::after{ content: none; }
 
-/* Text bleibt als Spalte neben dem Buchbild (fließt nicht darunter) */
-body.elodie-books .book-text{ overflow: hidden; }
+/* Vertriebshinweis über den Buttons */
+body.jm-books .book-text .vertrieb{ margin-bottom: 1em; }
 
 /* Buch-Mockup */
 body.jm-books .book img[src*="MockUp_Elodie"]{
