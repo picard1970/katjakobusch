@@ -1772,26 +1772,51 @@ body.museum footer a{ color: var(--dunkelgrau2); }
       "right";
     row-gap: clamp(10px, 2.8vw, 18px);
   }
+  /* Fotos: sauber untereinander statt übereinander gestapelt.
+     Jedes Bild behält eine eigene Breite (--mw), damit kleine Motive
+     (Brief, Teetasse) nicht riesig und große (Gitarre) nicht winzig werden. */
   body.home .stack{
-    position: relative;
-    min-height: 420px;
+    position: static;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(14px, 4vw, 24px);
   }
   body.home .stack .photo{
-    position: absolute;
-    width: clamp(140px, 65vw, 220px);
+    position: relative;
+    top: auto; left: auto; right: auto;
+    width: min(var(--mw, 220px), 78vw);
     transition: transform .25s ease;
   }
-  body.home .left .p1{ top:   0px; left: 12%; --rot: -4deg; z-index:1; }
-  body.home .left .p2{ top: 130px; left:  8%; --rot: 3deg; z-index:2; }
-  body.home .left .p3{ top: 245px; left:  4%; --rot: -6deg; z-index:3; }
+  /* leichte, abwechselnde Schieflage */
+  body.home .left .p1, body.home .right .p4{ --rot: -3deg; }
+  body.home .left .p2, body.home .right .p5{ --rot:  3deg; }
+  body.home .left .p3, body.home .right .p6{ --rot: -2deg; }
+  body.home .right .p7{ --rot: 2deg; }
 
-  body.home .right .p4{ top:   0px; right: 12%; --rot:  5deg; z-index:1; }
-  body.home .right .p5{ top: 135px; right: 10%; --rot: -3deg; z-index:2; }
-  body.home .right .p6{ top: 255px; right:  6%; --rot:  6deg; z-index:3; }
-
-  /* Jakemosphere: rechte Spalte hat 4 Bilder */
-  body.jakemosphere .right.stack{ min-height: 540px; }
-  body.home .right .p7{ top: 380px; right: 14%; --rot: -4deg; z-index:4; }
+  /* Breiten je Motiv – Startseite */
+  body.home .left .p1{ --mw: 290px; }   /* Gitarre */
+  body.home .left .p2{ --mw: 210px; }   /* Brief */
+  body.home .left .p3{ --mw: 230px; }   /* Katja */
+  body.home .right .p4{ --mw: 240px; }  /* Schreibmaschine */
+  body.home .right .p5{ --mw: 260px; }  /* Notizbuch */
+  body.home .right .p6{ --mw: 210px; }  /* Jake & the City */
+  /* Jakemosphere */
+  body.jakemosphere .left .p1{ --mw: 200px; }   /* Kopfhörer */
+  body.jakemosphere .left .p2{ --mw: 300px; }   /* Echo & Ember Mockup */
+  body.jakemosphere .left .p3{ --mw: 210px; }   /* Interview */
+  body.jakemosphere .right .p4{ --mw: 210px; }  /* Postkarte Haverooge */
+  body.jakemosphere .right .p5{ --mw: 210px; }  /* Meet the Cast */
+  body.jakemosphere .right .p6{ --mw: 170px; }  /* Jake & the City Mockup */
+  body.jakemosphere .right .p7{ --mw: 170px; }  /* I'll be back */
+  /* Elodies Geheimnis */
+  body.elodie .left .p1{ --mw: 210px; }   /* Eintrittskarte */
+  body.elodie .left .p2{ --mw: 260px; }   /* Buch-Mockup */
+  body.elodie .left .p3{ --mw: 260px; }   /* Hinter den Kulissen */
+  body.elodie .right .p4{ --mw: 230px; }  /* Meet the Cast */
+  body.elodie .right .p5{ --mw: 210px; }  /* Interview */
+  body.elodie .right .p6{ --mw: 150px; }  /* Teetasse */
 
   /* Elodie + Jakemosphere: Unterschrift mittig unter dem Text */
   body.home .intro p.signatur{ text-align:center; }
