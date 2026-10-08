@@ -8,14 +8,14 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
-  <link rel="stylesheet" href="assets/css/styles.css?v=135">
+  <link rel="stylesheet" href="assets/css/styles.css?v=158">
   <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
         async src="//gc.zgo.at/count.js">
   </script>
 
   <!-- Google Fonts Fallback -->
   <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
-  
+
 </head>
 <body class="home">
   <div class="wrap">
@@ -42,7 +42,7 @@
       <!-- Textblock -->
       <div class="intro">
         <h1>Willkommen bei<br>Katja Kobusch</h1>
-        <h2>(naja, eigentlich)</h2>        
+        <h2>(naja, eigentlich)</h2>
         <p>Dummerweise kennen wir Figuren<br>ihr Passwort und haben die<br>Seite übernommen!</p>
         <h2>Lerne uns und unsere<br>Buchwelten kennen</h2>
         <p>(Aber pssst! Verrate Katja nicht alles,<br>was du hier erfährst.)</p>
@@ -68,11 +68,20 @@
       </div>
     </section>
   </div>
+  <!-- Newsticker: wird aus der Spielwiese (Kategorie »Ticker«) befüllt, bleibt sonst unsichtbar -->
+  <div class="ticker" role="region" aria-label="Neuigkeiten" hidden>
+    <span class="ticker__label">Neu</span>
+    <span class="ticker__text"></span>
+    <button type="button" class="ticker__zu" aria-label="Neuigkeiten ausblenden">&times;</button>
+  </div>
+
   <footer>
     <p>
       <a href="impressum.html">Impressum</a> |
       <a href="datenschutz.html">Datenschutz</a>
     </p>
   </footer>
+
+  <script src="assets/js/ticker.js?v=2" defer></script>
 </body>
 </html>
