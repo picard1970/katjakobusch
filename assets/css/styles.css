@@ -256,6 +256,71 @@ body.home .intro .signatur span{
   line-height: 1;
 }
 
+/* Newsticker (index.html, befüllt aus der Spielwiese – assets/js/ticker.js)
+   klebt am unteren Bildschirmrand, mit × wegklickbar */
+.ticker:not([hidden]){
+  position: fixed;
+  left: 50%;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 1000;
+  box-sizing: border-box;
+  width: min(760px, calc(100% - 24px));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: .8em;
+  padding: .45em .4em .45em .5em;
+  background: var(--papier);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), 0 10px 24px rgba(0,0,0,.2);
+  font: 400 clamp(14px, 1.3vw, 17px)/1.3 Georgia, "Times New Roman", serif;
+  color: var(--dunkelgrau2);
+  animation: ticker-rein .5s ease both;
+}
+@keyframes ticker-rein{
+  from{ opacity: 0; transform: translate(-50%, 120%); }
+  to  { opacity: 1; transform: translate(-50%, 0); }
+}
+body.hat-ticker{ padding-bottom: 76px; }    /* Footer bleibt über dem Ticker lesbar */
+.ticker__label{
+  flex: none;
+  padding: .2em .6em;
+  border-radius: 3px;
+  background: var(--akzent-rot);
+  color: var(--weiss);
+  font-weight: 700;
+  font-size: .8em;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.ticker__text{
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;                 /* immer genau eine Zeile */
+  opacity: 0;
+  transform: translateY(.3em);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.ticker__text.ist-sichtbar{ opacity: 1; transform: none; }
+.ticker__text a{ color: inherit; text-decoration: none; }
+.ticker__text a:hover,
+.ticker__text a:focus-visible{ color: var(--akzent-rot); text-decoration: underline; }
+.ticker__zu{
+  flex: none;
+  width: 32px; height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--grau);
+  font: 400 22px/1 Arial, sans-serif;
+  cursor: pointer;
+}
+.ticker__zu:hover,
+.ticker__zu:focus-visible{ background: rgba(0,0,0,.07); color: var(--dunkelgrau2); }
+
 /* ======================================================================= */
 /* === 2.2 JAKEMOSPHERE (jakemosphere.html) ============================== */
 /* Nutzt das komplette Home-Layout (body.home),                            */
@@ -1795,4 +1860,6 @@ body.museum footer a{ color: var(--dunkelgrau2); }
   body.home .photo:hover{ transform: rotate(var(--rot)); }
   .card__front::after{ transition:none; }
   .museum-bild__btn{ transition:none; }
+  .ticker__text{ transition:none; transform:none; }
+  .ticker:not([hidden]){ animation:none; }
 }
