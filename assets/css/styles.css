@@ -17,6 +17,7 @@
         2.11 Interview                            body.elodie-interview, body.jake-interview
         2.12 Meet the Cast (meetthecrew.html, elodie_meet_the_cast.html)  body.crew
         2.13 Museum Klüpfenhagen (elodie_museum.html)  body.museum
+        2.14 Hinter den Kulissen von Haverooge (haverooge.html)  body.comic
    3. MEDIA QUERIES ..... von groß nach klein, darin nach Seiten sortiert
    ======================================================================= */
 
@@ -1646,6 +1647,85 @@ body.museum footer a{ color: var(--dunkelgrau2); }
 
 
 /* ======================================================================= */
+/* === 2.14 HINTER DEN KULISSEN VON HAVEROOGE (haverooge.html) =========== */
+/* ======================================================================= */
+/* Bernds Comic: Panels in Reihen. Jedes Panel behält sein Format –
+   --r = Breite/Höhe des Bildes. Innerhalb einer Reihe teilen sich die
+   Panels die Breite im Verhältnis von --r, dadurch sind alle gleich hoch.
+   Die Zoom-Ansicht nutzt die Klassen .museum-zoom aus 2.13. */
+
+body.comic{
+  margin: 0;
+  background: var(--wand-tuerkis);
+  background-size: var(--wand-groesse);
+  color: var(--dunkelgrau2);
+}
+body.comic .home-link{ color: var(--dunkelgrau2); }
+body.comic .home-link:hover{ color: #000; }
+body.comic footer,
+body.comic footer a{ color: var(--dunkelgrau2); }
+
+.comic-karte{
+  box-sizing: border-box;
+  max-width: min(1240px, calc(100% - 24px));
+  margin: clamp(48px, 6vw, 70px) auto 2.5em;
+  padding: clamp(14px, 2.4vw, 32px);
+  background: #fffdf7;                 /* fast weiß – passt zu den hellen Bildrändern */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2), 0 10px 24px rgba(0,0,0,.18);
+}
+.comic-kopf{
+  text-align: center;
+  margin: 0 0 clamp(14px, 2vw, 24px);
+}
+.comic-kopf h1{
+  font-family: "Sweet Dreams","Emilys Candy",Georgia,serif;
+  font-weight: 400;
+  font-size: clamp(30px, 4.6vw, 54px);
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+.comic-kopf p{
+  font-family: "Caveat", "Segoe Print", cursive;
+  font-size: clamp(20px, 2.1vw, 25px);
+  margin: 0;
+}
+
+.comic-reihe{
+  display: flex;
+  gap: clamp(4px, .8vw, 10px);
+  margin-bottom: clamp(4px, .8vw, 10px);
+}
+.comic-reihe:last-child{ margin-bottom: 0; }
+.comic-panel{
+  flex: var(--r, 1) 1 0%;
+  min-width: 0;
+  margin: 0;
+}
+.comic-panel__btn{
+  display: block;
+  cursor: zoom-in;
+}
+.comic-panel__btn img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.comic-panel__btn:focus-visible{ outline: 3px solid var(--akzent-rot); outline-offset: 2px; }
+.comic-snap,
+.comic-wisch-hinweis{ display: none; }
+
+/* Zähler in der Zoom-Ansicht (»7 / 25«) */
+.comic-zoom__zaehler{
+  position: absolute; top: 24px; left: 20px;
+  margin: 0;
+  font: 15px/1 Arial, sans-serif;
+  color: #f3edd8; opacity: .8;
+  pointer-events: none;
+}
+
+
+/* ======================================================================= */
 /* === 3. MEDIA QUERIES ================================================== */
 /* Reihenfolge ist wichtig: von breit nach schmal.                         */
 /* ======================================================================= */
@@ -1924,6 +2004,34 @@ body.museum footer a{ color: var(--dunkelgrau2); }
   .museum-zoom__vor,
   .museum-zoom__nach{ top: auto; bottom: 40px; transform: none; }
   .museum-zoom__hinweis{ display: none; }
+
+  /* Haverooge-Comic: Panels untereinander in voller Breite */
+  .comic-karte{ max-width: calc(100% - 16px); padding: 12px 8px; }
+  .comic-reihe{ display: block; margin-bottom: 0; }
+  .comic-panel{ margin-bottom: 8px; }
+  .comic-reihe:last-child .comic-panel:last-child{ margin-bottom: 0; }
+  /* letztes Bild (drei Panels nebeneinander): seitlich wischen statt winzig */
+  .comic-panel__scroll{
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .comic-panel__breite{ position: relative; width: 297%; }
+  .comic-snap{
+    display: block;
+    position: absolute; top: 0;
+    width: 1px; height: 1px;
+    scroll-snap-align: center;
+    pointer-events: none;
+  }
+  .comic-wisch-hinweis{
+    display: block;
+    text-align: center;
+    font-family: "Caveat", "Segoe Print", cursive;
+    font-size: 20px;
+    margin-top: 2px;
+  }
 }
 
 /* ----------------------------------------------------------------------- */
