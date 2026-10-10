@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hinter den Kulissen von Klüpfenhagen – Elodies Geheimnis – Katja Kobusch</title>
+  <meta name="description" content="Elodies Geheimnis – wie alles begann: Sam und Olivia erzählen. Zum Anhören auf dem Kassettenrecorder.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=166">
+  <script data-goatcounter="https://katjakobusch.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="elodie-kulissen">
+  <a href="elodies_geheimnis.html" class="home-link">Zurück</a>
+
+  <main class="kulissen-karte">
+    <header class="kulissen-kopf">
+      <h1>Hinter den Kulissen von Klüpfenhagen</h1>
+      <p>Elodies Geheimnis – wie alles begann. Drück auf Play und hör rein!</p>
+    </header>
+
+    <img class="kulissen-bild" src="assets/images/elodie-kulissen-interview.webp" width="1400" height="788"
+         alt="Sam und Olivia sitzen sich an einem Tisch in einem gemütlichen, altmodischen Wohnzimmer gegenüber und unterhalten sich lebhaft. Zwischen ihnen stehen ein altes Mikrofon und ein Kassettenrecorder.">
+
+    <!-- Kassettenrecorder: Play/Stop steuern das <audio> darunter.
+         Ohne JavaScript bleibt der normale Audio-Player sichtbar. -->
+    <div class="recorder">
+      <svg class="recorder__svg" viewBox="0 0 1000 400" role="group" aria-label="Kassettenrecorder mit der Kassette »Elodies Geheimnis – Wie alles begann«">
+        <defs>
+          <linearGradient id="rk-gehaeuse" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a3733"/><stop offset=".08" stop-color="#2a2825"/><stop offset="1" stop-color="#151413"/>
+          </linearGradient>
+          <linearGradient id="rk-bronze" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d9c99e"/><stop offset=".45" stop-color="#9b8659"/><stop offset="1" stop-color="#5e5034"/>
+          </linearGradient>
+          <linearGradient id="rk-rahmen" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d8cfb8"/><stop offset=".5" stop-color="#a99d82"/><stop offset="1" stop-color="#7c705a"/>
+          </linearGradient>
+          <linearGradient id="rk-taste" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e9e4da"/><stop offset=".55" stop-color="#c8c1b3"/><stop offset="1" stop-color="#9f988a"/>
+          </linearGradient>
+          <linearGradient id="rk-etikett" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f3ead3"/><stop offset=".6" stop-color="#ebe0c4"/><stop offset="1" stop-color="#dccfae"/>
+          </linearGradient>
+          <linearGradient id="rk-glas" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".3" stop-color="#fff" stop-opacity=".03"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="rk-led-an"><stop offset="0" stop-color="#ffd2a8"/><stop offset=".35" stop-color="#ff3b1a"/><stop offset="1" stop-color="#8a0d00"/></radialGradient>
+          <radialGradient id="rk-glow"><stop offset="0" stop-color="#ff3b1a" stop-opacity=".55"/><stop offset="1" stop-color="#ff3b1a" stop-opacity="0"/></radialGradient>
+          <!-- Spulen-Nabe -->
+          <g id="rk-nabe">
+            <circle r="25" fill="#e8e1d0" stroke="#b9b09a" stroke-width="1.5"/>
+            <circle r="19" fill="none" stroke="#cfc6b0" stroke-width="1"/>
+            <circle r="11" fill="#1d1a17"/>
+            <g fill="#e8e1d0">
+              <rect x="-3" y="-13" width="6" height="6"/><rect x="-3" y="-13" width="6" height="6" transform="rotate(60)"/>
+              <rect x="-3" y="-13" width="6" height="6" transform="rotate(120)"/><rect x="-3" y="-13" width="6" height="6" transform="rotate(180)"/>
+              <rect x="-3" y="-13" width="6" height="6" transform="rotate(240)"/><rect x="-3" y="-13" width="6" height="6" transform="rotate(300)"/>
+            </g>
+            <g fill="#a99f88"><circle cx="0" cy="-21" r="2.2"/><circle cx="18" cy="10.5" r="2.2"/><circle cx="-18" cy="10.5" r="2.2"/></g>
+          </g>
+          <!-- Ranke für die Etikett-Ecken -->
+          <g id="rk-ranke" fill="none" stroke="#3f6f6a" stroke-width="1.6" stroke-linecap="round">
+            <path d="M0 0 C 2 -18, 14 -30, 30 -30 C 40 -30, 44 -20, 37 -15 C 31 -11, 25 -17, 29 -21"/>
+            <path d="M6 -14 C 14 -16, 20 -10, 18 -4"/>
+            <path d="M14 -26 C 10 -36, 16 -44, 24 -44"/>
+            <circle cx="22" cy="-8" r="3.4" fill="#5c8e86" stroke="none"/>
+            <path d="M3 -30 C -2 -38, 2 -48, 10 -50" />
+          </g>
+        </defs>
+
+        <!-- Füße -->
+        <rect x="70" y="360" width="90" height="18" rx="6" fill="#2b2824"/>
+        <rect x="840" y="360" width="90" height="18" rx="6" fill="#2b2824"/>
+        <rect x="70" y="360" width="90" height="5" rx="2" fill="#7c6c4b" opacity=".7"/>
+        <rect x="840" y="360" width="90" height="5" rx="2" fill="#7c6c4b" opacity=".7"/>
+
+        <!-- Gehäuse -->
+        <rect x="8" y="22" width="984" height="342" rx="16" fill="url(#rk-gehaeuse)"/>
+        <rect x="8" y="22" width="984" height="342" rx="16" fill="none" stroke="url(#rk-bronze)" stroke-width="5"/>
+        <rect x="20" y="30" width="960" height="6" rx="3" fill="#fff" opacity=".06"/>
+        <line x1="20" y1="340" x2="980" y2="340" stroke="#8f7c55" stroke-width="2" opacity=".6"/>
+
+        <!-- linkes Feld: LED + Lüftungsschlitze -->
+        <rect x="28" y="48" width="140" height="282" rx="8" fill="#1b1a18" stroke="#3d3a35"/>
+        <rect x="70" y="80" width="40" height="30" rx="4" fill="#0e0d0c" stroke="#55504a"/>
+        <circle class="recorder__glow" cx="90" cy="95" r="28" fill="url(#rk-glow)"/>
+        <circle class="recorder__led" cx="90" cy="95" r="7" fill="#5a1208"/>
+        <g fill="#0b0a09" stroke="#3d3a35">
+          <rect x="52" y="170" width="92" height="9" rx="4.5"/><rect x="52" y="188" width="92" height="9" rx="4.5"/>
+          <rect x="52" y="206" width="92" height="9" rx="4.5"/><rect x="52" y="224" width="92" height="9" rx="4.5"/>
+          <rect x="52" y="242" width="92" height="9" rx="4.5"/><rect x="52" y="260" width="92" height="9" rx="4.5"/>
+          <rect x="52" y="278" width="92" height="9" rx="4.5"/>
+        </g>
+
+        <!-- Kassettenfach -->
+        <rect x="184" y="46" width="510" height="290" rx="6" fill="url(#rk-rahmen)"/>
+        <rect x="198" y="58" width="482" height="266" rx="4" fill="#0d0c0b"/>
+
+        <!-- Kassette (Klick = Play/Pause) -->
+        <g class="recorder__kassette" data-aktion="toggle">
+          <rect x="218" y="70" width="442" height="246" rx="10" fill="#26231f" stroke="#4a463f" stroke-width="2"/>
+          <circle cx="232" cy="84" r="4" fill="#4a463f"/><circle cx="646" cy="84" r="4" fill="#4a463f"/>
+          <!-- Etikett -->
+          <rect x="236" y="84" width="406" height="176" rx="6" fill="url(#rk-etikett)"/>
+          <rect x="236" y="84" width="406" height="176" rx="6" fill="none" stroke="#b7a983" stroke-width="1"/>
+          <text x="439" y="128" text-anchor="middle" class="recorder__titel">Elodies Geheimnis</text>
+          <line x1="256" y1="152" x2="296" y2="152" stroke="#2c4446" stroke-width="1.4"/>
+          <line x1="582" y1="152" x2="622" y2="152" stroke="#2c4446" stroke-width="1.4"/>
+          <text x="439" y="163" text-anchor="middle" class="recorder__untertitel">Wie alles begann</text>
+          <use href="#rk-ranke" transform="translate(246 252)"/>
+          <use href="#rk-ranke" transform="translate(632 252) scale(-1 1)"/>
+          <!-- Sichtfenster mit Band -->
+          <rect x="300" y="178" width="278" height="74" rx="10" fill="#2a1d14"/>
+          <circle class="recorder__band-l" cx="372" cy="215" r="34" fill="#4a2f1d"/>
+          <circle class="recorder__band-r" cx="506" cy="215" r="26" fill="#4a2f1d"/>
+          <circle class="recorder__band-l" cx="372" cy="215" r="34" fill="none" stroke="#2e1d12" stroke-width="1" stroke-dasharray="2 3" opacity=".7"/>
+          <circle class="recorder__band-r" cx="506" cy="215" r="26" fill="none" stroke="#2e1d12" stroke-width="1" stroke-dasharray="2 3" opacity=".7"/>
+          <rect x="430" y="186" width="18" height="58" fill="#7a5a3a" opacity=".35"/>
+          <g transform="translate(372 215)"><g class="recorder__spule"><use href="#rk-nabe"/></g></g>
+          <g transform="translate(506 215)"><g class="recorder__spule"><use href="#rk-nabe"/></g></g>
+          <rect x="300" y="178" width="278" height="74" rx="10" fill="url(#rk-glas)"/>
+          <!-- Unterteil -->
+          <path d="M280 316 L298 272 H580 L598 316" fill="#1d1b18" stroke="#4a463f" stroke-width="2"/>
+          <circle cx="330" cy="296" r="5" fill="#4a463f"/><circle cx="548" cy="296" r="5" fill="#4a463f"/>
+          <rect x="426" y="290" width="26" height="10" rx="5" fill="#8d8471"/>
+        </g>
+        <rect x="198" y="58" width="482" height="266" rx="4" fill="url(#rk-glas)" pointer-events="none"/>
+
+        <!-- rechtes Feld: Tasten -->
+        <rect x="708" y="48" width="270" height="282" rx="8" fill="#1b1a18" stroke="#3d3a35"/>
+        <g class="recorder__taste" data-aktion="play" tabindex="0" role="button" aria-label="Abspielen">
+          <rect x="718" y="58" width="122" height="168" rx="6" fill="#121110" stroke="#3d3a35"/>
+          <text x="779" y="90" text-anchor="middle" class="recorder__beschriftung">PLAY</text>
+          <g class="recorder__kappe">
+            <rect x="734" y="108" width="90" height="100" rx="6" fill="url(#rk-taste)" stroke="#6f695d"/>
+            <path d="M766 138 L798 158 L766 178 Z" fill="#1d1b18"/>
+          </g>
+        </g>
+        <g class="recorder__taste" data-aktion="stop" tabindex="0" role="button" aria-label="Stopp">
+          <rect x="848" y="58" width="122" height="168" rx="6" fill="#121110" stroke="#3d3a35"/>
+          <text x="909" y="90" text-anchor="middle" class="recorder__beschriftung">STOP</text>
+          <g class="recorder__kappe">
+            <rect x="864" y="108" width="90" height="100" rx="6" fill="url(#rk-taste)" stroke="#6f695d"/>
+            <rect x="891" y="140" width="36" height="36" fill="#1d1b18"/>
+          </g>
+        </g>
+
+        <!-- Aussteuerungsanzeige -->
+        <rect x="718" y="236" width="252" height="84" rx="6" fill="#0c0b0a" stroke="#6b6250"/>
+        <g class="recorder__skala" text-anchor="middle">
+          <text x="752" y="266">−20</text><text x="800" y="266">−10</text><text x="848" y="266">−5</text>
+          <text x="896" y="266">0</text><text x="940" y="266">+3</text>
+          <g stroke="#8d8471" stroke-width="1.5"><line x1="752" y1="272" x2="752" y2="279"/><line x1="800" y1="272" x2="800" y2="279"/><line x1="848" y1="272" x2="848" y2="279"/><line x1="896" y1="272" x2="896" y2="279"/><line x1="940" y1="272" x2="940" y2="279"/></g>
+        </g>
+        <g class="recorder__vu">
+          <rect x="738" y="286" width="18" height="12" rx="1.5"/><rect x="762" y="286" width="18" height="12" rx="1.5"/>
+          <rect x="786" y="286" width="18" height="12" rx="1.5"/><rect x="810" y="286" width="18" height="12" rx="1.5"/>
+          <rect x="834" y="286" width="18" height="12" rx="1.5"/><rect x="858" y="286" width="18" height="12" rx="1.5"/>
+          <rect class="rot" x="882" y="286" width="18" height="12" rx="1.5"/><rect class="rot" x="906" y="286" width="18" height="12" rx="1.5"/>
+          <rect class="rot" x="930" y="286" width="18" height="12" rx="1.5"/>
+        </g>
+      </svg>
+
+      <div class="recorder__leiste">
+        <input class="recorder__fortschritt" type="range" min="0" max="1000" value="0" step="1" aria-label="Position im Interview">
+        <span class="recorder__zeit">0:00 / 3:35</span>
+      </div>
+      <audio class="recorder__audio" controls preload="metadata" src="assets/audio/elodies_geheimnis_wie_alles_begann.mp3">
+        <a href="assets/audio/elodies_geheimnis_wie_alles_begann.mp3">Audio herunterladen (MP3)</a>
+      </audio>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">Startseite</a> |
+      <a href="impressum.html">Impressum</a> |
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </footer>
+
+  <script>
+  (function () {
+    var box   = document.querySelector('.recorder');
+    var svg   = box.querySelector('.recorder__svg');
+    var audio = box.querySelector('.recorder__audio');
+    var bar   = box.querySelector('.recorder__fortschritt');
+    var zeit  = box.querySelector('.recorder__zeit');
+    var bandL = svg.querySelectorAll('.recorder__band-l');
+    var bandR = svg.querySelectorAll('.recorder__band-r');
+    var leds  = Array.prototype.slice.call(svg.querySelectorAll('.recorder__vu rect'));
+    var play  = svg.querySelector('[data-aktion="play"]');
+    var R_MIN = 27, R_MAX = 35;              // Bandwickel: leer / voll
+    var ruhig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    box.classList.add('mit-js');             // versteckt den normalen Player, zeigt Leiste
+    audio.removeAttribute('controls');
+
+    function fmt(s) { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+    function zeichnen() {
+      var d = audio.duration || 0, p = d ? audio.currentTime / d : 0;
+      var rl = R_MAX - (R_MAX - R_MIN) * p, rr = R_MIN + (R_MAX - R_MIN) * p;
+      bandL.forEach(function (c) { c.setAttribute('r', rl.toFixed(2)); });
+      bandR.forEach(function (c) { c.setAttribute('r', rr.toFixed(2)); });
+      if (!ziehen) bar.value = Math.round(p * 1000);
+      zeit.textContent = fmt(audio.currentTime) + ' / ' + fmt(d || 215);
+    }
+
+    // Aussteuerung: echte Lautstärke über Web Audio, sonst ein ruhiges Flackern
+    var ctx = null, analyser = null, daten = null, stumm = 0;
+    function audioAnalyse() {
+      if (ctx || !(window.AudioContext || window.webkitAudioContext)) return;
+      try {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        var quelle = ctx.createMediaElementSource(audio);
+        analyser = ctx.createAnalyser(); analyser.fftSize = 512;
+        quelle.connect(analyser); analyser.connect(ctx.destination);
+        daten = new Uint8Array(analyser.fftSize);
+      } catch (e) { analyser = null; }
+    }
+    function pegel() {
+      if (analyser) {
+        analyser.getByteTimeDomainData(daten);
+        var sum = 0; for (var i = 0; i < daten.length; i++) { var v = (daten[i] - 128) / 128; sum += v * v; }
+        var rms = Math.sqrt(sum / daten.length);
+        if (rms > 0.0005) { stumm = 0; return Math.min(1, rms * 3.2); }
+        if (++stumm < 60) return 0;           // kurze Pause im Gespräch
+      }
+      return 0.35 + Math.random() * 0.35;     // Ersatz, falls der Browser nichts liefert
+    }
+    var anzeige = 0;
+    function vu() {
+      var ziel = audio.paused ? 0 : pegel();
+      anzeige = ziel > anzeige ? ziel : anzeige * 0.88;     // schnell hoch, langsam runter
+      var n = Math.round(anzeige * leds.length);
+      leds.forEach(function (r, i) { r.classList.toggle('an', i < n); });
+      zeichnen();
+      if (!audio.paused || anzeige > 0.02) requestAnimationFrame(vu);
+      else leds.forEach(function (r) { r.classList.remove('an'); });
+    }
+
+    function starten() {
+      audioAnalyse();
+      if (ctx && ctx.state === 'suspended') ctx.resume();
+      audio.play();
+    }
+    function stoppen() { audio.pause(); }
+
+    audio.addEventListener('play', function () {
+      svg.classList.add('laeuft'); play.classList.add('gedrueckt');
+      if (!ruhig) requestAnimationFrame(vu);
+      if (window.goatcounter && window.goatcounter.count && !audio.dataset.gezaehlt) {
+        audio.dataset.gezaehlt = '1';
+        window.goatcounter.count({ path: 'audio-elodie-wie-alles-begann', title: 'Audio abgespielt', event: true });
+      }
+    });
+    audio.addEventListener('pause', function () { svg.classList.remove('laeuft'); play.classList.remove('gedrueckt'); zeichnen(); });
+    audio.addEventListener('ended', function () { audio.currentTime = 0; zeichnen(); });
+    audio.addEventListener('loadedmetadata', zeichnen);
+    audio.addEventListener('timeupdate', function () { if (ruhig || audio.paused) zeichnen(); });
+
+    svg.querySelectorAll('[data-aktion]').forEach(function (el) {
+      function los() {
+        var a = el.getAttribute('data-aktion');
+        if (a === 'play') starten();
+        else if (a === 'stop') stoppen();
+        else audio.paused ? starten() : stoppen();
+      }
+      el.addEventListener('click', los);
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); los(); }
+      });
+    });
+
+    // Spulen per Schieberegler
+    var ziehen = false;
+    bar.addEventListener('input', function () {
+      ziehen = true;
+      if (audio.duration) audio.currentTime = bar.value / 1000 * audio.duration;
+      zeichnen();
+    });
+    bar.addEventListener('change', function () { ziehen = false; });
+
+    zeichnen();
+  })();
+  </script>
+</body>
+</html>
