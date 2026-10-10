@@ -1712,8 +1712,6 @@ body.comic footer a{ color: var(--dunkelgrau2); }
   height: auto;
 }
 .comic-panel__btn:focus-visible{ outline: 3px solid var(--akzent-rot); outline-offset: 2px; }
-.comic-snap,
-.comic-wisch-hinweis{ display: none; }
 
 /* Zähler in der Zoom-Ansicht (»7 / 25«) */
 .comic-zoom__zaehler{
@@ -2010,28 +2008,6 @@ body.comic footer a{ color: var(--dunkelgrau2); }
   .comic-reihe{ display: block; margin-bottom: 0; }
   .comic-panel{ margin-bottom: 8px; }
   .comic-reihe:last-child .comic-panel:last-child{ margin-bottom: 0; }
-  /* letztes Bild (drei Panels nebeneinander): seitlich wischen statt winzig */
-  .comic-panel__scroll{
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-  .comic-panel__breite{ position: relative; width: 297%; }
-  .comic-snap{
-    display: block;
-    position: absolute; top: 0;
-    width: 1px; height: 1px;
-    scroll-snap-align: center;
-    pointer-events: none;
-  }
-  .comic-wisch-hinweis{
-    display: block;
-    text-align: center;
-    font-family: "Caveat", "Segoe Print", cursive;
-    font-size: 20px;
-    margin-top: 2px;
-  }
 }
 
 /* ----------------------------------------------------------------------- */
